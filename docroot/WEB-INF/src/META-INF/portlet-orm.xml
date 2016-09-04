@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="org.lrc.liferay.toolbuilder.model.impl.CompositeStepDBEModelImpl">
+		<attributes>
+			<id name="compositeStepDBEId" />
+			<basic name="currentStep" />
+			<basic name="compositeStepDefDBEId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.lrc.liferay.toolbuilder.model.impl.CompositeStepDefDBEModelImpl">
+		<attributes>
+			<id name="compositeStepDefDBEId" />
+			<basic name="stepsNumber" />
+			<basic name="sequential" />
+			<basic name="depth" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.lrc.liferay.toolbuilder.model.impl.InstalledStepModelImpl">
+		<attributes>
+			<id name="stepType" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="userName" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="namespace" />
+			<basic name="className" />
+			<basic name="stepDescription" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.lrc.liferay.toolbuilder.model.impl.StepDBEModelImpl">
+		<attributes>
+			<id name="stepDBEId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="userName" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="stepType" />
+			<basic name="stepTypeId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.lrc.liferay.toolbuilder.model.impl.StepDefDBEModelImpl">
+		<attributes>
+			<id name="stepDefDBEId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="userName" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="stepType" />
+			<basic name="stepTypeId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.lrc.liferay.toolbuilder.model.impl.ToolDefDBEModelImpl">
+		<attributes>
+			<id name="toolDefDBEId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="userName" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="toolName" />
+			<basic name="compositeStepDefDBEId" />
+			<basic name="toolDescription" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.lrc.liferay.toolbuilder.model.impl.ToolInstanceDBEModelImpl">
+		<attributes>
+			<id name="toolInstanceDBEId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="userName" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="toolDefDBEId" />
+			<basic name="compositeStepDBEId" />
+			<basic name="toolTitle" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="org.lrc.liferay.toolbuilder.model.impl.CompositeStepDBEImpl" name="CompositeStepDBE">
+		<table name="lrc_tb_CompositeStepDBE" />
+		<attributes />
+	</entity>
+	<entity class="org.lrc.liferay.toolbuilder.model.impl.CompositeStepDefDBEImpl" name="CompositeStepDefDBE">
+		<table name="lrc_tb_CompositeStepDefDBE" />
+		<attributes />
+	</entity>
+	<entity class="org.lrc.liferay.toolbuilder.model.impl.InstalledStepImpl" name="InstalledStep">
+		<table name="lrc_tb_InstalledStep" />
+		<attributes />
+	</entity>
+	<entity class="org.lrc.liferay.toolbuilder.model.impl.StepDBEImpl" name="StepDBE">
+		<table name="lrc_tb_StepDBE" />
+		<attributes />
+	</entity>
+	<entity class="org.lrc.liferay.toolbuilder.model.impl.StepDefDBEImpl" name="StepDefDBE">
+		<table name="lrc_tb_StepDefDBE" />
+		<attributes />
+	</entity>
+	<entity class="org.lrc.liferay.toolbuilder.model.impl.ToolDefDBEImpl" name="ToolDefDBE">
+		<table name="lrc_tb_ToolDefDBE" />
+		<attributes />
+	</entity>
+	<entity class="org.lrc.liferay.toolbuilder.model.impl.ToolInstanceDBEImpl" name="ToolInstanceDBE">
+		<table name="lrc_tb_ToolInstanceDBE" />
+		<attributes />
+	</entity>
+</entity-mappings>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14728310810330" configfile="/toolBuilder-portlet/docroot/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf147299683457319" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf147299683457320" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="WEB-INF/views/tool-definition/steps/selectStepDefDialog.xhtml" id="pf147299683457321" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf147299683457320" path="/WEB-INF/views/tool-definition/steps/selectStepDefDialog.xhtml"/>
+  <links id="pf147299683457320" target="pf147299683457321" source="pf147299683457319" outcome="selectStepDefDialog"/>
+</pageflow:Pageflow>

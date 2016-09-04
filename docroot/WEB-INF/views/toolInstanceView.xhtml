@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <h:head />
+    <h:body>
+	    <h:messages id="errorMessage" globalOnly="true" /> <!-- layout="table" /> -->
+	    <h:form id="toolInstanceForm">
+	    <c:choose>
+	    	<c:when test="#{toolSession.configuringInstance}">
+	    		<h3><h:outputText value="#{i18n['new-ram']}" /></h3>
+	    		<ui:include src="editToolInstanceForm.xhtml" />
+	    	</c:when>
+	    	<c:otherwise>
+    			<h:outputLabel class="instance-name"><h:outputText value="#{i18n['ram-name']}: #{toolSession.selectedToolInstance.toolTitle}" /></h:outputLabel>
+	    		<h:outputLabel id="toolInstanceContent">
+	    			<c:choose>
+	    				<c:when test="#{toolInstanceBacking.getStep() == 1}">
+	    					<ui:include src="ramSteps/ramStep1.xhtml" />
+	    				</c:when>
+	    				<c:when test="#{toolInstanceBacking.getStep() == 2}">
+	    					<ui:include src="ramSteps/ramStep2.xhtml" />
+	    				</c:when>
+	    				<c:when test="#{toolInstanceBacking.getStep() == 3}">
+	    					<ui:include src="ramSteps/ramStep3.xhtml" />
+	    				</c:when>
+	    				<c:when test="#{toolInstanceBacking.getStep() == 4}">
+	    					<ui:include src="ramSteps/ramStep4.xhtml" />
+	    				</c:when>
+	    				<c:when test="#{toolInstanceBacking.getStep() == 5}">
+	    					<ui:include src="ramSteps/ramStep5.xhtml" />
+	    				</c:when>
+	    			</c:choose>
+				</h:outputLabel>
+	    		<h:commandButton id="stepForwardButton" action="#{toolInstanceBacking.stepForward}" value="#{i18n['step-forward']}">
+	    			<f:ajax render="toolInstanceContent" />
+	    		</h:commandButton>
+	    	</c:otherwise>
+	    </c:choose>
+	    	<h:commandButton id="cancelToolInstanceButton" action="#{toolSession.cancelToolInstance}" value="#{i18n['exit-ram']}">
+	    		<f:ajax render="@all" />
+	    	</h:commandButton>
+	    	<h:commandButton id="deleteToolInstanceButton" action="#{toolSession.deleteToolInstance}" value="#{i18n['delete-ram']}">
+	    		<f:ajax render="@all" />
+	    	</h:commandButton>
+	    </h:form>
+	</h:body>
+</f:view>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<p:fieldset id="compositeDefFieldSet">
+		<h:message for="@form"></h:message>
+		<p:tabView value="#{toolDefBacking.getCompositeStepDef().getIndexesList()}" var="index">
+			<p:ajax event="tabChange" listener="#{toolDefBacking.onTabChange}" update="@form"/>
+	        <p:ajax event="tabClose" listener="#{toolDefBacking.getCompositeStepDef().deleteStepDef(index)}" update="@form"/>
+	    	<p:tab title="#{i18n['Step']} #{index+1}: #{toolDefBacking.getCompositeStepDef().getStepDef(index).stepType}" closable="true">
+	    		<h3><h:outputText value="#{toolDefBacking.getCompositeStepDef().getStepDef(index).stepType}" /></h3>
+				<ui:include src="steps/#{toolDefBacking.getCompositeStepDef().getStepDef(index).getAdminView()}" />
+	    	</p:tab>
+		</p:tabView>
+		<p:commandButton value="#{i18n['new-step']}" process="@this" actionListener="#{toolDefBacking.chooseStepDef}">
+			<p:ajax event="dialogReturn" update="@form" />
+		</p:commandButton>
+    </p:fieldset>
+		<p:dialog header="#{i18n['step-type']}" widgetVar="chooseNewStepType" modal="true">
+			<h:outputText value="#{i18n['choose-step-type']}" />
+			<p:selectOneListbox value="#{toolDefBacking.newStepDef}" var="type" width="500">
+				<f:selectItems value="#{factoryBean.getInstalledSteps()}" var="typeName" itemLabel="#{typeName}"/>
+				<p:column headerText="name">
+					#{type.stepType}
+				</p:column>
+				<p:column width="500" headerText="description">
+					#{type.stepDescription}
+				</p:column>
+			</p:selectOneListbox>
+		</p:dialog>
+</f:view>
