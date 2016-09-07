@@ -112,6 +112,10 @@ public class FactoryBean extends AbstractBaseBean implements Serializable {
 		FactoryBean.toolDefs.put(toolDefName, null);
 	}
 	
+	public static void putToolDef(String toolDefName, ToolDef toolDef) {
+		FactoryBean.toolDefs.put(toolDefName, toolDef);
+	}
+	
 	public static List<String> getToolDefNames() {
 		return new ArrayList<String>(FactoryBean.toolDefs.keySet());
 	}
@@ -126,5 +130,9 @@ public class FactoryBean extends AbstractBaseBean implements Serializable {
 	
 	public static void setInstalledSteps(List<ToolDef> installedSteps) {
 		
+	}
+
+	public static boolean isExistingToolDef(String toolDefName) {
+		return FactoryBean.toolDefs.containsKey(toolDefName);
 	}
 }

@@ -31,8 +31,9 @@ public class ToolDef implements Serializable {
 		} else if (toolName.equals("Test Tool 2")) {
 			this.createTestToolDef(toolName, 3);
 		} else {
+			this.createTestToolDef(toolName, 0);
 			//TODO: Create new exception
-			throw new NoSuchToolDefDBEException();
+//			throw new NoSuchToolDefDBEException();
 		}
 	}
 

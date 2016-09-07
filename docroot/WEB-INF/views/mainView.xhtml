@@ -10,12 +10,13 @@
 >
 	<h:head />
 	<h:body>
+		<p:messages id="statusMessages" showDetail="true" />
 		<h:outputText value="DEBUG" />
 		<h:form id="toolInstancesList">
 			<ui:include src="toolInstancesList.xhtml" />
-			<h:commandButton id="newToolInstanceButton" action="#{toolInstanceBacking.add}" value="#{i18n['new-ram']}" rendered="#{toolInstanceBacking.hasAddPermission}">
+			<p:commandButton id="newToolInstanceButton" action="#{toolInstanceBacking.add}" value="#{i18n['new-ram']}" rendered="#{toolInstanceBacking.hasAddPermission}">
 				<f:ajax render="@all" />
-			</h:commandButton>
+			</p:commandButton>
 		</h:form>
 	</h:body>
 </f:view>

@@ -9,16 +9,17 @@
 
 	<p:fieldset id="compositeDefFieldSet">
 		<h:message for="@form"></h:message>
-		<p:tabView value="#{toolDefBacking.getCompositeStepDef().getIndexesList()}" var="index">
+		<p:tabView id="stepTabs" value="#{toolDefBacking.getCompositeStepDef().getIndexesList()}" var="index" rendered="#{toolDefBacking.getCompositeStepDef().hasSteps()}">
 			<p:ajax event="tabChange" listener="#{toolDefBacking.onTabChange}" update="@form"/>
-	        <p:ajax event="tabClose" listener="#{toolDefBacking.getCompositeStepDef().deleteStepDef(index)}" update="@form"/>
-	    	<p:tab title="#{i18n['Step']} #{index+1}: #{toolDefBacking.getCompositeStepDef().getStepDef(index).stepType}" closable="true">
-	    		<h3><h:outputText value="#{toolDefBacking.getCompositeStepDef().getStepDef(index).stepType}" /></h3>
+		    <p:ajax event="tabClose" listener="#{toolDefBacking.getCompositeStepDef().deleteStepDef(index)}" update="@form"/>
+		   	<p:tab title="#{i18n['Step']} #{index+1}: #{toolDefBacking.getCompositeStepDef().getStepDef(index).stepType}" closable="true">
+		   		<h3><h:outputText value="#{toolDefBacking.getCompositeStepDef().getStepDef(index).stepType}" /></h3>
 				<ui:include src="steps/#{toolDefBacking.getCompositeStepDef().getStepDef(index).getAdminView()}" />
-	    	</p:tab>
+				Este es el contenido del Tab
+		   	</p:tab>
 		</p:tabView>
 		<p:commandButton value="#{i18n['new-step']}" process="@this" actionListener="#{toolDefBacking.chooseStepDef}">
-			<p:ajax event="dialogReturn" update="@form" />
+			<p:ajax event="dialogReturn" update="stepTabs" listener="#{toolDefBacking.createNewStepDef}" />
 		</p:commandButton>
     </p:fieldset>
 		<p:dialog header="#{i18n['step-type']}" widgetVar="chooseNewStepType" modal="true">

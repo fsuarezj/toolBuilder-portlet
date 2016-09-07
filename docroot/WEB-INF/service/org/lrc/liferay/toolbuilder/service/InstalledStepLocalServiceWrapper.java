@@ -298,14 +298,14 @@ public class InstalledStepLocalServiceWrapper
 
 	@Override
 	public org.lrc.liferay.toolbuilder.model.InstalledStep addInstalledStep(
-		java.lang.String stepType, java.lang.String namespace,
-		java.lang.String className,
+		java.lang.String stepType, java.lang.String stepDescription,
+		java.lang.String namespace, java.lang.String className,
 		com.liferay.faces.portal.context.LiferayFacesContext liferayFacesContext)
 		throws com.liferay.portal.NoSuchUserException,
 			com.liferay.portal.kernel.exception.SystemException,
 			org.lrc.liferay.toolbuilder.InstalledStepException {
-		return _installedStepLocalService.addInstalledStep(stepType, namespace,
-			className, liferayFacesContext);
+		return _installedStepLocalService.addInstalledStep(stepType,
+			stepDescription, namespace, className, liferayFacesContext);
 	}
 
 	/**

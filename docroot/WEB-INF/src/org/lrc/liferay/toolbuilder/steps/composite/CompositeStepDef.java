@@ -85,6 +85,10 @@ public class CompositeStepDef extends StepDef {
 		return this.stepDefs.get(index);
 	}
 	
+	public boolean hasSteps() {
+		return !this.stepDefs.isEmpty();
+	}
+	
 	public List<Integer> getIndexesList() {
 		List<Integer> result = new ArrayList<Integer>();
 		for (int i = 0; i < this.getStepsNumber(); i++) {

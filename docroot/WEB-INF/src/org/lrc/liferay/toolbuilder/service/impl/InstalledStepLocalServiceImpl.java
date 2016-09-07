@@ -66,7 +66,7 @@ public class InstalledStepLocalServiceImpl
 		}
 	}
 
-	public InstalledStep addInstalledStep(String stepType, String namespace, String className, LiferayFacesContext liferayFacesContext) throws NoSuchUserException, SystemException, InstalledStepException {
+	public InstalledStep addInstalledStep(String stepType, String stepDescription, String namespace, String className, LiferayFacesContext liferayFacesContext) throws NoSuchUserException, SystemException, InstalledStepException {
 //		User user = userPersistence.findByPrimaryKey(liferayFacesContext.getUserId());
 //		Date now = new Date();
 		
@@ -80,6 +80,7 @@ public class InstalledStepLocalServiceImpl
 //		installedStep.setUserId(liferayFacesContext.getUserId());
 //		installedStep.setUserName(user.getFullName());
 		installedStep.setStepType(stepType);
+		installedStep.setStepDescription(stepDescription);
 		installedStep.setNamespace(namespace);
 		installedStep.setClassName(className);
 		

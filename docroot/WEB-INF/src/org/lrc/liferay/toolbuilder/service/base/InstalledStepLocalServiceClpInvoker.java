@@ -128,6 +128,7 @@ public class InstalledStepLocalServiceClpInvoker {
 
 		_methodParameterTypes78 = new String[] {
 				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String",
 				"com.liferay.faces.portal.context.LiferayFacesContext"
 			};
 	}
@@ -250,7 +251,8 @@ public class InstalledStepLocalServiceClpInvoker {
 				Arrays.deepEquals(_methodParameterTypes78, parameterTypes)) {
 			return InstalledStepLocalServiceUtil.addInstalledStep((java.lang.String)arguments[0],
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
-				(com.liferay.faces.portal.context.LiferayFacesContext)arguments[3]);
+				(java.lang.String)arguments[3],
+				(com.liferay.faces.portal.context.LiferayFacesContext)arguments[4]);
 		}
 
 		throw new UnsupportedOperationException();

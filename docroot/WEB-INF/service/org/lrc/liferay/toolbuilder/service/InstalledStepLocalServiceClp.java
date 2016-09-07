@@ -125,6 +125,7 @@ public class InstalledStepLocalServiceClp implements InstalledStepLocalService {
 
 		_methodParameterTypes20 = new String[] {
 				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String",
 				"com.liferay.faces.portal.context.LiferayFacesContext"
 			};
 	}
@@ -722,8 +723,8 @@ public class InstalledStepLocalServiceClp implements InstalledStepLocalService {
 
 	@Override
 	public org.lrc.liferay.toolbuilder.model.InstalledStep addInstalledStep(
-		java.lang.String stepType, java.lang.String namespace,
-		java.lang.String className,
+		java.lang.String stepType, java.lang.String stepDescription,
+		java.lang.String namespace, java.lang.String className,
 		com.liferay.faces.portal.context.LiferayFacesContext liferayFacesContext)
 		throws com.liferay.portal.NoSuchUserException,
 			com.liferay.portal.kernel.exception.SystemException,
@@ -735,6 +736,8 @@ public class InstalledStepLocalServiceClp implements InstalledStepLocalService {
 					_methodParameterTypes20,
 					new Object[] {
 						ClpSerializer.translateInput(stepType),
+						
+					ClpSerializer.translateInput(stepDescription),
 						
 					ClpSerializer.translateInput(namespace),
 						

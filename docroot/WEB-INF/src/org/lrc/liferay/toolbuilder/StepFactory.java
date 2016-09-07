@@ -45,8 +45,7 @@ public final class StepFactory {
 	public static void installStep(String stepType, String stepDescription, String namespace, String className) throws SystemException, NoSuchUserException, InstalledStepException {
 		
 		LiferayFacesContext liferayFacesContext = LiferayFacesContext.getInstance();
-		InstalledStep installedStep = InstalledStepLocalServiceUtil.addInstalledStep(stepType, namespace, className, liferayFacesContext);
-		installedStep.setStepDescription(stepDescription);
+		InstalledStep installedStep = InstalledStepLocalServiceUtil.addInstalledStep(stepType, stepDescription, namespace, className, liferayFacesContext);
 		StepFactory.stepClasses.put(stepType, installedStep);
 	}
 	

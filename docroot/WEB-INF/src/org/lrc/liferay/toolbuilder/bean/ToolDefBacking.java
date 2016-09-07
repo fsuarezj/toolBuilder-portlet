@@ -7,15 +7,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
+import org.lrc.liferay.toolbuilder.InstalledStepException;
+import org.lrc.liferay.toolbuilder.StepFactory;
 import org.lrc.liferay.toolbuilder.ToolDef;
+import org.lrc.liferay.toolbuilder.model.InstalledStep;
 import org.lrc.liferay.toolbuilder.steps.StepDef;
+import org.lrc.liferay.toolbuilder.steps.composite.CompositeStepDef;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
+import com.liferay.portal.NoSuchUserException;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.portlet.LiferayWindowState;
@@ -30,8 +39,9 @@ public class ToolDefBacking extends AbstractBaseBean implements Serializable {
 	@ManagedProperty(name = "toolSession", value = "#{toolSession}")
 	private ToolSession toolSession;
 	private ToolDef toolDef = null;
-	private String toolDefName;
+	private String newToolDefName, oldToolDefName = null;
 	private StepDef selectedStepDef, compositeStepDef, newStepDef;
+	private boolean changedToolDefName = false;
 
 	public ToolDefBacking() {
 		// TODO Auto-generated constructor stub
@@ -43,20 +53,31 @@ public class ToolDefBacking extends AbstractBaseBean implements Serializable {
 	
 	public String saveToolDef() throws SystemException {
 		this.toolDef.save(); 
-		FactoryBean.removeToolDef(this.toolDefName);
-		FactoryBean.putToolDef(this.toolDef.getToolDefName());
-		System.out.println("Salvada");
+		if (this.oldToolDefName != null) {
+			FactoryBean.removeToolDef(this.oldToolDefName);
+			FactoryBean.putToolDef(this.toolDef.getToolDefName(), this.toolDef);
+			System.out.println("Salvando cambio de nombre de " + this.oldToolDefName + " a " + this.toolDef.getToolDefName());
+			this.oldToolDefName = null;
+		}
+		System.out.println("Salvada " + this.toolDef.getToolDefName());
 		return "adminView.xhtml";
 	}
 	
 	public void setToolDefName(String toolDefName) throws SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, PortalException {
 		if (this.toolDef != null) {
-			System.out.println("Setting toolDefName with toolDef != null");
-			System.out.println("Saving toolDefName as " + this.toolDefName);
+			System.out.println("Setting toolDefName for an existing toolDef");
+			System.out.println("Saving toolDefName as " + toolDefName);
+			this.oldToolDefName = this.toolDef.getToolDefName();
 			this.toolDef.setToolDefName(toolDefName);
-		} else {
-			System.out.println("Setting toolDefName with toolDef == null");
+		} else if (toolDefName == null) {
+			System.out.println("Entrando para null");
+		} else if (!toolDefName.isEmpty()){
+			System.out.println("ToolDefName = " + toolDefName);
 			this.toolDef = FactoryBean.getToolDef(toolDefName);
+			this.compositeStepDef = this.toolDef.getCompositeStepDef();
+		} else {
+			System.out.println("Entrando para nombre en blanco");
+			this.toolDef = new ToolDef("__tmp_aux_toolDef");
 			this.compositeStepDef = this.toolDef.getCompositeStepDef();
 		}
 	}
@@ -127,18 +148,62 @@ public class ToolDefBacking extends AbstractBaseBean implements Serializable {
 		List<String> paramValue = new ArrayList<String>();
 		paramValue.add(LiferayWindowState.POP_UP.toString());
 		params.put("p_p_state", paramValue);
+
 		// Dialog options
 		Map<String,Object> options = new HashMap<String,Object>();
 		options.put("resizable", false);
 		options.put("draggable", false);
 		options.put("modal", true);
-		System.out.println("Tratando de dibujar el dialogo");
+		options.put("header", new String("Choose the type of step to add"));
+		options.put("showEffect", "explode");
+
+		// Call to openDialog
 		RequestContext.getCurrentInstance().openDialog("selectStepDefDialog", options, params);
-//		RequestContext.getCurrentInstance().openDialog("hola");
-		System.out.println("Se supone dibujado");
 	}
 	
-	public void createNewStepDef(SelectEvent event) {
-		
+	public void selectStepDef(InstalledStep stepType) {
+		RequestContext.getCurrentInstance().closeDialog(stepType);
+	}
+	
+	public void createNewStepDef(SelectEvent event) throws NoSuchUserException, InstalledStepException, SystemException, ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+		String stepType = ((InstalledStep) event.getObject()).getStepType();
+		((CompositeStepDef) this.compositeStepDef).addStepDef(StepFactory.getStepDef(stepType));
+	}
+	
+	public void checkToolDefName(FacesContext context, UIComponent component, Object value) {
+		System.out.println("Validating " + (String) value);
+		System.out.println("Existing Tool? " + FactoryBean.isExistingToolDef((String) value));
+		if (value == null) {
+			System.out.println("no hay variable");
+			FacesMessage message = new FacesMessage();
+			message.setDetail("Void Tool name");
+			message.setSummary("Void Tool name");
+			message.setSeverity(FacesMessage.SEVERITY_ERROR);
+			throw new ValidatorException(message);
+		}
+		if (FactoryBean.isExistingToolDef((String) value)) {
+			FacesMessage message = new FacesMessage();
+			message.setDetail("Tool Definition called \"" + (String) value + "\" already exists");
+			message.setSummary("Existing Tool Def Name");
+			message.setSeverity(FacesMessage.SEVERITY_ERROR);
+			throw new ValidatorException(message);
+		}
+	}
+
+	public String getNewToolDefName() {
+		System.out.println("Recogiendo la var newToolDefName = " + this.newToolDefName);
+		return this.newToolDefName;
+	}
+
+	public void setNewToolDefName(String newToolDefName) {
+		System.out.println("Aquí no entra ni pa dios, seteando a " + newToolDefName);
+		this.newToolDefName = newToolDefName;
+	}
+	
+	public String createNewToolDef() {
+		System.out.println("Va a entrar en " + this.newToolDefName);
+		return "toolDefConfig?faces-redirect=true&amp;includeViewParams=true&amp;toolDefName=" + this.newToolDefName;
+//http://localhost:8080/group/control_panel/manage?p_p_id=tooldefinition_WAR_toolBuilderportlet&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&p_p_col_id=&p_p_col_count=0&doAsGroupId=20181&refererPlid=20184&controlPanelCategory=current_site.content&_tooldefinition_WAR_toolBuilderportlet__facesViewIdRender=%2FWEB-INF%2Fviews%2Ftool-definition%2FtoolDefConfig.xhtml&_tooldefinition_WAR_toolBuilderportlet_toolDefName=Test+Tool
+//http://localhost:8080/group/control_panel/manage?p_p_id=tooldefinition_WAR_toolBuilderportlet&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&                            doAsGroupId=20181&refererPlid=20184&controlPanelCategory=current_site.content&_tooldefinition_WAR_toolBuilderportlet__facesViewIdRender=%2FWEB-INF%2Fviews%2Ftool-definition%2FtoolDefConfig.xhtml&_tooldefinition_WAR_toolBuilderportlet_toolDefName=Jereje
 	}
 }
