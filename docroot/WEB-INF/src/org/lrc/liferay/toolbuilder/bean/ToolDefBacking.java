@@ -15,9 +15,14 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
+import org.lrc.liferay.toolbuilder.CompositeStepDefDBEException;
 import org.lrc.liferay.toolbuilder.InstalledStepException;
+import org.lrc.liferay.toolbuilder.NoSuchInstalledStepException;
+import org.lrc.liferay.toolbuilder.NoSuchToolDefDBEException;
+import org.lrc.liferay.toolbuilder.StepDefDBEException;
 import org.lrc.liferay.toolbuilder.StepFactory;
 import org.lrc.liferay.toolbuilder.ToolDef;
+import org.lrc.liferay.toolbuilder.ToolDefDBEException;
 import org.lrc.liferay.toolbuilder.model.InstalledStep;
 import org.lrc.liferay.toolbuilder.steps.StepDef;
 import org.lrc.liferay.toolbuilder.steps.composite.CompositeStepDef;
@@ -41,8 +46,6 @@ public class ToolDefBacking extends AbstractBaseBean implements Serializable {
 	private ToolDef toolDef = null;
 	private String newToolDefName, oldToolDefName = null;
 	private StepDef selectedStepDef, compositeStepDef, newStepDef;
-	private boolean changedToolDefName = false;
-
 	public ToolDefBacking() {
 		// TODO Auto-generated constructor stub
 	}
@@ -83,8 +86,11 @@ public class ToolDefBacking extends AbstractBaseBean implements Serializable {
 	}
 	
 	public String getToolDefName() {
-		if (this.toolDef != null)
+		System.out.println("Tratando de recoger la var toolDefName");
+		if (this.toolDef != null) {
+			System.out.println("Recogiendo la var toolDefName = " + this.toolDef.getToolDefName());
 			return this.toolDef.getToolDefName();
+		}
 		return null;
 	}
 
@@ -144,6 +150,7 @@ public class ToolDefBacking extends AbstractBaseBean implements Serializable {
 	
 	public void chooseStepDef() {
 		// To embed just the portlet and not the whole portal in the dialog
+		System.out.println("Entrando a elegir StepDef");
 		Map<String, List<String>> params = new HashMap<String, List<String>>();
 		List<String> paramValue = new ArrayList<String>();
 		paramValue.add(LiferayWindowState.POP_UP.toString());
@@ -158,14 +165,18 @@ public class ToolDefBacking extends AbstractBaseBean implements Serializable {
 		options.put("showEffect", "explode");
 
 		// Call to openDialog
+		System.out.println("Va a abrir el diálogo");
 		RequestContext.getCurrentInstance().openDialog("selectStepDefDialog", options, params);
+		RequestContext.getCurrentInstance().update("@all");
 	}
 	
 	public void selectStepDef(InstalledStep stepType) {
+		System.out.println("Ejecutando actionListener de salida del dialog");
 		RequestContext.getCurrentInstance().closeDialog(stepType);
 	}
 	
 	public void createNewStepDef(SelectEvent event) throws NoSuchUserException, InstalledStepException, SystemException, ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+		System.out.println("Ejecutando listener lanzado con el evento dialogReturn");
 		String stepType = ((InstalledStep) event.getObject()).getStepType();
 		((CompositeStepDef) this.compositeStepDef).addStepDef(StepFactory.getStepDef(stepType));
 	}
@@ -196,14 +207,27 @@ public class ToolDefBacking extends AbstractBaseBean implements Serializable {
 	}
 
 	public void setNewToolDefName(String newToolDefName) {
-		System.out.println("Aquí no entra ni pa dios, seteando a " + newToolDefName);
+		System.out.println("Poniendo la newToolDefName a " + newToolDefName);
 		this.newToolDefName = newToolDefName;
 	}
 	
-	public String createNewToolDef() {
-		System.out.println("Va a entrar en " + this.newToolDefName);
-		return "toolDefConfig?faces-redirect=true&amp;includeViewParams=true&amp;toolDefName=" + this.newToolDefName;
+	public String callCreateNewToolDef() {
+		System.out.println("Va a la pag de admin para crear " + this.newToolDefName);
+		return "toolDefConfig?faces-redirect=true&amp;includeViewParams=true&amp;newToolDefName=" + this.newToolDefName;
 //http://localhost:8080/group/control_panel/manage?p_p_id=tooldefinition_WAR_toolBuilderportlet&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&p_p_col_id=&p_p_col_count=0&doAsGroupId=20181&refererPlid=20184&controlPanelCategory=current_site.content&_tooldefinition_WAR_toolBuilderportlet__facesViewIdRender=%2FWEB-INF%2Fviews%2Ftool-definition%2FtoolDefConfig.xhtml&_tooldefinition_WAR_toolBuilderportlet_toolDefName=Test+Tool
 //http://localhost:8080/group/control_panel/manage?p_p_id=tooldefinition_WAR_toolBuilderportlet&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&                            doAsGroupId=20181&refererPlid=20184&controlPanelCategory=current_site.content&_tooldefinition_WAR_toolBuilderportlet__facesViewIdRender=%2FWEB-INF%2Fviews%2Ftool-definition%2FtoolDefConfig.xhtml&_tooldefinition_WAR_toolBuilderportlet_toolDefName=Jereje
+	}
+	
+	public void createNewToolDef() throws NoSuchUserException, NoSuchInstalledStepException, NoSuchToolDefDBEException, ToolDefDBEException, InstalledStepException, StepDefDBEException, CompositeStepDefDBEException, SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		System.out.println("Ejecutando el event de preRenderView");
+		if (!(FacesContext.getCurrentInstance().isPostback())) {
+			System.out.println("No es una llamada post");
+			if (this.newToolDefName != null) {
+				System.out.println("Crea la nueva toolDef " + this.newToolDefName);
+				this.toolDef = new ToolDef(this.newToolDefName);	
+				this.compositeStepDef = this.toolDef.getCompositeStepDef();
+				this.newToolDefName = null;
+			}
+		}
 	}
 }

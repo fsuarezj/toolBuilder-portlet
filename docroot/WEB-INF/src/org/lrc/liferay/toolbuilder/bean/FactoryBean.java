@@ -50,7 +50,7 @@ public class FactoryBean extends AbstractBaseBean implements Serializable {
 			toolDefs.put(toolDefDBE.getToolName(), null);
 		}
 	}
-	
+
 	/**
 	 * Searches for a toolDef, if it has not yet been bring from the db it brings it.
 	 * If there is no toolDef and the given name is "Test Tool" it will create the test tool

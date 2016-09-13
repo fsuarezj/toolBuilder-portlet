@@ -10,7 +10,11 @@
 	<h:head>
 	</h:head>
 	<h:body>
+		<p:panel>
+		<p />
 		<h:outputText value="#{i18n['choose-step-type']}" />
+		<p />
+		<h:outputText value="#{i18n['action-non-reversible']}" />
 		<h:form>
 			<p:dataTable var="stepType" value="#{factoryBean.getInstalledSteps()}">
 				<p:column headerText="#{i18n['name']}" width="100">
@@ -24,5 +28,6 @@
 				</p:column>
 			</p:dataTable>
 		</h:form>
+		</p:panel>
 	</h:body>
 </f:view>

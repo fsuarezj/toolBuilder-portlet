@@ -8,7 +8,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<f:metadata>
-		<f:viewParam name="toolDefName" value="#{toolDefBacking.toolDefName}" required="true" />
+		<f:viewParam name="toolDefName" value="#{toolDefBacking.toolDefName}" />
+		<f:viewParam name="newToolDefName" value="#{toolDefBacking.newToolDefName}" />
+		<f:event type="preRenderView" listener="#{toolDefBacking.createNewToolDef}" />
 	</f:metadata>
 	<h:head />
 	<h:body>

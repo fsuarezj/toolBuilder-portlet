@@ -119,12 +119,16 @@ public class CompositeStepDef extends StepDef {
 		}
 	}
 	
-	public void deleteStepDef(int index) throws PortalException, SystemException {
-		StepDef stepDef = this.stepDefs.get(index);
-		this.stepDefs.remove(index);
-		this.setStepsNumber();
-		stepDef.removeStepDef(this.compositeStepDefDBE.getCompositeStepDefDBEId());
-		this.save();
+	public void deleteStepDef(int index) throws SystemException, PortalException {
+		try {
+			StepDef stepDef = this.stepDefs.get(index);
+			this.stepDefs.remove(index);
+			this.setStepsNumber();
+			stepDef.removeStepDef(this.compositeStepDefDBE.getCompositeStepDefDBEId());
+			this.save();
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 	
 	public void save() throws SystemException {

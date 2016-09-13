@@ -32,12 +32,13 @@
 				<h:form>
 				<p:fieldset id="newToolNameDialog">
 					<h:outputLabel for="inputToolName" value="#{i18n['input-tool-names']}: " />
-					<p:inputText id="newToolDefName" name="newToolDefName" value="#{toolDefBacking.newToolDefName}" validator="#{toolDefBacking.checkToolDefName}">
+					<p:inputText id="newToolDefName" name="newToolDefName" value="#{toolDefBacking.newToolDefName}" validator="#{toolDefBacking.checkToolDefName}" required="true">
 						<f:ajax render="newToolDefNameMessage" />
 					</p:inputText>
 					<p:message id="newToolDefNameMessage" for="newToolDefName" />
 					<p />
-					<p:commandButton id="createButton" action="#{toolDefBacking.createNewToolDef()}" value="#{i18n['create']}" />
+					<p:commandButton id="createButton" action="#{toolDefBacking.callCreateNewToolDef()}" value="#{i18n['create']}">
+					</p:commandButton>
 				</p:fieldset>
 				</h:form>
 			</p:dialog>

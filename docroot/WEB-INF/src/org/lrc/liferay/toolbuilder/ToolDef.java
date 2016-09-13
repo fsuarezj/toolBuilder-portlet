@@ -27,11 +27,15 @@ public class ToolDef implements Serializable {
 	
 	public ToolDef(String toolName) throws NoSuchUserException, NoSuchInstalledStepException, ToolDefDBEException, InstalledStepException, StepDefDBEException, CompositeStepDefDBEException, SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchToolDefDBEException {
 		if (toolName.equals("Test Tool")) {
-			this.createTestToolDef(toolName, "This is the first tool created called \"Test Tool\"", 5);
+			this.createToolDef(toolName, "This is the first tool created called \"Test Tool\"");
+			this.createMockSteps(5);
+			this.save();
 		} else if (toolName.equals("Test Tool 2")) {
-			this.createTestToolDef(toolName, 3);
+			this.createToolDef(toolName);
+			this.createMockSteps(3);
+			this.save();
 		} else {
-			this.createTestToolDef(toolName, 0);
+			this.createToolDef(toolName);
 			//TODO: Create new exception
 //			throw new NoSuchToolDefDBEException();
 		}
@@ -43,29 +47,30 @@ public class ToolDef implements Serializable {
 		this.compositeStepDef = new CompositeStepDef(stepDefDBE);
 	}
 
-	private void createTestToolDef(String name, int stepsNumber) throws SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchUserException, ToolDefDBEException, InstalledStepException, NoSuchInstalledStepException, StepDefDBEException, CompositeStepDefDBEException {
+	private void createToolDef(String name) throws NoSuchUserException, ToolDefDBEException, SystemException, InstalledStepException, ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		// TODO Auto-generated constructor stub
 		this.toolDefDBE = ToolDefDBEUtil.create(0L);
 		
-		System.out.println("Creando Test Tool Def");
 		LiferayFacesContext liferayFacesContext = LiferayFacesContext.getInstance();
 		this.toolDefDBE = ToolDefDBELocalServiceUtil.addToolDefDBE(name, liferayFacesContext);
 
 //		this.compositeStepDef = new CompositeStepDef();
 		this.compositeStepDef = (CompositeStepDef) StepFactory.getStepDef("COMPOSITE");
 
-		for (int i = 0; i < stepsNumber; i++) {
-			this.compositeStepDef.addStepDef(StepFactory.getStepDef("MOCK"));
-		}
-		
 		this.compositeStepDef.save();
 		this.toolDefDBE.setCompositeStepDefDBEId(this.compositeStepDef.getStepDefDBEId());
 //		ToolDefDBELocalServiceUtil.addToolDefDBE(this.toolDefDBE);
 		ToolDefDBELocalServiceUtil.updateToolDefDBE(this.toolDefDBE);
 	}
 	
-	private void createTestToolDef(String name, String description, int stepsNumber) throws NoSuchUserException, NoSuchInstalledStepException, ToolDefDBEException, InstalledStepException, StepDefDBEException, CompositeStepDefDBEException, SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		this.createTestToolDef(name, stepsNumber);
+	private void createMockSteps(int stepsNumber) throws NoSuchUserException, InstalledStepException, SystemException, ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+		for (int i = 0; i < stepsNumber; i++) {
+			this.compositeStepDef.addStepDef(StepFactory.getStepDef("MOCK"));
+		}
+	}
+	
+	private void createToolDef(String name, String description) throws NoSuchUserException, NoSuchInstalledStepException, ToolDefDBEException, InstalledStepException, StepDefDBEException, CompositeStepDefDBEException, SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		this.createToolDef(name);
 		this.setToolDescription(description);
 	}
 	
