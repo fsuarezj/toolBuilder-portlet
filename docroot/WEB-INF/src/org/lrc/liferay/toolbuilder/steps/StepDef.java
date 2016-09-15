@@ -39,7 +39,7 @@ public abstract class StepDef implements Serializable {
 	
 	public abstract String getAdminView();
 	
-	public void save() throws SystemException {
+	public void save() throws SystemException, PortalException {
 		if (this.stepDefDBE.getStepDefDBEId() == 0) {
 			StepDefDBELocalServiceUtil.addStepDefDBE(this.stepDefDBE);
 		}
@@ -69,12 +69,14 @@ public abstract class StepDef implements Serializable {
 	}
 	
 	public void removeStepDef(long compositeStepDefDBEId) throws PortalException, SystemException {
+		System.out.println("Trying to delete " + compositeStepDefDBEId + " relationship with " + this.getStepDefDBEId());
 		StepDefDBELocalServiceUtil.deleteCompositeStepDefDBEStepDefDBE(compositeStepDefDBEId, this.getStepDefDBEId());
+		System.out.println("Trying to delete " + this.getStepDefDBEId() + " relationship with " + compositeStepDefDBEId);
 		CompositeStepDefDBELocalServiceUtil.deleteStepDefDBECompositeStepDefDBE(this.getStepDefDBEId(), compositeStepDefDBEId);
 		StepDefDBELocalServiceUtil.deleteStepDefDBE(this.getStepDefDBEId());
 	}
 
-	public void removeStepDef() throws PortalException, SystemException {
+	public void delete() throws PortalException, SystemException {
 		StepDefDBELocalServiceUtil.deleteStepDefDBE(this.getStepDefDBEId());
 	}
 	

@@ -306,10 +306,24 @@ public class CompositeStepDefDBEWrapper implements CompositeStepDefDBE,
 	}
 
 	@Override
-	public void addStepDefDBE(
+	public void saveRelationship(int stepIndex,
 		org.lrc.liferay.toolbuilder.model.StepDefDBE stepDefDBE)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		_compositeStepDefDBE.addStepDefDBE(stepDefDBE);
+		_compositeStepDefDBE.saveRelationship(stepIndex, stepDefDBE);
+	}
+
+	@Override
+	public void deleteRelationship(
+		org.lrc.liferay.toolbuilder.model.StepDefDBE stepDefDBE)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_compositeStepDefDBE.deleteRelationship(stepDefDBE);
+	}
+
+	@Override
+	public void setStepDefDBEs(
+		java.util.List<org.lrc.liferay.toolbuilder.model.StepDefDBE> stepDefDBEs) {
+		_compositeStepDefDBE.setStepDefDBEs(stepDefDBEs);
 	}
 
 	@Override

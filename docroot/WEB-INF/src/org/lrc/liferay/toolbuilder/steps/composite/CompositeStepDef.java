@@ -7,13 +7,16 @@ import java.util.List;
 import org.lrc.liferay.toolbuilder.CompositeStepDBEException;
 import org.lrc.liferay.toolbuilder.CompositeStepDefDBEException;
 import org.lrc.liferay.toolbuilder.NoSuchInstalledStepException;
+import org.lrc.liferay.toolbuilder.NoSuchStepDefDBEException;
 import org.lrc.liferay.toolbuilder.StepDBEException;
 import org.lrc.liferay.toolbuilder.StepDefDBEException;
 import org.lrc.liferay.toolbuilder.StepFactory;
 import org.lrc.liferay.toolbuilder.model.CompositeStepDefDBE;
 import org.lrc.liferay.toolbuilder.model.StepDefDBE;
+import org.lrc.liferay.toolbuilder.model.StepDefsCompositeStepDefDBE;
 import org.lrc.liferay.toolbuilder.service.CompositeStepDefDBELocalServiceUtil;
 import org.lrc.liferay.toolbuilder.service.StepDefDBELocalServiceUtil;
+import org.lrc.liferay.toolbuilder.service.StepDefsCompositeStepDefDBELocalServiceUtil;
 import org.lrc.liferay.toolbuilder.steps.Step;
 import org.lrc.liferay.toolbuilder.steps.StepDef;
 
@@ -106,47 +109,64 @@ public class CompositeStepDef extends StepDef {
 	}
 	
 	public void addStepDef(StepDef stepDef) throws SystemException {
-		try {
+		this.addStepDef(stepDef, this.stepDefs.size());
+	}
+
+	public void addStepDef(StepDef stepDef, int stepIndex) {
 			// Includes new StepDef in the tables
 //			this.save();
 //			stepDef.save();
-			this.compositeStepDefDBE.addStepDefDBE(stepDef.getStepDefDBE());
-			this.stepDefs.add(stepDef);
+			this.stepDefs.add(stepIndex, stepDef);
 			// Increments stepNumber
 			this.setStepsNumber();
-		} catch (SystemException e) {
-			throw e;
-		}
 	}
 	
 	public void deleteStepDef(int index) throws SystemException, PortalException {
 		try {
-			StepDef stepDef = this.stepDefs.get(index);
+			StepDef auxStepDef = this.stepDefs.get(index);
 			this.stepDefs.remove(index);
 			this.setStepsNumber();
-			stepDef.removeStepDef(this.compositeStepDefDBE.getCompositeStepDefDBEId());
-			this.save();
+			this.compositeStepDefDBE.deleteRelationship(auxStepDef.getStepDefDBE());
+			auxStepDef.delete();
+			this.saveNewStepsOrder();
+			this.saveCompositeStepDef();
 		} catch (Exception e) {
 			throw e;
 		}
 	}
 	
-	public void save() throws SystemException {
+	private void saveNewStepsOrder() throws SystemException {
+		for (int stepIndex = 0; stepIndex < this.stepDefs.size(); stepIndex++) {
+			StepDef auxStepDef = this.stepDefs.get(stepIndex);
+			this.compositeStepDefDBE.saveRelationship(stepIndex, auxStepDef.getStepDefDBE());
+		}
+	}
+	
+	private void saveSteps() throws SystemException, PortalException {
+		for (StepDef auxStepDef: this.stepDefs) {
+			auxStepDef.save();
+		}
+	}
+	
+	private void saveCompositeStepDef() throws SystemException, PortalException {
 		super.save();
 		if (this.compositeStepDefDBE.getCompositeStepDefDBEId() == 0) {
 			this.compositeStepDefDBE.setCompositeStepDefDBEId(this.stepDefDBE.getStepDefDBEId());
 			CompositeStepDefDBELocalServiceUtil.addCompositeStepDefDBE(this.compositeStepDefDBE);
-			StepDefDBELocalServiceUtil.addCompositeStepDefDBEStepDefDBEs
-				(this.compositeStepDefDBE.getCompositeStepDefDBEId(), this.compositeStepDefDBE.getStepDefDBEs());
+//			StepDefDBELocalServiceUtil.addCompositeStepDefDBEStepDefDBEs
+//				(this.compositeStepDefDBE.getCompositeStepDefDBEId(), this.compositeStepDefDBE.getStepDefDBEs());
 		}
 		else {
 			CompositeStepDefDBELocalServiceUtil.updateCompositeStepDefDBE(this.compositeStepDefDBE);
-			StepDefDBELocalServiceUtil.addCompositeStepDefDBEStepDefDBEs
-				(this.compositeStepDefDBE.getCompositeStepDefDBEId(), this.compositeStepDefDBE.getStepDefDBEs());
+//			StepDefDBELocalServiceUtil.addCompositeStepDefDBEStepDefDBEs
+//				(this.compositeStepDefDBE.getCompositeStepDefDBEId(), this.compositeStepDefDBE.getStepDefDBEs());
 		}
-		for (StepDef stepDef: this.stepDefs) {
-			stepDef.save();
-		}
+	}
+	
+	public void save() throws SystemException, PortalException {
+		this.saveCompositeStepDef();
+		this.saveNewStepsOrder();
+		this.saveSteps();
 	}
 	
 	@Override
@@ -160,11 +180,13 @@ public class CompositeStepDef extends StepDef {
 		return builtStep;
 	}
 
-	public void buildStepDefs() throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, SystemException {
+	public void buildStepDefs() throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, SystemException, NoSuchStepDefDBEException, PortalException {
 		System.out.println("It is going to rebuild steps defs for composite def with ID " + this.getCompositeStepDefDBEId());
-		List<StepDefDBE> stepDefDBEs = StepDefDBELocalServiceUtil.getCompositeStepDefDBEStepDefDBEs(this.getCompositeStepDefDBEId());
+//		List<StepDefDBE> stepDefDBEs = StepDefDBELocalServiceUtil.getCompositeStepDefDBEStepDefDBEs(this.getCompositeStepDefDBEId());
+		List<StepDefsCompositeStepDefDBE> stepDefsCompositeStepDefDBEs = StepDefsCompositeStepDefDBELocalServiceUtil.getRelationships(this.getCompositeStepDefDBEId());
 		this.stepDefs = new ArrayList<StepDef>();
-		for (StepDefDBE stepDefDBE: stepDefDBEs) {
+		for (StepDefsCompositeStepDefDBE stepDefsCompositeStepDefDBE: stepDefsCompositeStepDefDBEs) {
+			StepDefDBE stepDefDBE = StepDefDBELocalServiceUtil.getStepDefDBE(stepDefsCompositeStepDefDBE.getStepDefDBEId());
 			this.stepDefs.add(StepFactory.getStepDef(stepDefDBE.getStepType(), stepDefDBE));
 		}
 	}

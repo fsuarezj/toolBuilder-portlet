@@ -46,6 +46,11 @@
 		<field name="stepType" type="String" />
 		<field name="stepTypeId" type="long" />
 	</model>
+	<model name="org.lrc.liferay.toolbuilder.model.StepDefsCompositeStepDefDBE">
+		<field name="compositeStepDefDBEId" type="long" />
+		<field name="stepDefDBEId" type="long" />
+		<field name="stepIndex" type="int" />
+	</model>
 	<model name="org.lrc.liferay.toolbuilder.model.ToolDefDBE">
 		<field name="toolDefDBEId" type="long" />
 		<field name="groupId" type="long" />

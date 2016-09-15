@@ -25,7 +25,7 @@ public class ToolDef implements Serializable {
 	private CompositeStepDef compositeStepDef;
 	private ToolDefDBE toolDefDBE;
 	
-	public ToolDef(String toolName) throws NoSuchUserException, NoSuchInstalledStepException, ToolDefDBEException, InstalledStepException, StepDefDBEException, CompositeStepDefDBEException, SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchToolDefDBEException {
+	public ToolDef(String toolName) throws SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, PortalException {
 		if (toolName.equals("Test Tool")) {
 			this.createToolDef(toolName, "This is the first tool created called \"Test Tool\"");
 			this.createMockSteps(5);
@@ -47,7 +47,7 @@ public class ToolDef implements Serializable {
 		this.compositeStepDef = new CompositeStepDef(stepDefDBE);
 	}
 
-	private void createToolDef(String name) throws NoSuchUserException, ToolDefDBEException, SystemException, InstalledStepException, ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+	private void createToolDef(String name) throws SystemException, ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, PortalException {
 		// TODO Auto-generated constructor stub
 		this.toolDefDBE = ToolDefDBEUtil.create(0L);
 		
@@ -69,9 +69,10 @@ public class ToolDef implements Serializable {
 		}
 	}
 	
-	private void createToolDef(String name, String description) throws NoSuchUserException, NoSuchInstalledStepException, ToolDefDBEException, InstalledStepException, StepDefDBEException, CompositeStepDefDBEException, SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	private void createToolDef(String name, String description) throws SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, PortalException {
 		this.createToolDef(name);
 		this.setToolDescription(description);
+		this.save();
 	}
 	
 	public long getToolDefDBEId() {
@@ -82,7 +83,7 @@ public class ToolDef implements Serializable {
 		return new ToolInstance(this, (CompositeStep) this.compositeStepDef.buildStep());
 	}
 
-	public void rebuildSteps() throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, SystemException {
+	public void rebuildSteps() throws NoSuchStepDefDBEException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, SystemException, PortalException {
 		this.compositeStepDef.buildStepDefs();
 	}
 
@@ -95,7 +96,7 @@ public class ToolDef implements Serializable {
 		return this.toolDefDBE.getToolDescription();
 	}
 	
-	public void save() throws SystemException {
+	public void save() throws SystemException, PortalException {
 		ToolDefDBELocalServiceUtil.updateToolDefDBE(this.toolDefDBE);
 		this.compositeStepDef.save();
 	}

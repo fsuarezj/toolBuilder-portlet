@@ -209,16 +209,53 @@ public class CompositeStepDefDBEClp extends BaseModelImpl<CompositeStepDefDBE>
 	}
 
 	@Override
-	public void addStepDefDBE(
+	public void deleteRelationship(
 		org.lrc.liferay.toolbuilder.model.StepDefDBE stepDefDBE) {
 		try {
-			String methodName = "addStepDefDBE";
+			String methodName = "deleteRelationship";
 
 			Class<?>[] parameterTypes = new Class<?>[] {
 					org.lrc.liferay.toolbuilder.model.StepDefDBE.class
 				};
 
 			Object[] parameterValues = new Object[] { stepDefDBE };
+
+			invokeOnRemoteModel(methodName, parameterTypes, parameterValues);
+		}
+		catch (Exception e) {
+			throw new UnsupportedOperationException(e);
+		}
+	}
+
+	@Override
+	public void saveRelationship(int stepIndex,
+		org.lrc.liferay.toolbuilder.model.StepDefDBE stepDefDBE) {
+		try {
+			String methodName = "saveRelationship";
+
+			Class<?>[] parameterTypes = new Class<?>[] {
+					int.class,
+					org.lrc.liferay.toolbuilder.model.StepDefDBE.class
+				};
+
+			Object[] parameterValues = new Object[] { stepIndex, stepDefDBE };
+
+			invokeOnRemoteModel(methodName, parameterTypes, parameterValues);
+		}
+		catch (Exception e) {
+			throw new UnsupportedOperationException(e);
+		}
+	}
+
+	@Override
+	public void setStepDefDBEs(
+		java.util.List<org.lrc.liferay.toolbuilder.model.StepDefDBE> stepDefDBEs) {
+		try {
+			String methodName = "setStepDefDBEs";
+
+			Class<?>[] parameterTypes = new Class<?>[] { java.util.List.class };
+
+			Object[] parameterValues = new Object[] { stepDefDBEs };
 
 			invokeOnRemoteModel(methodName, parameterTypes, parameterValues);
 		}

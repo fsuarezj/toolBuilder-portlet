@@ -60,6 +60,13 @@ create table lrc_tb_StepDefDBE (
 	stepTypeId LONG
 );
 
+create table lrc_tb_StepDefsCompositeStepDefDBE (
+	compositeStepDefDBEId LONG not null,
+	stepDefDBEId LONG not null,
+	stepIndex INTEGER,
+	primary key (compositeStepDefDBEId, stepDefDBEId)
+);
+
 create table lrc_tb_ToolDefDBE (
 	toolDefDBEId LONG not null primary key,
 	groupId LONG,

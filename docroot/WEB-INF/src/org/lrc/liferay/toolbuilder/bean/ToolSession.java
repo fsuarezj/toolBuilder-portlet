@@ -44,7 +44,7 @@ public class ToolSession extends AbstractBaseBean implements Serializable{
 	private static final String toolInstanceView = "toolInstanceView.xhtml";
 	
 	private ToolInstance selectedToolInstance;
-	private List<ToolInstance> toolInstances;
+	private List<ToolInstance> toolInstances = null;
 	private boolean workingOnToolInstance;
 	private boolean configuringInstance;
 	private ToolDef selectedToolDef;
@@ -170,8 +170,10 @@ public class ToolSession extends AbstractBaseBean implements Serializable{
 					toolInstance = new ToolInstance(toolInstanceDBE, this.selectedToolDef);
 					this.toolInstances.add(toolInstance);
 				}
+				System.out.println("Aquí ha llegao");
 			} catch (Exception e) {
 				logger.error(e);
+				System.out.println("Aquí ha llegao con error");
 			}
 		}
 		return this.toolInstances;

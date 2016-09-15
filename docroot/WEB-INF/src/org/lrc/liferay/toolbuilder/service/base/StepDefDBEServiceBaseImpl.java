@@ -29,6 +29,7 @@ import org.lrc.liferay.toolbuilder.service.persistence.CompositeStepDefDBEPersis
 import org.lrc.liferay.toolbuilder.service.persistence.InstalledStepPersistence;
 import org.lrc.liferay.toolbuilder.service.persistence.StepDBEPersistence;
 import org.lrc.liferay.toolbuilder.service.persistence.StepDefDBEPersistence;
+import org.lrc.liferay.toolbuilder.service.persistence.StepDefsCompositeStepDefDBEPersistence;
 import org.lrc.liferay.toolbuilder.service.persistence.ToolDefDBEPersistence;
 import org.lrc.liferay.toolbuilder.service.persistence.ToolInstanceDBEPersistence;
 
@@ -336,6 +337,63 @@ public abstract class StepDefDBEServiceBaseImpl extends BaseServiceImpl
 	public void setStepDefDBEPersistence(
 		StepDefDBEPersistence stepDefDBEPersistence) {
 		this.stepDefDBEPersistence = stepDefDBEPersistence;
+	}
+
+	/**
+	 * Returns the step defs composite step def d b e local service.
+	 *
+	 * @return the step defs composite step def d b e local service
+	 */
+	public org.lrc.liferay.toolbuilder.service.StepDefsCompositeStepDefDBELocalService getStepDefsCompositeStepDefDBELocalService() {
+		return stepDefsCompositeStepDefDBELocalService;
+	}
+
+	/**
+	 * Sets the step defs composite step def d b e local service.
+	 *
+	 * @param stepDefsCompositeStepDefDBELocalService the step defs composite step def d b e local service
+	 */
+	public void setStepDefsCompositeStepDefDBELocalService(
+		org.lrc.liferay.toolbuilder.service.StepDefsCompositeStepDefDBELocalService stepDefsCompositeStepDefDBELocalService) {
+		this.stepDefsCompositeStepDefDBELocalService = stepDefsCompositeStepDefDBELocalService;
+	}
+
+	/**
+	 * Returns the step defs composite step def d b e remote service.
+	 *
+	 * @return the step defs composite step def d b e remote service
+	 */
+	public org.lrc.liferay.toolbuilder.service.StepDefsCompositeStepDefDBEService getStepDefsCompositeStepDefDBEService() {
+		return stepDefsCompositeStepDefDBEService;
+	}
+
+	/**
+	 * Sets the step defs composite step def d b e remote service.
+	 *
+	 * @param stepDefsCompositeStepDefDBEService the step defs composite step def d b e remote service
+	 */
+	public void setStepDefsCompositeStepDefDBEService(
+		org.lrc.liferay.toolbuilder.service.StepDefsCompositeStepDefDBEService stepDefsCompositeStepDefDBEService) {
+		this.stepDefsCompositeStepDefDBEService = stepDefsCompositeStepDefDBEService;
+	}
+
+	/**
+	 * Returns the step defs composite step def d b e persistence.
+	 *
+	 * @return the step defs composite step def d b e persistence
+	 */
+	public StepDefsCompositeStepDefDBEPersistence getStepDefsCompositeStepDefDBEPersistence() {
+		return stepDefsCompositeStepDefDBEPersistence;
+	}
+
+	/**
+	 * Sets the step defs composite step def d b e persistence.
+	 *
+	 * @param stepDefsCompositeStepDefDBEPersistence the step defs composite step def d b e persistence
+	 */
+	public void setStepDefsCompositeStepDefDBEPersistence(
+		StepDefsCompositeStepDefDBEPersistence stepDefsCompositeStepDefDBEPersistence) {
+		this.stepDefsCompositeStepDefDBEPersistence = stepDefsCompositeStepDefDBEPersistence;
 	}
 
 	/**
@@ -653,6 +711,12 @@ public abstract class StepDefDBEServiceBaseImpl extends BaseServiceImpl
 	protected org.lrc.liferay.toolbuilder.service.StepDefDBEService stepDefDBEService;
 	@BeanReference(type = StepDefDBEPersistence.class)
 	protected StepDefDBEPersistence stepDefDBEPersistence;
+	@BeanReference(type = org.lrc.liferay.toolbuilder.service.StepDefsCompositeStepDefDBELocalService.class)
+	protected org.lrc.liferay.toolbuilder.service.StepDefsCompositeStepDefDBELocalService stepDefsCompositeStepDefDBELocalService;
+	@BeanReference(type = org.lrc.liferay.toolbuilder.service.StepDefsCompositeStepDefDBEService.class)
+	protected org.lrc.liferay.toolbuilder.service.StepDefsCompositeStepDefDBEService stepDefsCompositeStepDefDBEService;
+	@BeanReference(type = StepDefsCompositeStepDefDBEPersistence.class)
+	protected StepDefsCompositeStepDefDBEPersistence stepDefsCompositeStepDefDBEPersistence;
 	@BeanReference(type = org.lrc.liferay.toolbuilder.service.ToolDefDBELocalService.class)
 	protected org.lrc.liferay.toolbuilder.service.ToolDefDBELocalService toolDefDBELocalService;
 	@BeanReference(type = org.lrc.liferay.toolbuilder.service.ToolDefDBEService.class)

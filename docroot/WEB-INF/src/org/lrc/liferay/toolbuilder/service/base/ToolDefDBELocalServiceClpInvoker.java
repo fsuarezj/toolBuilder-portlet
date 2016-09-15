@@ -106,38 +106,38 @@ public class ToolDefDBELocalServiceClpInvoker {
 				"org.lrc.liferay.toolbuilder.model.ToolDefDBE"
 			};
 
-		_methodName70 = "getBeanIdentifier";
+		_methodName76 = "getBeanIdentifier";
 
-		_methodParameterTypes70 = new String[] {  };
+		_methodParameterTypes76 = new String[] {  };
 
-		_methodName71 = "setBeanIdentifier";
-
-		_methodParameterTypes71 = new String[] { "java.lang.String" };
-
-		_methodName76 = "getToolDefDBE";
-
-		_methodParameterTypes76 = new String[] { "long" };
-
-		_methodName77 = "getToolDefDBE";
+		_methodName77 = "setBeanIdentifier";
 
 		_methodParameterTypes77 = new String[] { "java.lang.String" };
 
-		_methodName79 = "addToolDefDBE";
+		_methodName82 = "getToolDefDBE";
 
-		_methodParameterTypes79 = new String[] {
+		_methodParameterTypes82 = new String[] { "long" };
+
+		_methodName83 = "getToolDefDBE";
+
+		_methodParameterTypes83 = new String[] { "java.lang.String" };
+
+		_methodName85 = "addToolDefDBE";
+
+		_methodParameterTypes85 = new String[] {
 				"java.lang.String",
 				"com.liferay.faces.portal.context.LiferayFacesContext"
 			};
 
-		_methodName80 = "addToolDefDBE";
+		_methodName86 = "addToolDefDBE";
 
-		_methodParameterTypes80 = new String[] {
+		_methodParameterTypes86 = new String[] {
 				"org.lrc.liferay.toolbuilder.model.ToolDefDBE"
 			};
 
-		_methodName81 = "deleteToolDefDBE";
+		_methodName87 = "deleteToolDefDBE";
 
-		_methodParameterTypes81 = new String[] {
+		_methodParameterTypes87 = new String[] {
 				"org.lrc.liferay.toolbuilder.model.ToolDefDBE"
 			};
 	}
@@ -231,41 +231,41 @@ public class ToolDefDBELocalServiceClpInvoker {
 			return ToolDefDBELocalServiceUtil.updateToolDefDBE((org.lrc.liferay.toolbuilder.model.ToolDefDBE)arguments[0]);
 		}
 
-		if (_methodName70.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes70, parameterTypes)) {
+		if (_methodName76.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes76, parameterTypes)) {
 			return ToolDefDBELocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName71.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes71, parameterTypes)) {
+		if (_methodName77.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes77, parameterTypes)) {
 			ToolDefDBELocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName76.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes76, parameterTypes)) {
+		if (_methodName82.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
 			return ToolDefDBELocalServiceUtil.getToolDefDBE(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName77.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes77, parameterTypes)) {
+		if (_methodName83.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes83, parameterTypes)) {
 			return ToolDefDBELocalServiceUtil.getToolDefDBE((java.lang.String)arguments[0]);
 		}
 
-		if (_methodName79.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes79, parameterTypes)) {
+		if (_methodName85.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes85, parameterTypes)) {
 			return ToolDefDBELocalServiceUtil.addToolDefDBE((java.lang.String)arguments[0],
 				(com.liferay.faces.portal.context.LiferayFacesContext)arguments[1]);
 		}
 
-		if (_methodName80.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes80, parameterTypes)) {
+		if (_methodName86.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes86, parameterTypes)) {
 			return ToolDefDBELocalServiceUtil.addToolDefDBE((org.lrc.liferay.toolbuilder.model.ToolDefDBE)arguments[0]);
 		}
 
-		if (_methodName81.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes81, parameterTypes)) {
+		if (_methodName87.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes87, parameterTypes)) {
 			return ToolDefDBELocalServiceUtil.deleteToolDefDBE((org.lrc.liferay.toolbuilder.model.ToolDefDBE)arguments[0]);
 		}
 
@@ -304,18 +304,18 @@ public class ToolDefDBELocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName70;
-	private String[] _methodParameterTypes70;
-	private String _methodName71;
-	private String[] _methodParameterTypes71;
 	private String _methodName76;
 	private String[] _methodParameterTypes76;
 	private String _methodName77;
 	private String[] _methodParameterTypes77;
-	private String _methodName79;
-	private String[] _methodParameterTypes79;
-	private String _methodName80;
-	private String[] _methodParameterTypes80;
-	private String _methodName81;
-	private String[] _methodParameterTypes81;
+	private String _methodName82;
+	private String[] _methodParameterTypes82;
+	private String _methodName83;
+	private String[] _methodParameterTypes83;
+	private String _methodName85;
+	private String[] _methodParameterTypes85;
+	private String _methodName86;
+	private String[] _methodParameterTypes86;
+	private String _methodName87;
+	private String[] _methodParameterTypes87;
 }

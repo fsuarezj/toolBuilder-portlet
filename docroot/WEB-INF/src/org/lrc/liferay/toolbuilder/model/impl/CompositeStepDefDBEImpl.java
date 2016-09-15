@@ -18,8 +18,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.lrc.liferay.toolbuilder.model.StepDefDBE;
+import org.lrc.liferay.toolbuilder.model.StepDefsCompositeStepDefDBE;
 import org.lrc.liferay.toolbuilder.service.CompositeStepDefDBELocalServiceUtil;
+import org.lrc.liferay.toolbuilder.service.StepDefsCompositeStepDefDBELocalServiceUtil;
+import org.lrc.liferay.toolbuilder.service.persistence.StepDefsCompositeStepDefDBEPK;
+import org.lrc.liferay.toolbuilder.service.persistence.StepDefsCompositeStepDefDBEUtil;
 
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 
 /**
@@ -55,9 +60,25 @@ public class CompositeStepDefDBEImpl extends CompositeStepDefDBEBaseImpl {
 		return this.stepDefDBEs;
 	}
 	
-	public void addStepDefDBE(StepDefDBE stepDefDBE) throws SystemException {
+	public void saveRelationship(int stepIndex, StepDefDBE stepDefDBE) throws SystemException {
 		System.out.println("Saving relationship between step defs " + stepDefDBE.getStepDefDBEId() + " and " + this.getCompositeStepDefDBEId());
+
+		StepDefsCompositeStepDefDBEPK relationshipPK = new StepDefsCompositeStepDefDBEPK(this.getCompositeStepDefDBEId(), stepDefDBE.getStepDefDBEId());
+		StepDefsCompositeStepDefDBE relationship = StepDefsCompositeStepDefDBEUtil.create(relationshipPK);
+		relationship.setStepIndex(stepIndex);
+		StepDefsCompositeStepDefDBELocalServiceUtil.updateStepDefsCompositeStepDefDBE(relationship);
+
 		CompositeStepDefDBELocalServiceUtil.addStepDefDBECompositeStepDefDBE(stepDefDBE.getStepDefDBEId(), this.getCompositeStepDefDBEId());
-		this.stepDefDBEs.add(stepDefDBE);
+		this.stepDefDBEs.add(stepIndex, stepDefDBE);
+	}
+	
+	public void deleteRelationship(StepDefDBE stepDefDBE) throws SystemException, PortalException {
+		System.out.println("Deleting relationship between step defs " + stepDefDBE.getStepDefDBEId() + " and " + this.getCompositeStepDefDBEId());
+		StepDefsCompositeStepDefDBEPK relationshipPK = new StepDefsCompositeStepDefDBEPK(this.getCompositeStepDefDBEId(), stepDefDBE.getStepDefDBEId());
+		StepDefsCompositeStepDefDBELocalServiceUtil.deleteStepDefsCompositeStepDefDBE(relationshipPK);
+	}
+
+	public void setStepDefDBEs(List<StepDefDBE> stepDefDBEs) {
+		this.stepDefDBEs = stepDefDBEs;
 	}
 }

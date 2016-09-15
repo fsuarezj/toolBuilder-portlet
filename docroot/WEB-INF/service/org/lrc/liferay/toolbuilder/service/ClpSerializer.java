@@ -30,6 +30,7 @@ import org.lrc.liferay.toolbuilder.model.CompositeStepDefDBEClp;
 import org.lrc.liferay.toolbuilder.model.InstalledStepClp;
 import org.lrc.liferay.toolbuilder.model.StepDBEClp;
 import org.lrc.liferay.toolbuilder.model.StepDefDBEClp;
+import org.lrc.liferay.toolbuilder.model.StepDefsCompositeStepDefDBEClp;
 import org.lrc.liferay.toolbuilder.model.ToolDefDBEClp;
 import org.lrc.liferay.toolbuilder.model.ToolInstanceDBEClp;
 
@@ -128,6 +129,11 @@ public class ClpSerializer {
 			return translateInputStepDefDBE(oldModel);
 		}
 
+		if (oldModelClassName.equals(
+					StepDefsCompositeStepDefDBEClp.class.getName())) {
+			return translateInputStepDefsCompositeStepDefDBE(oldModel);
+		}
+
 		if (oldModelClassName.equals(ToolDefDBEClp.class.getName())) {
 			return translateInputToolDefDBE(oldModel);
 		}
@@ -196,6 +202,17 @@ public class ClpSerializer {
 		StepDefDBEClp oldClpModel = (StepDefDBEClp)oldModel;
 
 		BaseModel<?> newModel = oldClpModel.getStepDefDBERemoteModel();
+
+		newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+		return newModel;
+	}
+
+	public static Object translateInputStepDefsCompositeStepDefDBE(
+		BaseModel<?> oldModel) {
+		StepDefsCompositeStepDefDBEClp oldClpModel = (StepDefsCompositeStepDefDBEClp)oldModel;
+
+		BaseModel<?> newModel = oldClpModel.getStepDefsCompositeStepDefDBERemoteModel();
 
 		newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -390,6 +407,43 @@ public class ClpSerializer {
 		if (oldModelClassName.equals(
 					"org.lrc.liferay.toolbuilder.model.impl.StepDefDBEImpl")) {
 			return translateOutputStepDefDBE(oldModel);
+		}
+		else if (oldModelClassName.endsWith("Clp")) {
+			try {
+				ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+				Method getClpSerializerClassMethod = oldModelClass.getMethod(
+						"getClpSerializerClass");
+
+				Class<?> oldClpSerializerClass = (Class<?>)getClpSerializerClassMethod.invoke(oldModel);
+
+				Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+				Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+						BaseModel.class);
+
+				Class<?> oldModelModelClass = oldModel.getModelClass();
+
+				Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+						oldModelModelClass.getSimpleName() + "RemoteModel");
+
+				Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+				BaseModel<?> newModel = (BaseModel<?>)translateOutputMethod.invoke(null,
+						oldRemoteModel);
+
+				return newModel;
+			}
+			catch (Throwable t) {
+				if (_log.isInfoEnabled()) {
+					_log.info("Unable to translate " + oldModelClassName, t);
+				}
+			}
+		}
+
+		if (oldModelClassName.equals(
+					"org.lrc.liferay.toolbuilder.model.impl.StepDefsCompositeStepDefDBEImpl")) {
+			return translateOutputStepDefsCompositeStepDefDBE(oldModel);
 		}
 		else if (oldModelClassName.endsWith("Clp")) {
 			try {
@@ -636,6 +690,11 @@ public class ClpSerializer {
 		}
 
 		if (className.equals(
+					"org.lrc.liferay.toolbuilder.NoSuchStepDefsCompositeStepDefDBEException")) {
+			return new org.lrc.liferay.toolbuilder.NoSuchStepDefsCompositeStepDefDBEException();
+		}
+
+		if (className.equals(
 					"org.lrc.liferay.toolbuilder.NoSuchToolDefDBEException")) {
 			return new org.lrc.liferay.toolbuilder.NoSuchToolDefDBEException();
 		}
@@ -695,6 +754,17 @@ public class ClpSerializer {
 		newModel.setModelAttributes(oldModel.getModelAttributes());
 
 		newModel.setStepDefDBERemoteModel(oldModel);
+
+		return newModel;
+	}
+
+	public static Object translateOutputStepDefsCompositeStepDefDBE(
+		BaseModel<?> oldModel) {
+		StepDefsCompositeStepDefDBEClp newModel = new StepDefsCompositeStepDefDBEClp();
+
+		newModel.setModelAttributes(oldModel.getModelAttributes());
+
+		newModel.setStepDefsCompositeStepDefDBERemoteModel(oldModel);
 
 		return newModel;
 	}

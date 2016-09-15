@@ -106,38 +106,38 @@ public class ToolInstanceDBELocalServiceClpInvoker {
 				"org.lrc.liferay.toolbuilder.model.ToolInstanceDBE"
 			};
 
-		_methodName70 = "getBeanIdentifier";
+		_methodName76 = "getBeanIdentifier";
 
-		_methodParameterTypes70 = new String[] {  };
+		_methodParameterTypes76 = new String[] {  };
 
-		_methodName71 = "setBeanIdentifier";
+		_methodName77 = "setBeanIdentifier";
 
-		_methodParameterTypes71 = new String[] { "java.lang.String" };
+		_methodParameterTypes77 = new String[] { "java.lang.String" };
 
-		_methodName77 = "addToolInstanceDBE";
+		_methodName83 = "addToolInstanceDBE";
 
-		_methodParameterTypes77 = new String[] {
+		_methodParameterTypes83 = new String[] {
 				"long", "long",
 				"com.liferay.faces.portal.context.LiferayFacesContext"
 			};
 
-		_methodName78 = "getToolInstanceDBE";
+		_methodName84 = "getToolInstanceDBE";
 
-		_methodParameterTypes78 = new String[] { "long" };
+		_methodParameterTypes84 = new String[] { "long" };
 
-		_methodName79 = "getToolInstanceDBEs";
+		_methodName85 = "getToolInstanceDBEs";
 
-		_methodParameterTypes79 = new String[] { "long", "long" };
+		_methodParameterTypes85 = new String[] { "long", "long" };
 
-		_methodName80 = "savePermissions";
+		_methodName86 = "savePermissions";
 
-		_methodParameterTypes80 = new String[] {
+		_methodParameterTypes86 = new String[] {
 				"org.lrc.liferay.toolbuilder.model.ToolInstanceDBE"
 			};
 
-		_methodName81 = "addToolInstanceDBE";
+		_methodName87 = "addToolInstanceDBE";
 
-		_methodParameterTypes81 = new String[] {
+		_methodParameterTypes87 = new String[] {
 				"org.lrc.liferay.toolbuilder.model.ToolInstanceDBE"
 			};
 	}
@@ -231,45 +231,45 @@ public class ToolInstanceDBELocalServiceClpInvoker {
 			return ToolInstanceDBELocalServiceUtil.updateToolInstanceDBE((org.lrc.liferay.toolbuilder.model.ToolInstanceDBE)arguments[0]);
 		}
 
-		if (_methodName70.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes70, parameterTypes)) {
+		if (_methodName76.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes76, parameterTypes)) {
 			return ToolInstanceDBELocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName71.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes71, parameterTypes)) {
+		if (_methodName77.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes77, parameterTypes)) {
 			ToolInstanceDBELocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName77.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes77, parameterTypes)) {
+		if (_methodName83.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes83, parameterTypes)) {
 			return ToolInstanceDBELocalServiceUtil.addToolInstanceDBE(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				(com.liferay.faces.portal.context.LiferayFacesContext)arguments[2]);
 		}
 
-		if (_methodName78.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes78, parameterTypes)) {
+		if (_methodName84.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes84, parameterTypes)) {
 			return ToolInstanceDBELocalServiceUtil.getToolInstanceDBE(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName79.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes79, parameterTypes)) {
+		if (_methodName85.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes85, parameterTypes)) {
 			return ToolInstanceDBELocalServiceUtil.getToolInstanceDBEs(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue());
 		}
 
-		if (_methodName80.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes80, parameterTypes)) {
+		if (_methodName86.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes86, parameterTypes)) {
 			ToolInstanceDBELocalServiceUtil.savePermissions((org.lrc.liferay.toolbuilder.model.ToolInstanceDBE)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName81.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes81, parameterTypes)) {
+		if (_methodName87.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes87, parameterTypes)) {
 			return ToolInstanceDBELocalServiceUtil.addToolInstanceDBE((org.lrc.liferay.toolbuilder.model.ToolInstanceDBE)arguments[0]);
 		}
 
@@ -308,18 +308,18 @@ public class ToolInstanceDBELocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName70;
-	private String[] _methodParameterTypes70;
-	private String _methodName71;
-	private String[] _methodParameterTypes71;
+	private String _methodName76;
+	private String[] _methodParameterTypes76;
 	private String _methodName77;
 	private String[] _methodParameterTypes77;
-	private String _methodName78;
-	private String[] _methodParameterTypes78;
-	private String _methodName79;
-	private String[] _methodParameterTypes79;
-	private String _methodName80;
-	private String[] _methodParameterTypes80;
-	private String _methodName81;
-	private String[] _methodParameterTypes81;
+	private String _methodName83;
+	private String[] _methodParameterTypes83;
+	private String _methodName84;
+	private String[] _methodParameterTypes84;
+	private String _methodName85;
+	private String[] _methodParameterTypes85;
+	private String _methodName86;
+	private String[] _methodParameterTypes86;
+	private String _methodName87;
+	private String[] _methodParameterTypes87;
 }

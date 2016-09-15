@@ -7,6 +7,7 @@
 	<import class="org.lrc.liferay.toolbuilder.model.InstalledStep" />
 	<import class="org.lrc.liferay.toolbuilder.model.StepDBE" />
 	<import class="org.lrc.liferay.toolbuilder.model.StepDefDBE" />
+	<import class="org.lrc.liferay.toolbuilder.model.StepDefsCompositeStepDefDBE" />
 	<import class="org.lrc.liferay.toolbuilder.model.ToolDefDBE" />
 	<import class="org.lrc.liferay.toolbuilder.model.ToolInstanceDBE" />
 	<class name="org.lrc.liferay.toolbuilder.model.impl.CompositeStepDBEImpl" table="lrc_tb_CompositeStepDBE">
@@ -68,6 +69,14 @@
 		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
 		<property name="stepType" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="stepTypeId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="org.lrc.liferay.toolbuilder.model.impl.StepDefsCompositeStepDefDBEImpl" table="lrc_tb_StepDefsCompositeStepDefDBE">
+		<cache usage="read-write" />
+		<composite-id name="primaryKey" class="org.lrc.liferay.toolbuilder.service.persistence.StepDefsCompositeStepDefDBEPK">
+			<key-property name="compositeStepDefDBEId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+			<key-property name="stepDefDBEId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		</composite-id>
+		<property name="stepIndex" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 	</class>
 	<class name="org.lrc.liferay.toolbuilder.model.impl.ToolDefDBEImpl" table="lrc_tb_ToolDefDBE">
 		<cache usage="read-write" />

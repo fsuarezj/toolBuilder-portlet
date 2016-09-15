@@ -177,21 +177,21 @@ public class CompositeStepDefDBELocalServiceClpInvoker {
 
 		_methodParameterTypes31 = new String[] { "long", "long[][]" };
 
-		_methodName86 = "getBeanIdentifier";
+		_methodName92 = "getBeanIdentifier";
 
-		_methodParameterTypes86 = new String[] {  };
+		_methodParameterTypes92 = new String[] {  };
 
-		_methodName87 = "setBeanIdentifier";
+		_methodName93 = "setBeanIdentifier";
 
-		_methodParameterTypes87 = new String[] { "java.lang.String" };
+		_methodParameterTypes93 = new String[] { "java.lang.String" };
 
-		_methodName92 = "getCompositeStepDefDBE";
+		_methodName98 = "getCompositeStepDefDBE";
 
-		_methodParameterTypes92 = new String[] { "long" };
+		_methodParameterTypes98 = new String[] { "long" };
 
-		_methodName94 = "addCompositeStepDefDBE";
+		_methodName100 = "addCompositeStepDefDBE";
 
-		_methodParameterTypes94 = new String[] { "boolean", "int" };
+		_methodParameterTypes100 = new String[] { "boolean", "int" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -398,25 +398,25 @@ public class CompositeStepDefDBELocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName86.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes86, parameterTypes)) {
+		if (_methodName92.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes92, parameterTypes)) {
 			return CompositeStepDefDBELocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName87.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes87, parameterTypes)) {
+		if (_methodName93.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes93, parameterTypes)) {
 			CompositeStepDefDBELocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName92.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes92, parameterTypes)) {
+		if (_methodName98.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
 			return CompositeStepDefDBELocalServiceUtil.getCompositeStepDefDBE(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName94.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
+		if (_methodName100.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
 			return CompositeStepDefDBELocalServiceUtil.addCompositeStepDefDBE(((Boolean)arguments[0]).booleanValue(),
 				((Integer)arguments[1]).intValue());
 		}
@@ -488,12 +488,12 @@ public class CompositeStepDefDBELocalServiceClpInvoker {
 	private String[] _methodParameterTypes30;
 	private String _methodName31;
 	private String[] _methodParameterTypes31;
-	private String _methodName86;
-	private String[] _methodParameterTypes86;
-	private String _methodName87;
-	private String[] _methodParameterTypes87;
 	private String _methodName92;
 	private String[] _methodParameterTypes92;
-	private String _methodName94;
-	private String[] _methodParameterTypes94;
+	private String _methodName93;
+	private String[] _methodParameterTypes93;
+	private String _methodName98;
+	private String[] _methodParameterTypes98;
+	private String _methodName100;
+	private String[] _methodParameterTypes100;
 }

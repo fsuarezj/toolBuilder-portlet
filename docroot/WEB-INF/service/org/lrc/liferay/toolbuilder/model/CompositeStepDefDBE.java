@@ -34,7 +34,15 @@ public interface CompositeStepDefDBE extends CompositeStepDefDBEModel,
 	 */
 	public java.util.List<org.lrc.liferay.toolbuilder.model.StepDefDBE> getStepDefDBEs();
 
-	public void addStepDefDBE(
+	public void saveRelationship(int stepIndex,
 		org.lrc.liferay.toolbuilder.model.StepDefDBE stepDefDBE)
 		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public void deleteRelationship(
+		org.lrc.liferay.toolbuilder.model.StepDefDBE stepDefDBE)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void setStepDefDBEs(
+		java.util.List<org.lrc.liferay.toolbuilder.model.StepDefDBE> stepDefDBEs);
 }

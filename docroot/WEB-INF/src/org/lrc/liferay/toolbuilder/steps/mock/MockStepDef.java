@@ -8,6 +8,7 @@ import org.lrc.liferay.toolbuilder.steps.Step;
 import org.lrc.liferay.toolbuilder.steps.StepDef;
 
 import com.liferay.portal.NoSuchUserException;
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 
 /**
@@ -37,7 +38,7 @@ public class MockStepDef extends StepDef {
 	}
 
 	@Override
-	public void save() throws SystemException {
+	public void save() throws SystemException, PortalException {
 		// Void for those steps not needing definition
 		super.save();
 	}

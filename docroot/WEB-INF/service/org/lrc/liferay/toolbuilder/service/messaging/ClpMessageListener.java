@@ -28,6 +28,8 @@ import org.lrc.liferay.toolbuilder.service.StepDBELocalServiceUtil;
 import org.lrc.liferay.toolbuilder.service.StepDBEServiceUtil;
 import org.lrc.liferay.toolbuilder.service.StepDefDBELocalServiceUtil;
 import org.lrc.liferay.toolbuilder.service.StepDefDBEServiceUtil;
+import org.lrc.liferay.toolbuilder.service.StepDefsCompositeStepDefDBELocalServiceUtil;
+import org.lrc.liferay.toolbuilder.service.StepDefsCompositeStepDefDBEServiceUtil;
 import org.lrc.liferay.toolbuilder.service.ToolDefDBELocalServiceUtil;
 import org.lrc.liferay.toolbuilder.service.ToolDefDBEServiceUtil;
 import org.lrc.liferay.toolbuilder.service.ToolInstanceDBELocalServiceUtil;
@@ -63,6 +65,9 @@ public class ClpMessageListener extends BaseMessageListener {
 			StepDefDBELocalServiceUtil.clearService();
 
 			StepDefDBEServiceUtil.clearService();
+			StepDefsCompositeStepDefDBELocalServiceUtil.clearService();
+
+			StepDefsCompositeStepDefDBEServiceUtil.clearService();
 			ToolDefDBELocalServiceUtil.clearService();
 
 			ToolDefDBEServiceUtil.clearService();

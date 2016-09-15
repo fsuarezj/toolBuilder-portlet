@@ -15,14 +15,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
-import org.lrc.liferay.toolbuilder.CompositeStepDefDBEException;
 import org.lrc.liferay.toolbuilder.InstalledStepException;
-import org.lrc.liferay.toolbuilder.NoSuchInstalledStepException;
-import org.lrc.liferay.toolbuilder.NoSuchToolDefDBEException;
-import org.lrc.liferay.toolbuilder.StepDefDBEException;
 import org.lrc.liferay.toolbuilder.StepFactory;
 import org.lrc.liferay.toolbuilder.ToolDef;
-import org.lrc.liferay.toolbuilder.ToolDefDBEException;
 import org.lrc.liferay.toolbuilder.model.InstalledStep;
 import org.lrc.liferay.toolbuilder.steps.StepDef;
 import org.lrc.liferay.toolbuilder.steps.composite.CompositeStepDef;
@@ -46,6 +41,7 @@ public class ToolDefBacking extends AbstractBaseBean implements Serializable {
 	private ToolDef toolDef = null;
 	private String newToolDefName, oldToolDefName = null;
 	private StepDef selectedStepDef, compositeStepDef, newStepDef;
+
 	public ToolDefBacking() {
 		// TODO Auto-generated constructor stub
 	}
@@ -54,7 +50,7 @@ public class ToolDefBacking extends AbstractBaseBean implements Serializable {
 		return "toolDefConfig.xhtml";
 	}
 	
-	public String saveToolDef() throws SystemException {
+	public String saveToolDef() throws SystemException, PortalException {
 		this.toolDef.save(); 
 		if (this.oldToolDefName != null) {
 			FactoryBean.removeToolDef(this.oldToolDefName);
@@ -218,7 +214,7 @@ public class ToolDefBacking extends AbstractBaseBean implements Serializable {
 //http://localhost:8080/group/control_panel/manage?p_p_id=tooldefinition_WAR_toolBuilderportlet&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&                            doAsGroupId=20181&refererPlid=20184&controlPanelCategory=current_site.content&_tooldefinition_WAR_toolBuilderportlet__facesViewIdRender=%2FWEB-INF%2Fviews%2Ftool-definition%2FtoolDefConfig.xhtml&_tooldefinition_WAR_toolBuilderportlet_toolDefName=Jereje
 	}
 	
-	public void createNewToolDef() throws NoSuchUserException, NoSuchInstalledStepException, NoSuchToolDefDBEException, ToolDefDBEException, InstalledStepException, StepDefDBEException, CompositeStepDefDBEException, SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public void createNewToolDef() throws SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, PortalException {
 		System.out.println("Ejecutando el event de preRenderView");
 		if (!(FacesContext.getCurrentInstance().isPostback())) {
 			System.out.println("No es una llamada post");
@@ -226,6 +222,7 @@ public class ToolDefBacking extends AbstractBaseBean implements Serializable {
 				System.out.println("Crea la nueva toolDef " + this.newToolDefName);
 				this.toolDef = new ToolDef(this.newToolDefName);	
 				this.compositeStepDef = this.toolDef.getCompositeStepDef();
+				FactoryBean.putToolDef(this.toolDef.getToolDefName(), this.toolDef);
 				this.newToolDefName = null;
 			}
 		}

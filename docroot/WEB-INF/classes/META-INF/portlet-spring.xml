@@ -16,6 +16,9 @@
 	<bean id="org.lrc.liferay.toolbuilder.service.StepDefDBELocalService" class="org.lrc.liferay.toolbuilder.service.impl.StepDefDBELocalServiceImpl" />
 	<bean id="org.lrc.liferay.toolbuilder.service.StepDefDBEService" class="org.lrc.liferay.toolbuilder.service.impl.StepDefDBEServiceImpl" />
 	<bean id="org.lrc.liferay.toolbuilder.service.persistence.StepDefDBEPersistence" class="org.lrc.liferay.toolbuilder.service.persistence.StepDefDBEPersistenceImpl" parent="basePersistence" />
+	<bean id="org.lrc.liferay.toolbuilder.service.StepDefsCompositeStepDefDBELocalService" class="org.lrc.liferay.toolbuilder.service.impl.StepDefsCompositeStepDefDBELocalServiceImpl" />
+	<bean id="org.lrc.liferay.toolbuilder.service.StepDefsCompositeStepDefDBEService" class="org.lrc.liferay.toolbuilder.service.impl.StepDefsCompositeStepDefDBEServiceImpl" />
+	<bean id="org.lrc.liferay.toolbuilder.service.persistence.StepDefsCompositeStepDefDBEPersistence" class="org.lrc.liferay.toolbuilder.service.persistence.StepDefsCompositeStepDefDBEPersistenceImpl" parent="basePersistence" />
 	<bean id="org.lrc.liferay.toolbuilder.service.ToolDefDBELocalService" class="org.lrc.liferay.toolbuilder.service.impl.ToolDefDBELocalServiceImpl" />
 	<bean id="org.lrc.liferay.toolbuilder.service.ToolDefDBEService" class="org.lrc.liferay.toolbuilder.service.impl.ToolDefDBEServiceImpl" />
 	<bean id="org.lrc.liferay.toolbuilder.service.persistence.ToolDefDBEPersistence" class="org.lrc.liferay.toolbuilder.service.persistence.ToolDefDBEPersistenceImpl" parent="basePersistence" />

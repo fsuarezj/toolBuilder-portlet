@@ -181,6 +181,14 @@
             <finder-column name="compositeStepDBEId"></finder-column>
         </finder>
 	</entity>
+    <entity name="StepDefsCompositeStepDefDBE" local-service="true">
+        <column name="compositeStepDefDBEId" type="long" primary="true"></column>
+        <column name="stepDefDBEId" type="long" primary="true"></column>
+        <column name="stepIndex" type="int"></column>
+        <finder name="CompositeStepDefDBEId" return-type="Collection">
+            <finder-column name="compositeStepDefDBEId"></finder-column>
+        </finder>
+    </entity>
     <exceptions>
         <exception>InstalledStep</exception>
         <exception>ToolDefDBE</exception>

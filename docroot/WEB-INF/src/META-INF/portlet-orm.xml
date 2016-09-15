@@ -92,6 +92,17 @@
 			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
+	<mapped-superclass class="org.lrc.liferay.toolbuilder.model.impl.StepDefsCompositeStepDefDBEModelImpl">
+		<id-class class="org.lrc.liferay.toolbuilder.service.persistence.StepDefsCompositeStepDefDBEPK" />
+		<attributes>
+			<id name="compositeStepDefDBEId" />
+			<id name="stepDefDBEId" />
+			<basic name="stepIndex" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
 	<mapped-superclass class="org.lrc.liferay.toolbuilder.model.impl.ToolDefDBEModelImpl">
 		<attributes>
 			<id name="toolDefDBEId" />
@@ -142,7 +153,9 @@
 	</entity>
 	<entity class="org.lrc.liferay.toolbuilder.model.impl.CompositeStepDefDBEImpl" name="CompositeStepDefDBE">
 		<table name="lrc_tb_CompositeStepDefDBE" />
-		<attributes />
+		<attributes>
+			<transient name="stepDefDBEs" />
+		</attributes>
 	</entity>
 	<entity class="org.lrc.liferay.toolbuilder.model.impl.InstalledStepImpl" name="InstalledStep">
 		<table name="lrc_tb_InstalledStep" />
@@ -154,6 +167,10 @@
 	</entity>
 	<entity class="org.lrc.liferay.toolbuilder.model.impl.StepDefDBEImpl" name="StepDefDBE">
 		<table name="lrc_tb_StepDefDBE" />
+		<attributes />
+	</entity>
+	<entity class="org.lrc.liferay.toolbuilder.model.impl.StepDefsCompositeStepDefDBEImpl" name="StepDefsCompositeStepDefDBE">
+		<table name="lrc_tb_StepDefsCompositeStepDefDBE" />
 		<attributes />
 	</entity>
 	<entity class="org.lrc.liferay.toolbuilder.model.impl.ToolDefDBEImpl" name="ToolDefDBE">
