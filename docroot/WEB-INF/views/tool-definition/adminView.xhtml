@@ -18,10 +18,10 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header"></f:facet>
-					<p:commandButton action="#{toolSession.setSelectedToolDef(toolDefName)}" value="#{i18n['select']}" disabled="#{toolSession.isSelectedToolDef(toolDefName)}">
-						<f:ajax render="@all" />
+					<p:commandButton value="#{i18n['select']}" disabled="#{toolSession.isSelectedToolDef(toolDefName)}">
+						<f:ajax listener="#{toolSession.setSelectedToolDef(toolDefName)}" render="@form" />
 					</p:commandButton>
-					<p:button outcome="toolDefConfig" value="#{i18n['configure']}">
+					<p:button outcome="editToolDef" value="#{i18n['configure']}">
 						<f:param name="toolDefName" value="#{toolDefName}" />
 					</p:button>
 				</h:column>
@@ -32,12 +32,12 @@
 				<h:form>
 				<p:fieldset id="newToolNameDialog">
 					<h:outputLabel for="inputToolName" value="#{i18n['input-tool-names']}: " />
-					<p:inputText id="newToolDefName" name="newToolDefName" value="#{toolDefBacking.newToolDefName}" validator="#{toolDefBacking.checkToolDefName}" required="true">
+					<p:inputText id="newToolDefName" name="newToolDefName" value="#{toolDefListBacking.newToolDefName}" validator="#{toolDefListBacking.checkToolDefName}" required="true">
 						<f:ajax render="newToolDefNameMessage" />
 					</p:inputText>
 					<p:message id="newToolDefNameMessage" for="newToolDefName" />
 					<p />
-					<p:commandButton id="createButton" action="#{toolDefBacking.callCreateNewToolDef()}" value="#{i18n['create']}">
+					<p:commandButton id="createButton" action="#{toolDefListBacking.editNewToolDef()}" value="#{i18n['create']}">
 					</p:commandButton>
 				</p:fieldset>
 				</h:form>

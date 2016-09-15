@@ -89,6 +89,7 @@ public class CompositeStepDef extends StepDef {
 	}
 	
 	public boolean hasSteps() {
+		System.out.println("dos");
 		return !this.stepDefs.isEmpty();
 	}
 	

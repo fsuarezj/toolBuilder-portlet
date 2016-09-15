@@ -9,21 +9,21 @@
 
 	<p:fieldset id="compositeDefFieldSet">
 		<h:message for="@form"></h:message>
-		<p:tabView id="stepTabs" value="#{toolDefBacking.getCompositeStepDef().getIndexesList()}" var="index"
-		rendered="#{toolDefBacking.getCompositeStepDef().hasSteps()}" onTabClose="return confirm('#{i18n['confirm-close-tab']}\\n #{i18n['action-non-reversible']}')">
-			<p:ajax event="tabChange" listener="#{toolDefBacking.onTabChange}" update="@form"/>
-		    <p:ajax event="tabClose" listener="#{toolDefBacking.getCompositeStepDef().deleteStepDef(index)}" update="@form"/>
-		<c:if test="#{toolDefBacking.getCompositeStepDef().hasSteps()}">
-		   	<p:tab title="#{i18n['Step']} #{index+1}: #{toolDefBacking.getCompositeStepDef().getStepDef(index).stepType}" closable="true">
-		   		<h3><h:outputText value="#{toolDefBacking.getCompositeStepDef().getStepDef(index).stepType}" /></h3>
-				<ui:include src="steps/#{toolDefBacking.getCompositeStepDef().getStepDef(index).getAdminView()}" />
+		<p:tabView id="stepTabs" value="#{editToolDefBacking.getCompositeStepDef().getIndexesList()}" var="index"
+		rendered="#{editToolDefBacking.getCompositeStepDef().hasSteps()}" onTabClose="return confirm('#{i18n['confirm-close-tab']}\\n #{i18n['action-non-reversible']}')">
+			<p:ajax event="tabChange" listener="#{editToolDefBacking.onTabChange}" update="@form"/>
+		    <p:ajax event="tabClose" listener="#{editToolDefBacking.getCompositeStepDef().deleteStepDef(index)}" update="@form"/>
+		<c:if test="#{editToolDefBacking.getCompositeStepDef().hasSteps()}">
+		   	<p:tab title="#{i18n['Step']} #{index+1}: #{editToolDefBacking.getCompositeStepDef().getStepDef(index).stepType}" closable="true">
+		   		<h3><h:outputText value="#{editToolDefBacking.getCompositeStepDef().getStepDef(index).stepType}" /></h3>
+				<ui:include src="steps/#{editToolDefBacking.getCompositeStepDef().getStepDef(index).getAdminView()}" />
 				<p />
 				Este es el contenido del Tab
 		   	</p:tab>
 		</c:if>
 		</p:tabView>
     </p:fieldset>
-	<p:commandButton value="#{i18n['new-step']}" action="#{toolDefBacking.chooseStepDef}">
-		<p:ajax event="dialogReturn" update="compositeDefFieldSet" listener="#{toolDefBacking.createNewStepDef}" />
+	<p:commandButton value="#{i18n['new-step']}" action="#{stepTypeListBacking.chooseStepDef}">
+		<p:ajax event="dialogReturn" update="compositeDefFieldSet" listener="#{editToolDefBacking.createNewStepDef}" />
 	</p:commandButton>
 </f:view>

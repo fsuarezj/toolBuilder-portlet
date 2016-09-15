@@ -8,17 +8,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<f:metadata>
-		<f:viewParam name="toolDefName" value="#{toolDefBacking.toolDefName}" />
-		<f:viewParam name="newToolDefName" value="#{toolDefBacking.newToolDefName}" />
-		<f:event type="preRenderView" listener="#{toolDefBacking.createNewToolDef}" />
+		<f:viewParam name="toolDefName" value="#{editToolDefBacking.toolDefName}" />
+		<f:viewParam name="newToolDefName" value="#{editToolDefBacking.newToolDefName}" />
+		<f:event type="preRenderView" listener="#{editToolDefBacking.createNewToolDef}" />
 	</f:metadata>
 	<h:head />
 	<h:body>
-		<h3><h:outputText value="#{i18n['configuring-tooldef']} #{toolDefBacking.toolDefName}" /></h3>
+		<h3><h:outputText value="#{i18n['configuring-tooldef']} #{editToolDefBacking.toolDefName}" /></h3>
 		<h:form id="toolDefConfig">
 			<ui:include src="toolDefSettings.xhtml" />
 			<ui:include src="toolStepsSettings.xhtml" />
-			<p:commandButton id="saveToolDefButton" action="#{toolDefBacking.saveToolDef()}" value="#{i18n['save']}" />
+			<p:commandButton id="saveToolDefButton" action="#{editToolDefBacking.saveToolDef()}" value="#{i18n['save']}" />
 		</h:form>
 	</h:body>
 </f:view>

@@ -3,6 +3,9 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+\usepackage{pdflscape}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -25,6 +28,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -188,6 +192,7 @@ Design
 \begin_layout Standard
 \begin_inset Graphics
 	filename /home/ferda/informatica/development/liferay/portlets/tool-builder-portlet/doc/uml/exported/First Sprint Class Diagram.png
+	scale 80
 
 \end_inset
 
@@ -273,6 +278,72 @@ Fourth Sprint
 StepFactory and symetric StepDef and Step structures
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{landscape}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Design
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/ferda/informatica/development/lib/liferay/liferay-plugins-sdk-6.2/portlets/toolBuilder-portlet/doc/uml/exported/StepFactory Class Diagram.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{landscape}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Implementation
+\end_layout
+
+\begin_layout Subsubsection
+Testing
+\end_layout
+
+\begin_layout Standard
+BDD
+\end_layout
+
+\begin_layout Subsection
+Fifth Sprint
+\end_layout
+
+\begin_layout Standard
+Basic permission scheme
+\end_layout
+
 \begin_layout Subsubsection
 Design
 \end_layout
@@ -285,12 +356,8 @@ Implementation
 Testing
 \end_layout
 
-\begin_layout Subsection
-Fifth Sprint
-\end_layout
-
 \begin_layout Standard
-Basic permission scheme
+Modify BDD
 \end_layout
 
 \begin_layout Subsection
@@ -301,12 +368,69 @@ Sixth Sprint
 Tool Definition Portlet to choose Tool Def
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{landscape}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Design
+\end_layout
+
+\begin_layout Standard
+¿que diagrama UML?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/ferda/informatica/development/lib/liferay/liferay-plugins-sdk-6.2/portlets/toolBuilder-portlet/doc/uml/exported/Portlets Component Diagram.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{landscape}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Implementation
+\end_layout
+
+\begin_layout Subsubsection
+Testing
+\end_layout
+
 \begin_layout Subsection
 Seventh Sprint
 \end_layout
 
 \begin_layout Standard
-Create Tool Definition
+Create Tool Definition use case
 \end_layout
 
 \begin_layout Subsection
@@ -314,7 +438,7 @@ Eighth Sprint
 \end_layout
 
 \begin_layout Standard
-Add Steps to Tool Definition
+Add Steps to Tool Definition use case
 \end_layout
 
 \begin_layout Subsection
@@ -322,7 +446,7 @@ Ninth Sprint
 \end_layout
 
 \begin_layout Standard
-Delete Steps to Tool Definition
+Delete Steps to Tool Definition use case
 \end_layout
 
 \begin_layout Subsection
@@ -354,7 +478,7 @@ Thirteenth Sprint
 \end_layout
 
 \begin_layout Standard
-Create Information Step Type
+Create Web Content Step Type and show the step
 \end_layout
 
 \begin_layout Subsection
@@ -362,7 +486,15 @@ Fourteenth Sprint
 \end_layout
 
 \begin_layout Standard
-Create FlowChart Step Type
+Create Web Content Step Type configuration interface
+\end_layout
+
+\begin_layout Subsection
+Fifth Sprint
+\end_layout
+
+\begin_layout Standard
+Create Basic RAM Tool
 \end_layout
 
 \begin_layout Section
@@ -395,6 +527,10 @@ Arquillian
 
 \begin_layout Subsubsection
 Selenium
+\end_layout
+
+\begin_layout Standard
+Problems with Firefox updating
 \end_layout
 
 \begin_layout Subsubsection
@@ -435,6 +571,10 @@ Liferay
 
 \begin_layout Subsubsection
 JavaServer Faces (JSF)
+\end_layout
+
+\begin_layout Subsubsection
+Primefaces
 \end_layout
 
 \begin_layout Subsubsection

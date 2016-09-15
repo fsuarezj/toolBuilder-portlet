@@ -8,7 +8,6 @@ import org.lrc.liferay.toolbuilder.model.ToolDefDBE;
 import org.lrc.liferay.toolbuilder.service.StepDefDBELocalServiceUtil;
 import org.lrc.liferay.toolbuilder.service.ToolDefDBELocalServiceUtil;
 import org.lrc.liferay.toolbuilder.service.persistence.ToolDefDBEUtil;
-import org.lrc.liferay.toolbuilder.steps.StepDef;
 import org.lrc.liferay.toolbuilder.steps.composite.CompositeStep;
 import org.lrc.liferay.toolbuilder.steps.composite.CompositeStepDef;
 
@@ -109,7 +108,7 @@ public class ToolDef implements Serializable {
 		this.toolDefDBE.setToolDescription(toolDescription);
 	}
 	
-	public StepDef getCompositeStepDef() {
+	public CompositeStepDef getCompositeStepDef() {
 		return this.compositeStepDef;
 	}
 }

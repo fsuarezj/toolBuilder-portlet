@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_EdigcBnqEeaHdNAhBjaKYg" name="toolBuilder">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_EdigcBnqEeaHdNAhBjaKYg" name="beans">
   <packageImport xmi:id="_VU3GEBnuEeaHdNAhBjaKYg">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
   </packageImport>
@@ -28,11 +28,11 @@
         <interfaceRealization xmi:id="_GjcO4B59Eea7eqst6uHYVQ" client="_6CblYB58Eea7eqst6uHYVQ"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_UtNCEB6BEea7eqst6uHYVQ" name="defined_by" visibility="package" memberEnd="_UtNCER6BEea7eqst6uHYVQ _UtNCFB6BEea7eqst6uHYVQ" navigableOwnedEnd="_UtNCFB6BEea7eqst6uHYVQ">
-        <ownedEnd xmi:id="_UtNCER6BEea7eqst6uHYVQ" name="wrapperSteps" type="_2UfUAB58Eea7eqst6uHYVQ" association="_UtNCEB6BEea7eqst6uHYVQ">
+        <ownedEnd xmi:id="_UtNCER6BEea7eqst6uHYVQ" name="compositeSteps" type="_2UfUAB58Eea7eqst6uHYVQ" association="_UtNCEB6BEea7eqst6uHYVQ">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UtNCEh6BEea7eqst6uHYVQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UtNCEx6BEea7eqst6uHYVQ" value="*"/>
         </ownedEnd>
-        <ownedEnd xmi:id="_UtNCFB6BEea7eqst6uHYVQ" name="wrapperStepDefs" type="_6CblYB58Eea7eqst6uHYVQ" association="_UtNCEB6BEea7eqst6uHYVQ">
+        <ownedEnd xmi:id="_UtNCFB6BEea7eqst6uHYVQ" name="compositeStepDefs" type="_6CblYB58Eea7eqst6uHYVQ" association="_UtNCEB6BEea7eqst6uHYVQ">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UtNpIB6BEea7eqst6uHYVQ" value="1"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UtNpIR6BEea7eqst6uHYVQ" value="1"/>
         </ownedEnd>
@@ -343,5 +343,38 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_meSEsykOEeaLScfHGLgimA" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_meSrwCkOEeaLScfHGLgimA" value="1"/>
     </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_zpWH8Hs4Eeaip9ANPcqu9A" name="Tool Implementation Portlet">
+    <packagedElement xmi:type="uml:Component" xmi:id="_KGbZAHs5Eeaip9ANPcqu9A" name="mainView.xhtml"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="_avmxwHs5Eeaip9ANPcqu9A" name="toolInstancesView.xhtml"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_E1VS0Hs5Eeaip9ANPcqu9A" name="Tool-Definition Portlet">
+    <packagedElement xmi:type="uml:Component" xmi:id="_iCyrgHs5Eeaip9ANPcqu9A" name="adminView.xhtml"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="_nLN94Hs5Eeaip9ANPcqu9A" name="toolDefConfig.xhtml"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_BcbLYHs7Eeaip9ANPcqu9A" name="bean">
+    <packagedElement xmi:type="uml:Class" xmi:id="_D5V5wHs7Eeaip9ANPcqu9A" name="AbstractBaseBean" isAbstract="true"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_JW68wHs7Eeaip9ANPcqu9A" name="FactoryBean &lt;ApplicationScoped>">
+      <generalization xmi:id="_sEeg8Hs7Eeaip9ANPcqu9A" general="_D5V5wHs7Eeaip9ANPcqu9A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ZEkhYHs7Eeaip9ANPcqu9A" name="ToolSession &lt;SessionScoped>">
+      <generalization xmi:id="_rdINEHs7Eeaip9ANPcqu9A" general="_D5V5wHs7Eeaip9ANPcqu9A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_cDrW0Hs7Eeaip9ANPcqu9A" name="ToolInstanceBacking &lt;RequestScoped>">
+      <generalization xmi:id="_qkD3EHs7Eeaip9ANPcqu9A" general="_D5V5wHs7Eeaip9ANPcqu9A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_jN2egHs7Eeaip9ANPcqu9A" name="ToolDefBacking &lt;ViewScoped>">
+      <generalization xmi:id="_oshGoHs7Eeaip9ANPcqu9A" general="_D5V5wHs7Eeaip9ANPcqu9A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_43an8Hs7Eeaip9ANPcqu9A" memberEnd="_43an8Xs7Eeaip9ANPcqu9A _43bPAns7Eeaip9ANPcqu9A" navigableOwnedEnd="_43bPAns7Eeaip9ANPcqu9A">
+      <ownedEnd xmi:id="_43an8Xs7Eeaip9ANPcqu9A" name="toolInstanceBacking &lt;RequestScoped>s" type="_cDrW0Hs7Eeaip9ANPcqu9A" association="_43an8Hs7Eeaip9ANPcqu9A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_43bPAHs7Eeaip9ANPcqu9A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_43bPAXs7Eeaip9ANPcqu9A" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_43bPAns7Eeaip9ANPcqu9A" name="toolSession &lt;SessionScoped>s" type="_ZEkhYHs7Eeaip9ANPcqu9A" association="_43an8Hs7Eeaip9ANPcqu9A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_43bPA3s7Eeaip9ANPcqu9A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_43bPBHs7Eeaip9ANPcqu9A" value="*"/>
+      </ownedEnd>
+    </packagedElement>
   </packagedElement>
 </uml:Model>

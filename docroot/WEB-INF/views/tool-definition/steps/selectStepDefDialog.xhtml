@@ -24,7 +24,7 @@
 					<h:outputText value="#{stepType.stepDescription}"/>
 				</p:column>
 				<p:column width="80" stype="text-align: center">
-					<p:commandButton value="#{i18n['select']}" actionListener="#{toolDefBacking.selectStepDef(stepType)}" />
+					<p:commandButton value="#{i18n['select']}" actionListener="#{stepTypeListBacking.selectStepDef(stepType)}" />
 				</p:column>
 			</p:dataTable>
 		</h:form>

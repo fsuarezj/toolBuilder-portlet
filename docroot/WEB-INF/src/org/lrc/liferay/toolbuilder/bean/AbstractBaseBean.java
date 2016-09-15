@@ -8,7 +8,7 @@ import com.liferay.faces.util.logging.LoggerFactory;
  * @author Fernando Suárez
  * Abstract class to be heritated by the bean classes
  */
-abstract class AbstractBaseBean {
+public abstract class AbstractBaseBean {
 	
 	protected static final Logger logger = LoggerFactory.getLogger(AbstractBaseBean.class);
 	
