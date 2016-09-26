@@ -22,6 +22,9 @@
 		   	</p:tab>
 		</c:if>
 		</p:tabView>
+		<c:if test="#{!(editToolDefBacking.getCompositeStepDef().hasSteps())}">
+			<h:outputText value="#{i18n['no-steps-yet']}"/>
+		</c:if>
     </p:fieldset>
 	<p:commandButton value="#{i18n['new-step']}" action="#{stepTypeListBacking.chooseStepDef}">
 		<p:ajax event="dialogReturn" update="compositeDefFieldSet" listener="#{editToolDefBacking.createNewStepDef}" />

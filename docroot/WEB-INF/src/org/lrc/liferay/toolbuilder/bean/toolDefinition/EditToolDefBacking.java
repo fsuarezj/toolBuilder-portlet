@@ -101,10 +101,11 @@ public class EditToolDefBacking extends AbstractBaseBean implements Serializable
 		}
 	}
 
-	public void createNewStepDef(SelectEvent event) throws NoSuchUserException, InstalledStepException, SystemException, ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+	public void createNewStepDef(SelectEvent event) throws SystemException, ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, PortalException {
 		System.out.println("Ejecutando listener lanzado con el evento dialogReturn");
 		String stepType = ((InstalledStep) event.getObject()).getStepType();
 		this.compositeStepDef.addStepDef(StepFactory.getStepDef(stepType));
+		this.compositeStepDef.save();
 	}
 
 	public String saveToolDef() throws SystemException, PortalException {
