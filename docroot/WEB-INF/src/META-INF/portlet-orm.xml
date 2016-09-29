@@ -86,6 +86,8 @@
 			</basic>
 			<basic name="stepType" />
 			<basic name="stepTypeId" />
+			<basic name="name" />
+			<basic name="description" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />

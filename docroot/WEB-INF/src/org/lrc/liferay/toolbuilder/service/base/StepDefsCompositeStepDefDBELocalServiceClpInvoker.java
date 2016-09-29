@@ -125,6 +125,12 @@ public class StepDefsCompositeStepDefDBELocalServiceClpInvoker {
 		_methodName82 = "getRelationships";
 
 		_methodParameterTypes82 = new String[] { "long" };
+
+		_methodName83 = "updateStepDefsCompositeStepDefDBE";
+
+		_methodParameterTypes83 = new String[] {
+				"org.lrc.liferay.toolbuilder.model.StepDefsCompositeStepDefDBE"
+			};
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -233,6 +239,11 @@ public class StepDefsCompositeStepDefDBELocalServiceClpInvoker {
 			return StepDefsCompositeStepDefDBELocalServiceUtil.getRelationships(((Long)arguments[0]).longValue());
 		}
 
+		if (_methodName83.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes83, parameterTypes)) {
+			return StepDefsCompositeStepDefDBELocalServiceUtil.updateStepDefsCompositeStepDefDBE((org.lrc.liferay.toolbuilder.model.StepDefsCompositeStepDefDBE)arguments[0]);
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -274,4 +285,6 @@ public class StepDefsCompositeStepDefDBELocalServiceClpInvoker {
 	private String[] _methodParameterTypes77;
 	private String _methodName82;
 	private String[] _methodParameterTypes82;
+	private String _methodName83;
+	private String[] _methodParameterTypes83;
 }

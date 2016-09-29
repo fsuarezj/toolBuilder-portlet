@@ -78,6 +78,7 @@ public class StepDefDBELocalServiceImpl extends StepDefDBELocalServiceBaseImpl {
 		stepDefDBE.setUserId(liferayFacesContext.getUserId());
 		stepDefDBE.setUserName(user.getFullName());
 		stepDefDBE.setStepType(stepType);
+		stepDefDBE.setName("i18n['introduce-here-step-name']");
 		
 //		stepDefDBEPersistence.update(stepDefDBE);
 		

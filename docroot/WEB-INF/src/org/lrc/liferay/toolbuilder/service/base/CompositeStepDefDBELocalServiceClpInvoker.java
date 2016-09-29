@@ -106,92 +106,21 @@ public class CompositeStepDefDBELocalServiceClpInvoker {
 				"org.lrc.liferay.toolbuilder.model.CompositeStepDefDBE"
 			};
 
-		_methodName16 = "addStepDefDBECompositeStepDefDBE";
+		_methodName76 = "getBeanIdentifier";
 
-		_methodParameterTypes16 = new String[] { "long", "long" };
+		_methodParameterTypes76 = new String[] {  };
 
-		_methodName17 = "addStepDefDBECompositeStepDefDBE";
+		_methodName77 = "setBeanIdentifier";
 
-		_methodParameterTypes17 = new String[] {
-				"long", "org.lrc.liferay.toolbuilder.model.CompositeStepDefDBE"
-			};
+		_methodParameterTypes77 = new String[] { "java.lang.String" };
 
-		_methodName18 = "addStepDefDBECompositeStepDefDBEs";
+		_methodName82 = "getCompositeStepDefDBE";
 
-		_methodParameterTypes18 = new String[] { "long", "long[][]" };
+		_methodParameterTypes82 = new String[] { "long" };
 
-		_methodName19 = "addStepDefDBECompositeStepDefDBEs";
+		_methodName84 = "addCompositeStepDefDBE";
 
-		_methodParameterTypes19 = new String[] { "long", "java.util.List" };
-
-		_methodName20 = "clearStepDefDBECompositeStepDefDBEs";
-
-		_methodParameterTypes20 = new String[] { "long" };
-
-		_methodName21 = "deleteStepDefDBECompositeStepDefDBE";
-
-		_methodParameterTypes21 = new String[] { "long", "long" };
-
-		_methodName22 = "deleteStepDefDBECompositeStepDefDBE";
-
-		_methodParameterTypes22 = new String[] {
-				"long", "org.lrc.liferay.toolbuilder.model.CompositeStepDefDBE"
-			};
-
-		_methodName23 = "deleteStepDefDBECompositeStepDefDBEs";
-
-		_methodParameterTypes23 = new String[] { "long", "long[][]" };
-
-		_methodName24 = "deleteStepDefDBECompositeStepDefDBEs";
-
-		_methodParameterTypes24 = new String[] { "long", "java.util.List" };
-
-		_methodName25 = "getStepDefDBECompositeStepDefDBEs";
-
-		_methodParameterTypes25 = new String[] { "long" };
-
-		_methodName26 = "getStepDefDBECompositeStepDefDBEs";
-
-		_methodParameterTypes26 = new String[] { "long", "int", "int" };
-
-		_methodName27 = "getStepDefDBECompositeStepDefDBEs";
-
-		_methodParameterTypes27 = new String[] {
-				"long", "int", "int",
-				"com.liferay.portal.kernel.util.OrderByComparator"
-			};
-
-		_methodName28 = "getStepDefDBECompositeStepDefDBEsCount";
-
-		_methodParameterTypes28 = new String[] { "long" };
-
-		_methodName29 = "hasStepDefDBECompositeStepDefDBE";
-
-		_methodParameterTypes29 = new String[] { "long", "long" };
-
-		_methodName30 = "hasStepDefDBECompositeStepDefDBEs";
-
-		_methodParameterTypes30 = new String[] { "long" };
-
-		_methodName31 = "setStepDefDBECompositeStepDefDBEs";
-
-		_methodParameterTypes31 = new String[] { "long", "long[][]" };
-
-		_methodName92 = "getBeanIdentifier";
-
-		_methodParameterTypes92 = new String[] {  };
-
-		_methodName93 = "setBeanIdentifier";
-
-		_methodParameterTypes93 = new String[] { "java.lang.String" };
-
-		_methodName98 = "getCompositeStepDefDBE";
-
-		_methodParameterTypes98 = new String[] { "long" };
-
-		_methodName100 = "addCompositeStepDefDBE";
-
-		_methodParameterTypes100 = new String[] { "boolean", "int" };
+		_methodParameterTypes84 = new String[] { "boolean", "int" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -283,140 +212,25 @@ public class CompositeStepDefDBELocalServiceClpInvoker {
 			return CompositeStepDefDBELocalServiceUtil.updateCompositeStepDefDBE((org.lrc.liferay.toolbuilder.model.CompositeStepDefDBE)arguments[0]);
 		}
 
-		if (_methodName16.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes16, parameterTypes)) {
-			CompositeStepDefDBELocalServiceUtil.addStepDefDBECompositeStepDefDBE(((Long)arguments[0]).longValue(),
-				((Long)arguments[1]).longValue());
-
-			return null;
-		}
-
-		if (_methodName17.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes17, parameterTypes)) {
-			CompositeStepDefDBELocalServiceUtil.addStepDefDBECompositeStepDefDBE(((Long)arguments[0]).longValue(),
-				(org.lrc.liferay.toolbuilder.model.CompositeStepDefDBE)arguments[1]);
-
-			return null;
-		}
-
-		if (_methodName18.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes18, parameterTypes)) {
-			CompositeStepDefDBELocalServiceUtil.addStepDefDBECompositeStepDefDBEs(((Long)arguments[0]).longValue(),
-				(long[])arguments[1]);
-
-			return null;
-		}
-
-		if (_methodName19.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes19, parameterTypes)) {
-			CompositeStepDefDBELocalServiceUtil.addStepDefDBECompositeStepDefDBEs(((Long)arguments[0]).longValue(),
-				(java.util.List<org.lrc.liferay.toolbuilder.model.CompositeStepDefDBE>)arguments[1]);
-
-			return null;
-		}
-
-		if (_methodName20.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes20, parameterTypes)) {
-			CompositeStepDefDBELocalServiceUtil.clearStepDefDBECompositeStepDefDBEs(((Long)arguments[0]).longValue());
-
-			return null;
-		}
-
-		if (_methodName21.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes21, parameterTypes)) {
-			CompositeStepDefDBELocalServiceUtil.deleteStepDefDBECompositeStepDefDBE(((Long)arguments[0]).longValue(),
-				((Long)arguments[1]).longValue());
-
-			return null;
-		}
-
-		if (_methodName22.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes22, parameterTypes)) {
-			CompositeStepDefDBELocalServiceUtil.deleteStepDefDBECompositeStepDefDBE(((Long)arguments[0]).longValue(),
-				(org.lrc.liferay.toolbuilder.model.CompositeStepDefDBE)arguments[1]);
-
-			return null;
-		}
-
-		if (_methodName23.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes23, parameterTypes)) {
-			CompositeStepDefDBELocalServiceUtil.deleteStepDefDBECompositeStepDefDBEs(((Long)arguments[0]).longValue(),
-				(long[])arguments[1]);
-
-			return null;
-		}
-
-		if (_methodName24.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes24, parameterTypes)) {
-			CompositeStepDefDBELocalServiceUtil.deleteStepDefDBECompositeStepDefDBEs(((Long)arguments[0]).longValue(),
-				(java.util.List<org.lrc.liferay.toolbuilder.model.CompositeStepDefDBE>)arguments[1]);
-
-			return null;
-		}
-
-		if (_methodName25.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes25, parameterTypes)) {
-			return CompositeStepDefDBELocalServiceUtil.getStepDefDBECompositeStepDefDBEs(((Long)arguments[0]).longValue());
-		}
-
-		if (_methodName26.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes26, parameterTypes)) {
-			return CompositeStepDefDBELocalServiceUtil.getStepDefDBECompositeStepDefDBEs(((Long)arguments[0]).longValue(),
-				((Integer)arguments[1]).intValue(),
-				((Integer)arguments[2]).intValue());
-		}
-
-		if (_methodName27.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes27, parameterTypes)) {
-			return CompositeStepDefDBELocalServiceUtil.getStepDefDBECompositeStepDefDBEs(((Long)arguments[0]).longValue(),
-				((Integer)arguments[1]).intValue(),
-				((Integer)arguments[2]).intValue(),
-				(com.liferay.portal.kernel.util.OrderByComparator)arguments[3]);
-		}
-
-		if (_methodName28.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes28, parameterTypes)) {
-			return CompositeStepDefDBELocalServiceUtil.getStepDefDBECompositeStepDefDBEsCount(((Long)arguments[0]).longValue());
-		}
-
-		if (_methodName29.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes29, parameterTypes)) {
-			return CompositeStepDefDBELocalServiceUtil.hasStepDefDBECompositeStepDefDBE(((Long)arguments[0]).longValue(),
-				((Long)arguments[1]).longValue());
-		}
-
-		if (_methodName30.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes30, parameterTypes)) {
-			return CompositeStepDefDBELocalServiceUtil.hasStepDefDBECompositeStepDefDBEs(((Long)arguments[0]).longValue());
-		}
-
-		if (_methodName31.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes31, parameterTypes)) {
-			CompositeStepDefDBELocalServiceUtil.setStepDefDBECompositeStepDefDBEs(((Long)arguments[0]).longValue(),
-				(long[])arguments[1]);
-
-			return null;
-		}
-
-		if (_methodName92.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes92, parameterTypes)) {
+		if (_methodName76.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes76, parameterTypes)) {
 			return CompositeStepDefDBELocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName93.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes93, parameterTypes)) {
+		if (_methodName77.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes77, parameterTypes)) {
 			CompositeStepDefDBELocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName98.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
+		if (_methodName82.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
 			return CompositeStepDefDBELocalServiceUtil.getCompositeStepDefDBE(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName100.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
+		if (_methodName84.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes84, parameterTypes)) {
 			return CompositeStepDefDBELocalServiceUtil.addCompositeStepDefDBE(((Boolean)arguments[0]).booleanValue(),
 				((Integer)arguments[1]).intValue());
 		}
@@ -456,44 +270,12 @@ public class CompositeStepDefDBELocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName16;
-	private String[] _methodParameterTypes16;
-	private String _methodName17;
-	private String[] _methodParameterTypes17;
-	private String _methodName18;
-	private String[] _methodParameterTypes18;
-	private String _methodName19;
-	private String[] _methodParameterTypes19;
-	private String _methodName20;
-	private String[] _methodParameterTypes20;
-	private String _methodName21;
-	private String[] _methodParameterTypes21;
-	private String _methodName22;
-	private String[] _methodParameterTypes22;
-	private String _methodName23;
-	private String[] _methodParameterTypes23;
-	private String _methodName24;
-	private String[] _methodParameterTypes24;
-	private String _methodName25;
-	private String[] _methodParameterTypes25;
-	private String _methodName26;
-	private String[] _methodParameterTypes26;
-	private String _methodName27;
-	private String[] _methodParameterTypes27;
-	private String _methodName28;
-	private String[] _methodParameterTypes28;
-	private String _methodName29;
-	private String[] _methodParameterTypes29;
-	private String _methodName30;
-	private String[] _methodParameterTypes30;
-	private String _methodName31;
-	private String[] _methodParameterTypes31;
-	private String _methodName92;
-	private String[] _methodParameterTypes92;
-	private String _methodName93;
-	private String[] _methodParameterTypes93;
-	private String _methodName98;
-	private String[] _methodParameterTypes98;
-	private String _methodName100;
-	private String[] _methodParameterTypes100;
+	private String _methodName76;
+	private String[] _methodParameterTypes76;
+	private String _methodName77;
+	private String[] _methodParameterTypes77;
+	private String _methodName82;
+	private String[] _methodParameterTypes82;
+	private String _methodName84;
+	private String[] _methodParameterTypes84;
 }

@@ -15,11 +15,8 @@
 	<h:head />
 	<h:body>
 		<h3><h:outputText value="#{i18n['configuring-tooldef']} #{editToolDefBacking.toolDefName}" /></h3>
-		<h:form id="toolDefConfig">
-			<ui:include src="toolDefSettings.xhtml" />
-			<p:commandButton id="saveToolDefButton" action="#{editToolDefBacking.saveToolDef()}" value="#{i18n['save-fields']}" />
-			<p />
-			<ui:include src="toolStepsSettings.xhtml" />
-		</h:form>
+		<ui:include src="toolDefSettings.xhtml" />
+		<p />
+		<ui:include src="toolStepsSettings.xhtml" />
 	</h:body>
 </f:view>

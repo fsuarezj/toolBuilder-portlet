@@ -58,6 +58,8 @@ public class StepDefDBEWrapper implements StepDefDBE, ModelWrapper<StepDefDBE> {
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("stepType", getStepType());
 		attributes.put("stepTypeId", getStepTypeId());
+		attributes.put("name", getName());
+		attributes.put("description", getDescription());
 
 		return attributes;
 	}
@@ -116,6 +118,18 @@ public class StepDefDBEWrapper implements StepDefDBE, ModelWrapper<StepDefDBE> {
 
 		if (stepTypeId != null) {
 			setStepTypeId(stepTypeId);
+		}
+
+		String name = (String)attributes.get("name");
+
+		if (name != null) {
+			setName(name);
+		}
+
+		String description = (String)attributes.get("description");
+
+		if (description != null) {
+			setDescription(description);
 		}
 	}
 
@@ -339,6 +353,46 @@ public class StepDefDBEWrapper implements StepDefDBE, ModelWrapper<StepDefDBE> {
 	@Override
 	public void setStepTypeId(long stepTypeId) {
 		_stepDefDBE.setStepTypeId(stepTypeId);
+	}
+
+	/**
+	* Returns the name of this Step Definition.
+	*
+	* @return the name of this Step Definition
+	*/
+	@Override
+	public java.lang.String getName() {
+		return _stepDefDBE.getName();
+	}
+
+	/**
+	* Sets the name of this Step Definition.
+	*
+	* @param name the name of this Step Definition
+	*/
+	@Override
+	public void setName(java.lang.String name) {
+		_stepDefDBE.setName(name);
+	}
+
+	/**
+	* Returns the description of this Step Definition.
+	*
+	* @return the description of this Step Definition
+	*/
+	@Override
+	public java.lang.String getDescription() {
+		return _stepDefDBE.getDescription();
+	}
+
+	/**
+	* Sets the description of this Step Definition.
+	*
+	* @param description the description of this Step Definition
+	*/
+	@Override
+	public void setDescription(java.lang.String description) {
+		_stepDefDBE.setDescription(description);
 	}
 
 	@Override

@@ -19,7 +19,6 @@ import java.util.List;
 
 import org.lrc.liferay.toolbuilder.model.StepDefDBE;
 import org.lrc.liferay.toolbuilder.model.StepDefsCompositeStepDefDBE;
-import org.lrc.liferay.toolbuilder.service.CompositeStepDefDBELocalServiceUtil;
 import org.lrc.liferay.toolbuilder.service.StepDefsCompositeStepDefDBELocalServiceUtil;
 import org.lrc.liferay.toolbuilder.service.persistence.StepDefsCompositeStepDefDBEPK;
 import org.lrc.liferay.toolbuilder.service.persistence.StepDefsCompositeStepDefDBEUtil;
@@ -68,7 +67,6 @@ public class CompositeStepDefDBEImpl extends CompositeStepDefDBEBaseImpl {
 		relationship.setStepIndex(stepIndex);
 		StepDefsCompositeStepDefDBELocalServiceUtil.updateStepDefsCompositeStepDefDBE(relationship);
 
-		CompositeStepDefDBELocalServiceUtil.addStepDefDBECompositeStepDefDBE(stepDefDBE.getStepDefDBEId(), this.getCompositeStepDefDBEId());
 		this.stepDefDBEs.add(stepIndex, stepDefDBE);
 	}
 	

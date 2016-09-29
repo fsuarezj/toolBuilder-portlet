@@ -38,7 +38,7 @@ public class StepDefDBECacheModel implements CacheModel<StepDefDBE>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(23);
 
 		sb.append("{stepDefDBEId=");
 		sb.append(stepDefDBEId);
@@ -58,6 +58,10 @@ public class StepDefDBECacheModel implements CacheModel<StepDefDBE>,
 		sb.append(stepType);
 		sb.append(", stepTypeId=");
 		sb.append(stepTypeId);
+		sb.append(", name=");
+		sb.append(name);
+		sb.append(", description=");
+		sb.append(description);
 		sb.append("}");
 
 		return sb.toString();
@@ -102,6 +106,20 @@ public class StepDefDBECacheModel implements CacheModel<StepDefDBE>,
 
 		stepDefDBEImpl.setStepTypeId(stepTypeId);
 
+		if (name == null) {
+			stepDefDBEImpl.setName(StringPool.BLANK);
+		}
+		else {
+			stepDefDBEImpl.setName(name);
+		}
+
+		if (description == null) {
+			stepDefDBEImpl.setDescription(StringPool.BLANK);
+		}
+		else {
+			stepDefDBEImpl.setDescription(description);
+		}
+
 		stepDefDBEImpl.resetOriginalValues();
 
 		return stepDefDBEImpl;
@@ -118,6 +136,8 @@ public class StepDefDBECacheModel implements CacheModel<StepDefDBE>,
 		modifiedDate = objectInput.readLong();
 		stepType = objectInput.readUTF();
 		stepTypeId = objectInput.readLong();
+		name = objectInput.readUTF();
+		description = objectInput.readUTF();
 	}
 
 	@Override
@@ -146,6 +166,20 @@ public class StepDefDBECacheModel implements CacheModel<StepDefDBE>,
 		}
 
 		objectOutput.writeLong(stepTypeId);
+
+		if (name == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(name);
+		}
+
+		if (description == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(description);
+		}
 	}
 
 	public long stepDefDBEId;
@@ -157,4 +191,6 @@ public class StepDefDBECacheModel implements CacheModel<StepDefDBE>,
 	public long modifiedDate;
 	public String stepType;
 	public long stepTypeId;
+	public String name;
+	public String description;
 }

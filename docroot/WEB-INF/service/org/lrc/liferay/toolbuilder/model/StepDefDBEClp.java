@@ -84,6 +84,8 @@ public class StepDefDBEClp extends BaseModelImpl<StepDefDBE>
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("stepType", getStepType());
 		attributes.put("stepTypeId", getStepTypeId());
+		attributes.put("name", getName());
+		attributes.put("description", getDescription());
 
 		return attributes;
 	}
@@ -142,6 +144,18 @@ public class StepDefDBEClp extends BaseModelImpl<StepDefDBE>
 
 		if (stepTypeId != null) {
 			setStepTypeId(stepTypeId);
+		}
+
+		String name = (String)attributes.get("name");
+
+		if (name != null) {
+			setName(name);
+		}
+
+		String description = (String)attributes.get("description");
+
+		if (description != null) {
+			setDescription(description);
 		}
 	}
 
@@ -362,6 +376,52 @@ public class StepDefDBEClp extends BaseModelImpl<StepDefDBE>
 		}
 	}
 
+	@Override
+	public String getName() {
+		return _name;
+	}
+
+	@Override
+	public void setName(String name) {
+		_name = name;
+
+		if (_stepDefDBERemoteModel != null) {
+			try {
+				Class<?> clazz = _stepDefDBERemoteModel.getClass();
+
+				Method method = clazz.getMethod("setName", String.class);
+
+				method.invoke(_stepDefDBERemoteModel, name);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getDescription() {
+		return _description;
+	}
+
+	@Override
+	public void setDescription(String description) {
+		_description = description;
+
+		if (_stepDefDBERemoteModel != null) {
+			try {
+				Class<?> clazz = _stepDefDBERemoteModel.getClass();
+
+				Method method = clazz.getMethod("setDescription", String.class);
+
+				method.invoke(_stepDefDBERemoteModel, description);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
 	public BaseModel<?> getStepDefDBERemoteModel() {
 		return _stepDefDBERemoteModel;
 	}
@@ -440,6 +500,8 @@ public class StepDefDBEClp extends BaseModelImpl<StepDefDBE>
 		clone.setModifiedDate(getModifiedDate());
 		clone.setStepType(getStepType());
 		clone.setStepTypeId(getStepTypeId());
+		clone.setName(getName());
+		clone.setDescription(getDescription());
 
 		return clone;
 	}
@@ -492,7 +554,7 @@ public class StepDefDBEClp extends BaseModelImpl<StepDefDBE>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(23);
 
 		sb.append("{stepDefDBEId=");
 		sb.append(getStepDefDBEId());
@@ -512,6 +574,10 @@ public class StepDefDBEClp extends BaseModelImpl<StepDefDBE>
 		sb.append(getStepType());
 		sb.append(", stepTypeId=");
 		sb.append(getStepTypeId());
+		sb.append(", name=");
+		sb.append(getName());
+		sb.append(", description=");
+		sb.append(getDescription());
 		sb.append("}");
 
 		return sb.toString();
@@ -519,7 +585,7 @@ public class StepDefDBEClp extends BaseModelImpl<StepDefDBE>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(31);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("<model><model-name>");
 		sb.append("org.lrc.liferay.toolbuilder.model.StepDefDBE");
@@ -561,6 +627,14 @@ public class StepDefDBEClp extends BaseModelImpl<StepDefDBE>
 			"<column><column-name>stepTypeId</column-name><column-value><![CDATA[");
 		sb.append(getStepTypeId());
 		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>name</column-name><column-value><![CDATA[");
+		sb.append(getName());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>description</column-name><column-value><![CDATA[");
+		sb.append(getDescription());
+		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -577,6 +651,8 @@ public class StepDefDBEClp extends BaseModelImpl<StepDefDBE>
 	private Date _modifiedDate;
 	private String _stepType;
 	private long _stepTypeId;
+	private String _name;
+	private String _description;
 	private BaseModel<?> _stepDefDBERemoteModel;
 	private Class<?> _clpSerializerClass = org.lrc.liferay.toolbuilder.service.ClpSerializer.class;
 }

@@ -218,6 +218,36 @@ public interface StepDefDBEModel extends BaseModel<StepDefDBE>, GroupedModel {
 	 */
 	public void setStepTypeId(long stepTypeId);
 
+	/**
+	 * Returns the name of this Step Definition.
+	 *
+	 * @return the name of this Step Definition
+	 */
+	@AutoEscape
+	public String getName();
+
+	/**
+	 * Sets the name of this Step Definition.
+	 *
+	 * @param name the name of this Step Definition
+	 */
+	public void setName(String name);
+
+	/**
+	 * Returns the description of this Step Definition.
+	 *
+	 * @return the description of this Step Definition
+	 */
+	@AutoEscape
+	public String getDescription();
+
+	/**
+	 * Sets the description of this Step Definition.
+	 *
+	 * @param description the description of this Step Definition
+	 */
+	public void setDescription(String description);
+
 	@Override
 	public boolean isNew();
 

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:head>
+	</h:head>
+	<h:body>
+		<p />
+		<h:outputText value="#{i18n['choose-step-type']}" />
+		<p />
+		<h:outputText value="#{i18n['action-non-reversible']}" />
+		<h:form>
+			<h:outputText value="Hola #{editToolDefBacking.getCompositeStepDef()}" />
+			<p:orderList value="#{editToolDefBacking.getCompositeStepDef().getStepDefsList()}" var="step" itemValue="#{step}" responsive="true">
+				<p:column>
+					<h:outputText value="#{i18n['Step']}: #{step.stepType}" />
+				</p:column>
+			</p:orderList>
+			<p />
+			<p:commandButton value="#{i18n['select']}" actionListener="#{stepTypeListBacking.selectStepDef(stepType)}" />
+		</h:form>
+	</h:body>
+</f:view>

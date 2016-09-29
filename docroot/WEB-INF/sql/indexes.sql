@@ -1,6 +1,3 @@
-create index IX_592FE45A on lrc_tb_CSDef_StepDef (compositeStepDefDBEId);
-create index IX_C495B03 on lrc_tb_CSDef_StepDef (stepDefDBEId);
-
 create index IX_8B692BD5 on lrc_tb_CS_Step (compositeStepDBEId);
 create index IX_5B8A7374 on lrc_tb_CS_Step (stepDBEId);
 

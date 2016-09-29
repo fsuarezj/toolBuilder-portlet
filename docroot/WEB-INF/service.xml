@@ -120,7 +120,8 @@
 		<column name="modifiedDate" type="Date"></column>
 		<column name="stepType" type="String"></column>
         <column name="stepTypeId" type="long"></column>
-        <column name="compositeStepDefs" type="Collection" entity="CompositeStepDefDBE" mapping-table="CSDef_StepDef"></column>
+        <column name="name" type="String"></column>
+        <column name="description" type="String"></column>
 
         <finder name="StepDefDBEId" return-type="Collection">
             <finder-column name="stepDefDBEId"></finder-column>
@@ -157,7 +158,6 @@
         <column name="stepsNumber" type="int"></column>
         <column name="sequential" type="boolean"></column>
         <column name="depth" type="int"></column>
-        <column name="stepDefs" type="Collection" mapping-table="CSDef_StepDef" entity="StepDefDBE"></column>
 
         <finder name="CompositeStepDefDBEId" return-type="Collection">
             <finder-column name="compositeStepDefDBEId"></finder-column>

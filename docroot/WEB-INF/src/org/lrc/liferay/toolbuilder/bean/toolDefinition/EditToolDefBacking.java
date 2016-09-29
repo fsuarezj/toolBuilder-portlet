@@ -34,6 +34,7 @@ public class EditToolDefBacking extends AbstractBaseBean implements Serializable
 
 	public EditToolDefBacking() {
 		// TODO Auto-generated constructor stub
+		System.out.println("New construction");
 	}
 	
 	public void setToolDefName(String toolDefName) throws SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, PortalException, IOException {
@@ -118,6 +119,10 @@ public class EditToolDefBacking extends AbstractBaseBean implements Serializable
 		}
 		System.out.println("Salvada " + this.toolDef.getToolDefName());
 		return "adminView.xhtml";
+	}
+	
+	public void printPrueba() {
+		System.out.println("IMPRIMIENDO DE PRUEBA");
 	}
 	
 }

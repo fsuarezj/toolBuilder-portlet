@@ -2,6 +2,7 @@ package org.lrc.liferay.toolbuilder.steps.composite;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.lrc.liferay.toolbuilder.CompositeStepDBEException;
@@ -32,6 +33,8 @@ public class CompositeStepDef extends StepDef {
 	private static final long serialVersionUID = 7733476918496135630L;
 	private CompositeStepDefDBE compositeStepDefDBE;
 	private List<StepDef> stepDefs;
+	private List<String> newOrderedIndexes;
+//	private List<Integer> newOrderedIndexes;
 
 	/* CONSTRUCTORS */
 	public CompositeStepDef() throws NoSuchUserException, NoSuchInstalledStepException, StepDefDBEException, SystemException, CompositeStepDefDBEException {
@@ -93,13 +96,75 @@ public class CompositeStepDef extends StepDef {
 		return !this.stepDefs.isEmpty();
 	}
 	
-	public List<Integer> getIndexesList() {
-		List<Integer> result = new ArrayList<Integer>();
-		for (int i = 0; i < this.getStepsNumber(); i++) {
-			result.add(i);
+//	public List<Integer> getIndexesList() {
+	public List<String> getIndexesList() {
+		if (this.newOrderedIndexes == null) {
+			this.newOrderedIndexes = new ArrayList<String>();
+			//		List<Integer> result = new ArrayList<Integer>();
+					for (Integer i = 0; i < this.getStepsNumber(); i++) {
+			//			result.add(i);
+						this.newOrderedIndexes.add(i.toString());
+					}
 		}
-		return result;
+		System.out.println("Recogiendo indexes");
+		System.out.println(this.newOrderedIndexes);
+		return this.newOrderedIndexes;
 	}
+	
+	public void setIndexesList(List<String> indexes) {
+//	public void setIndexesList(List<Integer> indexes) {
+		System.out.println("Listando indexes");
+		System.out.println(indexes);
+		this.newOrderedIndexes = indexes;
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void reorderStepDefs() throws SystemException {
+		System.out.println("Va a ordenar lista");
+		List baseList = new ArrayList(this.newOrderedIndexes);
+		Collections.sort(baseList);
+//		System.out.println("newOrderedIndexes: " + this.newOrderedIndexes);
+//		System.out.println("baseList: " + baseList);
+//		System.out.println("Equals? " + this.newOrderedIndexes.equals(baseList));
+		if (this.newOrderedIndexes != null && !this.newOrderedIndexes.equals(baseList)) {
+			System.out.println("Ordenando Lista");
+			List<StepDef> newStepDefs = new ArrayList<StepDef>();
+			for (String i: this.newOrderedIndexes) {
+				newStepDefs.add(this.stepDefs.get(Integer.parseInt(i)));
+//			for (Integer i: this.newOrderedIndexes) {
+//				newStepDefs.add(this.stepDefs.get(i));
+			}
+			this.stepDefs = newStepDefs;
+			this.newOrderedIndexes = null;
+			this.saveNewStepsOrder();
+		}
+	}
+	
+//	public List<Long> getIdsList() {
+//		List<Long> result = new ArrayList<Long>();
+//		for (int i = 0; i < this.getStepsNumber(); i++) {
+//			result.add(this.stepDefs.get(i).getStepDefDBEId());
+//		}
+//		return result;
+//	}
+//	
+//	public void setIdsList(List<Long> ids) {
+//		System.out.println("Listando ids");
+//		System.out.println(ids);
+//	}
+//	
+//	public String getStepTypeByIndex(Integer index) {
+//		return this.stepDefs.get(index).getStepType();
+//	}
+//	
+//	public String getStepTypeById(Long stepDefDBEId) {
+//		for (StepDef stepDef: this.stepDefs) {
+//			if (stepDef.getStepDefDBEId() == stepDefDBEId) {
+//				return stepDef.getStepType();
+//			}
+//		}
+//		return null;
+//	}
 	
 	public List<StepDef> getStepDefsList() {
 		List<StepDef> result = new ArrayList<StepDef>();
@@ -107,6 +172,14 @@ public class CompositeStepDef extends StepDef {
 			result.add(this.getStepDef(i));
 		}
 		return result;
+	}
+	
+	public List<StepDef> getStepDefs() {
+		return this.stepDefs;
+	}
+	
+	public void setStepDefs(List<StepDef> stepDefs) {
+		this.stepDefs = stepDefs;
 	}
 	
 	public void addStepDef(StepDef stepDef) throws SystemException {

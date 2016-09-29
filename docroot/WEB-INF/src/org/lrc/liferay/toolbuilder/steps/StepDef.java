@@ -28,7 +28,7 @@ public abstract class StepDef implements Serializable {
 	public StepDef(String stepType) throws NoSuchUserException, NoSuchInstalledStepException, StepDefDBEException, SystemException {
 		LiferayFacesContext liferayFacesContext = LiferayFacesContext.getInstance();
 		this.stepDefDBE = StepDefDBELocalServiceUtil.addStepDefDBE(stepType, liferayFacesContext);
-		System.out.println("Created Step Def for " + stepType + " with ID " + this.stepDefDBE.getStepDefDBEId());
+		System.out.println("Created Step Def of type " + stepType + " with ID " + this.stepDefDBE.getStepDefDBEId());
 	}
 	
 	public StepDef(StepDefDBE stepDefDBE) {
@@ -38,6 +38,18 @@ public abstract class StepDef implements Serializable {
 	public abstract Step buildStep() throws SystemException, NoSuchUserException, NoSuchInstalledStepException, StepDBEException, StepDefDBEException, CompositeStepDBEException;
 	
 	public abstract String getAdminView();
+	
+	public String getAdminCommonView() {
+		return "";
+	}
+	
+	public String getStepDefName() {
+		return this.stepDefDBE.getName();
+	}
+	
+	public void setStepDefName(String name) {
+		this.stepDefDBE.setName(name);
+	}
 	
 	public void save() throws SystemException, PortalException {
 		if (this.stepDefDBE.getStepDefDBEId() == 0) {
@@ -68,11 +80,7 @@ public abstract class StepDef implements Serializable {
 		this.stepDefDBE.setStepTypeId(stepTypeId);
 	}
 	
-	public void removeStepDef(long compositeStepDefDBEId) throws PortalException, SystemException {
-		System.out.println("Trying to delete " + compositeStepDefDBEId + " relationship with " + this.getStepDefDBEId());
-		StepDefDBELocalServiceUtil.deleteCompositeStepDefDBEStepDefDBE(compositeStepDefDBEId, this.getStepDefDBEId());
-		System.out.println("Trying to delete " + this.getStepDefDBEId() + " relationship with " + compositeStepDefDBEId);
-		CompositeStepDefDBELocalServiceUtil.deleteStepDefDBECompositeStepDefDBE(this.getStepDefDBEId(), compositeStepDefDBEId);
+	public void removeStepDef() throws PortalException, SystemException {
 		StepDefDBELocalServiceUtil.deleteStepDefDBE(this.getStepDefDBEId());
 	}
 
