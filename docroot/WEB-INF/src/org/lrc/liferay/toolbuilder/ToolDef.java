@@ -28,10 +28,12 @@ public class ToolDef implements Serializable {
 		if (toolName.equals("Test Tool")) {
 			this.createToolDef(toolName, "This is the first tool created called \"Test Tool\"");
 			this.createMockSteps(5);
+			this.compositeStepDef.saveNewStepsOrder(true);
 			this.save();
 		} else if (toolName.equals("Test Tool 2")) {
 			this.createToolDef(toolName);
 			this.createMockSteps(3);
+			this.compositeStepDef.saveNewStepsOrder(true);
 			this.save();
 		} else {
 			this.createToolDef(toolName);
@@ -79,6 +81,7 @@ public class ToolDef implements Serializable {
 	}
 
 	public ToolInstance buildInstance() throws SystemException, NoSuchUserException, NoSuchInstalledStepException, StepDBEException, StepDefDBEException, CompositeStepDBEException, NoSuchToolDefDBEException {
+		System.out.println("Va a crear instance de " + this.getToolDefName() + " con " + this.getCompositeStepDef().getStepsNumber() + " pasos.");
 		return new ToolInstance(this, (CompositeStep) this.compositeStepDef.buildStep());
 	}
 

@@ -33,8 +33,8 @@ public class CompositeStepDef extends StepDef {
 	private static final long serialVersionUID = 7733476918496135630L;
 	private CompositeStepDefDBE compositeStepDefDBE;
 	private List<StepDef> stepDefs;
-	private List<String> newOrderedIndexes;
-//	private List<Integer> newOrderedIndexes;
+//	private List<String> newOrderedIndexes;
+	private List<Integer> newOrderedIndexes = new ArrayList<Integer>();
 
 	/* CONSTRUCTORS */
 	public CompositeStepDef() throws NoSuchUserException, NoSuchInstalledStepException, StepDefDBEException, SystemException, CompositeStepDefDBEException {
@@ -97,48 +97,26 @@ public class CompositeStepDef extends StepDef {
 	}
 	
 //	public List<Integer> getIndexesList() {
-	public List<String> getIndexesList() {
-		if (this.newOrderedIndexes == null) {
-			this.newOrderedIndexes = new ArrayList<String>();
-			//		List<Integer> result = new ArrayList<Integer>();
-					for (Integer i = 0; i < this.getStepsNumber(); i++) {
-			//			result.add(i);
-						this.newOrderedIndexes.add(i.toString());
-					}
-		}
-		System.out.println("Recogiendo indexes");
-		System.out.println(this.newOrderedIndexes);
-		return this.newOrderedIndexes;
-	}
-	
-	public void setIndexesList(List<String> indexes) {
-//	public void setIndexesList(List<Integer> indexes) {
-		System.out.println("Listando indexes");
-		System.out.println(indexes);
-		this.newOrderedIndexes = indexes;
-	}
-	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void reorderStepDefs() throws SystemException {
-		System.out.println("Va a ordenar lista");
-		List baseList = new ArrayList(this.newOrderedIndexes);
-		Collections.sort(baseList);
-//		System.out.println("newOrderedIndexes: " + this.newOrderedIndexes);
-//		System.out.println("baseList: " + baseList);
-//		System.out.println("Equals? " + this.newOrderedIndexes.equals(baseList));
-		if (this.newOrderedIndexes != null && !this.newOrderedIndexes.equals(baseList)) {
-			System.out.println("Ordenando Lista");
-			List<StepDef> newStepDefs = new ArrayList<StepDef>();
-			for (String i: this.newOrderedIndexes) {
-				newStepDefs.add(this.stepDefs.get(Integer.parseInt(i)));
-//			for (Integer i: this.newOrderedIndexes) {
-//				newStepDefs.add(this.stepDefs.get(i));
-			}
-			this.stepDefs = newStepDefs;
-			this.newOrderedIndexes = null;
-			this.saveNewStepsOrder();
-		}
-	}
+//	public List<String> getIndexesList() {
+//		if (this.newOrderedIndexes == null) {
+//			this.newOrderedIndexes = new ArrayList<String>();
+//			//		List<Integer> result = new ArrayList<Integer>();
+//					for (Integer i = 0; i < this.getStepsNumber(); i++) {
+//			//			result.add(i);
+//						this.newOrderedIndexes.add(i.toString());
+//					}
+//		}
+//		System.out.println("Recogiendo indexes");
+//		System.out.println(this.newOrderedIndexes);
+//		return this.newOrderedIndexes;
+//	}
+//	
+//	public void setIndexesList(List<String> indexes) {
+////	public void setIndexesList(List<Integer> indexes) {
+//		System.out.println("Listando indexes");
+//		System.out.println(indexes);
+//		this.newOrderedIndexes = indexes;
+//	}
 	
 //	public List<Long> getIdsList() {
 //		List<Long> result = new ArrayList<Long>();
@@ -186,13 +164,15 @@ public class CompositeStepDef extends StepDef {
 		this.addStepDef(stepDef, this.stepDefs.size());
 	}
 
-	public void addStepDef(StepDef stepDef, int stepIndex) {
+	public void addStepDef(StepDef stepDef, int stepIndex) throws SystemException {
 			// Includes new StepDef in the tables
 //			this.save();
 //			stepDef.save();
 			this.stepDefs.add(stepIndex, stepDef);
+			System.out.println("Añadido StepDef de tipo " + stepDef.getStepType());
 			// Increments stepNumber
 			this.setStepsNumber();
+			this.newOrderedIndexes.add(this.stepDefs.size() - 1);
 	}
 	
 	public void deleteStepDef(int index) throws SystemException, PortalException {
@@ -202,18 +182,72 @@ public class CompositeStepDef extends StepDef {
 			this.setStepsNumber();
 			this.compositeStepDefDBE.deleteRelationship(auxStepDef.getStepDefDBE());
 			auxStepDef.delete();
-			this.saveNewStepsOrder();
+			System.out.println("Antes de borrar: " + this.newOrderedIndexes);
+			this.newOrderedIndexes.remove((Integer) index);
+			System.out.println("Después de borrar: " + this.newOrderedIndexes);
+			for (int i = 0; i < this.stepDefs.size(); i++) {
+				if (this.newOrderedIndexes.get(i) > index) {
+					this.newOrderedIndexes.set(i, this.newOrderedIndexes.get(i) - 1);
+				}
+			}
+			System.out.println("Después de renumerar: " + this.newOrderedIndexes);
+			this.saveNewStepsOrder(true);
 			this.saveCompositeStepDef();
 		} catch (Exception e) {
 			throw e;
 		}
 	}
 	
-	private void saveNewStepsOrder() throws SystemException {
+	public void initStepsOrder() {
+		this.newOrderedIndexes = new ArrayList<Integer>();
+		for (int i = 0; i < this.stepDefs.size(); this.newOrderedIndexes.add(i++));
+	}
+	
+	public void reorderStepDef(int element, int newIndex) {
+		this.newOrderedIndexes.remove((Integer) element);
+		this.newOrderedIndexes.add(newIndex, element);
+		System.out.println("El nuevo orden es " + this.newOrderedIndexes);
+	}
+	
+	public void saveNewStepsOrder() throws SystemException {
+		this.saveNewStepsOrder(false);
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void saveNewStepsOrder(boolean sure) throws SystemException {
+		System.out.println("Va a ordenar lista");
+		List baseList = new ArrayList(this.newOrderedIndexes);
+		Collections.sort(baseList);
+//		System.out.println("newOrderedIndexes: " + this.newOrderedIndexes);
+//		System.out.println("baseList: " + baseList);
+//		System.out.println("Equals? " + this.newOrderedIndexes.equals(baseList));
+		if (!this.newOrderedIndexes.equals(baseList) || sure) {
+			System.out.println("Ordenando Lista");
+			List<StepDef> newStepDefs = new ArrayList<StepDef>();
+//			for (String i: this.newOrderedIndexes) {
+//				newStepDefs.add(this.stepDefs.get(Integer.parseInt(i)));
+			for (Integer i: this.newOrderedIndexes) {
+				newStepDefs.add(this.stepDefs.get(i));
+			}
+			this.stepDefs = newStepDefs;
+			this.initStepsOrder();
+			this.saveStepsOrder();
+		}
+	}
+	
+	private void saveStepsOrder() throws SystemException {
 		for (int stepIndex = 0; stepIndex < this.stepDefs.size(); stepIndex++) {
 			StepDef auxStepDef = this.stepDefs.get(stepIndex);
 			this.compositeStepDefDBE.saveRelationship(stepIndex, auxStepDef.getStepDefDBE());
 		}
+	}
+
+	public List<Integer> getNewOrderedIndexes() {
+		return newOrderedIndexes;
+	}
+
+	public void setNewOrderedIndexes(List<Integer> newOrderedIndexes) {
+		this.newOrderedIndexes = newOrderedIndexes;
 	}
 	
 	private void saveSteps() throws SystemException, PortalException {
@@ -238,9 +272,20 @@ public class CompositeStepDef extends StepDef {
 	}
 	
 	public void save() throws SystemException, PortalException {
-		this.saveCompositeStepDef();
-		this.saveNewStepsOrder();
+		super.save();
+		if (this.compositeStepDefDBE.getCompositeStepDefDBEId() == 0) {
+			this.compositeStepDefDBE.setCompositeStepDefDBEId(this.stepDefDBE.getStepDefDBEId());
+			CompositeStepDefDBELocalServiceUtil.addCompositeStepDefDBE(this.compositeStepDefDBE);
+//			StepDefDBELocalServiceUtil.addCompositeStepDefDBEStepDefDBEs
+//				(this.compositeStepDefDBE.getCompositeStepDefDBEId(), this.compositeStepDefDBE.getStepDefDBEs());
+		}
+		else {
+			CompositeStepDefDBELocalServiceUtil.updateCompositeStepDefDBE(this.compositeStepDefDBE);
+//			StepDefDBELocalServiceUtil.addCompositeStepDefDBEStepDefDBEs
+//				(this.compositeStepDefDBE.getCompositeStepDefDBEId(), this.compositeStepDefDBE.getStepDefDBEs());
+		}
 		this.saveSteps();
+		this.saveNewStepsOrder(true);
 	}
 	
 	@Override
@@ -262,6 +307,7 @@ public class CompositeStepDef extends StepDef {
 		for (StepDefsCompositeStepDefDBE stepDefsCompositeStepDefDBE: stepDefsCompositeStepDefDBEs) {
 			StepDefDBE stepDefDBE = StepDefDBELocalServiceUtil.getStepDefDBE(stepDefsCompositeStepDefDBE.getStepDefDBEId());
 			this.stepDefs.add(StepFactory.getStepDef(stepDefDBE.getStepType(), stepDefDBE));
+//			this.newOrderedIndexes.add(this.stepDefs.size() -1);
 		}
 	}
 

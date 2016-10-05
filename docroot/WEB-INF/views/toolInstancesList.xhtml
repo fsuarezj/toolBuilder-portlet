@@ -9,7 +9,7 @@
     
     <c:choose>
     	<c:when test="#{empty toolSession.toolInstances}">
-			<h:outputText id="toolInstancesEmpty" value="#{i18n['no-existing-instances']}" />
+			<h:outputText id="toolInstancesEmpty" value="#{i18n['no-existing-instances']} of type #{toolSession.selectedToolDef.toolDefName}" />
 			<br />
     	</c:when>
     	<c:otherwise>

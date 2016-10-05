@@ -30,6 +30,7 @@ public class FactoryBean extends AbstractBaseBean implements Serializable {
 
 	private static final long serialVersionUID = 7484141348342418895L;
 	private static Map<String, ToolDef> toolDefs = new HashMap<String, ToolDef>();
+	private static ToolDef selectedToolDef;
 
 	/**
 	 * The constructor creates the stepFactory and get the installed ToolDefs names.
@@ -134,5 +135,13 @@ public class FactoryBean extends AbstractBaseBean implements Serializable {
 
 	public static boolean isExistingToolDef(String toolDefName) {
 		return FactoryBean.toolDefs.containsKey(toolDefName);
+	}
+
+	public static ToolDef getSelectedToolDef() {
+		return selectedToolDef;
+	}
+
+	public static void setSelectedToolDef(ToolDef selectedToolDef) {
+		FactoryBean.selectedToolDef = selectedToolDef;
 	}
 }

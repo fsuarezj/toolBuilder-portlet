@@ -10,6 +10,8 @@
 	<h:head />
 	<h:body>
 		<h:outputText value="#{i18n['tool-builder-admin-hello-world']}" /> in view mode.
+		<br />
+		<h:outputText id="toolInstancesEmpty" value="#{i18n['no-existing-instances']} of type #{toolSession.selectedToolDef.toolDefName}" />
 		<h:form id="toolDefsList">
 			<h:dataTable id="toolDefsListTable" styleClass="table table-bordered table-hover table-striped" rowClasses="table-cell" value="#{factoryBean.getToolDefNames()}" var="toolDefName">
 				<h:column>

@@ -9,7 +9,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import org.lrc.liferay.toolbuilder.InstalledStepException;
 import org.lrc.liferay.toolbuilder.StepFactory;
 import org.lrc.liferay.toolbuilder.ToolDef;
 import org.lrc.liferay.toolbuilder.bean.AbstractBaseBean;
@@ -18,8 +17,11 @@ import org.lrc.liferay.toolbuilder.model.InstalledStep;
 import org.lrc.liferay.toolbuilder.steps.StepDef;
 import org.lrc.liferay.toolbuilder.steps.composite.CompositeStepDef;
 import org.primefaces.event.SelectEvent;
+import org.primefaces.model.DashboardColumn;
+import org.primefaces.model.DashboardModel;
+import org.primefaces.model.DefaultDashboardColumn;
+import org.primefaces.model.DefaultDashboardModel;
 
-import com.liferay.portal.NoSuchUserException;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 
@@ -31,6 +33,7 @@ public class EditToolDefBacking extends AbstractBaseBean implements Serializable
 	private ToolDef toolDef = null;
 	private String newToolDefName, oldToolDefName = null;
 	private CompositeStepDef compositeStepDef;
+	private DashboardModel dashboard;
 
 	public EditToolDefBacking() {
 		// TODO Auto-generated constructor stub
@@ -50,6 +53,7 @@ public class EditToolDefBacking extends AbstractBaseBean implements Serializable
 			try {
 				this.toolDef = FactoryBean.getToolDef(toolDefName);
 				this.compositeStepDef = this.toolDef.getCompositeStepDef();
+				this.createDashBoard();
 			} catch (Exception e) {
 				FacesContext fc = FacesContext.getCurrentInstance();
 				NavigationHandler nh = fc.getApplication().getNavigationHandler();
@@ -61,6 +65,19 @@ public class EditToolDefBacking extends AbstractBaseBean implements Serializable
 			NavigationHandler nh = fc.getApplication().getNavigationHandler();
 			nh.handleNavigation(fc, null, "adminView.xhtml");
 		}
+	}
+	
+	public void createDashBoard() {
+		this.dashboard = new DefaultDashboardModel();
+		DashboardColumn column = new DefaultDashboardColumn();
+		for (int i = 0; i < this.compositeStepDef.getStepsNumber(); i++) {
+			System.out.println("Añadiendo Panel_" + i);
+			column.addWidget("Panel_" + i);
+//			column.addWidget("Panel" + this.compositeStepDef.getStepDef(i).getStepDefDBEId());
+		}
+		System.out.println("Creando Dashboard");
+		((CompositeStepDef) this.getCompositeStepDef()).initStepsOrder();
+		dashboard.addColumn(column);
 	}
 	
 	public String getToolDefName() {
@@ -107,6 +124,7 @@ public class EditToolDefBacking extends AbstractBaseBean implements Serializable
 		String stepType = ((InstalledStep) event.getObject()).getStepType();
 		this.compositeStepDef.addStepDef(StepFactory.getStepDef(stepType));
 		this.compositeStepDef.save();
+		this.createDashBoard();
 	}
 
 	public String saveToolDef() throws SystemException, PortalException {
@@ -123,6 +141,17 @@ public class EditToolDefBacking extends AbstractBaseBean implements Serializable
 	
 	public void printPrueba() {
 		System.out.println("IMPRIMIENDO DE PRUEBA");
+	}
+
+	public DashboardModel getDashboard() {
+		System.out.println("Getting Dashboard");
+//		this.createDashBoard();
+		return this.dashboard;
+	}
+
+	public void setDashboard(DashboardModel dashboard) {
+		System.out.println("Setting Dashboard");
+		this.dashboard = dashboard;
 	}
 	
 }

@@ -10,6 +10,16 @@
 	<h:form id="compositeStepsForm">
 		<p:fieldset id="compositeDefFieldSet">
 			<h:message for="@form"></h:message>
+			<p:dashboard id="DB#{compositeStepDefBacking.getStepDefDBEId()}" model="#{editToolDefBacking.dashboard}">
+				<ui:repeat value="#{compositeStepDefBacking.getIndexesList()}" var="index">
+					<p:panel id="Panel#{editToolDefBacking.getCompositeStepDef().getStepDef(index).getStepDefDBEId()}" header="#{index}">
+						<h:outputText value="Este es el index: #{index}" />
+					</p:panel>
+				</ui:repeat>
+				<p:panel id="jereje" header="Jereje">
+					<h:outputText value="Este es Jereje" />
+				</p:panel>
+			</p:dashboard>
 			<p:tabView id="stepTabs" value="#{editToolDefBacking.getCompositeStepDef().getIndexesList()}" var="index"
 			rendered="#{editToolDefBacking.getCompositeStepDef().hasSteps()}" onTabClose="return confirm('#{i18n['confirm-close-tab']}\\n #{i18n['action-non-reversible']}')">
 				<p:ajax event="tabChange" listener="#{editToolDefBacking.onTabChange}" update="@form"/>

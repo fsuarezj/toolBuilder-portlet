@@ -15,8 +15,7 @@
 	<h:head />
 	<h:body>
 		<h3><h:outputText value="#{i18n['configuring-tooldef']} #{editToolDefBacking.toolDefName}" /></h3>
-		<ui:include src="toolDefSettings.xhtml" />
 		<p />
-		<ui:include src="toolStepsSettings.xhtml" />
+		<ui:include src="steps/compositeStepAdmin.xhtml" />
 	</h:body>
 </f:view>
