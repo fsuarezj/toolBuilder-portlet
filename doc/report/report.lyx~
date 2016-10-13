@@ -88,11 +88,16 @@ Blablabla
 \end_layout
 
 \begin_layout Section
-Objectives
+Introduction
 \end_layout
 
 \begin_layout Section
-Introduction
+Objectives
+\end_layout
+
+\begin_layout Standard
+Develop a web tool to help practitioners to carry out Rapid Assessment for
+ Markets
 \end_layout
 
 \begin_layout Section
@@ -107,8 +112,16 @@ Intro
 Implementing agile methodologies (Kanban)
 \end_layout
 
+\begin_layout Subsubsection
+Taiga
+\end_layout
+
 \begin_layout Subsection
 Branching
+\end_layout
+
+\begin_layout Subsubsection
+Git
 \end_layout
 
 \begin_layout Subsection
@@ -117,6 +130,58 @@ Issues tracking
 
 \begin_layout Subsection
 Behavior Driven Development
+\end_layout
+
+\begin_layout Subsection
+Documentation
+\end_layout
+
+\begin_layout Subsubsection
+Javadoc
+\end_layout
+
+\begin_layout Section
+Testing Framework
+\end_layout
+
+\begin_layout Standard
+Intro
+\end_layout
+
+\begin_layout Subsection
+Unit Tests / Whitebox
+\end_layout
+
+\begin_layout Subsubsection
+JUnit
+\end_layout
+
+\begin_layout Subsubsection
+Mockito
+\end_layout
+
+\begin_layout Subsection
+Integration and Functional Tests / BlackBox
+\end_layout
+
+\begin_layout Subsubsection
+Arquillian
+\end_layout
+
+\begin_layout Subsubsection
+Selenium
+\end_layout
+
+\begin_layout Standard
+Problems with Firefox updating
+\end_layout
+
+\begin_layout Subsubsection
+Cucumber-JVM
+\end_layout
+
+\begin_layout Subsection
+Usability
 \end_layout
 
 \begin_layout Section
@@ -132,15 +197,19 @@ Intro
 \end_layout
 
 \begin_layout Subsection
-Object Model
+Technologies
 \end_layout
 
 \begin_layout Subsubsection
-Components Design
+Liferay
+\end_layout
+
+\begin_layout Subsubsection
+JavaServer Faces (JSF) & Components Design
 \end_layout
 
 \begin_layout Standard
-Components design describing the whole system and unvariable parts
+Components design describing the whole system and invariable parts
 \end_layout
 
 \begin_layout Standard
@@ -151,6 +220,18 @@ Components design describing the whole system and unvariable parts
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+Primefaces
+\end_layout
+
+\begin_layout Subsection
+Object Model
+\end_layout
+
+\begin_layout Subsubsection
+Components Design
 \end_layout
 
 \begin_layout Subsubsection
@@ -174,19 +255,33 @@ Data Model
 \end_layout
 
 \begin_layout Section
-Implementation
+Development
 \end_layout
 
 \begin_layout Subsection
-First Sprint
+First Sprint 
 \end_layout
 
 \begin_layout Standard
-Basic System Ram Steps
+A basic tool to navigate through the RAM Steps and capable of save the current
+ state of each assessment
 \end_layout
 
 \begin_layout Subsubsection
 Design
+\end_layout
+
+\begin_layout Standard
+A first design was drafted to make implementation easier so the JSF architecture
+ was kept in mind upon coding.
+\end_layout
+
+\begin_layout Standard
+Beans
+\end_layout
+
+\begin_layout Standard
+Model
 \end_layout
 
 \begin_layout Standard
@@ -203,8 +298,21 @@ Design
 Implementation
 \end_layout
 
+\begin_layout Standard
+Model with Service Builder
+\end_layout
+
+\begin_layout Standard
+Beans which inherit from Abstract Bean.
+\end_layout
+
 \begin_layout Subsubsection
 Testing
+\end_layout
+
+\begin_layout Standard
+Testing in this sprint was merely human guided since the testing framework
+ had not yet been developed.
 \end_layout
 
 \begin_layout Subsection
@@ -212,11 +320,20 @@ Second Sprint
 \end_layout
 
 \begin_layout Standard
-Flowchart Package
+In order to implement in the future the flow chart tools within the RAM,
+ a flow chart system should be developed.
+ The flowchart library search didn't give results so a generic library util
+ was developed.
 \end_layout
 
 \begin_layout Subsubsection
 Design
+\end_layout
+
+\begin_layout Standard
+BasicNode, BasicFlowChart composed by BasicNodes and Flow which represents
+ the flow through the flow chart.
+ Another PermissiveFlow was created to...
 \end_layout
 
 \begin_layout Standard
@@ -236,12 +353,21 @@ Implementation
 Testing
 \end_layout
 
+\begin_layout Standard
+Unit tests were developed and run helping to find and fix bugs
+\end_layout
+
 \begin_layout Subsection
 Third Sprint
 \end_layout
 
 \begin_layout Standard
-Simple Toolbuilder.
+After some interviews with the client it is concluded that the development
+ is quite limited and poorly flexible since it will just fit the current
+ RAM tool requisites and it would be pretty complex to extend it.
+ Finally it is decided to change the requisites and develop a web tool flexible
+ enough to implement different kind of methodologies or tools.
+ That is how the project is becomes a tool builder and so is called Toolbuilder.
  Create CompositeStep
 \end_layout
 
@@ -267,7 +393,9 @@ Testing
 \end_layout
 
 \begin_layout Standard
-BDD
+In this Sprint the testing framework was implemented and a Behavior Driven
+ Development was set up for next Sprints.
+ Tests scenarios were developed for creating, deleting and steping forward
 \end_layout
 
 \begin_layout Subsection
@@ -275,11 +403,9 @@ Fourth Sprint
 \end_layout
 
 \begin_layout Standard
-StepFactory and symetric StepDef and Step structures
-\end_layout
-
-\begin_layout Standard
-
+As tools should be able to be customized, and many instances of each tool
+ may be created it becomes necessary to make code refactoring in order to
+ divide those two parts.
 \end_layout
 
 \begin_layout Standard
@@ -299,7 +425,15 @@ begin{landscape}
 \end_layout
 
 \begin_layout Subsubsection
-Design
+Redesign
+\end_layout
+
+\begin_layout Standard
+Tool definitions are separated from tool instances creating two different
+ classes (ToolDef and ToolInstance), likewise steps definitions, which is
+ related to tool definitions, should be separated from step implementations,
+ for that purpose abstract classes StepDef and Step were created to steps
+ inherit them.
 \end_layout
 
 \begin_layout Standard
@@ -326,22 +460,22 @@ end{landscape}
 \end_inset
 
 
-\begin_inset Newpage pagebreak
-\end_inset
+\end_layout
 
+\begin_layout Subsubsection
+Test design
+\end_layout
 
+\begin_layout Standard
+Tests will remain the same since no new user functionalities will be implemented.
 \end_layout
 
 \begin_layout Subsubsection
 Implementation
 \end_layout
 
-\begin_layout Subsubsection
-Testing
-\end_layout
-
 \begin_layout Standard
-BDD
+Refactoring database
 \end_layout
 
 \begin_layout Subsection
@@ -349,23 +483,33 @@ Fifth Sprint
 \end_layout
 
 \begin_layout Standard
-Basic permission scheme
+Due to the breakup between tool definition and tool instance, it is needful
+ to define permissions to access both areas.
+ In fact the definition will be used by tool administrators, while the instances
+ will be available to logged users, on the other hand not logged users will
+ be able to see tools instances but not use them.
+ Therefore, the permission scheme should be defined to provide limited access
+ based on user role.
+\end_layout
+
+\begin_layout Standard
+Insertar cuadro
 \end_layout
 
 \begin_layout Subsubsection
-Design
+Test design
+\end_layout
+
+\begin_layout Standard
+The functional tests have been modified
 \end_layout
 
 \begin_layout Subsubsection
 Implementation
 \end_layout
 
-\begin_layout Subsubsection
-Testing
-\end_layout
-
 \begin_layout Standard
-Modify BDD
+Liferay permissions scheme
 \end_layout
 
 \begin_layout Subsection
@@ -376,8 +520,20 @@ Sixth Sprint
 Tool Definition Portlet to choose Tool Def
 \end_layout
 
-\begin_layout Subsubsection
-Design
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{landscape}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -393,12 +549,32 @@ Design
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{landscape}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Test design
+\end_layout
+
 \begin_layout Subsubsection
 Implementation
 \end_layout
 
-\begin_layout Subsubsection
-Testing
+\begin_layout Standard
+Creating new Portlet
 \end_layout
 
 \begin_layout Subsection
@@ -474,87 +650,23 @@ Create Basic RAM Tool
 \end_layout
 
 \begin_layout Section
-Testing Framework
+Results
 \end_layout
 
 \begin_layout Standard
-Intro
-\end_layout
-
-\begin_layout Subsection
-Unit Tests / Whitebox
-\end_layout
-
-\begin_layout Subsubsection
-JUnit
-\end_layout
-
-\begin_layout Subsubsection
-Mockito
-\end_layout
-
-\begin_layout Subsection
-Integration and Functional Tests / BlackBox
-\end_layout
-
-\begin_layout Subsubsection
-Arquillian
-\end_layout
-
-\begin_layout Subsubsection
-Selenium
-\end_layout
-
-\begin_layout Standard
-Problems with Firefox updating
-\end_layout
-
-\begin_layout Subsubsection
-Cucumber-JVM
+Usabilidad y modificabilidad/extensibilidad
 \end_layout
 
 \begin_layout Section
-Tools and Technologies
+Discussion
 \end_layout
 
 \begin_layout Standard
-Intro
+2 Párrafos, destilado de los resultados
 \end_layout
 
-\begin_layout Subsection
-Tools
-\end_layout
-
-\begin_layout Subsubsection
-Eclipse
-\end_layout
-
-\begin_layout Subsubsection
-Git
-\end_layout
-
-\begin_layout Subsubsection
-Taiga
-\end_layout
-
-\begin_layout Subsection
-Technologies
-\end_layout
-
-\begin_layout Subsubsection
-Liferay
-\end_layout
-
-\begin_layout Subsubsection
-JavaServer Faces (JSF)
-\end_layout
-
-\begin_layout Subsubsection
-Primefaces
-\end_layout
-
-\begin_layout Subsubsection
-Javadoc
+\begin_layout Standard
+For the future: Performance testing
 \end_layout
 
 \begin_layout Section

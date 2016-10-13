@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_EdigcBnqEeaHdNAhBjaKYg" name="beans">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_EdigcBnqEeaHdNAhBjaKYg" name="toolBuilder">
   <packageImport xmi:id="_VU3GEBnuEeaHdNAhBjaKYg">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
   </packageImport>
@@ -261,7 +261,13 @@
       </packagedElement>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_gePPEB6gEea3HrWHsesb-Q" name="ToolDef"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_gePPEB6gEea3HrWHsesb-Q" name="ToolDef">
+    <ownedOperation xmi:id="_iqzF0IrTEeaEA-t_ybAC5Q" name="ToolDef">
+      <ownedParameter xmi:id="_jnHkIIrTEeaEA-t_ybAC5Q" name="toolDefName">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_TTZI8B6hEea3HrWHsesb-Q" name="ToolInstance"/>
   <packagedElement xmi:type="uml:Activity" xmi:id="_1gdcMCfWEeaFLLTP7o7r9Q" name="ToolBuilder activity"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_ULIUgCitEeaLScfHGLgimA" name="model">
@@ -356,6 +362,11 @@
     <packagedElement xmi:type="uml:Class" xmi:id="_D5V5wHs7Eeaip9ANPcqu9A" name="AbstractBaseBean" isAbstract="true"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_JW68wHs7Eeaip9ANPcqu9A" name="FactoryBean &lt;ApplicationScoped>">
       <generalization xmi:id="_sEeg8Hs7Eeaip9ANPcqu9A" general="_D5V5wHs7Eeaip9ANPcqu9A"/>
+      <ownedOperation xmi:id="_KTMBwIrTEeaEA-t_ybAC5Q" name="putToolDef">
+        <ownedParameter xmi:id="_Lc5b0IrTEeaEA-t_ybAC5Q" name="toolDefName">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_ZEkhYHs7Eeaip9ANPcqu9A" name="ToolSession &lt;SessionScoped>">
       <generalization xmi:id="_rdINEHs7Eeaip9ANPcqu9A" general="_D5V5wHs7Eeaip9ANPcqu9A"/>
@@ -363,8 +374,16 @@
     <packagedElement xmi:type="uml:Class" xmi:id="_cDrW0Hs7Eeaip9ANPcqu9A" name="ToolInstanceBacking &lt;RequestScoped>">
       <generalization xmi:id="_qkD3EHs7Eeaip9ANPcqu9A" general="_D5V5wHs7Eeaip9ANPcqu9A"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_jN2egHs7Eeaip9ANPcqu9A" name="ToolDefBacking &lt;ViewScoped>">
+    <packagedElement xmi:type="uml:Class" xmi:id="_jN2egHs7Eeaip9ANPcqu9A" name="ToolDefListBacking &lt;ViewScoped>">
       <generalization xmi:id="_oshGoHs7Eeaip9ANPcqu9A" general="_D5V5wHs7Eeaip9ANPcqu9A"/>
+      <ownedOperation xmi:id="_J5Vh4IrUEeaEA-t_ybAC5Q" name="createNewToolDef">
+        <ownedParameter xmi:id="_MWT6oIrUEeaEA-t_ybAC5Q" direction="return">
+          <name xsi:nil="true"/>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_e03goIrUEeaEA-t_ybAC5Q" name="Operation_2"/>
+      <ownedOperation xmi:id="_AQUjwIrVEeaEA-t_ybAC5Q" name="Operation_3"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_43an8Hs7Eeaip9ANPcqu9A" memberEnd="_43an8Xs7Eeaip9ANPcqu9A _43bPAns7Eeaip9ANPcqu9A" navigableOwnedEnd="_43bPAns7Eeaip9ANPcqu9A">
       <ownedEnd xmi:id="_43an8Xs7Eeaip9ANPcqu9A" name="toolInstanceBacking &lt;RequestScoped>s" type="_cDrW0Hs7Eeaip9ANPcqu9A" association="_43an8Hs7Eeaip9ANPcqu9A">
@@ -376,5 +395,44 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_43bPBHs7Eeaip9ANPcqu9A" value="*"/>
       </ownedEnd>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_zqKxAIrTEeaEA-t_ybAC5Q" name="EditToolDefBacking &lt;ViewScoped>">
+      <ownedOperation xmi:id="__LXjUIrTEeaEA-t_ybAC5Q" name="createNewToolDef"/>
+    </packagedElement>
   </packagedElement>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_dh7g0IrOEeaEA-t_ybAC5Q" name="User"/>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_vlEWIIrOEeaEA-t_ybAC5Q" name="Scenario_0"/>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_6D33UIrOEeaEA-t_ybAC5Q" name="Scenario_1"/>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_-YE3cIrOEeaEA-t_ybAC5Q" name="Create_Tool_Definition">
+    <ownedAttribute xmi:id="_IOm3sIrPEeaEA-t_ybAC5Q" name="Actor1" type="_IOVx8IrPEeaEA-t_ybAC5Q"/>
+    <ownedAttribute xmi:id="_QBm58YrPEeaEA-t_ybAC5Q" name="Class3" type="_QBmS4IrPEeaEA-t_ybAC5Q"/>
+    <ownedAttribute xmi:id="_06PZIIrQEeaEA-t_ybAC5Q" name="FactoryBean &lt;ApplicationScoped>" type="_JW68wHs7Eeaip9ANPcqu9A"/>
+    <ownedAttribute xmi:id="_Gf6PUYrREeaEA-t_ybAC5Q" name="Class4" type="_Gf5oQIrREeaEA-t_ybAC5Q"/>
+    <ownedAttribute xmi:id="_cUYg4IrUEeaEA-t_ybAC5Q" name="ToolDefListBacking &lt;ViewScoped>" type="_jN2egHs7Eeaip9ANPcqu9A"/>
+    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_AQVK0IrVEeaEA-t_ybAC5Q" name="Operation_3"/>
+    <lifeline xmi:id="_IOWZAIrPEeaEA-t_ybAC5Q" name="Admin" represents="_IOm3sIrPEeaEA-t_ybAC5Q" coveredBy="_1rcpEYrPEeaEA-t_ybAC5Q _6xYLoIrQEeaEA-t_ybAC5Q _e04HtIrUEeaEA-t_ybAC5Q _AQVK0orVEeaEA-t_ybAC5Q _AQVK1orVEeaEA-t_ybAC5Q"/>
+    <lifeline xmi:id="_cUYg4YrUEeaEA-t_ybAC5Q" name="ToolDefListBacking &lt;ViewScoped>" represents="_cUYg4IrUEeaEA-t_ybAC5Q" coveredBy="_e04HsorUEeaEA-t_ybAC5Q _AQVK04rVEeaEA-t_ybAC5Q _AQVK1YrVEeaEA-t_ybAC5Q _AQVK1IrVEeaEA-t_ybAC5Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_AQVK0orVEeaEA-t_ybAC5Q" name="Operation_3_sender" covered="_IOWZAIrPEeaEA-t_ybAC5Q" message="_AQUjwYrVEeaEA-t_ybAC5Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_AQVK04rVEeaEA-t_ybAC5Q" name="Operation_3_receiver" covered="_cUYg4YrUEeaEA-t_ybAC5Q" message="_e03go4rUEeaEA-t_ybAC5Q"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_AQVK1YrVEeaEA-t_ybAC5Q" name="Operation_3" covered="_cUYg4YrUEeaEA-t_ybAC5Q" finish="_AQVK1IrVEeaEA-t_ybAC5Q" start="_AQVK04rVEeaEA-t_ybAC5Q" behavior="_AQVK0IrVEeaEA-t_ybAC5Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_AQVK1IrVEeaEA-t_ybAC5Q" name="Operation_3_reply_sender" covered="_cUYg4YrUEeaEA-t_ybAC5Q" message="_AQVK0YrVEeaEA-t_ybAC5Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_AQVK1orVEeaEA-t_ybAC5Q" name="Operation_3_reply_receiver" covered="_IOWZAIrPEeaEA-t_ybAC5Q" message="_AQVK0YrVEeaEA-t_ybAC5Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_e04HsorUEeaEA-t_ybAC5Q" name="_sender" covered="_cUYg4YrUEeaEA-t_ybAC5Q" message="_e03go4rUEeaEA-t_ybAC5Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_e04HtIrUEeaEA-t_ybAC5Q" name="_receiver" covered="_IOWZAIrPEeaEA-t_ybAC5Q" message="_e03go4rUEeaEA-t_ybAC5Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_6xYLoIrQEeaEA-t_ybAC5Q" name="Operation_1_sender" covered="_IOWZAIrPEeaEA-t_ybAC5Q" message="_6xXkkIrQEeaEA-t_ybAC5Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_6xYLoYrQEeaEA-t_ybAC5Q" name="Operation_1_receiver" message="_1rXJgIrPEeaEA-t_ybAC5Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_1rcpEYrPEeaEA-t_ybAC5Q" name="Operation_1_sender" covered="_IOWZAIrPEeaEA-t_ybAC5Q" message="_1rXJgIrPEeaEA-t_ybAC5Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_1rcpEorPEeaEA-t_ybAC5Q" name="Operation_1_receiver" message="_1rXJgIrPEeaEA-t_ybAC5Q"/>
+    <message xmi:id="_1rXJgIrPEeaEA-t_ybAC5Q" name="newToolDef" receiveEvent="_1rcpEorPEeaEA-t_ybAC5Q" sendEvent="_1rcpEYrPEeaEA-t_ybAC5Q" signature="_1rH48IrPEeaEA-t_ybAC5Q"/>
+    <message xmi:id="_6xXkkIrQEeaEA-t_ybAC5Q" name="newToolDef" receiveEvent="_6xYLoYrQEeaEA-t_ybAC5Q" sendEvent="_6xYLoIrQEeaEA-t_ybAC5Q"/>
+    <message xmi:id="_e03go4rUEeaEA-t_ybAC5Q" name="" messageSort="reply" receiveEvent="_e04HtIrUEeaEA-t_ybAC5Q" sendEvent="_e04HsorUEeaEA-t_ybAC5Q"/>
+    <message xmi:id="_AQUjwYrVEeaEA-t_ybAC5Q" name="Operation_3" receiveEvent="_AQVK04rVEeaEA-t_ybAC5Q" sendEvent="_AQVK0orVEeaEA-t_ybAC5Q">
+      <signature xmi:type="uml:Parameter" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter-setStringDefaultValue-value"/>
+    </message>
+    <message xmi:id="_AQVK0YrVEeaEA-t_ybAC5Q" name="Operation_3_reply" messageSort="reply" receiveEvent="_AQVK1orVEeaEA-t_ybAC5Q" sendEvent="_AQVK1IrVEeaEA-t_ybAC5Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_IOVx8IrPEeaEA-t_ybAC5Q" name="Actor1"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_QBmS4IrPEeaEA-t_ybAC5Q" name="Class3">
+    <ownedOperation xmi:id="_1rH48IrPEeaEA-t_ybAC5Q" name="Operation_1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Gf5oQIrREeaEA-t_ybAC5Q" name="Class4"/>
 </uml:Model>
