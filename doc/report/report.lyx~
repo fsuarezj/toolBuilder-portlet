@@ -1,10 +1,14 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 \usepackage{pdflscape}
+\usepackage{fmtcount}
+\usepackage[super]{nth}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -12,16 +16,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
-
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -32,15 +36,24 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -259,12 +272,37 @@ Development
 \end_layout
 
 \begin_layout Subsection
-First Sprint 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+nth{1}
+\end_layout
+
+\end_inset
+
+Sprint
 \end_layout
 
 \begin_layout Standard
-A basic tool to navigate through the RAM Steps and capable of save the current
- state of each assessment
+A basic tool 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ordinalstring{3}
+\end_layout
+
+\end_inset
+
+ to navigate through the RAM Steps and capable of save the current state
+ of each assessment
 \end_layout
 
 \begin_layout Subsubsection
@@ -437,6 +475,10 @@ Tool definitions are separated from tool instances creating two different
 \end_layout
 
 \begin_layout Standard
+Patterns
+\end_layout
+
+\begin_layout Standard
 \begin_inset Graphics
 	filename /home/ferda/informatica/development/lib/liferay/liferay-plugins-sdk-6.2/portlets/toolBuilder-portlet/doc/uml/exported/StepFactory Class Diagram.png
 	scale 80
@@ -468,6 +510,8 @@ Test design
 
 \begin_layout Standard
 Tests will remain the same since no new user functionalities will be implemented.
+ Anyhow, the test should be passed to guarantee refactoring has been successful
+ and accomplishes all the required features.
 \end_layout
 
 \begin_layout Subsubsection
@@ -478,16 +522,20 @@ Implementation
 Refactoring database
 \end_layout
 
+\begin_layout Standard
+N to N relationship and how Liferay Service Builder resolves it
+\end_layout
+
 \begin_layout Subsection
 Fifth Sprint
 \end_layout
 
 \begin_layout Standard
-Due to the breakup between tool definition and tool instance, it is needful
+Due to the breakup between tool definition and tool instance it is needful
  to define permissions to access both areas.
- In fact the definition will be used by tool administrators, while the instances
- will be available to logged users, on the other hand not logged users will
- be able to see tools instances but not use them.
+ Thus, the definition should be defined to be used by tool administrators,
+ while the instances should be available to logged users, on the other hand
+ not logged users will only be able to see tools instances but not use them.
  Therefore, the permission scheme should be defined to provide limited access
  based on user role.
 \end_layout
@@ -501,7 +549,8 @@ Test design
 \end_layout
 
 \begin_layout Standard
-The functional tests have been modified
+The functional tests have been modified to include permissions restrictions,
+ so XX tests have been modified in this way:
 \end_layout
 
 \begin_layout Subsubsection
@@ -509,7 +558,8 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-Liferay permissions scheme
+To code the permission restrictions the Liferay permissions scheme has been
+ used
 \end_layout
 
 \begin_layout Subsection
@@ -517,7 +567,82 @@ Sixth Sprint
 \end_layout
 
 \begin_layout Standard
-Tool Definition Portlet to choose Tool Def
+Once the backend for tool definition has been developed, it is time to create
+ the interface so administrator users can choose between the different tool
+ definitions created.
+\end_layout
+
+\begin_layout Subsubsection
+Test design
+\end_layout
+
+\begin_layout Standard
+A new scenario was created
+\end_layout
+
+\begin_layout Subsubsection
+Implementation
+\end_layout
+
+\begin_layout Standard
+A new portlet has been created only available for accessible for administrator
+ users and available through the XXX section
+\end_layout
+
+\begin_layout Subsection
+Seventh Sprint
+\end_layout
+
+\begin_layout Standard
+A use case to create a new tool definition is defined as the first step
+ to configure that new tool definition which will be able to be selected
+ in the 
+\family typewriter
+adminView.xhtml
+\family default
+ and used by logged users.
+\end_layout
+
+\begin_layout Subsubsection
+Test Design
+\end_layout
+
+\begin_layout Standard
+Tests have been created for this use case.
+\end_layout
+
+\begin_layout Subsubsection
+Implementation
+\end_layout
+
+\begin_layout Standard
+In order to have different code instances for tool choosing and tool definition
+ a new 
+\family typewriter
+toolDefConfig.xhtml
+\family default
+ file is created which will be called to configure the tool definitions.
+ The name of the tool to work with will be passed as part of the URL (using
+ 
+\family typewriter
+GET
+\family default
+ method) so the page can be addressed straight away by any admin user.
+\end_layout
+
+\begin_layout Standard
+In addition, a way to show different step definitions should be defined,
+ so a tabs view was used because of the familiarity of users with this kind
+ of interface and the easiness of development provided by the Primefaces
+ 
+\family typewriter
+tabView
+\family default
+ resource.
+\end_layout
+
+\begin_layout Standard
+Beans development.
 \end_layout
 
 \begin_layout Standard
@@ -565,8 +690,31 @@ end{landscape}
 
 \end_layout
 
+\begin_layout Subsection
+Eighth Sprint
+\end_layout
+
+\begin_layout Standard
+An interface to add steps to the tool definition should be created.
+ It should be embedded in the 
+\family typewriter
+toolDefConfig.xhtml
+\family default
+ interface, but been independent because it will be called not only from
+ there to add steps to the main tool definition, but also to add steps to
+ any of the nested composite steps.
+\end_layout
+
+\begin_layout Standard
+Add step use case diagram
+\end_layout
+
 \begin_layout Subsubsection
-Test design
+Test Design
+\end_layout
+
+\begin_layout Standard
+Tests have been created for this use case.
 \end_layout
 
 \begin_layout Subsubsection
@@ -574,23 +722,26 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-Creating new Portlet
-\end_layout
-
-\begin_layout Subsection
-Seventh Sprint
+The 
+\emph on
+Primefaces Dialog Framework
+\emph default
+ has been used to have the page to choose among different installed steps
+ separately.
+ Thus, the choice of the new step type is done in a new dialog which will
+ return it (the step type) and will pass it to 
+\family typewriter
+toolDefConfig.xhtml
+\family default
+ via 
+\family typewriter
+POST
+\family default
+ method.
 \end_layout
 
 \begin_layout Standard
-Create Tool Definition use case
-\end_layout
-
-\begin_layout Subsection
-Eighth Sprint
-\end_layout
-
-\begin_layout Standard
-Add Steps to Tool Definition use case
+Capture of dialog
 \end_layout
 
 \begin_layout Subsection
@@ -598,7 +749,37 @@ Ninth Sprint
 \end_layout
 
 \begin_layout Standard
-Delete Steps to Tool Definition use case
+Delete step use case diagram
+\end_layout
+
+\begin_layout Subsubsection
+Test Design
+\end_layout
+
+\begin_layout Standard
+Tests have been created for this use case.
+\end_layout
+
+\begin_layout Subsubsection
+Implementation
+\end_layout
+
+\begin_layout Standard
+Coding this use case was not a hard task since the Primefaces 
+\family typewriter
+<p:tab />
+\family default
+ tag has a property called 
+\family typewriter
+closable
+\family default
+ which allows to close each tab by a button in the top-right corner, so
+ it is also user-friendly.
+ When closing, an ajax call is done if defined for the 
+\family typewriter
+tabClose
+\family default
+ event.
 \end_layout
 
 \begin_layout Subsection
@@ -606,7 +787,35 @@ Tenth Sprint
 \end_layout
 
 \begin_layout Standard
-Modify database structure to add steps order
+At this point, and due to an interview with the client, it was realized
+ that steps order could be modified in tool definition configuration.
+ Up to this moment, steps were added in consecutive order, from first to
+ last,so if users wanted to modify the order the only way was deleting existing
+ steps and creating them again.
+ To fix this the model and hence the database should be modified.
+\end_layout
+
+\begin_layout Standard
+Database relationships diagram with steps order included.
+\end_layout
+
+\begin_layout Subsubsection
+Test Design
+\end_layout
+
+\begin_layout Standard
+Tests for this sprint are just unit tests which verify the insertion of
+ the steps relationships in the database.
+ TODO
+\end_layout
+
+\begin_layout Subsubsection
+Implementation
+\end_layout
+
+\begin_layout Standard
+Talk about how I stop using service builder n to n relationships and create
+ a new table to store the relationship and the order.
 \end_layout
 
 \begin_layout Subsection
@@ -654,7 +863,7 @@ Results
 \end_layout
 
 \begin_layout Standard
-Usabilidad y modificabilidad/extensibilidad
+Usability and modificabilidad/extensibilidad
 \end_layout
 
 \begin_layout Section
