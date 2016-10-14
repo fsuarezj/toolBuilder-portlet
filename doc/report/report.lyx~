@@ -272,37 +272,12 @@ Development
 \end_layout
 
 \begin_layout Subsection
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-nth{1}
-\end_layout
-
-\end_inset
-
-Sprint
+First Sprint
 \end_layout
 
 \begin_layout Standard
-A basic tool 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ordinalstring{3}
-\end_layout
-
-\end_inset
-
- to navigate through the RAM Steps and capable of save the current state
- of each assessment
+A basic tool to navigate through the RAM Steps and capable of save the current
+ state of each assessment
 \end_layout
 
 \begin_layout Subsubsection
@@ -818,12 +793,48 @@ Talk about how I stop using service builder n to n relationships and create
  a new table to store the relationship and the order.
 \end_layout
 
+\begin_layout Standard
+Talk about how add, remove methods have been modified and moveStep created
+\end_layout
+
+\begin_layout Standard
+Refactoring
+\end_layout
+
 \begin_layout Subsection
 Eleventh Sprint
 \end_layout
 
 \begin_layout Standard
-Create interface to modify steps order in tool definitions
+Once the backend supports steps order it is time to modify the interface
+ so admin users can change the order of the steps in a tool definition.
+ It involved looking the possibilities of doing it in a user-friendly drag-and-d
+rop way with the current tabs view.
+ Given the impossibility of doing that with the existing Primefaces 
+\family typewriter
+<p:tab />
+\family default
+ tag the whole steps interface was redesigned.
+\end_layout
+
+\begin_layout Subsubsection
+Test Design
+\end_layout
+
+\begin_layout Standard
+Tests for this sprint are those to move the steps but with regression tests
+ from eighth sprint in order to assure the proper functioning of the redesigned
+ interface.
+\end_layout
+
+\begin_layout Subsubsection
+Implementation
+\end_layout
+
+\begin_layout Standard
+which means launch a dialog and drag-and-drop the Create interface to modify
+ steps order in tool definitions.
+ Due to the main
 \end_layout
 
 \begin_layout Subsection
