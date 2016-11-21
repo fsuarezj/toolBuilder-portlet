@@ -1,5 +1,8 @@
 package org.lrc.liferay.toolbuilder.bean.toolDefinition;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -47,9 +50,9 @@ public class ToolDefListBacking extends AbstractBaseBean {
 		this.newToolDefName = newToolDefName;
 	}
 	
-	public String editNewToolDef() {
+	public String editNewToolDef() throws UnsupportedEncodingException {
 		System.out.println("Va a la pag de admin para crear " + this.newToolDefName);
-		return "editToolDef?faces-redirect=true&amp;includeViewParams=true&amp;newToolDefName=" + this.newToolDefName;
+		return "editToolDef?faces-redirect=true&amp;includeViewParams=true&amp;newToolDefName=" + URLEncoder.encode(this.newToolDefName, "UTF-8");
 	}
 	
 }

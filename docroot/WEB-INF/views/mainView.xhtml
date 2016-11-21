@@ -11,6 +11,7 @@
 	<h:head />
 	<h:body>
 		<p:messages id="statusMessages" showDetail="true" />
+		<h3><h:outputText id="toolDefName" value="#{toolSession.selectedToolDef.toolDefName}"/></h3>
 		<h:outputText value="DEBUG" />
 		<h:form id="toolInstancesList">
 			<ui:include src="toolInstancesList.xhtml" />

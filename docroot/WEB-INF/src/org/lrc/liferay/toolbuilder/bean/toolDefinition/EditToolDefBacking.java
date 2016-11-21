@@ -2,7 +2,9 @@ package org.lrc.liferay.toolbuilder.bean.toolDefinition;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URLDecoder;
 
 import javax.faces.application.NavigationHandler;
 import javax.faces.bean.ManagedBean;
@@ -94,9 +96,9 @@ public class EditToolDefBacking extends AbstractBaseBean implements Serializable
 		return this.newToolDefName;
 	}
 
-	public void setNewToolDefName(String newToolDefName) {
+	public void setNewToolDefName(String newToolDefName) throws UnsupportedEncodingException {
 		System.out.println("Poniendo la newToolDefName a " + newToolDefName);
-		this.newToolDefName = newToolDefName;
+		this.newToolDefName = URLDecoder.decode(newToolDefName, "UTF-8");
 	}
 	
 	public StepDef getCompositeStepDef() {
@@ -127,7 +129,7 @@ public class EditToolDefBacking extends AbstractBaseBean implements Serializable
 		this.createDashBoard();
 	}
 
-	public String saveToolDef() throws SystemException, PortalException {
+	public String saveToolDef() throws SystemException, PortalException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		this.toolDef.save(); 
 		if (this.oldToolDefName != null) {
 			FactoryBean.removeToolDef(this.oldToolDefName);

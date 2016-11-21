@@ -33,24 +33,26 @@
 					<h:outputText value="#{i18n['no-steps-yet']}"/>
 				</c:if>
 			</p:fieldset>
-			<p:commandButton value="#{i18n['new-step']}" action="#{stepTypeListBacking.chooseStepDef}">
+			<p:commandButton id="newStepButton" value="#{i18n['new-step']}" action="#{stepTypeListBacking.chooseStepDef}">
 				<p:ajax event="dialogReturn" update="compositeStepsForm" listener="#{editToolDefBacking.createNewStepDef}" />
 			</p:commandButton>
 			<p:commandButton id="orderSteps" value="#{i18n['save-order-steps']}" rendered="#{(editToolDefBacking.getCompositeStepDef().hasSteps())}">
 				<p:ajax update="dashboardFieldSet" listener="#{compositeStepDefBacking.saveNewStepsOrder}" />
 			</p:commandButton>
 		</p:fieldset>
-		<c:forEach var="index" begin="0" end="#{compositeStepDefBacking.getStepsNumber() - 1}">
-			<p:dialog widgetVar="confDialogPanel_#{index}" header="Naniero" modal="true" draggable="false" resizable="false">
-				<h:outputText value="#{i18n['ask-delete-step']}" />
-				<br />
-				<h:outputText value="#{i18n['order-changes-will-save']}"/>
-				<p />
-				<p:commandButton value="#{i18n['yes']}">
-					<p:ajax update="dashboardFieldSet" listener="#{compositeStepDefBacking.deleteStepDef(index)}" oncomplete="PF('confDialogPanel_#{index}').hide();"/>
-				</p:commandButton>
-				<p:commandButton value="#{i18n['no']}" onclick="PF('confDialogPanel_#{index}').hide();"/>
-			</p:dialog>
-		</c:forEach>
+		<c:if test="#{(editToolDefBacking.getCompositeStepDef().hasSteps())}">
+			<c:forEach var="index" begin="0" end="#{compositeStepDefBacking.getStepsNumber() - 1}">
+				<p:dialog widgetVar="confDialogPanel_#{index}" header="Naniero" modal="true" draggable="false" resizable="false">
+					<h:outputText value="#{i18n['ask-delete-step']}" />
+					<br />
+					<h:outputText value="#{i18n['order-changes-will-save']}"/>
+					<p />
+					<p:commandButton value="#{i18n['yes']}">
+						<p:ajax update="dashboardFieldSet" listener="#{compositeStepDefBacking.deleteStepDef(index)}" oncomplete="PF('confDialogPanel_#{index}').hide();"/>
+					</p:commandButton>
+					<p:commandButton value="#{i18n['no']}" onclick="PF('confDialogPanel_#{index}').hide();"/>
+				</p:dialog>
+			</c:forEach>
+		</c:if>
 	</h:form>
 </f:view>

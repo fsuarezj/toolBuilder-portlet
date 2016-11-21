@@ -59,10 +59,9 @@ public class ToolSession extends AbstractBaseBean implements Serializable{
 		this.workingOnToolInstance = false;
 		this.configuringInstance = false;
 		try {
-//			this.selectedToolDef = FactoryBean.getToolDef("Test Tool 2");
 			System.out.println("SELECTING");
+			FactoryBean.setSelectedToolDef(FactoryBean.getToolDef("Test Tool 2"));
 			FactoryBean.setSelectedToolDef(FactoryBean.getToolDef("Test Tool"));
-//			this.selectedToolDef = FactoryBean.getToolDef("Test Tool");
 		} catch (Exception e) {
 			logger.error(e);
 		}

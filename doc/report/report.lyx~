@@ -226,9 +226,43 @@ Components design describing the whole system and invariable parts
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/jsf_scheme.png
-	scale 35
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+JSF components
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:jsf_components"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -286,7 +320,7 @@ Design
 
 \begin_layout Standard
 A first design was drafted to make implementation easier so the JSF architecture
- was kept in mind upon coding.
+ was kept in mind when coding.
 \end_layout
 
 \begin_layout Standard
@@ -298,9 +332,39 @@ Model
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/ferda/informatica/development/liferay/portlets/tool-builder-portlet/doc/uml/exported/First Sprint Class Diagram.png
-	scale 80
+	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/uml/exported/First Sprint Class Diagram.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Design for the first sprint
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint1_design"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -350,8 +414,39 @@ BasicNode, BasicFlowChart composed by BasicNodes and Flow which represents
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/ferda/informatica/development/liferay/portlets/tool-builder-portlet/doc/uml/exported/flowcharts Class Diagram.png
+	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/uml/exported/flowcharts Class Diagram.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Design for the second sprint, the flowchart util library
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint2_design"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -389,8 +484,42 @@ Design
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/ferda/informatica/development/liferay/portlets/tool-builder-portlet/doc/uml/exported/Third Sprint Class Diagram.png
+	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/uml/exported/Third Sprint Class Diagram.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Design for the third sprint
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint3_design"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -408,7 +537,75 @@ Testing
 \begin_layout Standard
 In this Sprint the testing framework was implemented and a Behavior Driven
  Development was set up for next Sprints.
- Tests scenarios were developed for creating, deleting and steping forward
+ Tests scenarios were developed for the three existing features:
+\end_layout
+
+\begin_layout Enumerate
+Tool Instance Creation
+\end_layout
+
+\begin_layout Enumerate
+Tool Instance Deletion
+\end_layout
+
+\begin_layout Enumerate
+Navigate through steps
+\end_layout
+
+\begin_layout Standard
+For each feature, the different scenarios or user stories (in compliance
+ with the BDD methodology) have been created.
+ In figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:features_toolInstance"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/tool_instance_features_tests.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Features developed and tested in the third sprint
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:features_toolInstance"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -419,6 +616,18 @@ Fourth Sprint
 As tools should be able to be customized, and many instances of each tool
  may be created it becomes necessary to make code refactoring in order to
  divide those two parts.
+\end_layout
+
+\begin_layout Subsubsection
+Redesign
+\end_layout
+
+\begin_layout Standard
+Tool definitions are separated from tool instances creating two different
+ classes (ToolDef and ToolInstance), likewise steps definitions, which is
+ related to tool definitions, should be separated from step implementations,
+ for that purpose abstract classes StepDef and Step were created to steps
+ inherit them.
 \end_layout
 
 \begin_layout Standard
@@ -437,26 +646,47 @@ begin{landscape}
 
 \end_layout
 
-\begin_layout Subsubsection
-Redesign
-\end_layout
-
-\begin_layout Standard
-Tool definitions are separated from tool instances creating two different
- classes (ToolDef and ToolInstance), likewise steps definitions, which is
- related to tool definitions, should be separated from step implementations,
- for that purpose abstract classes StepDef and Step were created to steps
- inherit them.
-\end_layout
-
 \begin_layout Standard
 Patterns
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways true
+status open
+
+\begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/ferda/informatica/development/lib/liferay/liferay-plugins-sdk-6.2/portlets/toolBuilder-portlet/doc/uml/exported/StepFactory Class Diagram.png
+	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/uml/exported/StepFactory Class Diagram.png
 	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Design for the fourth sprint
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint4_design"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 

@@ -13,25 +13,30 @@
 		<br />
 		<h:outputText id="toolInstancesEmpty" value="#{i18n['no-existing-instances']} of type #{toolSession.selectedToolDef.toolDefName}" />
 		<h:form id="toolDefsList">
-			<h:dataTable id="toolDefsListTable" styleClass="table table-bordered table-hover table-striped" rowClasses="table-cell" value="#{factoryBean.getToolDefNames()}" var="toolDefName">
-				<h:column>
+			<p:dataTable id="toolDefsListTable" styleClass="table table-bordered table-hover table-striped" rowStyleClass="toolDefRow #{toolDefName.replace(' ', '-')}" value="#{factoryBean.getToolDefNames()}" var="toolDefName">
+				<p:column>
 					<f:facet name="header"><h:outputText value="#{i18n['tool-def-name']}" /></f:facet>
 					<h:outputText id="toolDefName" value="#{toolDefName}" />
-				</h:column>
-				<h:column>
+				</p:column>
+				<p:column>
 					<f:facet name="header"></f:facet>
-					<p:commandButton value="#{i18n['select']}" disabled="#{toolSession.isSelectedToolDef(toolDefName)}">
+					<p:commandButton id="selectToolDefButton" value="#{i18n['select']}" disabled="#{toolSession.isSelectedToolDef(toolDefName)}">
 						<f:ajax listener="#{toolSession.setSelectedToolDef(toolDefName)}" render="@form" />
 					</p:commandButton>
-					<p:button outcome="editToolDef" value="#{i18n['configure']}">
+					<p:button id="editToolDefButton" outcome="editToolDef" value="#{i18n['configure']}">
 						<f:param name="toolDefName" value="#{toolDefName}" />
 					</p:button>
-				</h:column>
-			</h:dataTable>
-			<p:commandButton value="#{i18n['new-tool-def']}" onclick="PF('inputNewToolName').show();" />
+					<p:commandButton id="deleteToolDefButton" value="#{i18n['delete']}" disabled="#{factoryBean.hasInstances(toolDefName)}">
+						<f:ajax listener="#{factoryBean.removeToolDef(toolDefName)}" render="@form" />
+						<p:confirm header="#{i18n['delete-toolDef-confirmation']}" message="#{i18n['want-to-delete-toolDef']} #{toolDefName}?" />
+					</p:commandButton>
+					<h:outputText class="caption" value=" #{i18n['toolDef-cannot-be-deleted']}" rendered="#{factoryBean.hasInstances(toolDefName)}"/>
+				</p:column>
+			</p:dataTable>
+			<p:commandButton id="newToolDefButton" value="#{i18n['new-tool-def']}" onclick="PF('inputNewToolName').show();" />
 			</h:form>
 			<p:dialog header="#{i18n['step-type']}" widgetVar="inputNewToolName" modal="true">
-				<h:form>
+				<h:form id="newToolDefNameForm">
 				<p:fieldset id="newToolNameDialog">
 					<h:outputLabel for="inputToolName" value="#{i18n['input-tool-names']}: " />
 					<p:inputText id="newToolDefName" name="newToolDefName" value="#{toolDefListBacking.newToolDefName}" validator="#{toolDefListBacking.checkToolDefName}" required="true">
@@ -44,5 +49,9 @@
 				</p:fieldset>
 				</h:form>
 			</p:dialog>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="#{i18n['Yes']}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="#{i18n['No']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
 	</h:body>
 </f:view>

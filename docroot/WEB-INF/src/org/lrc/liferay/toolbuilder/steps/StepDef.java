@@ -8,7 +8,6 @@ import org.lrc.liferay.toolbuilder.StepDBEException;
 import org.lrc.liferay.toolbuilder.StepDefDBEException;
 import org.lrc.liferay.toolbuilder.StepFactory;
 import org.lrc.liferay.toolbuilder.model.StepDefDBE;
-import org.lrc.liferay.toolbuilder.service.CompositeStepDefDBELocalServiceUtil;
 import org.lrc.liferay.toolbuilder.service.StepDefDBELocalServiceUtil;
 
 import com.liferay.faces.portal.context.LiferayFacesContext;

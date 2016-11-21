@@ -2,11 +2,15 @@ package org.lrc.liferay.toolbuilder;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
+import org.lrc.liferay.toolbuilder.bean.FactoryBean;
 import org.lrc.liferay.toolbuilder.model.StepDefDBE;
 import org.lrc.liferay.toolbuilder.model.ToolDefDBE;
+import org.lrc.liferay.toolbuilder.model.ToolInstanceDBE;
 import org.lrc.liferay.toolbuilder.service.StepDefDBELocalServiceUtil;
 import org.lrc.liferay.toolbuilder.service.ToolDefDBELocalServiceUtil;
+import org.lrc.liferay.toolbuilder.service.ToolInstanceDBELocalServiceUtil;
 import org.lrc.liferay.toolbuilder.service.persistence.ToolDefDBEUtil;
 import org.lrc.liferay.toolbuilder.steps.composite.CompositeStep;
 import org.lrc.liferay.toolbuilder.steps.composite.CompositeStepDef;
@@ -113,5 +117,22 @@ public class ToolDef implements Serializable {
 	
 	public CompositeStepDef getCompositeStepDef() {
 		return this.compositeStepDef;
+	}
+
+	public void delete() throws PortalException, SystemException {
+		this.compositeStepDef.delete();
+		ToolDefDBELocalServiceUtil.deleteToolDefDBE(toolDefDBE.getToolDefDBEId());
+	}
+	
+	public boolean hasInstances() throws SystemException {
+		boolean result;
+		long groupId = LiferayFacesContext.getInstance().getScopeGroupId();
+		List<ToolInstanceDBE> list = ToolInstanceDBELocalServiceUtil.getToolInstanceDBEs(groupId, this.toolDefDBE.getToolDefDBEId());
+		if (list.isEmpty()) {
+			result = false;
+		} else {
+			result = true;
+		}
+		return result;
 	}
 }

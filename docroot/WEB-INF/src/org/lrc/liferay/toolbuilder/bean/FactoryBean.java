@@ -104,9 +104,19 @@ public class FactoryBean extends AbstractBaseBean implements Serializable {
 		return result;
 	}
 	
-	public static void removeToolDef(String toolDefName) {
-		System.out.println("Removing from FactoryBean map toolDef " + toolDefName);
-		FactoryBean.toolDefs.remove(toolDefName);
+	public static void removeToolDef(String toolDefName) throws PortalException, SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		System.out.println("Removing from FactoryBean and db the toolDef " + toolDefName);
+		ToolDef toolDef = FactoryBean.getToolDef(toolDefName);
+		if (!toolDef.hasInstances()) {
+			toolDef.delete();
+			FactoryBean.toolDefs.remove(toolDefName);
+		} else {
+			throw new PortalException();
+		}
+	}
+	
+	public static boolean hasInstances(String toolDefName) throws SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, PortalException {
+		return FactoryBean.getToolDef(toolDefName).hasInstances();
 	}
 	
 	public static void putToolDef(String toolDefName) {

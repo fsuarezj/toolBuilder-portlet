@@ -90,7 +90,6 @@ public class CompositeStep extends Step {
 		for (Step step: this.steps) {
 			step.delete();
 		}
-		// TODO: Delete all contained steps
 	}
 
 	/**

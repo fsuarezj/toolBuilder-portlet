@@ -288,6 +288,14 @@ public class CompositeStepDef extends StepDef {
 		this.saveNewStepsOrder(true);
 	}
 	
+	public void delete() throws PortalException, SystemException {
+		super.delete();
+		CompositeStepDefDBELocalServiceUtil.deleteCompositeStepDefDBE(this.compositeStepDefDBE.getCompositeStepDefDBEId());
+		for (StepDef stepDef: this.stepDefs) {
+			stepDef.delete();
+		}
+	}
+
 	@Override
 	public Step buildStep() throws SystemException, NoSuchUserException, NoSuchInstalledStepException, StepDBEException, StepDefDBEException, CompositeStepDBEException {
 		CompositeStep builtStep = new CompositeStep(this);

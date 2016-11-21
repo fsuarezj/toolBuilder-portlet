@@ -1,3 +1,7 @@
 .ui-panel, .ui-panel-titlebar {
 	padding: 0px;
 }
+
+.caption {
+	color: #FF0000;
+}
