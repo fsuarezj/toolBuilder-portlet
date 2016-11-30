@@ -35,11 +35,13 @@ public class ToolInstance implements Serializable {
 				(this.toolDef.getToolDefDBEId(), this.compositeStep.getStepDBEId(), liferayFacesContext);
 	}
 	
-	public ToolInstance(ToolInstanceDBE toolInstanceDBE, ToolDef toolDef) throws PortalException, SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public ToolInstance(ToolInstanceDBE toolInstanceDBE, ToolDef toolDef) throws NoSuchCompositeStepDBEException, PortalException, SystemException {
 		this.toolInstanceDBE = toolInstanceDBE;
 		this.toolDef = toolDef;
-		StepDBE stepDBE = StepDBELocalServiceUtil.getStepDBE(this.toolInstanceDBE.getCompositeStepDBEId());
+		StepDBE stepDBE;
+		stepDBE = StepDBELocalServiceUtil.getStepDBE(this.toolInstanceDBE.getCompositeStepDBEId());
 		this.compositeStep = new CompositeStep(stepDBE);
+		toolDef.getToolInstances().add(this);
 	}
 	
 	public void setToolTitle(String toolTitle) {

@@ -1,12 +1,12 @@
 package org.lrc.liferay.toolbuilder.steps.composite;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import org.lrc.liferay.toolbuilder.CompositeStepDBEException;
 import org.lrc.liferay.toolbuilder.CompositeStepDefDBEException;
+import org.lrc.liferay.toolbuilder.NoSuchCompositeStepDefDBEException;
 import org.lrc.liferay.toolbuilder.NoSuchInstalledStepException;
 import org.lrc.liferay.toolbuilder.NoSuchStepDefDBEException;
 import org.lrc.liferay.toolbuilder.StepDBEException;
@@ -45,7 +45,7 @@ public class CompositeStepDef extends StepDef {
 		this.stepDefs = new ArrayList<StepDef>();
 	}
 
-	public CompositeStepDef(StepDefDBE stepDefDBE) throws PortalException, SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public CompositeStepDef(StepDefDBE stepDefDBE) throws NoSuchCompositeStepDefDBEException, PortalException, SystemException {
 		super(stepDefDBE);
 		this.compositeStepDefDBE = CompositeStepDefDBELocalServiceUtil.getCompositeStepDefDBE(stepDefDBE.getStepTypeId());
 		this.buildStepDefs();
@@ -307,7 +307,7 @@ public class CompositeStepDef extends StepDef {
 		return builtStep;
 	}
 
-	public void buildStepDefs() throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, SystemException, NoSuchStepDefDBEException, PortalException {
+	public void buildStepDefs() throws NoSuchStepDefDBEException, PortalException, SystemException {
 		System.out.println("It is going to rebuild steps defs for composite def with ID " + this.getCompositeStepDefDBEId());
 //		List<StepDefDBE> stepDefDBEs = StepDefDBELocalServiceUtil.getCompositeStepDefDBEStepDefDBEs(this.getCompositeStepDefDBEId());
 		List<StepDefsCompositeStepDefDBE> stepDefsCompositeStepDefDBEs = StepDefsCompositeStepDefDBELocalServiceUtil.getRelationships(this.getCompositeStepDefDBEId());

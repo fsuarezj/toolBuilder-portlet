@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.lrc.liferay.toolbuilder.CompositeStepDBEException;
+import org.lrc.liferay.toolbuilder.NoSuchCompositeStepDBEException;
 import org.lrc.liferay.toolbuilder.NoSuchInstalledStepException;
 import org.lrc.liferay.toolbuilder.StepDBEException;
 import org.lrc.liferay.toolbuilder.StepDefDBEException;
@@ -44,7 +45,7 @@ public class CompositeStep extends Step {
 		this.steps = new ArrayList<Step>();
 	}
 	
-	public CompositeStep(StepDBE stepDBE) throws PortalException, SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public CompositeStep(StepDBE stepDBE) throws NoSuchCompositeStepDBEException, PortalException, SystemException {
 		super(stepDBE);
 		this.compositeStepDBE = CompositeStepDBELocalServiceUtil.getCompositeStepDBE(stepDBE.getStepTypeId());
 		this.compositeStepDef = new CompositeStepDef(StepDefDBELocalServiceUtil.getStepDefDBE(this.compositeStepDBE.getCompositeStepDefDBEId()));

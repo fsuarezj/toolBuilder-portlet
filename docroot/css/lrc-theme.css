@@ -2,6 +2,10 @@
 	padding: 0px;
 }
 
-.caption {
-	color: #FF0000;
+.selected-toolDef {
+	font-weight: bold;
+}
+
+.caption-tooltip .ui-tooltip-text {
+	background-color: red;
 }

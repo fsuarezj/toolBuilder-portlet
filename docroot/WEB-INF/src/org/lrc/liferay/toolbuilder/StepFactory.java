@@ -64,8 +64,9 @@ public final class StepFactory {
 		return (StepDef) stepConstructor.newInstance();
 	}
 
-	public static StepDef getStepDef(String stepType, StepDefDBE stepDefDBE) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public static StepDef getStepDef(String stepType, StepDefDBE stepDefDBE) {
 //		System.out.println("Creating Step " + StepFactory.stepClasses.get(stepType) + " for name " + stepType);
+		try {
 		Class<?> stepClass = Class.forName(stepClasses.get(stepType).getNamespace() +
 				"." + stepClasses.get(stepType).getClassName() + "Def");
 		Class<?>[] cArgs = new Class[1];
@@ -73,6 +74,13 @@ public final class StepFactory {
 		Constructor<?> stepConstructor = stepClass.getConstructor(cArgs);
 		System.out.println("It is going to create a step def of type " + stepType);
 		return (StepDef) stepConstructor.newInstance(stepDefDBE);
+		} catch (ClassNotFoundException | NoSuchMethodException |
+				SecurityException | InstantiationException |
+				IllegalAccessException | IllegalArgumentException |
+				InvocationTargetException p) {
+			p.printStackTrace();
+		}
+		return null;
 	}
 
 	public static Step getStep(String stepType, StepDBE stepDBE) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ClassNotFoundException, NoSuchMethodException, SecurityException {

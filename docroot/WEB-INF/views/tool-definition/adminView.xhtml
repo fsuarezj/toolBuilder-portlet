@@ -16,21 +16,24 @@
 			<p:dataTable id="toolDefsListTable" styleClass="table table-bordered table-hover table-striped" rowStyleClass="toolDefRow #{toolDefName.replace(' ', '-')}" value="#{factoryBean.getToolDefNames()}" var="toolDefName">
 				<p:column>
 					<f:facet name="header"><h:outputText value="#{i18n['tool-def-name']}" /></f:facet>
-					<h:outputText id="toolDefName" value="#{toolDefName}" />
+					<h:outputText id="toolDefName" value="#{toolDefName}" styleClass="#{toolSession.isSelectedToolDef(toolDefName)? 'selected-toolDef' : ''}" />
+					<h:outputText id="selectedToolDefCaption" value=" (#{i18n['selected']})" rendered="#{toolSession.isSelectedToolDef(toolDefName)}" />
 				</p:column>
 				<p:column>
 					<f:facet name="header"></f:facet>
-					<p:commandButton id="selectToolDefButton" value="#{i18n['select']}" disabled="#{toolSession.isSelectedToolDef(toolDefName)}">
+					<p:outputPanel id="buttonsPanel">
+					<p:commandButton id="selectToolDefButton" value="#{i18n['select']}" rendered="#{!toolSession.isSelectedToolDef(toolDefName)}">
 						<f:ajax listener="#{toolSession.setSelectedToolDef(toolDefName)}" render="@form" />
 					</p:commandButton>
-					<p:button id="editToolDefButton" outcome="editToolDef" value="#{i18n['configure']}">
+					<p:button id="editToolDefButton" outcome="editToolDef" value="#{i18n['configure']}" disabled="#{toolSession.isSelectedToolDef(toolDefName) || factoryBean.hasInstances(toolDefName)}">
 						<f:param name="toolDefName" value="#{toolDefName}" />
 					</p:button>
-					<p:commandButton id="deleteToolDefButton" value="#{i18n['delete']}" disabled="#{factoryBean.hasInstances(toolDefName)}">
+					<p:commandButton id="deleteToolDefButton" value="#{i18n['delete']}" disabled="#{toolSession.isSelectedToolDef(toolDefName) || factoryBean.hasInstances(toolDefName)}">
 						<f:ajax listener="#{factoryBean.removeToolDef(toolDefName)}" render="@form" />
 						<p:confirm header="#{i18n['delete-toolDef-confirmation']}" message="#{i18n['want-to-delete-toolDef']} #{toolDefName}?" />
 					</p:commandButton>
-					<h:outputText class="caption" value=" #{i18n['toolDef-cannot-be-deleted']}" rendered="#{factoryBean.hasInstances(toolDefName)}"/>
+					</p:outputPanel>
+					<p:tooltip for="buttonsPanel" styleClass="caption-tooltip" value="#{i18n['unselect-or-delete-instances-to-configure-delete-tooldef']}" rendered="#{toolSession.isSelectedToolDef(toolDefName) || factoryBean.hasInstances(toolDefName)}" trackMouse="true"/>
 				</p:column>
 			</p:dataTable>
 			<p:commandButton id="newToolDefButton" value="#{i18n['new-tool-def']}" onclick="PF('inputNewToolName').show();" />
@@ -50,8 +53,8 @@
 				</h:form>
 			</p:dialog>
 			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-				<p:commandButton value="#{i18n['Yes']}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-				<p:commandButton value="#{i18n['No']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				<p:commandButton id="confirmDelete" value="#{i18n['Yes']}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton id="denyDelete" value="#{i18n['No']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 			</p:confirmDialog>
 	</h:body>
 </f:view>

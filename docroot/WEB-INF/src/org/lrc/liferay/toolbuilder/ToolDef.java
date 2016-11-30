@@ -2,9 +2,9 @@ package org.lrc.liferay.toolbuilder;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 
-import org.lrc.liferay.toolbuilder.bean.FactoryBean;
 import org.lrc.liferay.toolbuilder.model.StepDefDBE;
 import org.lrc.liferay.toolbuilder.model.ToolDefDBE;
 import org.lrc.liferay.toolbuilder.model.ToolInstanceDBE;
@@ -27,6 +27,7 @@ public class ToolDef implements Serializable {
 	private static final long serialVersionUID = 3469229446098569636L;
 	private CompositeStepDef compositeStepDef;
 	private ToolDefDBE toolDefDBE;
+	private List<ToolInstance> toolInstances;
 	
 	public ToolDef(String toolName) throws SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, PortalException {
 		if (toolName.equals("Test Tool")) {
@@ -94,7 +95,6 @@ public class ToolDef implements Serializable {
 	}
 
 	public String getToolDefName() {
-		// TODO Auto-generated method stub
 		return this.toolDefDBE.getToolName();
 	}
 	
@@ -124,15 +124,38 @@ public class ToolDef implements Serializable {
 		ToolDefDBELocalServiceUtil.deleteToolDefDBE(toolDefDBE.getToolDefDBEId());
 	}
 	
-	public boolean hasInstances() throws SystemException {
-		boolean result;
+	private void loadToolInstances() throws NoSuchCompositeStepDBEException, PortalException, SystemException {
+		this.toolInstances = new ArrayList<ToolInstance>();
 		long groupId = LiferayFacesContext.getInstance().getScopeGroupId();
-		List<ToolInstanceDBE> list = ToolInstanceDBELocalServiceUtil.getToolInstanceDBEs(groupId, this.toolDefDBE.getToolDefDBEId());
-		if (list.isEmpty()) {
-			result = false;
-		} else {
-			result = true;
+		List<ToolInstanceDBE> toolInstancesDBE;
+		toolInstancesDBE = ToolInstanceDBELocalServiceUtil.getToolInstanceDBEs(groupId, this.toolDefDBE.getToolDefDBEId());
+		for (ToolInstanceDBE toolInstanceDBE: toolInstancesDBE) {
+			// When creating a toolInstance ToolDef.addToolInstance(toolInstance) is called, so it's added to this.toolIsnstances
+			new ToolInstance(toolInstanceDBE, this);
 		}
-		return result;
+	}
+	
+	public boolean hasInstances() throws SystemException, PortalException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		if (this.toolInstances == null) {
+			this.loadToolInstances();
+		}
+		if (this.toolInstances.isEmpty()) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	/**
+	 * @return the toolInstances
+	 * @throws SystemException 
+	 * @throws PortalException 
+	 * @throws NoSuchCompositeStepDBEException 
+	 */
+	public List<ToolInstance> getToolInstances() throws NoSuchCompositeStepDBEException, PortalException, SystemException {
+		if (this.toolInstances == null) {
+			this.loadToolInstances();
+		}
+		return toolInstances;
 	}
 }

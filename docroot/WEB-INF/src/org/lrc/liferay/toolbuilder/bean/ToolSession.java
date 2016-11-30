@@ -2,7 +2,6 @@ package org.lrc.liferay.toolbuilder.bean;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -10,16 +9,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import org.lrc.liferay.toolbuilder.CompositeStepDBEException;
+import org.lrc.liferay.toolbuilder.NoSuchCompositeStepDBEException;
 import org.lrc.liferay.toolbuilder.NoSuchInstalledStepException;
 import org.lrc.liferay.toolbuilder.NoSuchToolDefDBEException;
 import org.lrc.liferay.toolbuilder.StepDBEException;
 import org.lrc.liferay.toolbuilder.StepDefDBEException;
 import org.lrc.liferay.toolbuilder.ToolDef;
 import org.lrc.liferay.toolbuilder.ToolInstance;
-import org.lrc.liferay.toolbuilder.model.ToolInstanceDBE;
-import org.lrc.liferay.toolbuilder.service.ToolInstanceDBELocalServiceUtil;
 
-import com.liferay.faces.portal.context.LiferayFacesContext;
 import com.liferay.portal.NoSuchUserException;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -27,10 +24,7 @@ import com.liferay.portal.kernel.exception.SystemException;
 /**
  * @author Fernando Suárez
  * A session scoped bean to store the different configurations for a session
- */
-/**
- * @author Fernando Suárez
- *
+ * 
  */
 @ManagedBean
 @SessionScoped
@@ -44,7 +38,7 @@ public class ToolSession extends AbstractBaseBean implements Serializable{
 	private static final String toolInstanceView = "toolInstanceView.xhtml";
 	
 	private ToolInstance selectedToolInstance;
-	private List<ToolInstance> toolInstances = null;
+//	private List<ToolInstance> toolInstances = null;
 	private boolean workingOnToolInstance;
 	private boolean configuringInstance;
 //	private ToolDef selectedToolDef;
@@ -60,8 +54,10 @@ public class ToolSession extends AbstractBaseBean implements Serializable{
 		this.configuringInstance = false;
 		try {
 			System.out.println("SELECTING");
-			FactoryBean.setSelectedToolDef(FactoryBean.getToolDef("Test Tool 2"));
-			FactoryBean.setSelectedToolDef(FactoryBean.getToolDef("Test Tool"));
+			if (FactoryBean.getSelectedToolDef() == null) {
+				FactoryBean.setSelectedToolDef(FactoryBean.getToolDef("Test Tool 2"));
+				FactoryBean.setSelectedToolDef(FactoryBean.getToolDef("Test Tool"));
+			}
 		} catch (Exception e) {
 			logger.error(e);
 		}
@@ -83,14 +79,15 @@ public class ToolSession extends AbstractBaseBean implements Serializable{
 	/**
 	 * Try to save a new Tool Instance. If there is a tool instance with the same name it shows an error
 	 * @return a string to the tool instance view
-	 * @throws SystemException
 	 * @throws PortalException 
+	 * @throws SystemException 
 	 */
 	public String saveNewToolInstance() throws SystemException, PortalException {
-		if (!this.toolInstances.contains(this.selectedToolInstance)) {
+//		if (!this.toolInstances.contains(this.selectedToolInstance)) {
+		if (!FactoryBean.getSelectedToolDef().getToolInstances().contains(this.selectedToolInstance)) {
 			this.selectedToolInstance.save();
 			this.configuringInstance = false;
-			this.toolInstances.add(this.selectedToolInstance);
+			FactoryBean.getSelectedToolDef().getToolInstances().add(this.selectedToolInstance);
 		} else {
 //			SessionErrors.add(session, key); //logger.error("Existing Tool Instance");
 			this.addGlobalErrorMessage("Existing Tool Instance");
@@ -116,7 +113,7 @@ public class ToolSession extends AbstractBaseBean implements Serializable{
 	public String deleteToolInstance() {
 		try {
 			this.selectedToolInstance.delete();
-			this.toolInstances.remove(this.selectedToolInstance);
+			FactoryBean.getSelectedToolDef().getToolInstances().remove(this.selectedToolInstance);
 			this.selectedToolInstance = null;
 			this.workingOnToolInstance = false;
 			this.configuringInstance = false;
@@ -155,31 +152,35 @@ public class ToolSession extends AbstractBaseBean implements Serializable{
 	
 	/**
 	 * @return a list with existing tool instances for the existing configuration (user group and selected tool definition)
+	 * @throws SystemException 
+	 * @throws PortalException 
+	 * @throws NoSuchCompositeStepDBEException 
 	 */
-	public List<ToolInstance> getToolInstances() {
+	public List<ToolInstance> getToolInstances() throws NoSuchCompositeStepDBEException, PortalException, SystemException {
 		// TODO: Mensajes entre SessionBeans cuando haya modificación del listado disponible para un usuario
 		// TODO: Criterios de búsqueda (nombre del RAM, permisos, etc)
-		ToolInstance toolInstance;
-		System.out.println("Calling ToolSession.getToolInstances()");
-		if (this.toolInstances == null) {
-			System.out.println("Try to bring tool instances");
-			this.toolInstances = new ArrayList<ToolInstance>();
-			long groupId = LiferayFacesContext.getInstance().getScopeGroupId();
-			try {
-				List<ToolInstanceDBE> list = ToolInstanceDBELocalServiceUtil.getToolInstanceDBEs(groupId, FactoryBean.getSelectedToolDef().getToolDefDBEId());
-//				List<ToolInstanceDBE> list = ToolInstanceDBELocalServiceUtil.getToolInstanceDBEs(groupId, this.selectedToolDef.getToolDefDBEId());
-				for (ToolInstanceDBE toolInstanceDBE : list) {
-//					toolInstance = new ToolInstance(toolInstanceDBE, this.selectedToolDef);
-					toolInstance = new ToolInstance(toolInstanceDBE, FactoryBean.getSelectedToolDef());
-					this.toolInstances.add(toolInstance);
-				}
-				System.out.println("Aquí ha llegao");
-			} catch (Exception e) {
-				logger.error(e);
-				System.out.println("Aquí ha llegao con error");
-			}
-		}
-		return this.toolInstances;
+		return FactoryBean.getSelectedToolDef().getToolInstances();
+//		ToolInstance toolInstance;
+//		System.out.println("Calling ToolSession.getToolInstances()");
+//		if (this.toolInstances == null) {
+//			System.out.println("Try to bring tool instances");
+//			this.toolInstances = new ArrayList<ToolInstance>();
+//			long groupId = LiferayFacesContext.getInstance().getScopeGroupId();
+//			try {
+//				List<ToolInstanceDBE> list = ToolInstanceDBELocalServiceUtil.getToolInstanceDBEs(groupId, FactoryBean.getSelectedToolDef().getToolDefDBEId());
+////				List<ToolInstanceDBE> list = ToolInstanceDBELocalServiceUtil.getToolInstanceDBEs(groupId, this.selectedToolDef.getToolDefDBEId());
+//				for (ToolInstanceDBE toolInstanceDBE : list) {
+////					toolInstance = new ToolInstance(toolInstanceDBE, this.selectedToolDef);
+//					toolInstance = new ToolInstance(toolInstanceDBE, FactoryBean.getSelectedToolDef());
+//					this.toolInstances.add(toolInstance);
+//				}
+//				System.out.println("Aquí ha llegao");
+//			} catch (Exception e) {
+//				logger.error(e);
+//				System.out.println("Aquí ha llegao con error");
+//			}
+//		}
+//		return this.toolInstances;
 	}
 
 	/**
