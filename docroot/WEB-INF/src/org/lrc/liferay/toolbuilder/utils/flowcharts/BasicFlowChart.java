@@ -37,18 +37,7 @@ public class BasicFlowChart<T,C extends Comparable<C>> {
 		}
 	}
 	
-//	public BasicFlowChart(BasicNode<T,C> node) {
-//		this.nodes = new ArrayList<BasicNode<T,C>>();
-//		this.nodes.add(0, node);
-//		this.lastEdit = new Date();
-//	}
-	
 	////// PRIVATE METHODS //////
-//	private void changeEdgesIndex(Integer oldIndex, Integer newIndex) {
-//		for(BasicNode<T,C> node: this.nodes) {
-//			node.changeEdgesIndex(oldIndex, newIndex);
-//		}
-//	}
 	
 	private void exchangeEdgesIndex(Integer index1, Integer index2) {
 		for(BasicNode<T,C> node: this.nodes) {

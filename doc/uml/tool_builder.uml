@@ -259,6 +259,17 @@
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LMEj4x6eEea3HrWHsesb-Q" value="1"/>
         </ownedEnd>
       </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_qbTTYLfmEeaawYtb6tv8bQ" name="Edge&lt;T,C>"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_wjQJELfmEeaawYtb6tv8bQ" memberEnd="_wjQJEbfmEeaawYtb6tv8bQ _wjR-QrfmEeaawYtb6tv8bQ" navigableOwnedEnd="_wjR-QrfmEeaawYtb6tv8bQ">
+        <ownedEnd xmi:id="_wjQJEbfmEeaawYtb6tv8bQ" name="basicFlowCharts" type="_-SniAB6ZEea3HrWHsesb-Q" association="_wjQJELfmEeaawYtb6tv8bQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wjR-QLfmEeaawYtb6tv8bQ"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wjR-QbfmEeaawYtb6tv8bQ" value="*"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="_wjR-QrfmEeaawYtb6tv8bQ" name="edge&lt;T,C>s" type="_qbTTYLfmEeaawYtb6tv8bQ" association="_wjQJELfmEeaawYtb6tv8bQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wjSlULfmEeaawYtb6tv8bQ"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wjSlUbfmEeaawYtb6tv8bQ" value="*"/>
+        </ownedEnd>
+      </packagedElement>
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_gePPEB6gEea3HrWHsesb-Q" name="ToolDef">

@@ -1335,8 +1335,7 @@ CompositeStepDef
 \family typewriter
 ToolDef
 \family default
- classes.
- All them related to the 
+ classes, all them related to the 
 \emph on
 tool definitions
 \emph default
@@ -1345,10 +1344,7 @@ tool definitions
 \end_layout
 
 \begin_layout Itemize
-In red the instances part, with Step, CompositeStep and ToolInstance classes.
- These classes represent to the status of each tool instance.
- Namely the current step for each tool instance, the status of each step
- and all the information related to it.
+In red the instances part, with 
 \end_layout
 
 \begin_layout Standard

@@ -126,7 +126,7 @@ Implementing agile methodologies (Kanban)
 \end_layout
 
 \begin_layout Subsubsection
-Taiga
+Taiga/Trello
 \end_layout
 
 \begin_layout Subsection
@@ -143,6 +143,44 @@ Issues tracking
 
 \begin_layout Subsection
 Behavior Driven Development
+\end_layout
+
+\begin_layout Standard
+After the third sprint, Behavoir Driven Development (BDD) was adopted in
+ order to better fit user's requirements and to make easier his involvement
+ in the development, in addition to optimizing testing.
+ The main reason to choose BDD instead of Test Driven Development (TDD),
+ which is also an agile style of programming, has been the opportunity of
+ involvement of future users, who could not have a technical background.
+ Thus, talking about behavoirs instead of requirements and writing them
+ in a natural language, the communication and the understanding among all
+ the parts (users and developer) has improved.
+\end_layout
+
+\begin_layout Standard
+Therefore, since the third sprint, this approach has been carried out in
+ this way:
+\end_layout
+
+\begin_layout Enumerate
+Beginning with the definitions of the needed behavoir -which has been always
+ agreed with the user,
+\end_layout
+
+\begin_layout Enumerate
+followed by the development -writing 
+\begin_inset Quotes eld
+\end_inset
+
+just enough
+\begin_inset Quotes erd
+\end_inset
+
+ code and as simple as possible to accomplish the behavoir,
+\end_layout
+
+\begin_layout Enumerate
+and redesigning or refactoring the code if necessary.
 \end_layout
 
 \begin_layout Subsection
@@ -197,6 +235,14 @@ Cucumber-JVM
 Usability
 \end_layout
 
+\begin_layout Subsection
+Reporting
+\end_layout
+
+\begin_layout Standard
+Allure
+\end_layout
+
 \begin_layout Section
 Analysis and Requirements
 \end_layout
@@ -215,14 +261,50 @@ Technologies
 
 \begin_layout Subsubsection
 Liferay
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Liferay"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Discuss about Service Builder
 \end_layout
 
 \begin_layout Subsubsection
 JavaServer Faces (JSF) & Components Design
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:JSF"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Components design describing the whole system and invariable parts
+Components design describing the whole system and invariable parts.
+\end_layout
+
+\begin_layout Standard
+http://stackoverflow.com/questions/10111387/understanding-jsf-as-a-mvc-framework
+\end_layout
+
+\begin_layout Standard
+http://stackoverflow.com/questions/5104094/what-components-are-mvc-in-jsf-mvc-fra
+mework
+\end_layout
+
+\begin_layout Standard
+http://stackoverflow.com/questions/4573419/what-are-the-main-advantages-of-mvc-pa
+ttern-over-the-old-fashioned-3-layer-patte/4573554#4573554
+\end_layout
+
+\begin_layout Standard
+Discuss about how JSF fits in MVC
 \end_layout
 
 \begin_layout Standard
@@ -305,13 +387,24 @@ Data Model
 Development
 \end_layout
 
+\begin_layout Standard
+Hereafter and for the purpose of explaining the process followed in the
+ development, an overview of the main issues related to each sprint has
+ been written.
+\end_layout
+
 \begin_layout Subsection
 First Sprint
 \end_layout
 
 \begin_layout Standard
 A basic tool to navigate through the RAM Steps and capable of save the current
- state of each assessment
+ state of each assessment was created in this step following the cascade
+ development cycle (
+\noun on
+Design -> Development -> Testing
+\noun default
+)
 \end_layout
 
 \begin_layout Subsubsection
@@ -321,14 +414,125 @@ Design
 \begin_layout Standard
 A first design was drafted to make implementation easier so the JSF architecture
  was kept in mind when coding.
+ As discussed in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:JSF"
+
+\end_inset
+
+ we will focus in Model and View parts of a MVC ar chitecture since the
+ Controller is provided by the framework as the 
+\family typewriter
+Faces Servlet
+\family default
+.
 \end_layout
 
 \begin_layout Standard
-Beans
+The 
+\emph on
+Model 
+\emph default
+has two different parts due to the architecture provided by Liferay and
+ JSF
+\emph on
+.
+ 
+\emph default
+On the one hand the model object provided by the 
+\emph on
+Liferay Service Builder
+\emph default
+ which representes the persistence layer.
+ As discussed in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:Liferay"
+
+\end_inset
+
+, 
+\emph on
+Liferay
+\emph default
+ provides a service to create the persistence layer, so it was used to create
+ the object 
+\family typewriter
+Assessment 
+\family default
+which stores the current step of each created assessment, considering that
+ this current steps does not depend on the session but is a value that must
+ be saved in the system.
 \end_layout
 
 \begin_layout Standard
-Model
+On the one hand, two beans were necessary in this sprint as part of the
+ model:
+\end_layout
+
+\begin_layout Itemize
+A 
+\emph on
+session scoped
+\emph default
+ bean to keep all the session information, which is needed to know where
+ the user is, what is he doing, what are the next allowed actions, etc.
+\end_layout
+
+\begin_layout Itemize
+A
+\emph on
+ request scoped
+\emph default
+ bean which will be responsible of bringing the needed information and which
+ actually works as a bridge between the persistent object and the view.
+\end_layout
+
+\begin_layout Standard
+Regarding to the view, namely the 
+\emph on
+JSF UI components
+\emph default
+ according to 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:JSF"
+
+\end_inset
+
+, it consists of two main JSF pages with several components:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family typewriter
+mainView.xhtml
+\family default
+ Which provides the interface to create new assessments and includes the
+ 
+\family typewriter
+assessmentsList.xhtml
+\family default
+ component, in charge of showing the existing assessments list.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family typewriter
+assessmentView.xhtml
+\family default
+ Which depending on what the user is doing will show the 
+\family typewriter
+editAssessmentForm.xhtml
+\family default
+ component, if user is editing the assessment, or a 
+\family typewriter
+ramStepX.xhtml
+\family default
+ component, if user is consulting the assessment.
 \end_layout
 
 \begin_layout Standard
@@ -376,11 +580,22 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-Model with Service Builder
-\end_layout
-
-\begin_layout Standard
-Beans which inherit from Abstract Bean.
+As explained above, for the persistence layer it was used the Liferay Service
+ Builder, which helps developers to code simple persistence objects which
+ will work with the system relational database.
+ After implementing the persistence layer, the 
+\family typewriter
+mainView.xhtml
+\family default
+ was developed.
+ This allowed the developer to draft the methods which would be needed from
+ the beans.
+ Lastly, the two beans were coded implementing the needed methods and inheriting
+ their common characteristics from a common parent 
+\family typewriter
+AbstractBean
+\family default
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -408,9 +623,75 @@ Design
 \end_layout
 
 \begin_layout Standard
-BasicNode, BasicFlowChart composed by BasicNodes and Flow which represents
- the flow through the flow chart.
- Another PermissiveFlow was created to...
+For the purpose explained above, four main classes were necessary, but in
+ order to extend the library for future uses, a fifth class was created
+ for non-strict flows:
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+BasicNode<T,C>
+\family default
+ This class is the core of the library and represents a node of the flowchart
+ which is composed by a content of type 
+\family typewriter
+T
+\family default
+ and an indefined number of edges of type 
+\family typewriter
+C
+\family default
+, which in turn inherits from 
+\family typewriter
+Comparable
+\family default
+ in order to allow a flow choose among all the edges the correct one.
+ This class also implements not only methods to create and destroy nodes,
+ but also to find the next node in a flowchart for a given condition.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+BasicFlowChart<T,C>
+\family default
+ Composed by BasicNodes implements the methods to create, edit and destroy
+ a flowchart as well as the methods to navigate through the flowchart.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+Edge<T,C>
+\family default
+ This is just a very simple auxiliar class only used to make easier the
+ construction of 
+\family typewriter
+BasicFlowChart
+\family default
+.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+Flow<T,C>
+\family default
+ This class represents a particular flow and the flow status, that is to
+ say the current node of the flow.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+PermissiveFlow<T,C>
+\family default
+ As explained befor, this class has been created just to implement non-restricti
+ve flows.
+ In other words, flows allowing inputs not matching any of the conditions
+ of the edges of the current node, in this case the flow will remain in
+ the current node.
 \end_layout
 
 \begin_layout Standard
@@ -457,12 +738,175 @@ name "fig:sprint2_design"
 Implementation
 \end_layout
 
+\begin_layout Standard
+The classes were implemented in ascending order of complexity, this means
+ beginning with 
+\family typewriter
+BasicNode
+\family default
+, followed by 
+\family typewriter
+BasicFlowChart
+\family default
+ and 
+\family typewriter
+Edge
+\family default
+, and finally 
+\family typewriter
+Flow
+\family default
+ and 
+\family typewriter
+PermissiveFlow
+\family default
+.
+ 
+\end_layout
+
 \begin_layout Subsubsection
 Testing
 \end_layout
 
 \begin_layout Standard
-Unit tests were developed and run helping to find and fix bugs
+Unit tests were developed using JUnit, as showed in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:sprint2_tests"
+
+\end_inset
+
+, there are three suites of tests for this sprint:
+\end_layout
+
+\begin_layout Description
+BasicNodeTests Related to the 
+\family typewriter
+BasicNode<T,C>
+\family default
+ class, it comprises 10 tests.
+\end_layout
+
+\begin_layout Description
+BasicFlowChartTests Related to the 
+\family typewriter
+BasicFlowChart<T,C>
+\family default
+ class, which includes 
+\family typewriter
+Edge<T,C>
+\family default
+, it comprises 25 tests.
+\end_layout
+
+\begin_layout Description
+FlowTests Related to 
+\family typewriter
+Flow<T,C>
+\family default
+ and 
+\family typewriter
+PermissiveFlow<T,C>
+\family default
+ classes, it comprises 5 tests.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/flowchart_tests.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Allure screenshot with tests passed for sprint 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint2_tests"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Being unit tests, a little time is required to pass each test as it can
+ be checked in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:sprint2_tests_duration"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/flowchart_tests_duration.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Time graphic for tests of sprint 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint2_tests_duration"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -470,17 +914,113 @@ Third Sprint
 \end_layout
 
 \begin_layout Standard
-After some interviews with the client it is concluded that the development
+After some interviews with the client it was concluded that the development
  is quite limited and poorly flexible since it will just fit the current
  RAM tool requisites and it would be pretty complex to extend it.
- Finally it is decided to change the requisites and develop a web tool flexible
- enough to implement different kind of methodologies or tools.
- That is how the project is becomes a tool builder and so is called Toolbuilder.
- Create CompositeStep
+ Finally it was decided to change the requisites and develop a web tool
+ flexible enough to implement different kind of methodologies or tools.
+ That is how the project has become a tool builder, and so is called Toolbuilder.
 \end_layout
 
 \begin_layout Subsubsection
 Design
+\end_layout
+
+\begin_layout Standard
+Although the 
+\emph on
+beans
+\emph default
+ and the 
+\emph on
+JSF views
+\emph default
+ remained the same, some generalization were done in the model to conform
+ to the new requirements.
+ The former 
+\family typewriter
+Assessment
+\family default
+ class is going to be replaced by a more complex structure:
+\end_layout
+
+\begin_layout Itemize
+Firstly, as there must be several kind of steps depending on the specifications
+ of the tool to be created, two type of steps (classes) were created in
+ this sprint which inherit from the class 
+\family typewriter
+Step
+\family default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+
+\family typewriter
+VoidStep
+\family default
+ Just a type of step for developing purposes without content and/or configuratio
+n.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+CompositeStep
+\family default
+ This is a step which contains other steps so an structure step/substep
+ can be implemented.
+ As it should store information about the substeps it contains, it is persistent
+, therefore it was created with 
+\emph on
+Liferay Service Builder
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Moreover, an object called 
+\family typewriter
+\series bold
+StepFactory
+\family default
+\series default
+ is in charge of the creation of the different steps following a 
+\emph on
+Factory Pattern
+\emph default
+
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+include reference
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Lastly, a new object called 
+\family typewriter
+\series bold
+ToolInstance
+\family default
+\series default
+ fundamentally performs the function of the former 
+\family typewriter
+Assessment
+\family default
+ object storing all the information related to the each assessment, hereafter
+ called 
+\emph on
+tool instance
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -530,13 +1070,47 @@ name "fig:sprint3_design"
 Implementation
 \end_layout
 
+\begin_layout Standard
+After replacing 
+\family typewriter
+Assessment
+\family default
+ class by 
+\family typewriter
+ToolInstance
+\family default
+, the first step was to create the 
+\family typewriter
+Step
+\family default
+ class, which would be the parent of all kind of steps.
+ Later a new 
+\emph on
+Service Builder
+\emph default
+ entity was created for the new 
+\family typewriter
+CompositeStep
+\family default
+ class, followed by the simple 
+\family typewriter
+VoidStep
+\family default
+ class which mocks any kind of step.
+ Finally, the 
+\family typewriter
+StepFactory
+\family default
+ class was implemented to create steps.
+\end_layout
+
 \begin_layout Subsubsection
 Testing
 \end_layout
 
 \begin_layout Standard
-In this Sprint the testing framework was implemented and a Behavior Driven
- Development was set up for next Sprints.
+In this sprint the testing framework was implemented and the Behavior Driven
+ Development (BDD) was set up for next Sprints.
  Tests scenarios were developed for the three existing features:
 \end_layout
 
@@ -545,24 +1119,35 @@ Tool Instance Creation
 \end_layout
 
 \begin_layout Enumerate
-Tool Instance Deletion
+Navigate through steps
 \end_layout
 
 \begin_layout Enumerate
-Navigate through steps
+Tool Instance Deletion
 \end_layout
 
 \begin_layout Standard
 For each feature, the different scenarios or user stories (in compliance
- with the BDD methodology) have been created.
- In figure 
+ with the BDD methodology) were created.
+ The development of the tests also required some debugging, as it is shown
+ in 
 \begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:features_toolInstance"
+LatexCommand formatted
+reference "fig:sprint3_tests_fail"
 
 \end_inset
 
-
+ the first time tests were executed there were some defects.
+ After debugging it was checked that defects were caused by bugs in the
+ tests, particularly by the way 
+\emph on
+Selenium WebElement
+\emph default
+s were selected because the 
+\emph on
+xpath
+\emph default
+ did not match with the web elements outputted by the portlet.
 \end_layout
 
 \begin_layout Standard
@@ -573,8 +1158,8 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename images/tool_instance_features_tests.png
-	width 12cm
+	filename images/sprint3_tests_fail.png
+	width 15cm
 
 \end_inset
 
@@ -585,7 +1170,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Features developed and tested in the third sprint
+Sprint 3 tests failed at the beginning and required debugging
 \end_layout
 
 \end_inset
@@ -596,7 +1181,61 @@ Features developed and tested in the third sprint
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:features_toolInstance"
+name "fig:sprint3_tests_fail"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:sprint3_tests_pass"
+
+\end_inset
+
+ is shown the tests result after debugging.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/sprint3_tests_pass.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sprint 3 tests passed successfully after debugging
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint3_tests_pass"
 
 \end_inset
 
@@ -613,9 +1252,27 @@ Fourth Sprint
 \end_layout
 
 \begin_layout Standard
-As tools should be able to be customized, and many instances of each tool
- may be created it becomes necessary to make code refactoring in order to
- divide those two parts.
+As tools should be able to be customized and many occurrences of each tool
+ may be created, it becomes necessary to make code refactoring in order
+ to divide the two parts: 
+\emph on
+Tool Definitions
+\emph default
+ and 
+\emph on
+Tool Instances
+\emph default
+.
+ So after refactoring we have separately the objects related to the tool
+ structure -hereafter 
+\emph on
+Tool Definition
+\emph default
+- and the objects related to the tool occurrences -hereafter 
+\emph on
+Tool Instances
+\emph default
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -624,10 +1281,73 @@ Redesign
 
 \begin_layout Standard
 Tool definitions are separated from tool instances creating two different
- classes (ToolDef and ToolInstance), likewise steps definitions, which is
- related to tool definitions, should be separated from step implementations,
- for that purpose abstract classes StepDef and Step were created to steps
- inherit them.
+ classes (
+\family typewriter
+ToolDef
+\family default
+ and 
+\family typewriter
+ToolInstance
+\family default
+), likewise steps definitions should be separated from step implementations,
+ for that purpose abstract classes 
+\family typewriter
+StepDef
+\family default
+ and 
+\family typewriter
+Step
+\family default
+ were created to steps inheriting them, the first one representing the step
+ definition and the second one representing the step within the 
+\emph on
+tool instance
+\emph default
+, that is to say the step occurrence.
+\end_layout
+
+\begin_layout Standard
+As shown in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:sprint4_design"
+
+\end_inset
+
+, a simetric design has been implemented which will be replicated for each
+ step:
+\end_layout
+
+\begin_layout Itemize
+In blue the 
+\emph on
+definition
+\emph default
+ part, with 
+\family typewriter
+StepDef
+\family default
+, 
+\family typewriter
+CompositeStepDef
+\family default
+ and 
+\family typewriter
+ToolDef
+\family default
+ classes.
+ All them related to the 
+\emph on
+tool definitions
+\emph default
+ which will define the structure and configuration of each tools and each
+ step.
+\end_layout
+
+\begin_layout Itemize
+In red the instances part, with Step, CompositeStep and ToolInstance classes.
+ These classes are related to the status of each tool instance.
+ Namely the step in which each tool is
 \end_layout
 
 \begin_layout Standard
@@ -651,6 +1371,10 @@ Patterns
 \end_layout
 
 \begin_layout Standard
+The Factory pattern continues
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways true
@@ -660,6 +1384,7 @@ status open
 \begin_inset Graphics
 	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/uml/exported/StepFactory Class Diagram.png
 	scale 80
+	clip
 
 \end_inset
 
@@ -714,7 +1439,7 @@ Test design
 \end_layout
 
 \begin_layout Standard
-Tests will remain the same since no new user functionalities will be implemented.
+Tests remained the same since no new user functionalities will be implemented.
  Anyhow, the test should be passed to guarantee refactoring has been successful
  and accomplishes all the required features.
 \end_layout
@@ -1055,6 +1780,7 @@ Test Design
 Tests for this sprint are those to move the steps but with regression tests
  from eighth sprint in order to assure the proper functioning of the redesigned
  interface.
+ Difficult to drag and drop thorough Selenium so Java Robot should be used.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1072,7 +1798,56 @@ Twelfth Sprint
 \end_layout
 
 \begin_layout Standard
-Create interface to modify Composite Step Type
+After interview with the client she realized that it was not possible to
+ delete Tool Definitions, so this feature should be added.
+ Also it was necesary to avoid the user to delete or edit tool definitions
+ which are selected or which have already created tool instances.
+\end_layout
+
+\begin_layout Subsubsection
+Test Design
+\end_layout
+
+\begin_layout Standard
+Behavoir were designed for both features:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Deleting A delete button exists for each tool definition so when the user
+ clicks on it a dialog to confirm will appear and if it is confirmed the
+ tool definition will disappear from the view.
+ 
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+How I test the toolDef is deleted in the database?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Restricting When a tool definition is selected or it has created tool instance
+ it will be impossible to delete or edit it.
+ So buttons should be disabled and a tooltip will showed when moving the
+ mouse over them.
+ Four scenarios has been created for this feature: three for the cases of
+ not allowing edit or deletion and one where the system must allows it.
+\end_layout
+
+\begin_layout Subsubsection
+Implementation
+\end_layout
+
+\begin_layout Standard
+Delete button.
+ Tooltip from Primefaces not working related to commandButton, so it was
+ linked to a new div which contains all the buttons.
 \end_layout
 
 \begin_layout Subsection
@@ -1080,7 +1855,7 @@ Thirteenth Sprint
 \end_layout
 
 \begin_layout Standard
-Create Web Content Step Type and show the step
+Create interface to modify Composite Step Type
 \end_layout
 
 \begin_layout Subsection
@@ -1088,11 +1863,19 @@ Fourteenth Sprint
 \end_layout
 
 \begin_layout Standard
+Create Web Content Step Type and show the step
+\end_layout
+
+\begin_layout Subsection
+Fifteenth Sprint
+\end_layout
+
+\begin_layout Standard
 Create Web Content Step Type configuration interface
 \end_layout
 
 \begin_layout Subsection
-Fifth Sprint
+Sixteenth Sprint
 \end_layout
 
 \begin_layout Standard
