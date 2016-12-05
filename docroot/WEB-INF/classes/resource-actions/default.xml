@@ -29,16 +29,20 @@
 		</portlet-ref>
 		<permissions>
 			<supports>
-				<action-key>ADD_TOOL_DEF</action-key>
 				<action-key>ADD_TOOL_INSTANCE</action-key>
+				<action-key>DEL_TOOL_INSTANCE</action-key>
+				<action-key>EDIT_TOOL_INSTANCE</action-key>
 			</supports>
 			<site-member-defaults>
 				<action-key>ADD_TOOL_INSTANCE</action-key>
+				<action-key>DEL_TOOL_INSTANCE</action-key>
+				<action-key>EDIT_TOOL_INSTANCE</action-key>
 			</site-member-defaults>
 			<guest-defaults />
 			<guest-unsupported>
-				<action-key>ADD_TOOL_DEF</action-key>
 				<action-key>ADD_TOOL_INSTANCE</action-key>
+				<action-key>DEL_TOOL_INSTANCE</action-key>
+				<action-key>EDIT_TOOL_INSTANCE</action-key>
 			</guest-unsupported>
 		</permissions>
 	</model-resource>
