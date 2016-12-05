@@ -970,7 +970,18 @@ n.
 CompositeStep
 \family default
  This is a step which contains other steps so an structure step/substep
- can be implemented.
+ can be implemented following a 
+\emph on
+Composite Pattern
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ErichGamma1994"
+
+\end_inset
+
+.
  As it should store information about the substeps it contains, it is persistent
 , therefore it was created with 
 \emph on
@@ -992,12 +1003,9 @@ StepFactory
 Factory Pattern
 \emph default
 
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-include reference
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ErichGamma1994"
 
 \end_inset
 
@@ -1276,7 +1284,7 @@ Tool Instances
 \end_layout
 
 \begin_layout Subsubsection
-Redesign
+Redesign / Refactoring
 \end_layout
 
 \begin_layout Standard
@@ -1319,11 +1327,7 @@ reference "fig:sprint4_design"
 \end_layout
 
 \begin_layout Itemize
-In blue the 
-\emph on
-definition
-\emph default
- part, with 
+In blue the definition part, with 
 \family typewriter
 StepDef
 \family default
@@ -1335,7 +1339,8 @@ CompositeStepDef
 \family typewriter
 ToolDef
 \family default
- classes, all them related to the 
+ classes.
+ All them related to the 
 \emph on
 tool definitions
 \emph default
@@ -1345,6 +1350,40 @@ tool definitions
 
 \begin_layout Itemize
 In red the instances part, with 
+\family typewriter
+Step
+\family default
+, 
+\family typewriter
+CompositeStep
+\family default
+ and 
+\family typewriter
+ToolInstance
+\family default
+ classes.
+ These classes represent to the status of each tool instance.
+ Namely the current step for each tool instance, the status of each step
+ and all the related information.
+\end_layout
+
+\begin_layout Standard
+As we can see in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:sprint4_design"
+
+\end_inset
+
+, 
+\emph on
+Factory
+\emph default
+ and 
+\emph on
+Composite Patterns
+\emph default
+ are still being used after refactoring.
 \end_layout
 
 \begin_layout Standard
@@ -1364,17 +1403,9 @@ begin{landscape}
 \end_layout
 
 \begin_layout Standard
-Patterns
-\end_layout
-
-\begin_layout Standard
-The Factory pattern continues
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
-sideways true
+sideways false
 status open
 
 \begin_layout Plain Layout
@@ -1431,13 +1462,118 @@ end{landscape}
 
 \end_layout
 
+\begin_layout Standard
+In the same way, database needed to be redesigned in order to match with
+ the new classes design.
+ As shown in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:sprint4_db"
+
+\end_inset
+
+ there is also a symmetry between the definition part, on top, and the instances
+ part.
+ Each 
+\emph on
+Tool
+\emph default
+ (both definition and instance) contains a 
+\emph on
+Composite Step
+\emph default
+, which as a relationship 1 to 1 with the 
+\emph on
+Step
+\emph default
+ table (as class 
+\family typewriter
+CompositeStep
+\family default
+ inherits from 
+\family typewriter
+Step
+\family default
+) but also a relationship N to N because one 
+\emph on
+composite step
+\emph default
+ contains several 
+\emph on
+steps
+\emph default
+ and one 
+\emph on
+step
+\emph default
+ can be in several 
+\emph on
+composite step
+\emph default
+s.
+ Although there is data redundancy in the N to N relationships -which in
+ fact can be simplified removing the relationship between tables 
+\emph on
+CompositeStepDBE
+\emph default
+ and 
+\emph on
+StepDBE
+\emph default
+- at this sprint it was felt useful to make easier the development of the
+ associated classes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/database/ERD_S4.png
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Database design for the fourth sprint
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint4_db"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Test design
 \end_layout
 
 \begin_layout Standard
 Tests remained the same since no new user functionalities will be implemented.
- Anyhow, the test should be passed to guarantee refactoring has been successful
+ Anyhow, the test were passed to guarantee refactoring has been successful
  and accomplishes all the required features.
 \end_layout
 
@@ -1446,11 +1582,29 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-Refactoring database
-\end_layout
+The only aspect to note during implementation was the difficulty of working
+ with 
+\emph on
+Liferay Service Builder
+\emph default
+ and its way of supporting N to N relationships.
+ After exploring how to do it the
+\emph on
+ 
+\emph default
+persistent objects were created, the 
+\emph on
+Liferay Service Builder
+\emph default
+ allows to create N to N relationships but, as it would be realized later
+ in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:Tenth-Sprint"
 
-\begin_layout Standard
-N to N relationship and how Liferay Service Builder resolves it
+\end_inset
+
+, it is not the best option.
 \end_layout
 
 \begin_layout Subsection
@@ -1478,6 +1632,49 @@ Test design
 \begin_layout Standard
 The functional tests have been modified to include permissions restrictions,
  so XX tests have been modified in this way:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/sprint5_tests_pass.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A step has been included in the tests so the user should log in the system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint5_tests"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1711,6 +1908,13 @@ tabClose
 
 \begin_layout Subsection
 Tenth Sprint
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Tenth-Sprint"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1901,6 +2105,17 @@ For the future: Performance testing
 
 \begin_layout Section
 Appendices
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "pfc_bibliography"
+options "plain"
+
+\end_inset
+
+
 \end_layout
 
 \end_body

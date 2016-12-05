@@ -1346,8 +1346,9 @@ tool definitions
 
 \begin_layout Itemize
 In red the instances part, with Step, CompositeStep and ToolInstance classes.
- These classes are related to the status of each tool instance.
- Namely the step in which each tool is
+ These classes represent to the status of each tool instance.
+ Namely the current step for each tool instance, the status of each step
+ and all the information related to it.
 \end_layout
 
 \begin_layout Standard
