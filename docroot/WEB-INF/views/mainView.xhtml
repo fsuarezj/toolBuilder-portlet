@@ -15,7 +15,7 @@
 		<h:outputText value="DEBUG" />
 		<h:form id="toolInstancesList">
 			<ui:include src="toolInstancesList.xhtml" />
-			<p:commandButton id="newToolInstanceButton" action="#{toolInstanceBacking.add}" value="#{i18n['new-ram']}" rendered="#{toolInstanceBacking.hasAddPermission}">
+			<p:commandButton id="newToolInstanceButton" action="#{toolInstanceBacking.add}" value="#{i18n['new-ram']}">
 				<f:ajax render="@all" />
 			</p:commandButton>
 		</h:form>

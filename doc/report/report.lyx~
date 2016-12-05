@@ -1985,8 +1985,8 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-To code the permission restrictions for tool instances the Liferay permissions
- scheme has been used
+To code the permission restrictions the Liferay permissions scheme has been
+ used
 \end_layout
 
 \begin_layout Subsection

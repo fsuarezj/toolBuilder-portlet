@@ -1221,7 +1221,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/sprint3_tests_pass.png
-	scale 40
+	scale 45
 
 \end_inset
 
@@ -1657,7 +1657,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Permission
+Portlet
 \end_layout
 
 \end_inset
@@ -1712,6 +1712,9 @@ Administrator
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\family typewriter
+\size footnotesize
 tool-implementation-portlet
 \end_layout
 
@@ -1853,6 +1856,9 @@ View Tool Instance
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\family typewriter
+\size footnotesize
 tool-definition-portlet
 \end_layout
 
