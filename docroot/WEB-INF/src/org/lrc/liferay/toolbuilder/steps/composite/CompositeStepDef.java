@@ -51,12 +51,6 @@ public class CompositeStepDef extends StepDef {
 		this.buildStepDefs();
 	}
 	
-//	public CompositeStepDef(CompositeStepDefDBE compositeStepDefDBE) {
-//		int a = 1;
-//		super(compositeStepDefDBE);
-//		this.compositeStepDefDBE = compositeStepDefDBE;
-//	}
-
 	/* GETTERS AND SETTERS */
 	public void setStepsNumber() {
 		this.compositeStepDefDBE.setStepsNumber(this.stepDefs.size());
