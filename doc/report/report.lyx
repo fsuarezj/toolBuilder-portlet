@@ -1221,7 +1221,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/sprint3_tests_pass.png
-	scale 40
+	scale 45
 
 \end_inset
 
@@ -1657,7 +1657,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Permission
+Portlet
 \end_layout
 
 \end_inset
@@ -1708,10 +1708,13 @@ Administrator
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\family typewriter
+\size footnotesize
 tool-implementation-portlet
 \end_layout
 
@@ -1755,7 +1758,7 @@ Create Tool Instance
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1802,7 +1805,7 @@ Delete Tool Instance
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1849,10 +1852,13 @@ View Tool Instance
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\family typewriter
+\size footnotesize
 tool-definition-portlet
 \end_layout
 
@@ -1896,7 +1902,7 @@ Create Tool Definition
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
