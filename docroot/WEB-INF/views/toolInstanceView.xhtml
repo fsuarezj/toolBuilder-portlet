@@ -17,7 +17,10 @@
 	    		<ui:include src="editToolInstanceForm.xhtml" />
 	    	</c:when>
 	    	<c:otherwise>
-    			<h:outputLabel class="instance-name"><h:outputText value="#{i18n['ram-name']}: #{toolSession.selectedToolInstance.toolTitle}" /></h:outputLabel>
+    			<h:outputLabel class="instance-name">
+    				<h:outputText value="#{i18n['ram-name']}: " />
+    				<h:outputText id="toolInstanceName" value="#{toolSession.selectedToolInstance.toolTitle}" />
+    			</h:outputLabel>
 	    		<h:outputLabel id="toolInstanceContent">
 	    			<c:choose>
 	    				<c:when test="#{toolInstanceBacking.getStep() == 1}">
@@ -37,7 +40,7 @@
 	    				</c:when>
 	    			</c:choose>
 				</h:outputLabel>
-	    		<h:commandButton id="stepForwardButton" action="#{toolInstanceBacking.stepForward}" value="#{i18n['step-forward']}">
+	    		<h:commandButton id="stepForwardButton" action="#{toolInstanceBacking.stepForward}" value="#{i18n['step-forward']}" rendered="#{toolInstanceBacking.hasEditPermission}">
 	    			<f:ajax render="toolInstanceContent" />
 	    		</h:commandButton>
 	    	</c:otherwise>
@@ -45,7 +48,7 @@
 	    	<h:commandButton id="cancelToolInstanceButton" action="#{toolSession.cancelToolInstance}" value="#{i18n['exit-ram']}">
 	    		<f:ajax render="@all" />
 	    	</h:commandButton>
-	    	<h:commandButton id="deleteToolInstanceButton" action="#{toolSession.deleteToolInstance}" value="#{i18n['delete-ram']}">
+	    	<h:commandButton id="deleteToolInstanceButton" action="#{toolSession.deleteToolInstance}" value="#{i18n['delete-ram']}" rendered="#{toolInstanceBacking.hasDeletePermission}">
 	    		<f:ajax render="@all" />
 	    	</h:commandButton>
 	    </h:form>

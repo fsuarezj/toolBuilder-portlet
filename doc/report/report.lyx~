@@ -398,13 +398,18 @@ First Sprint
 \end_layout
 
 \begin_layout Standard
-A basic tool to navigate through the RAM Steps and capable of save the current
- state of each assessment was created in this step following the cascade
- development cycle (
+A basic web tool (portlet) to navigate through the RAM Steps and capable
+ of save the current state of each assessment was created in this step following
+ the cascade development cycle (
 \noun on
 Design -> Development -> Testing
 \noun default
-)
+).
+ The portlet was called 
+\family typewriter
+ram-webtool
+\family default
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -919,7 +924,12 @@ After some interviews with the client it was concluded that the development
  RAM tool requisites and it would be pretty complex to extend it.
  Finally it was decided to change the requisites and develop a web tool
  flexible enough to implement different kind of methodologies or tools.
- That is how the project has become a tool builder, and so is called Toolbuilder.
+ That is how the project has become a tool builder, and so is called Toolbuilder
+, and the new portlet which implements the tools is called 
+\family typewriter
+tool-implementation
+\family default
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1625,7 +1635,7 @@ tool instance
  should be available to logged users, but non logged users will be able
  to see tools instances not having permissions to use them.
  Therefore, the permission scheme should be defined to provide limited access
- based on user role following the scheme of 
+ based on user role following the scheme in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "table:sprint5_permissions"
@@ -1633,6 +1643,16 @@ reference "table:sprint5_permissions"
 \end_inset
 
 .
+ In addition to the 
+\family typewriter
+tool-implementation
+\family default
+ portlet, who is in charge of the tool instances, a new portlet called 
+\family typewriter
+tool-definition
+\family default
+ has been added to manage the tool definitions, it will be created in the
+ next sprint.
 \end_layout
 
 \begin_layout Standard
@@ -1643,13 +1663,13 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="5">
+<lyxtabular version="3" rows="8" columns="5">
 <features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="2.2cm">
+<column alignment="center" valignment="top" width="1.5cm">
+<column alignment="center" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1657,7 +1677,8 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Portlet
+\size small
+Portlet Name
 \end_layout
 
 \end_inset
@@ -1668,6 +1689,7 @@ Portlet
 \begin_layout Plain Layout
 
 \series bold
+\size small
 Permission
 \end_layout
 
@@ -1679,6 +1701,7 @@ Permission
 \begin_layout Plain Layout
 
 \series bold
+\size small
 Anonymous user
 \end_layout
 
@@ -1690,6 +1713,7 @@ Anonymous user
 \begin_layout Plain Layout
 
 \series bold
+\size small
 Logged user
 \end_layout
 
@@ -1701,6 +1725,7 @@ Logged user
 \begin_layout Plain Layout
 
 \series bold
+\size small
 Administrator
 \end_layout
 
@@ -1708,14 +1733,14 @@ Administrator
 </cell>
 </row>
 <row>
-<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \family typewriter
 \size footnotesize
-tool-implementation-portlet
+tool-implementation
 \end_layout
 
 \end_inset
@@ -1724,6 +1749,8 @@ tool-implementation-portlet
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Create Tool Instance
 \end_layout
 
@@ -1742,6 +1769,8 @@ Create Tool Instance
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 ✔
 \end_layout
 
@@ -1751,6 +1780,61 @@ Create Tool Instance
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
+✔
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Use/Edit Tool Instance
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+✔
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
 ✔
 \end_layout
 
@@ -1771,6 +1855,8 @@ Create Tool Instance
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Delete Tool Instance
 \end_layout
 
@@ -1789,6 +1875,8 @@ Delete Tool Instance
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 ✔
 \end_layout
 
@@ -1798,6 +1886,8 @@ Delete Tool Instance
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 ✔
 \end_layout
 
@@ -1818,6 +1908,8 @@ Delete Tool Instance
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 View Tool Instance
 \end_layout
 
@@ -1827,6 +1919,8 @@ View Tool Instance
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 ✔
 \end_layout
 
@@ -1836,6 +1930,8 @@ View Tool Instance
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 ✔
 \end_layout
 
@@ -1845,6 +1941,8 @@ View Tool Instance
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 ✔
 \end_layout
 
@@ -1859,7 +1957,7 @@ View Tool Instance
 
 \family typewriter
 \size footnotesize
-tool-definition-portlet
+tool-definition
 \end_layout
 
 \end_inset
@@ -1868,6 +1966,59 @@ tool-definition-portlet
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
+ChooseTool Definition
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+✔
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 Create Tool Definition
 \end_layout
 
@@ -1895,6 +2046,8 @@ Create Tool Definition
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 ✔
 \end_layout
 
@@ -1915,6 +2068,8 @@ Create Tool Definition
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Delete Tool Definition
 \end_layout
 
@@ -1942,6 +2097,8 @@ Delete Tool Definition
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 ✔
 \end_layout
 
@@ -1959,7 +2116,7 @@ Delete Tool Definition
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Permissions scheme in Sprint 5
+Permissions scheme for Sprint 5
 \end_layout
 
 \end_inset
@@ -1997,7 +2154,13 @@ reference "fig:sprint5_tests"
 \end_inset
 
  which in the step 2 logs the users.
- Also XX scenarios were added to test the restrictions for non logged users.
+ Also 3 more scenarios were added to test the restrictions for non logged
+ users, one for each feature.
+ No tests have been added for the 
+\family typewriter
+tool-definition
+\family default
+ portlet as it will be implementend in the next step.
 \end_layout
 
 \begin_layout Standard
@@ -2020,7 +2183,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-A step has been included in the tests so the user should log in the system
+Sprint 5 tests passed successfully
 \end_layout
 
 \end_inset
@@ -2048,8 +2211,190 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-To code the permission restrictions the Liferay permissions scheme has been
- used
+To code the permission restrictions, the Liferay permissions scheme has
+ been used.
+ It allows to define permissions for the portlets and the model based on
+ the user's role through a xml file.
+ As shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:sprint5_perm"
+
+\end_inset
+
+, three permissions have been configured: add, delete and edit; those three
+ permissions are allowed to any site member but restricted to guests, namely
+ anonymous users.
+ As can be noted only permissions for the 
+\family typewriter
+tool-implementation
+\family default
+ portlet were defined in this sprint, since 
+\family typewriter
+tool-definition
+\family default
+ portlet implementation will be addressed in the next sprint.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=XML,float,basicstyle={\small\ttfamily},tabsize=3,keywordstyle={\color{blue}},morekeywords={resource-action-mapping,portlet-resource,portlet-name,permissions,supports,action-key,site-member-defaults,guest-defaults,guest-unsupported,model-resource,model-name,portlet-ref},alsoletter={-}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<resource-action-mapping>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<model-resource>
+\end_layout
+
+\begin_layout Plain Layout
+
+		<model-name>org.lrc.liferay.toolbuilder.model</model-name>
+\end_layout
+
+\begin_layout Plain Layout
+
+		<portlet-ref>
+\end_layout
+
+\begin_layout Plain Layout
+
+			<portlet-name>tool-implementation</portlet-name>
+\end_layout
+
+\begin_layout Plain Layout
+
+		</portlet-ref>
+\end_layout
+
+\begin_layout Plain Layout
+
+		<permissions>
+\end_layout
+
+\begin_layout Plain Layout
+
+			<supports>
+\end_layout
+
+\begin_layout Plain Layout
+
+				<action-key>ADD_TOOL_INSTANCE</action-key>
+\end_layout
+
+\begin_layout Plain Layout
+
+				<action-key>DEL_TOOL_INSTANCE</action-key>
+\end_layout
+
+\begin_layout Plain Layout
+
+				<action-key>EDIT_TOOL_INSTANCE</action-key>
+\end_layout
+
+\begin_layout Plain Layout
+
+			</supports>
+\end_layout
+
+\begin_layout Plain Layout
+
+			<site-member-defaults>
+\end_layout
+
+\begin_layout Plain Layout
+
+				<action-key>ADD_TOOL_INSTANCE</action-key>
+\end_layout
+
+\begin_layout Plain Layout
+
+				<action-key>DEL_TOOL_INSTANCE</action-key>
+\end_layout
+
+\begin_layout Plain Layout
+
+				<action-key>EDIT_TOOL_INSTANCE</action-key>
+\end_layout
+
+\begin_layout Plain Layout
+
+			</site-member-defaults>
+\end_layout
+
+\begin_layout Plain Layout
+
+			<guest-defaults />
+\end_layout
+
+\begin_layout Plain Layout
+
+			<guest-unsupported>
+\end_layout
+
+\begin_layout Plain Layout
+
+				<action-key>ADD_TOOL_INSTANCE</action-key>
+\end_layout
+
+\begin_layout Plain Layout
+
+				<action-key>DEL_TOOL_INSTANCE</action-key>
+\end_layout
+
+\begin_layout Plain Layout
+
+				<action-key>EDIT_TOOL_INSTANCE</action-key>
+\end_layout
+
+\begin_layout Plain Layout
+
+			</guest-unsupported>
+\end_layout
+
+\begin_layout Plain Layout
+
+		</permissions>
+\end_layout
+
+\begin_layout Plain Layout
+
+	</model-resource>
+\end_layout
+
+\begin_layout Plain Layout
+
+</resource-action-mapping>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:sprint5_perm"
+
+\end_inset
+
+Permissions configuration file
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -2057,9 +2402,13 @@ Sixth Sprint
 \end_layout
 
 \begin_layout Standard
-Once the backend for tool definition has been developed, it is time to create
- the interface so administrator users can choose between the different tool
- definitions created.
+Once the backend for tool definition was developed it was necessary to create
+ the interface so admin users can choose between the existing tool definitions,
+ therefore in this sprint the portlet 
+\family typewriter
+tool-definition
+\family default
+ was created.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2067,7 +2416,82 @@ Test design
 \end_layout
 
 \begin_layout Standard
-A new scenario was created
+Following BDD methodology, behavoir of the system for this new feature was
+ defined by developing some four scenarios.
+ In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sprint6_tests"
+
+\end_inset
+
+ these tests, passed after the implementation, are shown.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+First The admin user chooses an existing Tool Definition different to the
+ chosen one.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Second The admin user chooses another existing Tool Definition, which in
+ fact means choosing back the last Tool Definition.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Third Access to tool-definition portlet forbidden for a logged user who
+ is not admin.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Fourth Access to tool-definition portlet forbidden for an anonymous user.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/sprint6_tests_pass.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sprint 6 tests passed successfully
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint6_tests"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -2075,8 +2499,50 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-A new portlet has been created only available for accessible for administrator
- users and available through the XXX section
+The new portlet called 
+\family typewriter
+tool-definition
+\family default
+ was created only accessible for admin users and available through the 
+\emph on
+Site Administration -> Content
+\emph default
+ section, so the 
+\family typewriter
+control-panel-entry-category
+\family default
+ parameter was defined as 
+\family typewriter
+site_administration.content
+\family default
+.
+ Thus, the permission scheme from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:sprint5_perm"
+
+\end_inset
+
+ was implemented because that section is only accessible for admin users.
+\end_layout
+
+\begin_layout Standard
+As the current tool definition is stored in the 
+\emph on
+application scoped bean
+\emph default
+ 
+\family typewriter
+FactoryBean
+\family default
+, only the view 
+\family typewriter
+adminView.xhtml
+\family default
+ needed to be developed in this sprint.
+ Some troubles were founded in order to refresh the page when a tool definition
+ was choosen but, finally it was decided only to render again the form the
+ button was embedded in, though an ajax call.
 \end_layout
 
 \begin_layout Subsection

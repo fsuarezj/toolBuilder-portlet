@@ -154,4 +154,8 @@ public class FactoryBean extends AbstractBaseBean implements Serializable {
 	public static void setSelectedToolDef(ToolDef selectedToolDef) {
 		FactoryBean.selectedToolDef = selectedToolDef;
 	}
+	
+	public static void setSelectedToolDef(String toolName) throws SystemException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, PortalException {
+		FactoryBean.selectedToolDef = FactoryBean.getToolDef(toolName);
+	}
 }

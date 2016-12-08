@@ -29,7 +29,7 @@ public class ToolInstanceBacking extends AbstractBaseBean {
 	
 	@ManagedProperty(name = "toolSession", value = "#{toolSession}")
 	private ToolSession toolSession;
-	private Boolean hasAddPermission;
+	private Boolean hasAddPermission, hasEditPermission, hasDeletePermission;
 	
 	/**
 	 * Adds a new tool Instance to the tool session and sets it at configuring state
@@ -83,17 +83,18 @@ public class ToolInstanceBacking extends AbstractBaseBean {
 	/////////////////////////
 	
 	/**
-	 * Getter
+	 * Getter, defines if the user has Add Permissions for a given ToolInstance
 	 * @return true if the user has Add Tool Permission
 	 */
 	public Boolean getHasAddPermission() {
 		if (this.hasAddPermission == null) {
 			LiferayFacesContext liferayFacesContext = LiferayFacesContext.getInstance();
 			long scopeGroupId = liferayFacesContext.getScopeGroupId();
-			System.out.println("Getting permissions for user " + liferayFacesContext.getUserId());
+			System.out.println("Getting add permission for user " + liferayFacesContext.getUserId() + " with scopeGroupId " + scopeGroupId);
 			PermissionChecker permissionChecker = liferayFacesContext.getThemeDisplay().getPermissionChecker();
 			this.hasAddPermission = permissionChecker.hasPermission
 					(scopeGroupId, ToolSession.MODEL, scopeGroupId, "ADD_TOOL_INSTANCE");
+			System.out.println("Permission: " + this.hasAddPermission);
 		}
 		return this.hasAddPermission;
 	}
@@ -106,16 +107,53 @@ public class ToolInstanceBacking extends AbstractBaseBean {
 		this.hasAddPermission = hasAddPermission;
 	}
 
-//	/**
-//	 * Defines if the user has Edit Permissions for a given ToolInstance
-//	 * @param toolInstance the ToolInstance to work with
-//	 * @return false if the user has permissions to edit the ToolInstance
-//	 */
-//	public boolean hasNotEditInstancePermission(ToolInstance toolInstance) {
-//		LiferayFacesContext liferayFacesContext = LiferayFacesContext.getInstance();
-//		long scopeGroupId = liferayFacesContext.getScopeGroupId();
-//		return !liferayFacesContext.getThemeDisplay().getPermissionChecker().hasPermission
-//				(scopeGroupId, ToolInstanceDBE.class.getName(), toolInstance.getToolInstanceDBEId(), "EDIT");
-//	}
-//
+	/**
+	 * Getter, defines if the user has Edit Permissions for a given ToolInstance
+	 * @return true if the user has Add Tool Permission
+	 */
+	public Boolean getHasEditPermission() {
+		if (this.hasEditPermission == null) {
+			LiferayFacesContext liferayFacesContext = LiferayFacesContext.getInstance();
+			long scopeGroupId = liferayFacesContext.getScopeGroupId();
+			System.out.println("Getting edit permission for user " + liferayFacesContext.getUserId() + " with scopeGroupId " + scopeGroupId);
+			PermissionChecker permissionChecker = liferayFacesContext.getThemeDisplay().getPermissionChecker();
+			this.hasEditPermission = permissionChecker.hasPermission
+					(scopeGroupId, ToolSession.MODEL, scopeGroupId, "EDIT_TOOL_INSTANCE");
+			System.out.println("Permission: " + this.hasEditPermission);
+		}
+		return this.hasEditPermission;
+	}
+	
+	/**
+	 * Sets the Edit Permission
+	 * @param hasEditPermission the new value of the Edit Permission
+	 */
+	public void setHasEditPermission(Boolean hasEditPermission) {
+		this.hasEditPermission = hasEditPermission;
+	}
+
+	/**
+	 * Getter, defines if the user has Delete Permissions for a given ToolInstance
+	 * @return true if the user has Add Tool Permission
+	 */
+	public Boolean getHasDeletePermission() {
+		if (this.hasDeletePermission == null) {
+			LiferayFacesContext liferayFacesContext = LiferayFacesContext.getInstance();
+			long scopeGroupId = liferayFacesContext.getScopeGroupId();
+			System.out.println("Getting del permission for user " + liferayFacesContext.getUserId() + " with scopeGroupId " + scopeGroupId);
+			PermissionChecker permissionChecker = liferayFacesContext.getThemeDisplay().getPermissionChecker();
+			this.hasDeletePermission = permissionChecker.hasPermission
+					(scopeGroupId, ToolSession.MODEL, scopeGroupId, "DEL_TOOL_INSTANCE");
+			System.out.println("Permission: " + this.hasDeletePermission);
+		}
+		return this.hasDeletePermission;
+	}
+	
+	/**
+	 * Sets the Delete Permission
+	 * @param hasDeletePermission the new value of the Delete Permission
+	 */
+	public void setHasDeletePermission(Boolean hasDeletePermission) {
+		this.hasDeletePermission = hasDeletePermission;
+	}
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_w_DAQC2ZEeaoPokH5u8NDw" name="NewModel">
   <packagedElement xmi:type="uml:Package" xmi:id="_G5ooQC2aEeaoPokH5u8NDw" name="bean">
-    <packagedElement xmi:type="uml:Class" xmi:id="_G5ooQS2aEeaoPokH5u8NDw" name="InstanceBacking">
+    <packagedElement xmi:type="uml:Class" xmi:id="_G5ooQS2aEeaoPokH5u8NDw" name="InstanceBacking &lt;RequestScoped>">
       <generalization xmi:id="_G5ooQi2aEeaoPokH5u8NDw" general="_G5ooQy2aEeaoPokH5u8NDw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_G5ooQy2aEeaoPokH5u8NDw" name="AbstractBaseBean"/>
-    <packagedElement xmi:type="uml:Class" xmi:id="_G5ooRC2aEeaoPokH5u8NDw" name="ToolSession">
+    <packagedElement xmi:type="uml:Class" xmi:id="_G5ooRC2aEeaoPokH5u8NDw" name="ToolSession &lt;SessionScoped>">
       <generalization xmi:id="_G5ooRS2aEeaoPokH5u8NDw" general="_G5ooQy2aEeaoPokH5u8NDw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_G5ooRi2aEeaoPokH5u8NDw" memberEnd="_G5ooRy2aEeaoPokH5u8NDw _G5ooSi2aEeaoPokH5u8NDw" navigableOwnedEnd="_G5ooSi2aEeaoPokH5u8NDw">
@@ -17,16 +17,6 @@
         <type xmi:type="uml:Class" href="first_design.uml#_0uD7kC2MEeaoPokH5u8NDw"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_G5ooSy2aEeaoPokH5u8NDw"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_G5ooTC2aEeaoPokH5u8NDw" value="*"/>
-      </ownedEnd>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_G5ooTS2aEeaoPokH5u8NDw" memberEnd="_G5ooTi2aEeaoPokH5u8NDw _G5ooUS2aEeaoPokH5u8NDw" navigableOwnedEnd="_G5ooUS2aEeaoPokH5u8NDw">
-      <ownedEnd xmi:id="_G5ooTi2aEeaoPokH5u8NDw" name="assessmentBackings" type="_G5ooRC2aEeaoPokH5u8NDw" association="_G5ooTS2aEeaoPokH5u8NDw">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_G5ooTy2aEeaoPokH5u8NDw"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_G5ooUC2aEeaoPokH5u8NDw" value="*"/>
-      </ownedEnd>
-      <ownedEnd xmi:id="_G5ooUS2aEeaoPokH5u8NDw" name="ramSessions" type="_G5ooQS2aEeaoPokH5u8NDw" association="_G5ooTS2aEeaoPokH5u8NDw">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_G5ooUi2aEeaoPokH5u8NDw"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_G5ooUy2aEeaoPokH5u8NDw" value="*"/>
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_kym9sC5LEeaoPokH5u8NDw" memberEnd="_kym9sS5LEeaoPokH5u8NDw _kynkwi5LEeaoPokH5u8NDw" navigableOwnedEnd="_kynkwi5LEeaoPokH5u8NDw">
@@ -43,6 +33,16 @@
     <packagedElement xmi:type="uml:Usage" xmi:id="_dNIhkC8xEeaoPokH5u8NDw" client="_G5ooQS2aEeaoPokH5u8NDw" supplier="_2WBuEi8wEeaoPokH5u8NDw"/>
     <packagedElement xmi:type="uml:Usage" xmi:id="_edO3gC8xEeaoPokH5u8NDw" client="_G5ooQS2aEeaoPokH5u8NDw" supplier="_2WBuEy8wEeaoPokH5u8NDw"/>
     <packagedElement xmi:type="uml:Usage" xmi:id="_fggSYC8xEeaoPokH5u8NDw" client="_G5ooRC2aEeaoPokH5u8NDw" supplier="_2WBuES8wEeaoPokH5u8NDw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_3oUycL2FEeaBPsOpdgFOtw" memberEnd="_3oVZgL2FEeaBPsOpdgFOtw _3oX1wb2FEeaBPsOpdgFOtw" navigableOwnedEnd="_3oX1wb2FEeaBPsOpdgFOtw">
+      <ownedEnd xmi:id="_3oVZgL2FEeaBPsOpdgFOtw" name="instanceBackings" type="_G5ooQS2aEeaoPokH5u8NDw" association="_3oUycL2FEeaBPsOpdgFOtw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3oXOsL2FEeaBPsOpdgFOtw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3oX1wL2FEeaBPsOpdgFOtw" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_3oX1wb2FEeaBPsOpdgFOtw" name="toolSessions" type="_G5ooRC2aEeaoPokH5u8NDw" association="_3oUycL2FEeaBPsOpdgFOtw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3oYc0L2FEeaBPsOpdgFOtw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3oYc0b2FEeaBPsOpdgFOtw" value="*"/>
+      </ownedEnd>
+    </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_LfAIQC5HEeaoPokH5u8NDw" name="step">
     <packagedElement xmi:type="uml:Interface" xmi:id="_1kj0wC5HEeaoPokH5u8NDw" name="Step">

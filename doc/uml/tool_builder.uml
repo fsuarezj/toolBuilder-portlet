@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_EdigcBnqEeaHdNAhBjaKYg" name="toolBuilder">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_EdigcBnqEeaHdNAhBjaKYg" name="Sprint 4 beans">
   <packageImport xmi:id="_VU3GEBnuEeaHdNAhBjaKYg">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
   </packageImport>
@@ -406,8 +406,19 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_43bPBHs7Eeaip9ANPcqu9A" value="*"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_zqKxAIrTEeaEA-t_ybAC5Q" name="EditToolDefBacking &lt;ViewScoped>">
+    <packagedElement xmi:type="uml:Class" xmi:id="_zqKxAIrTEeaEA-t_ybAC5Q" name="EditToolDefBacking &lt;RequestScoped>">
+      <generalization xmi:id="_Ws8jEL1wEea8ptvU0F2ROQ" general="_D5V5wHs7Eeaip9ANPcqu9A"/>
       <ownedOperation xmi:id="__LXjUIrTEeaEA-t_ybAC5Q" name="createNewToolDef"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_5i-H8L2KEeaBPsOpdgFOtw" memberEnd="_5i-H8b2KEeaBPsOpdgFOtw _5i_WEL2KEeaBPsOpdgFOtw" navigableOwnedEnd="_5i_WEL2KEeaBPsOpdgFOtw">
+      <ownedEnd xmi:id="_5i-H8b2KEeaBPsOpdgFOtw" name="toolSession &lt;SessionScoped>s" type="_ZEkhYHs7Eeaip9ANPcqu9A" association="_5i-H8L2KEeaBPsOpdgFOtw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5i-vAL2KEeaBPsOpdgFOtw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5i-vAb2KEeaBPsOpdgFOtw" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_5i_WEL2KEeaBPsOpdgFOtw" name="factoryBean &lt;ApplicationScoped>s" type="_JW68wHs7Eeaip9ANPcqu9A" association="_5i-H8L2KEeaBPsOpdgFOtw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5i_WEb2KEeaBPsOpdgFOtw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5i_9IL2KEeaBPsOpdgFOtw" value="*"/>
+      </ownedEnd>
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Interaction" xmi:id="_dh7g0IrOEeaEA-t_ybAC5Q" name="User"/>
