@@ -385,7 +385,7 @@
     <packagedElement xmi:type="uml:Class" xmi:id="_cDrW0Hs7Eeaip9ANPcqu9A" name="ToolInstanceBacking &lt;RequestScoped>">
       <generalization xmi:id="_qkD3EHs7Eeaip9ANPcqu9A" general="_D5V5wHs7Eeaip9ANPcqu9A"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_jN2egHs7Eeaip9ANPcqu9A" name="ToolDefListBacking &lt;ViewScoped>">
+    <packagedElement xmi:type="uml:Class" xmi:id="_jN2egHs7Eeaip9ANPcqu9A" name="ToolDefListBacking &lt;RequestScoped>">
       <generalization xmi:id="_oshGoHs7Eeaip9ANPcqu9A" general="_D5V5wHs7Eeaip9ANPcqu9A"/>
       <ownedOperation xmi:id="_J5Vh4IrUEeaEA-t_ybAC5Q" name="createNewToolDef">
         <ownedParameter xmi:id="_MWT6oIrUEeaEA-t_ybAC5Q" direction="return">
@@ -406,7 +406,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_43bPBHs7Eeaip9ANPcqu9A" value="*"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_zqKxAIrTEeaEA-t_ybAC5Q" name="EditToolDefBacking &lt;RequestScoped>">
+    <packagedElement xmi:type="uml:Class" xmi:id="_zqKxAIrTEeaEA-t_ybAC5Q" name="EditToolDefBacking &lt;ViewScoped>">
       <generalization xmi:id="_Ws8jEL1wEea8ptvU0F2ROQ" general="_D5V5wHs7Eeaip9ANPcqu9A"/>
       <ownedOperation xmi:id="__LXjUIrTEeaEA-t_ybAC5Q" name="createNewToolDef"/>
     </packagedElement>

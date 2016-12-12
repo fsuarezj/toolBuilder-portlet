@@ -2433,7 +2433,7 @@ Following BDD methodology, behavoir of the system for this new feature was
  defined by developing some four scenarios.
  In 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "fig:sprint6_tests"
 
 \end_inset
@@ -2441,27 +2441,23 @@ reference "fig:sprint6_tests"
  these tests, passed after the implementation, are shown.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-First The admin user chooses an existing Tool Definition different to the
- chosen one.
+\begin_layout Itemize
+The admin user chooses an existing Tool Definition different to the chosen
+ one.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Second The admin user chooses another existing Tool Definition, which in
- fact means choosing back the last Tool Definition.
+\begin_layout Itemize
+The admin user chooses another existing Tool Definition, which in fact means
+ choosing back the last Tool Definition.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Third Access to tool-definition portlet forbidden for a logged user who
- is not admin.
+\begin_layout Itemize
+Access to tool-definition portlet forbidden for a logged user who is not
+ admin.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Fourth Access to tool-definition portlet forbidden for an anonymous user.
+\begin_layout Itemize
+Access to tool-definition portlet forbidden for an anonymous user.
 \end_layout
 
 \begin_layout Standard
@@ -2577,7 +2573,65 @@ Test Design
 \end_layout
 
 \begin_layout Standard
-Tests have been created for this use case.
+As shown in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:sprint7_tests"
+
+\end_inset
+
+, the feature 
+\emph on
+Create Tool Definition
+\series bold
+ 
+\series default
+\emph default
+has been defined with three scenarios, two of them show an error when trying
+ to create an existing tool definition.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/sprint7_tests_pass.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test scenarios for sprint 7
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint7_tests"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -2585,23 +2639,28 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-In order to have different code instances for tool choosing and tool definition
- a new 
+In order to have different views for tool definition choosing and tool definitio
+n edition, a new 
 \family typewriter
 toolDefConfig.xhtml
 \family default
- file is created which will be called to configure the tool definitions.
- The name of the tool to work with will be passed as part of the URL (using
- 
+ file was created which is called to configure the tool definitions.
+ In this case, the name of the tool to work with is passed as part of the
+ URL (using 
 \family typewriter
 GET
 \family default
- method) so the page can be addressed straight away by any admin user.
+ method instead of 
+\family typewriter
+POST
+\family default
+) so the page can be addressed straight away by any admin user forseeing
+ a future option of create a tool definition from other different page.
 \end_layout
 
 \begin_layout Standard
 In addition, a way to show different step definitions should be defined,
- so a tabs view was used because of the familiarity of users with this kind
+ so a tabs view was used due to the familiarity of users with this kind
  of interface and the easiness of development provided by the Primefaces
  
 \family typewriter
@@ -2611,47 +2670,85 @@ tabView
 \end_layout
 
 \begin_layout Standard
-Beans development.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{landscape}
-\end_layout
+Finally, it was necessary to develop two new managed beans, coloured in
+ blue in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:sprint7_beans"
 
 \end_inset
 
+:
+\end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family typewriter
+ToolDefListBacking
+\family default
+ It is a 
+\emph on
+request scoped
+\emph default
+ bean and it is called when creating a new tool instance in order to verify
+ the name -check if it is not void or if it already exists, so it prevents
+ database exceptions- and to create the URL to create the new tool definition.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family typewriter
+EditToolDefBacking
+\family default
+ It is a 
+\emph on
+view scoped
+\emph default
+ bean and it is related to the view 
+\family typewriter
+toolDefConfig.xhtml
+\family default
+, so it stores the necessary data and provides methods to save it.
 \end_layout
 
 \begin_layout Standard
-¿que diagrama UML?
-\end_layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/ferda/informatica/development/lib/liferay/liferay-plugins-sdk-6.2/portlets/toolBuilder-portlet/doc/uml/exported/Portlets Component Diagram.png
+	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/uml/exported/sprint7 beans Class Diagram.png
+	width 10cm
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
+\begin_layout Plain Layout
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
+Existing managed beans in sprint 7
+\end_layout
+
+\end_inset
 
 
-\backslash
-end{landscape}
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint7_beans"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2664,18 +2761,9 @@ Eighth Sprint
 \end_layout
 
 \begin_layout Standard
-An interface to add steps to the tool definition should be created.
- It should be embedded in the 
-\family typewriter
-toolDefConfig.xhtml
-\family default
- interface, but been independent because it will be called not only from
- there to add steps to the main tool definition, but also to add steps to
- any of the nested composite steps.
-\end_layout
-
-\begin_layout Standard
-Add step use case diagram
+An interface to add steps to the tool definition should be created so after
+ creating a new tool definition, admin users were able to add different
+ steps and give content to the tool.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2683,7 +2771,80 @@ Test Design
 \end_layout
 
 \begin_layout Standard
-Tests have been created for this use case.
+The fact of adding steps to a new tool definition was considered as part
+ of the behavoir 
+\emph on
+Create Tool Definition
+\emph default
+, so some new scenarios were appended to the existing feature.
+ There were some issues when coding the steps since, as it is explained
+ in the next implementation section, the used framework creates a new 
+\family typewriter
+<iframe>
+\family default
+ for a new dialog; this implied that the elements were not founded by the
+ 
+\emph on
+Selenium WebDriver
+\emph default
+.
+ Finally it was fixed when finding out that 
+\emph on
+Selenium WebDriver
+\emph default
+ defines the 
+\family typewriter
+iframe
+\family default
+ which is working in, so if it changes it should be switched -calling the
+ method 
+\family typewriter
+driver.switchTo.frame()
+\family default
+- in order to allow the driver to find those elements.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/sprint8_tests_pass.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test scenarios for sprint 8 belong to the same feature than sprint 7
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint8_tests"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -2691,14 +2852,77 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-The 
+The new view should be embedded in the 
+\family typewriter
+toolDefConfig.xhtml
+\family default
+ view, but it is worth to note that it should be independent since it was
+ going to be called not only to add steps to the main tool definition, but
+ also to add steps to any of the nested composite steps.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/sprint8_dialog.png
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Dialog to choose the new step type
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint8_dialog"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to have an independent view which could be embedded, the 
 \emph on
 Primefaces Dialog Framework
 \emph default
- has been used to have the page to choose among different installed steps
- separately.
- Thus, the choice of the new step type is done in a new dialog which will
- return it (the step type) and will pass it to 
+ was used so a new view called 
+\family typewriter
+selectStepDefDialog.xhtml
+\family default
+ was created and it is shown as a dialog (
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:sprint8_dialog"
+
+\end_inset
+
+) when the user is going to create a new step definition.
+ Thus, the choice of the new step type is made by the user in this new dialog,
+ which returns it (the step type) to 
 \family typewriter
 toolDefConfig.xhtml
 \family default
@@ -2707,10 +2931,12 @@ toolDefConfig.xhtml
 POST
 \family default
  method.
-\end_layout
-
-\begin_layout Standard
-Capture of dialog
+ The 
+\emph on
+Primefaces Dialog Framework
+\emph default
+ creates a new <iframe> and embeds the new view, so it is completely independent
+ and it allows to call the view from other different pages.
 \end_layout
 
 \begin_layout Subsection
@@ -2718,7 +2944,8 @@ Ninth Sprint
 \end_layout
 
 \begin_layout Standard
-Delete step use case diagram
+After creating tool definition, next needed feature was to delete tool definitio
+ns, which is addressed in this sprint.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2726,7 +2953,13 @@ Test Design
 \end_layout
 
 \begin_layout Standard
-Tests have been created for this use case.
+As the deletion was only made from the 
+\family typewriter
+adminView.xhtml
+\family default
+ view, the tests created for this feature had not many different cases.
+ Only two tests cases were made: one for void tool definitions and one for
+ filled tool definitions.
 \end_layout
 
 \begin_layout Subsubsection
