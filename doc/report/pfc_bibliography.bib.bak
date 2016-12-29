@@ -165,7 +165,7 @@
   Timestamp                = {2016.12.28}
 }
 
-@Book{Pugh2011,
+@Book{,
   Title                    = {Lean-Agile Acceptance Test-Driven Development: Better Software Through Collaboration },
   Author                   = {Ken Pugh},
   Publisher                = {Addison-Wesley Professional},

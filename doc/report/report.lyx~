@@ -110,7 +110,8 @@ Objectives
 
 \begin_layout Standard
 Develop a web tool to help practitioners to carry out Rapid Assessment for
- Markets
+ Markets.
+ The project tackles the problem of accessing
 \end_layout
 
 \begin_layout Section
@@ -118,27 +119,294 @@ Development Methodology
 \end_layout
 
 \begin_layout Standard
-Intro
+The software development has intended to use the software engineering techniques
+ and methodologies currently used in software business.
+ As it will be shown, some of the techniques has been adopted during the
+ course of the project in an effort to improve the software development
+ methodology and hence software quality.
+\end_layout
+
+\begin_layout Standard
+Agile Software Development has been practiced since it, as stated in the
+ 
+\emph on
+Agile Manifesto
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AgileManifesto"
+
+\end_inset
+
+, come to value some items over other ones, which has been regarded a good
+ practice for this project:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Individuals and interactions over processes and tools:
+\series default
+ The fact of using methodologies oriented to individuals and interactions
+ means that agile ones are less prescriptive than traditional methods, so
+ it will not only facilitate the comprehension of the process by the non-technic
+al stakeholders -in this case the customer-, but also will be more adaptative
+ allowing to better fit the methodology to the project and team needs.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Working software over comprehensive documentation:
+\series default
+ Inasmuch as the objective of the project is to do a web tool to guide through
+ Rapid Assessment for Markets, the documentation is not a main objective
+ and the efforts will be aimed mostly to make a working web tool.
+ In despite of this and in order to make a properly documented Final Project,
+ all the development phases and sprints will be well documented.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Customer collaboration over contract negotiation:
+\series default
+ Since there is not a contractual relationship with the customer and the
+ requirements are not quite clear, the involvement of the customer will
+ be important during the project for the purpose of assuring the software
+ accomplishes the goals.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Responding to change over following a plan: 
+\series default
+In the same vein, as the requirements and the software design were a little
+ ambiguous on the customer side, changes on the fly might be done, so flexible
+ methodologies were required.
 \end_layout
 
 \begin_layout Subsection
-Implementing agile methodologies (Kanban)
+Implementing agile methodologies
+\end_layout
+
+\begin_layout Standard
+For the purpose of the project it has been founded more useful to combine
+ techniques from agile (mainly Scrum
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Schwaber95scrumdevelopment,ScrumGuide"
+
+\end_inset
+
+) and Lean
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Poppendieck2003"
+
+\end_inset
+
+ methodologies, rather than following just one strictly.
+ Therefore, the combination of several techniques allows to take the best
+ of each one -as shown in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AndrewThuPham2012"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "HenrikKniberg2010"
+
+\end_inset
+
+- and it also allows the development methodology to be adapted to the current
+ project specifications and to evolve according to the project momentum.
+\end_layout
+
+\begin_layout Standard
+To begin with, and in order to structure the development process, the developmen
+t has been structured in 
+\emph on
+sprints
+\emph default
+ following the Scrum framework.
+ In this way, the development is incremental and it allows to better being
+ structured and documented.
+ The process of each sprint is documented in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Development"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
-Taiga/Trello
+Kanban board with Taiga/Trello
+\end_layout
+
+\begin_layout Standard
+In order to organize and visualize the different tasks and the workflow
+ a 
+\emph on
+Kanban board
+\emph default
+[XX] has been created.
+ After some researching Taiga
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://www.taiga.io
+\end_layout
+
+\end_inset
+
+ platform was chosen since it allows to combine a kanban board with backlog
+ and timeline tools.
+ Later, during the development it was migrated to Trello
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://www.trello.com
+\end_layout
+
+\end_inset
+
+ platform, a capture is shown in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:trello_board"
+
+\end_inset
+
+, because of its integration with the time management technique 
+\emph on
+Pomodoro
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cirillo2009"
+
+\end_inset
+
+, which was introduced lately to improve productivity.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/trello_board.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Kanban board powered by Trello
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:trello_board"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
-Branching
+Branching and version control
+\end_layout
+
+\begin_layout Standard
+Branching is 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+the duplication of an object under revision control (such as a source code
+ file or a directory tree) so that modifications can happen in parallel
+ along both branches
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BranchingWikipedia"
+
+\end_inset
+
+ and is closely linked to version control as the branching strategy defines
+ the versions structure.
+ For the current project, the branching strategy has not been too complex
+ since branches has only been created to add new features keeping the working
+ code untouched.
+ In fact, in the most of the cases a new branch has been created for each
+ sprint and, at the end of the sprint has been merged to the master branch.
 \end_layout
 
 \begin_layout Subsubsection
 Git
 \end_layout
 
-\begin_layout Subsection
-Issues tracking
+\begin_layout Standard
+To deal with branches and version control Git
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://git-scm.com/
+\end_layout
+
+\end_inset
+
+ has been chosen as the best option mainly because of its flexibility to
+ local and remote branching and merging cheaply, in addition to the free
+ and quality service provided by GitHub
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://github.com/
+\end_layout
+
+\end_inset
+
+, which helps developers to have distributed git repositories easily.
 \end_layout
 
 \begin_layout Subsection
@@ -146,41 +414,166 @@ Behavior Driven Development
 \end_layout
 
 \begin_layout Standard
-After the third sprint, Behavoir Driven Development (BDD) was adopted in
- order to better fit user's requirements and to make easier his involvement
- in the development, in addition to optimizing testing.
- The main reason to choose BDD instead of Test Driven Development (TDD),
- which is also an agile style of programming, has been the opportunity of
- involvement of future users, who could not have a technical background.
- Thus, talking about behavoirs instead of requirements and writing them
- in a natural language, the communication and the understanding among all
- the parts (users and developer) has improved.
+Behavoir Driven Development
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BDDWiki"
+
+\end_inset
+
+ (BDD) is a development technique buildt upon Test Driven Development (TDD)
+ and Acceptance Test Driven Development (ATDD) and first described by Dan
+ North in 2006
+\begin_inset CommandInset citation
+LatexCommand cite
+key "IntroBDD"
+
+\end_inset
+
+.
+ Is has been adopted for the current project after the third sprint.
+ To better understand BDD it is neccessary understanding what TDD and ATDD
+ are:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+TDD
+\series default
+ is a software develoment process which helps creating well-written and
+ working code.
+ According to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Koskel2007"
+
+\end_inset
+
+
+\emph on
+ TDD cycle is a three-step process of writing a test, making it pass by
+ writing just enough production code, and finally improving the design by
+ disciplined refactorings
+\emph default
+, so the three steps are testing, coding and refactoring.
+ In 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:TDD_cycle"
+
+\end_inset
+
+ the cycle flowchart is shown.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/tdd_cycle.png
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+TDD cycle, from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TDDWikipedia"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:TDD_cycle"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ATDD
+\series default
+ is a process based in TDD but including the concept of acceptance tests
+ and highlighting the customer-tester-developer collaboration
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pugh2011"
+
+\end_inset
+
+.
+ Acceptance tests are related to the specifications and check if they are
+ met, so ATDD process is similar to TDD but working the acceptance tests
+ which in fact means improving the collaboration among customer, tester
+ and developer since customer must be involved in acceptance tests definition.
 \end_layout
 
 \begin_layout Standard
-Therefore, since the third sprint, this approach has been carried out in
- this way:
-\end_layout
+On the other hand, BDD introduces the concept of 
+\emph on
+behavior
+\emph default
+ which is a description of what the system 
+\emph on
+should do
+\emph default
+ using consistent vocabulary, so the traditional disconnect between business
+ and technology disappears
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BDDWiki"
 
-\begin_layout Enumerate
-Beginning with the definitions of the needed behavoir -which has been always
- agreed with the user,
-\end_layout
-
-\begin_layout Enumerate
-followed by the development -writing 
-\begin_inset Quotes eld
 \end_inset
 
-just enough
-\begin_inset Quotes erd
-\end_inset
-
- code and as simple as possible to accomplish the behavoir,
+.
+ This increases the involvement of customer in the development, so for this
+ project enhances the opportunity of involvement of future users, who could
+ not have a technical background.
+ Thus, talking about behaviors instead of tests and writing them in a natural
+ language so anyone on the team can read it, improves the communication
+ and the understanding among all the stakeholders.
 \end_layout
 
-\begin_layout Enumerate
-and redesigning or refactoring the code if necessary.
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+Gherkin language
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MattWynne2012"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -196,7 +589,15 @@ Testing Framework
 \end_layout
 
 \begin_layout Standard
-Intro
+What ind of tests we are using and why? Explain it refering 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LisaCrispin2009"
+
+\end_inset
+
+ pag.
+ 242 Agile Testing Quadrants
 \end_layout
 
 \begin_layout Subsection
@@ -227,8 +628,31 @@ Selenium
 Problems with Firefox updating
 \end_layout
 
+\begin_layout Standard
+Framework classes diagram
+\end_layout
+
 \begin_layout Subsubsection
 Cucumber-JVM
+\end_layout
+
+\begin_layout Standard
+Some authors as 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pugh2011"
+
+\end_inset
+
+ make difference between 
+\emph on
+User Stories
+\emph default
+ and 
+\emph on
+Scenarios
+\emph default
+, but Cucumber blablabla
 \end_layout
 
 \begin_layout Subsection
@@ -385,6 +809,13 @@ Data Model
 
 \begin_layout Section
 Development
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Development"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -426,8 +857,8 @@ reference "subsec:JSF"
 
 \end_inset
 
- we will focus in Model and View parts of a MVC ar chitecture since the
- Controller is provided by the framework as the 
+ we will focus in Model and View parts of a MVC architecture since the Controlle
+r is provided by the framework as the 
 \family typewriter
 Faces Servlet
 \family default
@@ -447,9 +878,9 @@ has two different parts due to the architecture provided by Liferay and
 \emph default
 On the one hand the model object provided by the 
 \emph on
-Liferay Service Builder
+Liferay Service Builder (LSB)
 \emph default
- which representes the persistence layer.
+ which represents the persistence layer.
  As discussed in 
 \begin_inset CommandInset ref
 LatexCommand formatted
@@ -585,8 +1016,8 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-As explained above, for the persistence layer it was used the Liferay Service
- Builder, which helps developers to code simple persistence objects which
+As explained above, for the persistence layer the Liferay Service Builder
+ was used, which helps developers to code simple persistence objects which
  will work with the system relational database.
  After implementing the persistence layer, the 
 \family typewriter
@@ -619,7 +1050,10 @@ Second Sprint
 \begin_layout Standard
 In order to implement in the future the flow chart tools within the RAM,
  a flow chart system should be developed.
- The flowchart library search didn't give results so a generic library util
+ The flowchart library search didn't give results so a generic library 
+\family typewriter
+util
+\family default
  was developed.
 \end_layout
 
@@ -643,7 +1077,7 @@ BasicNode<T,C>
 \family typewriter
 T
 \family default
- and an indefined number of edges of type 
+ and an undefined number of edges of type 
 \family typewriter
 C
 \family default
@@ -670,7 +1104,7 @@ BasicFlowChart<T,C>
 \family typewriter
 Edge<T,C>
 \family default
- This is just a very simple auxiliar class only used to make easier the
+ This is just a very simple auxiliary class only used to make easier the
  construction of 
 \family typewriter
 BasicFlowChart
@@ -692,8 +1126,8 @@ Flow<T,C>
 \family typewriter
 PermissiveFlow<T,C>
 \family default
- As explained befor, this class has been created just to implement non-restricti
-ve flows.
+ As explained before, this class has been created just to implement non-restrict
+ive flows.
  In other words, flows allowing inputs not matching any of the conditions
  of the edges of the current node, in this case the flow will remain in
  the current node.
@@ -719,7 +1153,11 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Design for the second sprint, the flowchart util library
+Design for the second sprint, the flowchart 
+\family typewriter
+util
+\family default
+ library
 \end_layout
 
 \end_inset
@@ -1163,7 +1601,7 @@ Selenium WebElement
 \emph default
 s were selected because the 
 \emph on
-xpath
+XPath
 \emph default
  did not match with the web elements outputted by the portlet.
 \end_layout
@@ -1332,7 +1770,7 @@ reference "fig:sprint4_design"
 
 \end_inset
 
-, a simetric design has been implemented which will be replicated for each
+, a symmetric design has been implemented which will be replicated for each
  step:
 \end_layout
 
@@ -1516,7 +1954,7 @@ steps
 \emph on
 step
 \emph default
- can be in several 
+ could be in several 
 \emph on
 composite step
 \emph default
@@ -1596,7 +2034,7 @@ Test design
 \end_layout
 
 \begin_layout Standard
-Tests remained the same since no new user functionalities will be implemented.
+Tests remained the same since no new user features were implemented.
  Anyhow, the test were passed to guarantee refactoring has been successful
  and accomplishes all the required features.
 \end_layout
@@ -1609,7 +2047,7 @@ Implementation
 The only aspect to note during implementation was the difficulty of working
  with 
 \emph on
-Liferay Service Builder
+Liferay Service Builder (LSB)
 \emph default
  and its way of supporting N to N relationships.
  After exploring how to do it the
@@ -1618,7 +2056,7 @@ Liferay Service Builder
 \emph default
 persistent objects were created, the 
 \emph on
-Liferay Service Builder
+LSB
 \emph default
  allows to create N to N relationships but, as it would be realized later
  in 
@@ -1628,7 +2066,7 @@ reference "subsec:Tenth-Sprint"
 
 \end_inset
 
-, it is not the best option.
+, it is not the best option due to the poor customization allowed.
 \end_layout
 
 \begin_layout Subsection
@@ -2174,7 +2612,7 @@ reference "fig:sprint5_tests"
 \family typewriter
 tool-definition
 \family default
- portlet as it will be implementend in the next step.
+ portlet as it will be implemented in the next step.
 \end_layout
 
 \begin_layout Standard
@@ -2415,9 +2853,9 @@ Sixth Sprint
 \end_layout
 
 \begin_layout Standard
-Once the backend for tool definition was developed it was necessary to create
- the interface so admin users can choose between the existing tool definitions,
- therefore in this sprint the portlet 
+Once the back-end for tool definition was developed it was necessary to
+ create the interface so admin users can choose between the existing tool
+ definitions, therefore in this sprint the portlet 
 \family typewriter
 tool-definition
 \family default
@@ -2429,7 +2867,7 @@ Test design
 \end_layout
 
 \begin_layout Standard
-Following BDD methodology, behavoir of the system for this new feature was
+Following BDD methodology, behavior of the system for this new feature was
  defined by developing some four scenarios.
  In 
 \begin_inset CommandInset ref
@@ -2549,9 +2987,22 @@ FactoryBean
 adminView.xhtml
 \family default
  needed to be developed in this sprint.
- Some troubles were founded in order to refresh the page when a tool definition
- was choosen but, finally it was decided only to render again the form the
- button was embedded in, though an ajax call.
+ The list of tool definitions was implemented through a 
+\family typewriter
+<p:datatable>
+\family default
+ from 
+\emph on
+Primefaces
+\emph default
+.
+ Some troubles were also founded in order to refresh the page when a tool
+ definition was chosen but, finally it was decided only to render again
+ the form the button was embedded in, though an 
+\emph on
+Ajax
+\emph default
+ call.
 \end_layout
 
 \begin_layout Subsection
@@ -2654,7 +3105,7 @@ GET
 \family typewriter
 POST
 \family default
-) so the page can be addressed straight away by any admin user forseeing
+) so the page can be addressed straight away by any admin user foreseeing
  a future option of create a tool definition from other different page.
 \end_layout
 
@@ -2670,8 +3121,8 @@ tabView
 \end_layout
 
 \begin_layout Standard
-Finally, it was necessary to develop two new managed beans, coloured in
- blue in 
+Finally, it was necessary to develop two new managed beans, colored in blue
+ in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "fig:sprint7_beans"
@@ -2772,7 +3223,7 @@ Test Design
 
 \begin_layout Standard
 The fact of adding steps to a new tool definition was considered as part
- of the behavoir 
+ of the behavior 
 \emph on
 Create Tool Definition
 \emph default
@@ -2870,7 +3321,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/sprint8_dialog.png
-	width 8cm
+	width 10cm
 
 \end_inset
 
@@ -2935,8 +3386,29 @@ POST
 \emph on
 Primefaces Dialog Framework
 \emph default
- creates a new <iframe> and embeds the new view, so it is completely independent
- and it allows to call the view from other different pages.
+ creates a new 
+\family typewriter
+<iframe>
+\family default
+ and embeds the new view, so it is completely independent and it allows
+ to call the view from other different pages.
+\end_layout
+
+\begin_layout Standard
+On the other side, the view 
+\family typewriter
+toolDefConfig.xhtml
+\family default
+ was modified to show the created steps, the chosen method to do that was
+ using the 
+\emph on
+Primefaces
+\emph default
+ 
+\family typewriter
+<p:tabview>
+\family default
+ tag as the tab interface uses to be familiar to users.
 \end_layout
 
 \begin_layout Subsection
@@ -2944,7 +3416,8 @@ Ninth Sprint
 \end_layout
 
 \begin_layout Standard
-Delete step use case diagram
+After creating tool steps, next needed feature was to delete tool steps,
+ which is addressed in this sprint.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2952,7 +3425,14 @@ Test Design
 \end_layout
 
 \begin_layout Standard
-Tests have been created for this use case.
+As the deletion was only made from the 
+\family typewriter
+adminView.xhtml
+\family default
+ view, the tests created for this feature had not many different cases.
+ Only two tests cases were made: one for void tool definitions and one for
+ filled tool definitions.
+ The deletion of all the database registers was also checked.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2960,21 +3440,19 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-Coding this use case was not a hard task since the Primefaces 
-\family typewriter
-<p:tab />
-\family default
- tag has a property called 
+, which moreover has the attribute 
 \family typewriter
 closable
 \family default
- which allows to close each tab by a button in the top-right corner, so
- it is also user-friendly.
- When closing, an ajax call is done if defined for the 
+ to implement the steps deletion by doing and 
+\emph on
+Ajax
+\emph default
+ call when the 
 \family typewriter
 tabClose
 \family default
- event.
+ event triggers.
 \end_layout
 
 \begin_layout Subsection
@@ -2990,15 +3468,14 @@ name "subsec:Tenth-Sprint"
 
 \begin_layout Standard
 At this point, and due to an interview with the client, it was realized
- that steps order could be modified in tool definition configuration.
+ that steps order should be able to be modified within the tool definition
+ configuration.
  Up to this moment, steps were added in consecutive order, from first to
- last,so if users wanted to modify the order the only way was deleting existing
- steps and creating them again.
- To fix this the model and hence the database should be modified.
-\end_layout
-
-\begin_layout Standard
-Database relationships diagram with steps order included.
+ last, so if users wanted to modify the order the only way was deleting
+ existing steps and creating them again.
+ To develop this new feature it was necessary to modify the back-end since
+ the model did not support steps order, so a refactoring was addressed in
+ this sprint.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3016,16 +3493,102 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-Talk about how I stop using service builder n to n relationships and create
- a new table to store the relationship and the order.
+The database update implied, as showed in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sprint10_db"
+
+\end_inset
+
+, merely adding a step order field in the N to N relationships between 
+\family typewriter
+CSDef_StepDef
+\family default
+ and 
+\family typewriter
+CS_Step
+\family default
+ tables.
+ The problem arose when trying to do it through the 
+\emph on
+Liferay Service Builder
+\emph default
+ 
+\emph on
+(LSB)
+\emph default
+, after some researching and attempts it was clear that it was not supported.
+ So finally the 
+\emph on
+LSB
+\emph default
+ feature to create N to N relationships was not used, and the relationships
+ tables were created just any other table with 
+\emph on
+LSB
+\emph default
+ and adding the new 
+\family typewriter
+stepIndex
+\family default
+ field.
 \end_layout
 
 \begin_layout Standard
-Talk about how add, remove methods have been modified and moveStep created
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/sprint10_db.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Database modification of relationship table
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint10_db"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Refactoring
+As the database was modified, the related methods for adding and removing
+ were also modified to include the new field.
+ Also two new methods to update the relationship called 
+\family typewriter
+reorderStepDef
+\family default
+ and 
+\family typewriter
+saveNewStepsOrder
+\family default
+ were created to implement the new feature in the back-end.
 \end_layout
 
 \begin_layout Subsection
@@ -3033,7 +3596,7 @@ Eleventh Sprint
 \end_layout
 
 \begin_layout Standard
-Once the backend supports steps order it is time to modify the interface
+Once the back-end supports steps order it is time to modify the interface
  so admin users can change the order of the steps in a tool definition.
  It involved looking the possibilities of doing it in a user-friendly drag-and-d
 rop way with the current tabs view.
@@ -3055,6 +3618,21 @@ Tests for this sprint are those to move the steps but with regression tests
  Difficult to drag and drop thorough Selenium so Java Robot should be used.
 \end_layout
 
+\begin_layout Standard
+Some tests were developed for this feature, since simple steps sorting until
+ more complex sorting involving several steps.
+ During tests implementation there were issues regarding the 
+\emph on
+Selenium
+\emph default
+ drag-and-drop support, it was not possible to use it with the chosen interface
+ so finally it was decided to use the 
+\family typewriter
+java.awt.Robot
+\family default
+ class to move the mouse and simulate the drag-and-drop movement.
+\end_layout
+
 \begin_layout Subsubsection
 Implementation
 \end_layout
@@ -3072,7 +3650,7 @@ Twelfth Sprint
 \begin_layout Standard
 After interview with the client she realized that it was not possible to
  delete Tool Definitions, so this feature should be added.
- Also it was necesary to avoid the user to delete or edit tool definitions
+ Also it was necessary to avoid the user to delete or edit tool definitions
  which are selected or which have already created tool instances.
 \end_layout
 
@@ -3081,7 +3659,7 @@ Test Design
 \end_layout
 
 \begin_layout Standard
-Behavoir were designed for both features:
+Behavior were designed for both features:
 \end_layout
 
 \begin_layout Labeling
@@ -3106,7 +3684,7 @@ How I test the toolDef is deleted in the database?
 \labelwidthstring 00.00.0000
 Restricting When a tool definition is selected or it has created tool instance
  it will be impossible to delete or edit it.
- So buttons should be disabled and a tooltip will showed when moving the
+ So buttons should be disabled and a tool-tip will showed when moving the
  mouse over them.
  Four scenarios has been created for this feature: three for the cases of
  not allowing edit or deletion and one where the system must allows it.
@@ -3117,9 +3695,35 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-Delete button.
- Tooltip from Primefaces not working related to commandButton, so it was
- linked to a new div which contains all the buttons.
+Coding the delete button only required adding a new button to each row of
+ the 
+\family typewriter
+<p:dataTable>
+\family default
+ inside a
+\family typewriter
+dminView.xhtml
+\family default
+.
+ That button calls the 
+\family typewriter
+removeToolDef(String toolDefName)
+\family default
+ function from the 
+\family typewriter
+FactoryBean
+\family default
+ object, which is responsible of calling the persistent object and all the
+ steps to ensure their deletion.
+\end_layout
+
+\begin_layout Standard
+Regarding the restrictions...
+ Tool-tip from Primefaces not working related to 
+\family typewriter
+commandButton
+\family default
+, so it was linked to a new div which contains all the buttons.
 \end_layout
 
 \begin_layout Subsection
@@ -3160,6 +3764,25 @@ Results
 
 \begin_layout Standard
 Usability and modificabilidad/extensibilidad
+\end_layout
+
+\begin_layout Standard
+Mala medición del tiempo, demasiado optimismo
+\end_layout
+
+\begin_layout Standard
+Inclusión de herramientas sobre la marcha no va muy bien.
+ Necesidad de establecer el framework desde el inicio.
+\end_layout
+
+\begin_layout Standard
+Tiempo elevado de configuración de herramientas y configuración del entorno.
+\end_layout
+
+\begin_layout Standard
+Adopting new techniques has required an extra effort and time in setting-up
+ frameworks and procedures, but it has been worth in order to improve the
+ used software methodology and make it .
 \end_layout
 
 \begin_layout Section
