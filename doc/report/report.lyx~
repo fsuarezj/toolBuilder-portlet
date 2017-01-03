@@ -9,6 +9,8 @@
 \usepackage{pdflscape}
 \usepackage{fmtcount}
 \usepackage[super]{nth}
+\definecolor{green}{RGB}{0,120,0}
+\definecolor{grey}{RGB}{240,240,240}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -31,11 +33,12 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize default
+\float_placement H
+\paperfontsize 12
 \spacing single
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 1
@@ -59,6 +62,7 @@
 \shortcut idx
 \color #008000
 \end_index
+\rightmargin 2.2cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -111,7 +115,11 @@ Objectives
 \begin_layout Standard
 Develop a web tool to help practitioners to carry out Rapid Assessment for
  Markets.
- The project tackles the problem of accessing
+ The project tackles the problem of accessing the methodology and following
+ it step by step.
+ The real power of the tool lies on the possibility of following the methodology
+ interactively and improve the web tool in the future to allow users input
+ the data and analyze it within the tool.
 \end_layout
 
 \begin_layout Section
@@ -252,7 +260,7 @@ Kanban board with Taiga/Trello
 \end_layout
 
 \begin_layout Standard
-In order to organize and visualize the different tasks and the workflow
+In order to organize and visualize the different tasks and the work-flow
  a 
 \emph on
 Kanban board
@@ -268,8 +276,8 @@ http://www.taiga.io
 
 \end_inset
 
- platform was chosen since it allows to combine a kanban board with backlog
- and timeline tools.
+ platform was chosen since it allows to combine a Kanban board with backlog
+ and time-line tools.
  Later, during the development it was migrated to Trello
 \begin_inset Foot
 status open
@@ -411,17 +419,24 @@ https://github.com/
 
 \begin_layout Subsection
 Behavior Driven Development
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Behavior-Driven-Development"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Behavoir Driven Development
+Behavior Driven Development
 \begin_inset CommandInset citation
 LatexCommand cite
 key "BDDWiki"
 
 \end_inset
 
- (BDD) is a development technique buildt upon Test Driven Development (TDD)
+ (BDD) is a development technique built upon Test Driven Development (TDD)
  and Acceptance Test Driven Development (ATDD) and first described by Dan
  North in 2006
 \begin_inset CommandInset citation
@@ -432,7 +447,7 @@ key "IntroBDD"
 
 .
  Is has been adopted for the current project after the third sprint.
- To better understand BDD it is neccessary understanding what TDD and ATDD
+ To better understand BDD it is necessary understanding what TDD and ATDD
  are:
 \end_layout
 
@@ -441,7 +456,7 @@ key "IntroBDD"
 \series bold
 TDD
 \series default
- is a software develoment process which helps creating well-written and
+ is a software development process which helps creating well-written and
  working code.
  According to 
 \begin_inset CommandInset citation
@@ -465,7 +480,26 @@ reference "fig:TDD_cycle"
 \end_inset
 
  the cycle flowchart is shown.
- 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ATDD
+\series default
+ is a process based in TDD but including the concept of acceptance tests
+ and highlighting the customer-tester-developer collaboration
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pugh2011"
+
+\end_inset
+
+.
+ Acceptance tests are related to the specifications and check if they are
+ met, so ATDD process is similar to TDD but working the acceptance tests
+ which in fact means improving the collaboration among customer, tester
+ and developer since customer must be involved in acceptance tests definition.
 \begin_inset Float figure
 wide false
 sideways false
@@ -474,7 +508,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/tdd_cycle.png
-	width 10cm
+	width 14cm
 
 \end_inset
 
@@ -515,26 +549,6 @@ name "fig:TDD_cycle"
 
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-ATDD
-\series default
- is a process based in TDD but including the concept of acceptance tests
- and highlighting the customer-tester-developer collaboration
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Pugh2011"
-
-\end_inset
-
-.
- Acceptance tests are related to the specifications and check if they are
- met, so ATDD process is similar to TDD but working the acceptance tests
- which in fact means improving the collaboration among customer, tester
- and developer since customer must be involved in acceptance tests definition.
-\end_layout
-
 \begin_layout Standard
 On the other hand, BDD introduces the concept of 
 \emph on
@@ -561,27 +575,41 @@ key "BDDWiki"
  and the understanding among all the stakeholders.
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-Gherkin language
-\begin_inset CommandInset citation
-LatexCommand cite
-key "MattWynne2012"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Documentation
 \end_layout
 
-\begin_layout Subsubsection
-Javadoc
+\begin_layout Standard
+One of the advantages of BDD is that tests not only check the software,
+ but also document it as they are descriptions of the software behavior.
+ This is very useful because all the documentation related to the software
+ behavior is already written.
+\end_layout
+
+\begin_layout Standard
+Regardless of that, the code should be documented in order to make easier
+ the involvement of new developers in the future, so Javadoc
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Javadoc"
+
+\end_inset
+
+ has been used.
+ Javadoc is a tool for generating code documentation by adding Java annotation
+ to the code.
+ All objects and methods in the code has been annotated so code will be
+ more understandable.
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+Finish documenting code
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -589,35 +617,180 @@ Testing Framework
 \end_layout
 
 \begin_layout Standard
-What ind of tests we are using and why? Explain it refering 
+As it will be explained in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Development"
+
+\end_inset
+
+, the testing framework was not implemented in the first sprint.
+ For the second sprint just unit tests were taken, while the rest of the
+ tests were taken from third sprint on.
+ In 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:agile_testing_quadrants"
+
+\end_inset
+
+ the 
+\emph on
+Agile Testing Quadrants
+\emph default
+ from 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "LisaCrispin2009"
 
 \end_inset
 
- pag.
- 242 Agile Testing Quadrants
+ are shown.
+ These quadrants help to understand the different test phases and what has
+ been the testing strategy during the project.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/agile_testing_quadrants.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Agile Testing Quadrants
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:agile_testing_quadrants"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
-Unit Tests / Whitebox
+Quadrant 1 tests
 \end_layout
 
-\begin_layout Subsubsection
-JUnit
+\begin_layout Standard
+Tests in Quadrant 1 are usually taken by the developers and are aimed to
+ ensure the quality of small parts of the software as well as their interactions
+ with other parts.
+ Within the project unit tests has been automatized for some components
+ as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:Second-Sprint"
+
+\end_inset
+
+, but in many cases and due to the integration of the project in Liferay
+ which will be discussed in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:Liferay"
+
+\end_inset
+
+, unit tests were barely taken manually during development and the effort
+ has been made in the automation of next quadrants tests, which allow to
+ test the correct behavior of small parts in an easier way when they are
+ integred with the whole system.
 \end_layout
 
-\begin_layout Subsubsection
-Mockito
+\begin_layout Standard
+Regarding the used technologies, JUnit4
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://junit.org/junit4/
+\end_layout
+
+\end_inset
+
+ has been the framework choosen for unit tests, as it has a good documentations
+ and xUnit is one of the most popular testing frameworks.
+ In the reporting side, Allure framework
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://allure.qatools.ru/
+\end_layout
+
+\end_inset
+
+ has been used because of the good integration with JUnit and the quality
+ and customization of the reports.
 \end_layout
 
 \begin_layout Subsection
-Integration and Functional Tests / BlackBox
+Quadrant 2 tests
 \end_layout
 
-\begin_layout Subsubsection
-Arquillian
+\begin_layout Standard
+Quadrant 2 comprises the Business-Facing tests which address requirements
+ of the software.
+ It includes all the user stories and features desired and should also check
+ for undesired behavior in specific cases.
+ Thus, the BDD tests are included in this quadrant.
+ It is important to understand that even if BDD are acceptance tests, they
+ are different to User Acceptance Tests, which will be explained in the
+ next quadrant.
+\end_layout
+
+\begin_layout Standard
+For this project, the most of the testing efforts has been made in this
+ quadrant as BDD has been the main testing methodology.
+ The nature of the webapp, which is embedded in Liferay and uses mature
+ technologies such as Java Server Faces as explained below, implies that
+ the best way to test the software is when it is already embeded and working
+ since the surrounding technologies are not supposed to fail.
+ In this way, the testing efforts are optimized and the quality of the software
+ is ensured.
+\end_layout
+
+\begin_layout Standard
+In order to implement BDD and carry out the tests, two main technologies
+ have been employed in addition to the reporting 
+\emph on
+Allure
+\emph default
+ framework: 
+\emph on
+Selenium
+\emph default
+ and 
+\emph on
+Cucumber-JVM
+\emph default
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -625,15 +798,476 @@ Selenium
 \end_layout
 
 \begin_layout Standard
-Problems with Firefox updating
+
+\emph on
+Selenium
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://www.seleniumhq.org/
+\end_layout
+
+\end_inset
+
+ is a framework which automates browsers.
+ In the current project, the 
+\emph on
+Selenium WebDriver
+\emph default
+ has been used because it allows to create and automate tests programmatically
+ through several languages, in this case the Selenium Java binding has been
+ the chosen one.
 \end_layout
 
 \begin_layout Standard
-Framework classes diagram
+Although many browsers are supported by 
+\emph on
+Selenium
+\emph default
+, just Mozilla Firefox and Chrome have been used.
+ In fact, although Firefox was used in several tests, Chrome has been the
+ main testing browser since Firefox WebDriver had some issues depending
+ on the Firefox version installed in the testing machine.
+\end_layout
+
+\begin_layout Standard
+To improve tests development and scalability a little framework has been
+ created to have separately the WebDriver and the pages handling, so two
+ type of objects have been created:
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+DriverFactory
+\family default
+ This is a static object in charge of handling the WebDriver.
+ This object creates and destroys the WebDriver and provides it when it
+ is required.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+XyzPage
+\family default
+ These objects which usually inherit from 
+\family typewriter
+AbstractPage
+\family default
+ and where Xyz is the identifier of each page, provide the methods to access
+ and handle the different page components.
 \end_layout
 
 \begin_layout Subsubsection
 Cucumber-JVM
+\end_layout
+
+\begin_layout Standard
+Cucumber
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://cucumber.io/
+\end_layout
+
+\end_inset
+
+ is one of the most known and used tools to automate tests in Behavior Driven
+ Development, and Cucumber-JVM is its implementation for Java Virtual Machine
+ languages.
+\end_layout
+
+\begin_layout Standard
+As shown in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:cucumber_stack"
+
+\end_inset
+
+, Cucumber has different levels which should be defined in order to get
+ the BDD framework working.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/cucumber_stack.png
+	width 55mm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Cucumber testing stack, from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rose2015"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:cucumber_stack"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Business-Facing
+\end_layout
+
+\begin_layout Standard
+These levels are the core of the BDD methodology because it is where the
+ software behaviors are defined.
+ As stated in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Behavior-Driven-Development"
+
+\end_inset
+
+, behaviors are understood by customer, tester and developer so should be
+ developed in close collaboration among all of them.
+ Consequently, all these levels are written in a natural language so it
+ can be understood by all the stakeholders, as explained below
+\emph on
+ Gherkin
+\emph default
+ language, the will be used to ensure that.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+Features:
+\emph default
+ Here is where features are defined.
+ Many authors, as in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pugh2011"
+
+\end_inset
+
+, define features as high level requirements composed by user stories, which
+ are smaller parts usually defined in the way 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+As a <role>, I want to <do something> so that <reason>.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+But Cucumber does not has a 
+\emph on
+User Story
+\emph default
+ level, so it is a good practice to step down a level and define features
+ as user stories naming firstly de feature and later using the 
+\family typewriter
+As a/I want to/so that
+\family default
+ notation.
+\end_layout
+
+\end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+Scenarios:
+\emph default
+ Scenarios are the next level and they are akin to use cases.
+ Thus, they are composed by steps and define the behavior of the system
+ in a given use case.
+ To concretelly define the behavior, in Cucumber scenarios follow the structure
+ 
+\family typewriter
+Given <condition>, when <event/action> then <result>
+\family default
+ written in Gherkin language.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+Steps:
+\emph default
+ The last level of the Business-Facing section are steps.
+ Steps are single actions that are concatenated in Cucumber so they say
+ the system 
+\emph on
+what
+\emph default
+ to do.
+ Each step has its step definition in the Technology-Facing section, so
+ the natural language is translated into a testable language.
+\end_layout
+
+\begin_layout Standard
+As stated above, the main technology to power this business-facing secion
+ is the 
+\emph on
+Gherkin
+\emph default
+ language as it is the language used for writting Cucumber features, scenarios
+ and steps.
+ It is a natural language with a specific structure and a set of keywords
+ to define features, scenarios and steps.
+ In 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lis:Gherkin_example"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},breaklines=true,showstringspaces=false,tabsize=3,keywordstyle={\color{green}},morekeywords={Feature,Scenario,Given,And,When,But,Then},backgroundcolor={\color{grey}}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Feature: Tool Instance Creation
+\end_layout
+
+\begin_layout Plain Layout
+
+	As a user
+\end_layout
+
+\begin_layout Plain Layout
+
+	I want to be able to create a new Tool Instance in the system
+\end_layout
+
+\begin_layout Plain Layout
+
+	So that I can work with that Tool Instance
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	Scenario: A logged user creates a new Tool Instance
+\end_layout
+
+\begin_layout Plain Layout
+
+		Given the user is on the Tool Instances Navigation Page
+\end_layout
+
+\begin_layout Plain Layout
+
+		And she logs in the system as xx@xx.com with password xxx
+\end_layout
+
+\begin_layout Plain Layout
+
+		When she chooses to create a new tool instance
+\end_layout
+
+\begin_layout Plain Layout
+
+		And she provides the tool instance name as My New Instance
+\end_layout
+
+\begin_layout Plain Layout
+
+		And she creates the tool instance
+\end_layout
+
+\begin_layout Plain Layout
+
+		And she returns to the Tool Instances Navigation Page
+\end_layout
+
+\begin_layout Plain Layout
+
+		Then a tool instance called "My New Instance" exists
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:Gherkin_example"
+
+\end_inset
+
+Example of feature with one scenario written in 
+\emph on
+Gherkin
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Technology-Facing
+\end_layout
+
+\begin_layout Standard
+These levels are related to the system to be tested.
+ In this project, as Cucumber-JVM has been chosen, the most of the code
+ is written in Java, but this choice depends on the kind of software to
+ be tested.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Step Definitions:
+\emph default
+ As explained above these are the translations of the steps into testable
+ procedures, so they say the system 
+\emph on
+how
+\emph default
+ to carry out the steps.
+ In this case, as we are using Cucumber-JVM, steps definition are implemented
+ using Java annotations and allows to include regular expressions in order
+ to better define the steps.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Support Code:
+\emph default
+
+\begin_inset listings
+lstparams "language=Java,basicstyle={\small\ttfamily},breaklines=true,showstringspaces=false,tabsize=3,keywordstyle={\color{green}},backgroundcolor={\color{grey}}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+@When("^(?:she|he|the user) logs in the system as ([^
+\backslash
+"]*) with password ([^
+\backslash
+"]*)$")
+\end_layout
+
+\begin_layout Plain Layout
+
+public void logIn(String login, String passwd) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	new ToolInstanceCommonPage(driver).clickLogIn();
+\end_layout
+
+\begin_layout Plain Layout
+
+	new ToolInstanceCommonPage(driver).fillLogin(login, passwd);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+Example of step definition and support code
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Automation Library: 
+\emph default
+Here is where 
+\emph on
+Selenium
+\emph default
+ comes into play, hence as explained above is the chosen technology to automate
+ the browsers.
 \end_layout
 
 \begin_layout Standard
@@ -655,28 +1289,113 @@ Scenarios
 , but Cucumber blablabla
 \end_layout
 
-\begin_layout Subsection
-Usability
-\end_layout
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MattWynne2012"
 
-\begin_layout Subsection
-Reporting
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Allure
+As stated in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Behavior-Driven-Development"
+
+\end_inset
+
+, behaviors are understood by customer, tester and developer.
+ But to write them in a natural language and be able to test if those behavior
+ are accomplished by the software, it is necessary some kind of link.
+ So it is there where the 
+\emph on
+Gherkin
+\emph default
+ language comes in action.
+ 
+\emph on
+Gherkin
+\emph default
+ is a language 
+\emph on
+that lets you describe software’s behavior without detailing how that behavior
+ is implemented
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gherkin"
+
+\end_inset
+
+, which means
+\end_layout
+
+\begin_layout Subsection
+Quadrant 3 tests
+\end_layout
+
+\begin_layout Standard
+This tests are oriented to critique the product when it has been already
+ developed and find any unwanted behaviors usually not stipulated in the
+ requirementes (if BDD has been well carried out).
+ That is why this tests are not automatized and require the strong involvement
+ of the customer, that is what is called User Acceptance Tests which should
+ not be confused with the ATDD performed in Quadrant 2.
+ Also here are included usability tests with different users and real-world
+ cases.
+\end_layout
+
+\begin_layout Standard
+In the project, some tests in this quadrant has been taken, but as the functiona
+lities are not quite numerous, they have been just a few of manual tests
+ with some members of the Livelihoods Resources Centre which have critique
+ the web app and provided recommendations.
+\end_layout
+
+\begin_layout Subsection
+Quadrant 4 tests
+\end_layout
+
+\begin_layout Standard
+Finally, the Quadrant 4 comprises all those Technology-Faced tests aimed
+ to critique the quality of the final product.
+ This includes from security to performance, reliability or compatibility.
+ Even if all those points have been considered when developing the software,
+ there have not been specific tests as it is a huge domain of tests and
+ is outside the scope of this project.
 \end_layout
 
 \begin_layout Section
 Analysis and Requirements
 \end_layout
 
-\begin_layout Section
-Design
+\begin_layout Standard
+From 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LisaCrispin2009"
+
+\end_inset
+
+: 
+\emph on
+The term test-driven development misleads practitioners who don’t under-
+ stand that it’s more about design than testing.
+ Code developed test-first is naturally designed for testability.
 \end_layout
 
 \begin_layout Standard
-Intro
+
+\emph on
+When an agile programmer starts a coding task, she writes a test that captures
+ the behavior of a tiny bit of code and then works on the code until the
+ test passes.
+ By building the code in small test-code-test increments, the programmer
+ has a chance to think through the functionality that the customer needs.
 \end_layout
 
 \begin_layout Subsection
@@ -783,6 +1502,12 @@ Primefaces
 Object Model
 \end_layout
 
+\begin_layout Standard
+The object model evolves despite of the basic structure is given by the
+ technology...
+ blablabla
+\end_layout
+
 \begin_layout Subsubsection
 Components Design
 \end_layout
@@ -805,6 +1530,12 @@ Composite Pattern for CompositeStep
 
 \begin_layout Subsection
 Data Model
+\end_layout
+
+\begin_layout Standard
+As the object model, data model will be developed through the development
+ process refactoring it whenever it is necessary...
+ blablabla
 \end_layout
 
 \begin_layout Section
@@ -831,7 +1562,7 @@ First Sprint
 \begin_layout Standard
 A basic web tool (portlet) to navigate through the RAM Steps and capable
  of save the current state of each assessment was created in this step following
- the cascade development cycle (
+ a clasic development cycle (
 \noun on
 Design -> Development -> Testing
 \noun default
@@ -1045,6 +1776,13 @@ Testing in this sprint was merely human guided since the testing framework
 
 \begin_layout Subsection
 Second Sprint
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Second-Sprint"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2420,7 +3158,7 @@ tool-definition
 \begin_layout Plain Layout
 
 \size footnotesize
-ChooseTool Definition
+Choose Tool Definition
 \end_layout
 
 \end_inset
@@ -2690,7 +3428,7 @@ tool-definition
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "language=XML,float,basicstyle={\small\ttfamily},tabsize=3,keywordstyle={\color{blue}},morekeywords={resource-action-mapping,portlet-resource,portlet-name,permissions,supports,action-key,site-member-defaults,guest-defaults,guest-unsupported,model-resource,model-name,portlet-ref},alsoletter={-}"
+lstparams "language=XML,float,basicstyle={\small\ttfamily},tabsize=3,keywordstyle={\color{green}},backgroundcolor={\color{grey}},morekeywords={resource-action-mapping,portlet-resource,portlet-name,permissions,supports,action-key,site-member-defaults,guest-defaults,guest-unsupported,model-resource,model-name,portlet-ref},alsoletter={-}"
 inline false
 status open
 
