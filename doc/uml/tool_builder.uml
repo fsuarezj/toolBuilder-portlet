@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_EdigcBnqEeaHdNAhBjaKYg" name="Sprint 4 beans">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_EdigcBnqEeaHdNAhBjaKYg" name="Testing framework">
   <packageImport xmi:id="_VU3GEBnuEeaHdNAhBjaKYg">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
   </packageImport>
@@ -457,4 +457,52 @@
     <ownedOperation xmi:id="_1rH48IrPEeaEA-t_ybAC5Q" name="Operation_1"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_Gf5oQIrREeaEA-t_ybAC5Q" name="Class4"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_X9xh8NVPEeaNSPF6R3ZsUg" name="org.lrc.liferay.toolbuilder.tests">
+    <packagedElement xmi:type="uml:Package" xmi:id="_fqQsgNVPEeaNSPF6R3ZsUg" name="utils">
+      <packagedElement xmi:type="uml:Class" xmi:id="_h0o5YNVPEeaNSPF6R3ZsUg" name="DriverFactory"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_oA0HwNVPEeaNSPF6R3ZsUg" name="pages">
+      <packagedElement xmi:type="uml:Class" xmi:id="_qDDFQNVPEeaNSPF6R3ZsUg" name="AbstractPage"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_6Fcx4NVPEeaNSPF6R3ZsUg" memberEnd="_6FdY8NVPEeaNSPF6R3ZsUg _6FfOINVPEeaNSPF6R3ZsUg" navigableOwnedEnd="_6FfOINVPEeaNSPF6R3ZsUg">
+        <ownedEnd xmi:id="_6FdY8NVPEeaNSPF6R3ZsUg" name="abstractPages" type="_qDDFQNVPEeaNSPF6R3ZsUg" association="_6Fcx4NVPEeaNSPF6R3ZsUg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6FenENVPEeaNSPF6R3ZsUg"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6FenEdVPEeaNSPF6R3ZsUg" value="*"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="_6FfOINVPEeaNSPF6R3ZsUg" name="driverFactorys" type="_h0o5YNVPEeaNSPF6R3ZsUg" association="_6Fcx4NVPEeaNSPF6R3ZsUg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6Ff1MNVPEeaNSPF6R3ZsUg"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6Ff1MdVPEeaNSPF6R3ZsUg" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_AP1QgNVQEeaNSPF6R3ZsUg" name="XxxxPage">
+        <generalization xmi:id="_JvtrUNVQEeaNSPF6R3ZsUg" general="_qDDFQNVPEeaNSPF6R3ZsUg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_DP-nwNVQEeaNSPF6R3ZsUg" name="YyyPage">
+        <generalization xmi:id="_KjaZINVQEeaNSPF6R3ZsUg" general="_qDDFQNVPEeaNSPF6R3ZsUg"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_NP-GANVQEeaNSPF6R3ZsUg" name="steps">
+      <packagedElement xmi:type="uml:Class" xmi:id="_TR4lINVQEeaNSPF6R3ZsUg" name="XxxSteps"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_VzRj0NVQEeaNSPF6R3ZsUg" name="YyySteps"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_cVYl8NVQEeaNSPF6R3ZsUg" memberEnd="_cVYl8dVQEeaNSPF6R3ZsUg _cVZNAtVQEeaNSPF6R3ZsUg" navigableOwnedEnd="_cVZNAtVQEeaNSPF6R3ZsUg">
+        <ownedEnd xmi:id="_cVYl8dVQEeaNSPF6R3ZsUg" name="xxxStepss" type="_TR4lINVQEeaNSPF6R3ZsUg" association="_cVYl8NVQEeaNSPF6R3ZsUg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cVZNANVQEeaNSPF6R3ZsUg"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cVZNAdVQEeaNSPF6R3ZsUg" value="*"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="_cVZNAtVQEeaNSPF6R3ZsUg" name="xxxxPages" type="_AP1QgNVQEeaNSPF6R3ZsUg" association="_cVYl8NVQEeaNSPF6R3ZsUg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cVZ0ENVQEeaNSPF6R3ZsUg"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cVZ0EdVQEeaNSPF6R3ZsUg" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_dxNDsNVQEeaNSPF6R3ZsUg" memberEnd="_dxNDsdVQEeaNSPF6R3ZsUg _dxNqwtVQEeaNSPF6R3ZsUg" navigableOwnedEnd="_dxNqwtVQEeaNSPF6R3ZsUg">
+        <ownedEnd xmi:id="_dxNDsdVQEeaNSPF6R3ZsUg" name="yyyStepss" type="_VzRj0NVQEeaNSPF6R3ZsUg" association="_dxNDsNVQEeaNSPF6R3ZsUg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dxNqwNVQEeaNSPF6R3ZsUg"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dxNqwdVQEeaNSPF6R3ZsUg" value="*"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="_dxNqwtVQEeaNSPF6R3ZsUg" name="yyyPages" type="_DP-nwNVQEeaNSPF6R3ZsUg" association="_dxNDsNVQEeaNSPF6R3ZsUg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dxOR0NVQEeaNSPF6R3ZsUg"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dxOR0dVQEeaNSPF6R3ZsUg" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+  </packagedElement>
 </uml:Model>

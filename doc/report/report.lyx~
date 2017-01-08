@@ -63,7 +63,7 @@
 \color #008000
 \end_index
 \rightmargin 2.2cm
-\secnumdepth 3
+\secnumdepth 4
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
@@ -110,12 +110,27 @@ Introduction
 
 \begin_layout Section
 Objectives
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Objectives"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Develop a web tool to help practitioners to carry out Rapid Assessment for
  Markets.
- The project tackles the problem of accessing the methodology and following
+ EXPLAIN MORE ABOUT RAM
+\end_layout
+
+\begin_layout Standard
+Enbedded in the LRC web (Liferay)
+\end_layout
+
+\begin_layout Standard
+The project tackles the problem of accessing the methodology and following
  it step by step.
  The real power of the tool lies on the possibility of following the methodology
  interactively and improve the web tool in the future to allow users input
@@ -265,7 +280,14 @@ In order to organize and visualize the different tasks and the work-flow
 \emph on
 Kanban board
 \emph default
-[XX] has been created.
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Anderson2016"
+
+\end_inset
+
+ has been created.
  After some researching Taiga
 \begin_inset Foot
 status open
@@ -316,9 +338,10 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/trello_board.png
-	width 12cm
+	width 15cm
 
 \end_inset
 
@@ -417,6 +440,18 @@ https://github.com/
 , which helps developers to have distributed git repositories easily.
 \end_layout
 
+\begin_layout Standard
+The git repositories where the sources are located are:
+\end_layout
+
+\begin_layout Itemize
+For the toolBuilder-portlet:
+\end_layout
+
+\begin_layout Itemize
+For the testing framework and tests:
+\end_layout
+
 \begin_layout Subsection
 Behavior Driven Development
 \begin_inset CommandInset label
@@ -506,6 +541,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/tdd_cycle.png
 	width 14cm
@@ -657,6 +693,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/agile_testing_quadrants.png
 	width 12cm
@@ -858,8 +895,12 @@ XyzPage
 \family typewriter
 AbstractPage
 \family default
- and where Xyz is the identifier of each page, provide the methods to access
- and handle the different page components.
+ and where 
+\emph on
+Xyz
+\emph default
+ is the identifier of each page, provide the methods to access and handle
+ the different page components.
 \end_layout
 
 \begin_layout Subsubsection
@@ -970,8 +1011,7 @@ reference "subsec:Behavior-Driven-Development"
  language, the will be used to ensure that.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Itemize
 
 \emph on
 Features:
@@ -1019,8 +1059,7 @@ As a/I want to/so that
 \end_layout
 
 \end_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Itemize
 
 \emph on
 Scenarios:
@@ -1036,8 +1075,7 @@ Given <condition>, when <event/action> then <result>
  written in Gherkin language.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Itemize
 
 \emph on
 Steps:
@@ -1149,7 +1187,6 @@ Feature: Tool Instance Creation
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 \begin_inset CommandInset label
 LatexCommand label
 name "lis:Gherkin_example"
@@ -1178,8 +1215,8 @@ Technology-Facing
 \begin_layout Standard
 These levels are related to the system to be tested.
  In this project, as Cucumber-JVM has been chosen, the most of the code
- is written in Java, but this choice depends on the kind of software to
- be tested.
+ is written in Java, but that choice depends on the kind of software to
+ be tested and the language chosen.
 \end_layout
 
 \begin_layout Itemize
@@ -1194,8 +1231,73 @@ how
 \emph default
  to carry out the steps.
  In this case, as we are using Cucumber-JVM, steps definition are implemented
- using Java annotations and allows to include regular expressions in order
+ using Java annotations and allows to include regular expressioinns in order
  to better define the steps.
+ An example can be shown in the first line of 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lis:cucumber_step_def"
+
+\end_inset
+
+.
+ Steps definitions are defined in the 
+\family typewriter
+XyzStep
+\family default
+ objects, so the classess diagram of the testing framework for the project
+ is shown in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:testing_framework"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/uml/exported/testing_framework.png
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Testing framework design
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:testing_framework"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1203,7 +1305,18 @@ how
 \emph on
 Support Code:
 \emph default
+ As steps should be concrete and accurate, the support code should not be
+ so extense, just a few lines to link with the automation library, which
+ will be the level which will really do the most of the automation work.
+ In 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lis:cucumber_step_def"
 
+\end_inset
+
+ just to lines are enough to call the automation library and tell it what
+ to do.
 \begin_inset listings
 lstparams "language=Java,basicstyle={\small\ttfamily},breaklines=true,showstringspaces=false,tabsize=3,keywordstyle={\color{green}},backgroundcolor={\color{grey}}"
 inline false
@@ -1243,6 +1356,11 @@ public void logIn(String login, String passwd) {
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:cucumber_step_def"
+
+\end_inset
 
 Example of step definition and support code
 \end_layout
@@ -1268,70 +1386,6 @@ Selenium
 \emph default
  comes into play, hence as explained above is the chosen technology to automate
  the browsers.
-\end_layout
-
-\begin_layout Standard
-Some authors as 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Pugh2011"
-
-\end_inset
-
- make difference between 
-\emph on
-User Stories
-\emph default
- and 
-\emph on
-Scenarios
-\emph default
-, but Cucumber blablabla
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset citation
-LatexCommand cite
-key "MattWynne2012"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-As stated in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Behavior-Driven-Development"
-
-\end_inset
-
-, behaviors are understood by customer, tester and developer.
- But to write them in a natural language and be able to test if those behavior
- are accomplished by the software, it is necessary some kind of link.
- So it is there where the 
-\emph on
-Gherkin
-\emph default
- language comes in action.
- 
-\emph on
-Gherkin
-\emph default
- is a language 
-\emph on
-that lets you describe software’s behavior without detailing how that behavior
- is implemented
-\emph default
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Gherkin"
-
-\end_inset
-
-, which means
 \end_layout
 
 \begin_layout Subsection
@@ -1370,11 +1424,11 @@ Finally, the Quadrant 4 comprises all those Technology-Faced tests aimed
 \end_layout
 
 \begin_layout Section
-Analysis and Requirements
+Analysis, technology requirements and design
 \end_layout
 
 \begin_layout Standard
-From 
+At this point it is worth to remember a statement from 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "LisaCrispin2009"
@@ -1383,27 +1437,64 @@ key "LisaCrispin2009"
 
 : 
 \emph on
-The term test-driven development misleads practitioners who don’t under-
- stand that it’s more about design than testing.
+
+\begin_inset Quotes eld
+\end_inset
+
+The term test-driven development misleads practitioners who don’t understand
+ that it’s more about design than testing.
  Code developed test-first is naturally designed for testability.
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+ So it is important to move away from the idea that BDD does not entail
+ design.
+ In fact, as it will be shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Development"
+
+\end_inset
+
+, almost all the sprints include a 
+\emph on
+Testing design
+\emph default
+ subsection and there are several refactoring sprints.
+ The earliest ones regard the quote from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LisaCrispin2009"
+
+\end_inset
+
+ and lead the software development to get a product structured by features,
+ the latter ones are sprints aimed to clean and restructure the code so
+ it is more comprehensible, its complexity is reduced and therefore maintainabil
+ity and extensibility are improved.
 \end_layout
 
 \begin_layout Standard
-
-\emph on
-When an agile programmer starts a coding task, she writes a test that captures
- the behavior of a tiny bit of code and then works on the code until the
- test passes.
- By building the code in small test-code-test increments, the programmer
- has a chance to think through the functionality that the customer needs.
+This section discusses about the design process and its final result, but
+ before that it is important to know which and why have been the chosen
+ technologies, since it has irretrievably affected and guided the design.
 \end_layout
 
 \begin_layout Subsection
 Technologies
 \end_layout
 
+\begin_layout Standard
+As in previous sections the development methodology have been explained
+ as well as the tools and technologies related to the methodology, this
+ subsection only comprises those technologies and tools directly related
+ to the development.
+\end_layout
+
 \begin_layout Subsubsection
-Liferay
+Liferay Portal
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Liferay"
@@ -1414,7 +1505,75 @@ name "subsec:Liferay"
 \end_layout
 
 \begin_layout Standard
-Discuss about Service Builder
+The choice of the web framework has been taken directly by the customer.
+ As explained in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Objectives"
+
+\end_inset
+
+, the final product should be a web application embedded in the Livelihoods
+ Resource Centre web, so as that web has been developed with Liferay Portal
+ Community Edition because of an organizational decission, there is not
+ discussion about that: development in Liferay is a customer requirement.
+\end_layout
+
+\begin_layout Standard
+Liferay Portal is an open-source enterprise portal distributed under the
+ GNU LGPL
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www.gnu.org/copyleft/lesser.html
+\end_layout
+
+\end_inset
+
+.
+ As it is Java-based, and even it supports plugin extends into multiple
+ programming languages, the most natural, efficient and easy to install
+ and maintain is a portlet in Java, so that is why the web app has been
+ developed as a Liferay portlet.
+\end_layout
+
+\begin_layout Standard
+Liferay Portal also provides some tools to facilitate the development.
+ One of the most important ones is what is called 
+\emph on
+Service Builder
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+https://www.gnu.org/copyleft/lesser.html
+\end_layout
+
+\end_inset
+
+.
+
+\emph default
+ It is a code generation tool which provides an easy way to create object
+ model generating a 
+\emph on
+service layer [...] that provides a clean separation between the object model
+ and code for the underlying database
+\emph default
+.
+ Although it has some constraints as it will be shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Development"
+
+\end_inset
+
+, it is an interesting tool to provide developers a way to create secure
+ and uniform code for the model component and it is recommended by the Liferay
+ team, so it has been used in the project.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1429,25 +1588,109 @@ name "subsec:JSF"
 \end_layout
 
 \begin_layout Standard
-Components design describing the whole system and invariable parts.
+The two main ways to create a portlet for Liferay are: a Liferay MVC portlet
+ (using the Liferay MVC framework) and a Liferay JSF portlet (based on the
+ JavaServer Faces specification and implementation
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://javaserverfaces.java.net/
+\end_layout
+
+\end_inset
+
+).
+ The decission of using JSF for this project has been primarly based in
+ the fact that JSF is a standard also outside Liferay, it is more modern
+ than a classic JSP solution and it is a web application oriented specification.
+ Liferay supports JSF 2.2 specification but for Liferay Portal 6.2 (the version
+ used in the LRC web) default JSF specification is JSF 2.1, so it has been
+ the version used in the development to avoid compatibility problems.
 \end_layout
 
 \begin_layout Standard
-http://stackoverflow.com/questions/10111387/understanding-jsf-as-a-mvc-framework
+JavaServer Faces is a framework to write MVC web application and its version
+ 2.1 was defined in the Java Specification Request 314
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www.jcp.org/en/jsr/detail?id=314
 \end_layout
 
-\begin_layout Standard
-http://stackoverflow.com/questions/5104094/what-components-are-mvc-in-jsf-mvc-fra
-mework
+\end_inset
+
+.
+ The main components of JSF, which are shown in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:jsf_components"
+
+\end_inset
+
+
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+reproduce image for authoring reasons?
 \end_layout
 
-\begin_layout Standard
-http://stackoverflow.com/questions/4573419/what-are-the-main-advantages-of-mvc-pa
-ttern-over-the-old-fashioned-3-layer-patte/4573554#4573554
+\end_inset
+
+, are:
 \end_layout
 
-\begin_layout Standard
-Discuss about how JSF fits in MVC
+\begin_layout Itemize
+The 
+\emph on
+Faces Servlet
+\emph default
+ which controls the application flow and is configured through an 
+\emph on
+XML configuration file
+\emph default
+.
+ It plays the 
+\emph on
+Controller
+\emph default
+ role in the MVC architecture.
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+JSPs created with JSF UI
+\emph default
+, which defines the application pages and uses 
+\emph on
+JSF UI
+\emph default
+ components as 
+\emph on
+tags
+\emph default
+, 
+\emph on
+validators
+\emph default
+ and 
+\emph on
+events
+\emph default
+.
+ It is the 
+\emph on
+View
+\emph default
+ in the MVC architecture.
+\end_layout
+
+\begin_layout Itemize
+The Managed beans, which stands for the Model in the MVC architecture, and
+ connects with other business logic components and the persistence layer.
 \end_layout
 
 \begin_layout Standard
@@ -1457,9 +1700,10 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/jsf_scheme.png
-	width 100text%
+	width 80text%
 
 \end_inset
 
@@ -1485,7 +1729,124 @@ name "fig:jsf_components"
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On the other hand, it is worth to point that JSF pages have a particular
+ lifecycle which should be considered when using this technology.
+ As in a JSP page, when the client makes an HTTP request for the page, the
+ server sends the response as the page in HTML.
+ The 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:jsf_lifecycle"
+
+\end_inset
+
+, from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "JavaEE5Tutorial"
+
+\end_inset
+
+, depicts the six phases of the JSF life cycle:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Restore view:
+\series default
+ This is the first phase and is when the view of the page is built with
+ all its tag components, event handlers and validators.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Apply request values:
+\series default
+ During this phase each component built in las phase extracts its new value.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Process validatons:
+\series default
+
+\begin_inset space ~
+\end_inset
+
+As its name suggests, this is the phase to process the validators.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Update model values: 
+\series default
+After processing validators, the server-side model is updated, beans are
+ in charge of that.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Invoke application: 
+\series default
+At this point, any existing application level events such as submitting
+ a form or linking to another page are handled.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Render response:
+\series default
+ During this phase the page is rendered through the JSP container.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/jsf_lifecycle.gif
+	width 11cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+JSF life cycle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:jsf_lifecycle"
+
+\end_inset
+
 
 \end_layout
 
@@ -1498,34 +1859,41 @@ name "fig:jsf_components"
 Primefaces
 \end_layout
 
+\begin_layout Standard
+Primefaces
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://www.primefaces.org/
+\end_layout
+
+\end_inset
+
+ is an open source JSF component suite with built-in Ajax support and a
+ rich set of components which make easier for developers to create interfaces.
+ It has been the JSF library used in this project.
+\end_layout
+
 \begin_layout Subsection
 Object Model
 \end_layout
 
 \begin_layout Standard
-The object model evolves despite of the basic structure is given by the
- technology...
- blablabla
-\end_layout
+Due to the methodology of development, the object model has evolved during
+ the project.
+ Despite of the basic structure is given by the JSF framework as explained
+ in last section, the beans and auxiliar objects which define the model
+ have been changing and being adapted to fit the project evolution and requireme
+nts.
+ In 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Development"
 
-\begin_layout Subsubsection
-Components Design
-\end_layout
+\end_inset
 
-\begin_layout Subsubsection
-Patterns used 
-\end_layout
-
-\begin_layout Standard
-Factory Pattern to create tool structures from the App Managed Bean.
-\end_layout
-
-\begin_layout Standard
-Prototype Pattern to preload tools from the App Managed Bean.
-\end_layout
-
-\begin_layout Standard
-Composite Pattern for CompositeStep
+ the different phases of the classes diagram will be shown.
 \end_layout
 
 \begin_layout Subsection
@@ -1533,9 +1901,55 @@ Data Model
 \end_layout
 
 \begin_layout Standard
-As the object model, data model will be developed through the development
- process refactoring it whenever it is necessary...
- blablabla
+As the object model, data model has been developed through the development
+ process refactoring it whenever it is necessary as it will be shown in
+ next section.
+ The final ER diagram for the database, which is in fact the data model
+ is shown in
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/database/ERD_S10.png
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Final ER diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:final_er_diagram"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1709,6 +2123,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/uml/exported/First Sprint Class Diagram.png
 	width 100text%
@@ -1878,6 +2293,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/uml/exported/flowcharts Class Diagram.png
 	width 100text%
@@ -1999,6 +2415,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/flowchart_tests.png
 	scale 50
@@ -2054,6 +2471,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/flowchart_tests_duration.png
 	scale 60
@@ -2224,6 +2642,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/uml/exported/Third Sprint Class Diagram.png
 	width 100text%
@@ -2351,6 +2770,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/sprint3_tests_fail.png
 	width 15cm
@@ -2405,6 +2825,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/sprint3_tests_pass.png
 	scale 45
@@ -2595,6 +3016,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/uml/exported/StepFactory Class Diagram.png
 	scale 80
@@ -2731,6 +3153,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/database/ERD_S4.png
 	width 14cm
@@ -2852,6 +3275,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="5">
 <features tabularvalignment="middle">
@@ -3360,6 +3784,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/sprint5_tests_pass.png
 	scale 40
@@ -3643,6 +4068,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/sprint6_tests_pass.png
 	scale 40
@@ -3787,6 +4213,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/sprint7_tests_pass.png
 	width 12cm
@@ -3909,6 +4336,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/uml/exported/sprint7 beans Class Diagram.png
 	width 10cm
@@ -4000,6 +4428,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/sprint8_tests_pass.png
 	width 12cm
@@ -4057,6 +4486,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/sprint8_dialog.png
 	width 10cm
@@ -4279,6 +4709,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/sprint10_db.png
 	scale 50
@@ -4501,7 +4932,8 @@ Results
 \end_layout
 
 \begin_layout Standard
-Usability and modificabilidad/extensibilidad
+Usability and modificabilidad/extensibilidad.
+ An app which can be used in many ways.
 \end_layout
 
 \begin_layout Standard
@@ -4521,6 +4953,10 @@ Tiempo elevado de configuración de herramientas y configuración del entorno.
 Adopting new techniques has required an extra effort and time in setting-up
  frameworks and procedures, but it has been worth in order to improve the
  used software methodology and make it .
+\end_layout
+
+\begin_layout Standard
+Tests from Quadrant 4 in the future
 \end_layout
 
 \begin_layout Section

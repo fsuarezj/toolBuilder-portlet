@@ -188,6 +188,17 @@
   Timestamp                = {2016.12.28}
 }
 
+@Book{Rose2015,
+  Title                    = {The Cucumber for Java Book: Behaviour-Driven Development for Testers and Developers},
+  Author                   = {Seb Rose and Matt Wynne and Aslak Hellesoy},
+  Publisher                = {Pragmatic Bookshelf},
+  Year                     = {2015},
+
+  ISBN                     = {1941222293,9781941222294},
+  Owner                    = {ferda},
+  Timestamp                = {2017.01.03}
+}
+
 @InProceedings{Schwaber95scrumdevelopment,
   Title                    = {SCRUM Development Process},
   Author                   = {Ken Schwaber},
@@ -197,17 +208,6 @@
 
   Owner                    = {ferda},
   Timestamp                = {2016.12.28}
-}
-
-@Book{,
-  Title                    = {The Cucumber for Java Book: Behaviour-Driven Development for Testers and Developers},
-  Author                   = {Seb Rose, Matt Wynne, Aslak Hellesoy},
-  Publisher                = {Pragmatic Bookshelf},
-  Year                     = {2015},
-
-  ISBN                     = {1941222293,9781941222294},
-  Owner                    = {ferda},
-  Timestamp                = {2017.01.03}
 }
 
 @Book{MattWynne2012,
@@ -248,6 +248,14 @@
   Owner                    = {ferda},
   Timestamp                = {2016.12.28},
   Url                      = {https://dannorth.net/introducing-bdd/}
+}
+
+@Manual{JavaEE5Tutorial,
+  Title                    = {The Java™ EE 5 Tutorial},
+
+  Owner                    = {ferda},
+  Timestamp                = {2017.01.07},
+  Url                      = {http://java.sun.com/javaee/5/docs/tutorial/doc/}
 }
 
 @Other{JUnit,
