@@ -251,7 +251,7 @@
 }
 
 @Manual{JavaEE5Tutorial,
-  Title                    = {The Java™ EE 5 Tutorial},
+  Title                    = {The Java EE 5 Tutorial},
 
   Owner                    = {ferda},
   Timestamp                = {2017.01.07},
@@ -311,6 +311,16 @@
   Timestamp                = {2017.01.02},
   Url                      = {http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html},
   Year                     = {2015}
+}
+
+@Manual{,
+  Title                    = {Rapid Assessment for Markets},
+  Year                     = {2014},
+
+  Owner                    = {ferda},
+  Publisher                = {ICRC and IFRC},
+  Timestamp                = {2017.01.09},
+  Url                      = {https://www.icrc.org/eng/assets/files/publications/icrc-002-4199.pdf}
 }
 
 @Other{AgileManifesto,

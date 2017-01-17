@@ -108,6 +108,96 @@ Blablabla
 Introduction
 \end_layout
 
+\begin_layout Standard
+The humanitarian world is being increasingly specialized, and since the
+ beginning of the century a significant number of tools have been being
+ created in order to increase effectiveness, efficiency, impact and thereby
+ quality of humanitarian assistance.
+ Moreover, the empowerment of target populations has fortunately gained
+ in importance, as well as the concepts of 
+\emph on
+dignity
+\emph default
+, 
+\emph on
+sustainable livelihoods
+\emph default
+ or 
+\emph on
+population choices
+\emph default
+.
+ In this context, humanitarian assistance has increased its contextualization
+ leaving the old-fashioned forms of charity and promoting recovery or developmen
+t actions as far as possible guided by the target populations.
+\end_layout
+
+\begin_layout Standard
+Thus, cash transfer interventions have acquired importance
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+According to http://www.cash-atlas.org, since XXXX to XXXX cash projects beneficia
+ries increased in a XX% reaching the XXXX REF
+\end_layout
+
+\end_inset
+
+ inasmuch as it is a tool which really empowers target population since
+ they are the beneficiaries who decide their priorities to recover from
+ a disaster and, with a little of guidance if necessary, can take the rains
+ of their future development.
+ But a cash intervention needs, inter alia, functional markets in order
+ to have the intended impact, so during last years some tools have been
+ created in order to better analyze markets in crisis situations, as the
+ best-known EMMA
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://www.emma-toolkit.org/
+\end_layout
+
+\end_inset
+
+.
+ Rapid Assessment for Markets
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RAM2014"
+
+\end_inset
+
+ is, furthermore, the RC/RC Movement
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+The Red Cross and Red Crescent Movement is comprised by the International
+ Federation of Red Cross and Red Crescent (IFRC), the International Committee
+ of Red Cross (ICRC) and the National RC Societies.
+\end_layout
+
+\end_inset
+
+ tool to analyze markets in the emergency phase, and it is essentially derived
+ from EMMA but aimed to carry out market assessment faster and reducing
+ the resources costs (not only economic, but also human and time).
+ To better spread RAM and make it available for a large number of volunteers
+ and RC/RC members, the Livelihoods Resources Centre (an IFRC centre whose
+ mission is to increase awareness and use of effective livelihoods programming
+ strategies within the RC/RC Movement) has considered the creation of a
+ web application to guide practitioners through RAM which eventually could
+ make easier its implementation.
+\end_layout
+
+\begin_layout Standard
+This project is a first phase of that web application development and it
+ has been conducted paying close attention to the development process and
+ methodology in order to ensure both extensibility and requirements fulfillment.
+\end_layout
+
 \begin_layout Section
 Objectives
 \begin_inset CommandInset label
@@ -120,21 +210,46 @@ name "sec:Objectives"
 \end_layout
 
 \begin_layout Standard
-Develop a web tool to help practitioners to carry out Rapid Assessment for
- Markets.
- EXPLAIN MORE ABOUT RAM
+The main objective of this project is to carry out the first phase of the
+ development of a a web tool to help practitioners to carry out Rapid Assessment
+ for Markets.
+ At the end of the project a working software should have been created with
+ the basic structure to create on it a Rapid Assessment for Markets web
+ tool which could be expanded with new features in the future.
+ The real power of the web tool will lie on the possibility of following
+ the methodology interactively and improve the web tool in the future to
+ allow users input the data and analyze it within the tool.
 \end_layout
 
 \begin_layout Standard
-Enbedded in the LRC web (Liferay)
+As the web tool will be hosted by the Livelihoods Resources Centre
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://www.livelihoodscentre.org/
+\end_layout
+
+\end_inset
+
+, it should be embedded in its web site, which has been developed using
+ Liferay Portal CE
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://web.liferay.com/community/liferay-projects/liferay-portal/overview
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-The project tackles the problem of accessing the methodology and following
- it step by step.
- The real power of the tool lies on the possibility of following the methodology
- interactively and improve the web tool in the future to allow users input
- the data and analyze it within the tool.
+A secondary objective of the project is to create a working testing framework
+ which will make easier in the future to guide the development and perform
+ tests.
 \end_layout
 
 \begin_layout Section
@@ -613,6 +728,13 @@ key "BDDWiki"
 
 \begin_layout Subsection
 Documentation
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Documentation"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -757,7 +879,7 @@ reference "subsec:Liferay"
 , unit tests were barely taken manually during development and the effort
  has been made in the automation of next quadrants tests, which allow to
  test the correct behavior of small parts in an easier way when they are
- integred with the whole system.
+ integrated with the whole system.
 \end_layout
 
 \begin_layout Standard
@@ -771,7 +893,7 @@ http://junit.org/junit4/
 
 \end_inset
 
- has been the framework choosen for unit tests, as it has a good documentations
+ has been the framework chosen for unit tests, as it has a good documentations
  and xUnit is one of the most popular testing frameworks.
  In the reporting side, Allure framework
 \begin_inset Foot
@@ -807,7 +929,7 @@ For this project, the most of the testing efforts has been made in this
  quadrant as BDD has been the main testing methodology.
  The nature of the webapp, which is embedded in Liferay and uses mature
  technologies such as Java Server Faces as explained below, implies that
- the best way to test the software is when it is already embeded and working
+ the best way to test the software is when it is already embedded and working
  since the surrounding technologies are not supposed to fail.
  In this way, the testing efforts are optimized and the quality of the software
  is ensured.
@@ -1051,7 +1173,7 @@ But Cucumber does not has a
 User Story
 \emph default
  level, so it is a good practice to step down a level and define features
- as user stories naming firstly de feature and later using the 
+ as user stories naming firstly the feature and later using the 
 \family typewriter
 As a/I want to/so that
 \family default
@@ -1067,7 +1189,7 @@ Scenarios:
  Scenarios are the next level and they are akin to use cases.
  Thus, they are composed by steps and define the behavior of the system
  in a given use case.
- To concretelly define the behavior, in Cucumber scenarios follow the structure
+ To concretely define the behavior, in Cucumber scenarios follow the structure
  
 \family typewriter
 Given <condition>, when <event/action> then <result>
@@ -1092,12 +1214,12 @@ what
 \end_layout
 
 \begin_layout Standard
-As stated above, the main technology to power this business-facing secion
+As stated above, the main technology to power this business-facing section
  is the 
 \emph on
 Gherkin
 \emph default
- language as it is the language used for writting Cucumber features, scenarios
+ language as it is the language used for writing Cucumber features, scenarios
  and steps.
  It is a natural language with a specific structure and a set of keywords
  to define features, scenarios and steps.
@@ -1231,7 +1353,7 @@ how
 \emph default
  to carry out the steps.
  In this case, as we are using Cucumber-JVM, steps definition are implemented
- using Java annotations and allows to include regular expressioinns in order
+ using Java annotations and allows to include regular expressions in order
  to better define the steps.
  An example can be shown in the first line of 
 \begin_inset CommandInset ref
@@ -1245,7 +1367,7 @@ reference "lis:cucumber_step_def"
 \family typewriter
 XyzStep
 \family default
- objects, so the classess diagram of the testing framework for the project
+ objects, so the classes diagram of the testing framework for the project
  is shown in 
 \begin_inset CommandInset ref
 LatexCommand formatted
@@ -1306,8 +1428,8 @@ name "fig:testing_framework"
 Support Code:
 \emph default
  As steps should be concrete and accurate, the support code should not be
- so extense, just a few lines to link with the automation library, which
- will be the level which will really do the most of the automation work.
+ so large, just a few lines to link with the automation library, which will
+ be the level which will really do the most of the automation work.
  In 
 \begin_inset CommandInset ref
 LatexCommand formatted
@@ -1395,7 +1517,7 @@ Quadrant 3 tests
 \begin_layout Standard
 This tests are oriented to critique the product when it has been already
  developed and find any unwanted behaviors usually not stipulated in the
- requirementes (if BDD has been well carried out).
+ requirements (if BDD has been well carried out).
  That is why this tests are not automatized and require the strong involvement
  of the customer, that is what is called User Acceptance Tests which should
  not be confused with the ATDD performed in Quadrant 2.
@@ -1412,6 +1534,13 @@ lities are not quite numerous, they have been just a few of manual tests
 
 \begin_layout Subsection
 Quadrant 4 tests
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Quadrant-4-tests"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1428,7 +1557,7 @@ Analysis, technology requirements and design
 \end_layout
 
 \begin_layout Standard
-At this point it is worth to remember a statement from 
+At this point it is worth remembering a statement from 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "LisaCrispin2009"
@@ -1515,8 +1644,8 @@ reference "sec:Objectives"
 
 , the final product should be a web application embedded in the Livelihoods
  Resource Centre web, so as that web has been developed with Liferay Portal
- Community Edition because of an organizational decission, there is not
- discussion about that: development in Liferay is a customer requirement.
+ Community Edition because of an organizational decision, there is not discussio
+n about that: development in Liferay is a customer requirement.
 \end_layout
 
 \begin_layout Standard
@@ -1532,7 +1661,7 @@ https://www.gnu.org/copyleft/lesser.html
 \end_inset
 
 .
- As it is Java-based, and even it supports plugin extends into multiple
+ As it is Java-based, and even it supports plug-in extends into multiple
  programming languages, the most natural, efficient and easy to install
  and maintain is a portlet in Java, so that is why the web app has been
  developed as a Liferay portlet.
@@ -1601,9 +1730,9 @@ https://javaserverfaces.java.net/
 \end_inset
 
 ).
- The decission of using JSF for this project has been primarly based in
- the fact that JSF is a standard also outside Liferay, it is more modern
- than a classic JSP solution and it is a web application oriented specification.
+ The decision of using JSF for this project has been mainly based in the
+ fact that JSF is a standard also outside Liferay, it is more modern than
+ a classic JSP solution and it is a web application oriented specification.
  Liferay supports JSF 2.2 specification but for Liferay Portal 6.2 (the version
  used in the LRC web) default JSF specification is JSF 2.1, so it has been
  the version used in the development to avoid compatibility problems.
@@ -1735,8 +1864,8 @@ name "fig:jsf_components"
 \end_layout
 
 \begin_layout Standard
-On the other hand, it is worth to point that JSF pages have a particular
- lifecycle which should be considered when using this technology.
+On the other hand, it is worth pointing out that JSF pages have a particular
+ life cycle which should be considered when using this technology.
  As in a JSP page, when the client makes an HTTP request for the page, the
  server sends the response as the page in HTML.
  The 
@@ -1770,13 +1899,13 @@ Restore view:
 \series bold
 Apply request values:
 \series default
- During this phase each component built in las phase extracts its new value.
+ During this phase each component built in last phase extracts its new value.
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Process validatons:
+Process validations:
 \series default
 
 \begin_inset space ~
@@ -1883,7 +2012,7 @@ Object Model
 Due to the methodology of development, the object model has evolved during
  the project.
  Despite of the basic structure is given by the JSF framework as explained
- in last section, the beans and auxiliar objects which define the model
+ in last section, the beans and auxiliary objects which define the model
  have been changing and being adapted to fit the project evolution and requireme
 nts.
  In 
@@ -1976,7 +2105,7 @@ First Sprint
 \begin_layout Standard
 A basic web tool (portlet) to navigate through the RAM Steps and capable
  of save the current state of each assessment was created in this step following
- a clasic development cycle (
+ a classic development cycle (
 \noun on
 Design -> Development -> Testing
 \noun default
@@ -4474,7 +4603,7 @@ The new view should be embedded in the
 \family typewriter
 toolDefConfig.xhtml
 \family default
- view, but it is worth to note that it should be independent since it was
+ view, but it is worth noting that it should be independent since it was
  going to be called not only to add steps to the main tool definition, but
  also to add steps to any of the nested composite steps.
 \end_layout
@@ -4584,8 +4713,8 @@ Ninth Sprint
 \end_layout
 
 \begin_layout Standard
-After creating tool steps, next needed feature was to delete tool steps,
- which is addressed in this sprint.
+After creating tool steps, next needed feature was to delete tool step definitio
+ns, which is addressed in this sprint.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4593,14 +4722,13 @@ Test Design
 \end_layout
 
 \begin_layout Standard
-As the deletion was only made from the 
-\family typewriter
-adminView.xhtml
-\family default
- view, the tests created for this feature had not many different cases.
- Only two tests cases were made: one for void tool definitions and one for
- filled tool definitions.
- The deletion of all the database registers was also checked.
+The step definition deletion operation is made from the toolDefConfig.xhtml
+ and should consider some different cases: from one to several steps deletion
+ and from an already existing or a new tool definition.
+ Therefore, four cases were designed which, as shown in TODO, were succesfully
+ passed.
+ There were some code refining when testing, since the processing of deletion
+ should depend on the load onto the database of newly created step definitions.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4608,11 +4736,11 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-, which moreover has the attribute 
+The implementation of this sprint has been done through the attribute 
 \family typewriter
 closable
 \family default
- to implement the steps deletion by doing and 
+ of the tab elements which executes and 
 \emph on
 Ajax
 \emph default
@@ -4620,7 +4748,17 @@ Ajax
 \family typewriter
 tabClose
 \family default
- event triggers.
+ event triggers, so the 
+\emph on
+Ajax
+\emph default
+ call was defined to delete the register of the persistence layer.
+ The only difficulties founded, as explained in the test design, were regarding
+ the different cases related to the database load, the system should ensure
+ the closed tab had been created in the database before proceeding to delete
+ it from the database, so it should be considered if a tab was just created
+ before deleting it.
+ Finally, after the testing process any issues were solved.
 \end_layout
 
 \begin_layout Subsection
@@ -4928,47 +5066,175 @@ Create Basic RAM Tool
 \end_layout
 
 \begin_layout Section
-Results
+Results and Discussion
 \end_layout
 
 \begin_layout Standard
-Usability and modificabilidad/extensibilidad.
- An app which can be used in many ways.
+At the end of this project, a working and tested first phase of a Liferay
+ portlet to guide through the RAM has been developed.
+ This portlet provides a recurrent structure which will allow to develop
+ the necessary steps and substeps to create not only a RAM web tool, but
+ also any other tool or methodology structured in -sequential or not- steps
+ and substeps.
+ Thus, the scalability of the software has been increased following the
+ customer's modifications during the project.
 \end_layout
 
 \begin_layout Standard
-Mala medición del tiempo, demasiado optimismo
+As it can be noted in the development process (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Development"
+
+\end_inset
+
+), a large proportion of the developing efforts have been aimed to create
+ an administration portlet to configure the web tool, it will be this portlet,
+ when customized steps are developed, which will allow users to create their
+ own web tools to guide through different processes or methodologies.
+ This has become particularly relevant during the project, when the tool
+ has been redesigned to be useful not only for a RAM web tool.
 \end_layout
 
 \begin_layout Standard
-Inclusión de herramientas sobre la marcha no va muy bien.
- Necesidad de establecer el framework desde el inicio.
+Initially for testing purposes but also to make easier the development of
+ the steps, a mock step has been included which can be used as a template
+ for new steps development.
+ This mock step has the required structure to the new step being included
+ in the system along with the different methods needed, which have been
+ well documented -using Javadoc as explained in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Documentation"
+
+\end_inset
+
+.
+ In this way, it is intended to facilitate the extension of the web tool
+ creating new step types.
 \end_layout
 
 \begin_layout Standard
-Tiempo elevado de configuración de herramientas y configuración del entorno.
+Step EXAMPLES?
 \end_layout
 
 \begin_layout Standard
-Adopting new techniques has required an extra effort and time in setting-up
- frameworks and procedures, but it has been worth in order to improve the
- used software methodology and make it .
+Regarding to the development process, the biggest issue has been the estimation
+ of the time needed to develop each of the sprints, that has usually been
+ too optimistic.
+ In addition to the code refining in order to solve bugs found in the testing
+ process, which finally took longer than expected, it has also been necessary
+ in many cases to improve the knowledge about the technology, either Primefaces,
+ JSF or even Liferay itself.
+ Moreover the tests development, particularly the Selenium support code
+ and the web elements management, demanded also more time than expected.
 \end_layout
 
 \begin_layout Standard
-Tests from Quadrant 4 in the future
+On the other hand, adopting new techniques and methodologies has required
+ an extra effort and time in setting-up frameworks and procedures.
+ Undoubtedly it has been worth in order to improve the development methodology
+ and hence the quality, scalability and future development opportunities,
+ but it has also implied changes and adaptations during the development
+ which led to a learning process and an effort to change procedures.
+ With a view to future projects, it would be desirable to establish methodology
+ and processes at the beginning of the project in order to well set-up the
+ development framework and avoid on the fly changes which contribute to
+ slow down the development.
+\end_layout
+
+\begin_layout Standard
+Regarding to the quality assurance, the testing framework which has been
+ created and the fact of using a test-first methodology were aimed to offer
+ a significant degree of quality, ensuring the customer requirements have
+ been accomplished without errors.This test-first methodology (partucularly
+ BDD as explained in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Behavior-Driven-Development"
+
+\end_inset
+
+) as entailed a mind change in the way the development process is conceived.
+ Since the test are developed before coding, the accomplishment of functional
+ requirements is the core, and code is developed without such a deep previous
+ thinking as it is done using cascade classic methodologies.
+\end_layout
+
+\begin_layout Standard
+Initially, that way of developing can cast doubts if we are used to classical
+ approaches, but when you begin coding you realize that is a much more effective
+ method.
+ Regarding the doubts casted about how good designed can be a software developed
+ in this way I have realize two main things: the first is that indeed design
+ is thinked before coding even if it is minimal, but you think at the design
+ also when you create tests, so it is not just coding in an unstructured
+ way.
+ The second one is that, when some code is not as readable or structured
+ as necessary, a refactoring process can be done in order to improve it
+ and reduce complexity.
+\end_layout
+
+\begin_layout Standard
+It is also worth pointing out that tests related to Quadrant 4 (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Quadrant-4-tests"
+
+\end_inset
+
+) have not been carried out.
+ But it does not mean that characteristics associated to Quadrant 4 have
+ not been considered.
+ In fact compatibility have been always kept in mind in the choice of the
+ technologies from the general aspects (creating a Liferay portlet) to the
+ more specific ones (creating interfaces with Primefaces).
+ Also reliability has been always considered by improving tests, both automated
+ and human guided ones.
+ And of course scalability, which, as it has been explained, has been one
+ of the main goals of the project.
+ Lastly and for the future, performance tests should been carried out in
+ order to find improvements, but it has not been an objective in this first
+ phase.
 \end_layout
 
 \begin_layout Section
-Discussion
+Conclusion
 \end_layout
 
 \begin_layout Standard
-2 Párrafos, destilado de los resultados
+At the end of the project it is possible to state that it has provided a
+ functional quality software which fits the requirements of the customer.
+ The created software will allow to develop any kind of steps to create
+ web tools to guide through any methodology or process structured in steps
+ and substeps.
+ So it can not only be RAM, but also many others humanitarian methodologies
+ as EMMA or HES
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Households Economic Security
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-For the future: Performance testing
+On the other hand, the objectives of the project have been achieved as a
+ result of using adequate developing technologies which involve the customer
+ and ensure their requirements are kept as the core of the project, in addition
+ to implement quality assurance; particularly important as this point is
+ the choice of adecuate technologies which can make the software usable
+ by the customer.
+\end_layout
+
+\begin_layout Standard
+So finally, a learning process has been carried out during the project which
+ have resulted in a useful software and a working framework to scale it
+ in the future and to carry on with the development.
 \end_layout
 
 \begin_layout Section
