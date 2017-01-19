@@ -4725,10 +4725,60 @@ Test Design
 The step definition deletion operation is made from the toolDefConfig.xhtml
  and should consider some different cases: from one to several steps deletion
  and from an already existing or a new tool definition.
- Therefore, four cases were designed which, as shown in TODO, were succesfully
- passed.
+ Therefore, four cases were designed which, as shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sprint9_tests"
+
+\end_inset
+
+, were succesfully passed.
  There were some code refining when testing, since the processing of deletion
  should depend on the load onto the database of newly created step definitions.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/sprint9_tests_pass.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test scenarios for sprint 9
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint9_tests"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -4758,7 +4808,7 @@ Ajax
  the closed tab had been created in the database before proceeding to delete
  it from the database, so it should be considered if a tab was just created
  before deleting it.
- Finally, after the testing process any issues were solved.
+ Finally, after the testing process all issues were solved.
 \end_layout
 
 \begin_layout Subsection

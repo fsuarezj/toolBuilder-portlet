@@ -4713,8 +4713,8 @@ Ninth Sprint
 \end_layout
 
 \begin_layout Standard
-After creating tool steps, next needed feature was to delete tool steps,
- which is addressed in this sprint.
+After creating tool steps, next needed feature was to delete tool step definitio
+ns, which is addressed in this sprint.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4722,14 +4722,13 @@ Test Design
 \end_layout
 
 \begin_layout Standard
-As the deletion was only made from the 
-\family typewriter
-adminView.xhtml
-\family default
- view, the tests created for this feature had not many different cases.
- Only two tests cases were made: one for void tool definitions and one for
- filled tool definitions.
- The deletion of all the database registers was also checked.
+The step definition deletion operation is made from the toolDefConfig.xhtml
+ and should consider some different cases: from one to several steps deletion
+ and from an already existing or a new tool definition.
+ Therefore, four cases were designed which, as shown in TODO, were succesfully
+ passed.
+ There were some code refining when testing, since the processing of deletion
+ should depend on the load onto the database of newly created step definitions.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4737,11 +4736,11 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-, which moreover has the attribute 
+The implementation of this sprint has been done through the attribute 
 \family typewriter
 closable
 \family default
- to implement the steps deletion by doing and 
+ of the tab elements which executes and 
 \emph on
 Ajax
 \emph default
@@ -4749,7 +4748,17 @@ Ajax
 \family typewriter
 tabClose
 \family default
- event triggers.
+ event triggers, so the 
+\emph on
+Ajax
+\emph default
+ call was defined to delete the register of the persistence layer.
+ The only difficulties founded, as explained in the test design, were regarding
+ the different cases related to the database load, the system should ensure
+ the closed tab had been created in the database before proceeding to delete
+ it from the database, so it should be considered if a tab was just created
+ before deleting it.
+ Finally, after the testing process any issues were solved.
 \end_layout
 
 \begin_layout Subsection

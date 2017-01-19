@@ -46,10 +46,10 @@
 					<br />
 					<h:outputText value="#{i18n['order-changes-will-save']}"/>
 					<p />
-					<p:commandButton value="#{i18n['yes']}">
+					<p:commandButton id="confirmDelete_#{index}" value="#{i18n['yes']}">
 						<p:ajax update="dashboardFieldSet" listener="#{compositeStepDefBacking.deleteStepDef(index)}" oncomplete="PF('confDialogPanel_#{index}').hide();"/>
 					</p:commandButton>
-					<p:commandButton value="#{i18n['no']}" onclick="PF('confDialogPanel_#{index}').hide();"/>
+					<p:commandButton id="denyDelete_#{index}" value="#{i18n['no']}" onclick="PF('confDialogPanel_#{index}').hide();"/>
 				</p:dialog>
 			</c:forEach>
 		</c:if>
