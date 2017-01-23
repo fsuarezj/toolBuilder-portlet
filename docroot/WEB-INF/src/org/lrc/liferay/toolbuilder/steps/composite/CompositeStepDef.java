@@ -169,29 +169,6 @@ public class CompositeStepDef extends StepDef {
 			this.newOrderedIndexes.add(this.stepDefs.size() - 1);
 	}
 	
-	public void deleteStepDef(int index) throws SystemException, PortalException {
-		try {
-			StepDef auxStepDef = this.stepDefs.get(index);
-			this.stepDefs.remove(index);
-			this.setStepsNumber();
-			this.compositeStepDefDBE.deleteRelationship(auxStepDef.getStepDefDBE());
-			auxStepDef.delete();
-			System.out.println("Antes de borrar: " + this.newOrderedIndexes);
-			this.newOrderedIndexes.remove((Integer) index);
-			System.out.println("Después de borrar: " + this.newOrderedIndexes);
-			for (int i = 0; i < this.stepDefs.size(); i++) {
-				if (this.newOrderedIndexes.get(i) > index) {
-					this.newOrderedIndexes.set(i, this.newOrderedIndexes.get(i) - 1);
-				}
-			}
-			System.out.println("Después de renumerar: " + this.newOrderedIndexes);
-			this.saveNewStepsOrder(true);
-			this.saveCompositeStepDef();
-		} catch (Exception e) {
-			throw e;
-		}
-	}
-	
 	public void initStepsOrder() {
 		this.newOrderedIndexes = new ArrayList<Integer>();
 		for (int i = 0; i < this.stepDefs.size(); this.newOrderedIndexes.add(i++));
@@ -287,9 +264,33 @@ public class CompositeStepDef extends StepDef {
 		CompositeStepDefDBELocalServiceUtil.deleteCompositeStepDefDBE(this.compositeStepDefDBE.getCompositeStepDefDBEId());
 		for (StepDef stepDef: this.stepDefs) {
 			stepDef.delete();
+			this.compositeStepDefDBE.deleteRelationship(stepDef.getStepDefDBE());
 		}
 	}
 
+	public void deleteStepDef(int index) throws SystemException, PortalException {
+		try {
+			StepDef auxStepDef = this.stepDefs.get(index);
+			this.stepDefs.remove(index);
+			this.setStepsNumber();
+			this.compositeStepDefDBE.deleteRelationship(auxStepDef.getStepDefDBE());
+			auxStepDef.delete();
+			System.out.println("Antes de borrar: " + this.newOrderedIndexes);
+			this.newOrderedIndexes.remove((Integer) index);
+			System.out.println("Después de borrar: " + this.newOrderedIndexes);
+			for (int i = 0; i < this.stepDefs.size(); i++) {
+				if (this.newOrderedIndexes.get(i) > index) {
+					this.newOrderedIndexes.set(i, this.newOrderedIndexes.get(i) - 1);
+				}
+			}
+			System.out.println("Después de renumerar: " + this.newOrderedIndexes);
+			this.saveNewStepsOrder(true);
+			this.saveCompositeStepDef();
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
 	@Override
 	public Step buildStep() throws SystemException, NoSuchUserException, NoSuchInstalledStepException, StepDBEException, StepDefDBEException, CompositeStepDBEException {
 		CompositeStep builtStep = new CompositeStep(this);

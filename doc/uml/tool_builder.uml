@@ -460,6 +460,7 @@
   <packagedElement xmi:type="uml:Package" xmi:id="_X9xh8NVPEeaNSPF6R3ZsUg" name="org.lrc.liferay.toolbuilder.tests">
     <packagedElement xmi:type="uml:Package" xmi:id="_fqQsgNVPEeaNSPF6R3ZsUg" name="utils">
       <packagedElement xmi:type="uml:Class" xmi:id="_h0o5YNVPEeaNSPF6R3ZsUg" name="DriverFactory"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_WJWFAOGGEea64pGkMcTnJQ" name="DBChecker"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_oA0HwNVPEeaNSPF6R3ZsUg" name="pages">
       <packagedElement xmi:type="uml:Class" xmi:id="_qDDFQNVPEeaNSPF6R3ZsUg" name="AbstractPage"/>
@@ -501,6 +502,16 @@
         <ownedEnd xmi:id="_dxNqwtVQEeaNSPF6R3ZsUg" name="yyyPages" type="_DP-nwNVQEeaNSPF6R3ZsUg" association="_dxNDsNVQEeaNSPF6R3ZsUg">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dxOR0NVQEeaNSPF6R3ZsUg"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dxOR0dVQEeaNSPF6R3ZsUg" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_Y6PfUOGGEea64pGkMcTnJQ" memberEnd="_Y6PfUeGGEea64pGkMcTnJQ _Y6R7keGGEea64pGkMcTnJQ" navigableOwnedEnd="_Y6R7keGGEea64pGkMcTnJQ">
+        <ownedEnd xmi:id="_Y6PfUeGGEea64pGkMcTnJQ" name="xxxStepss" type="_TR4lINVQEeaNSPF6R3ZsUg" association="_Y6PfUOGGEea64pGkMcTnJQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Y6RUgOGGEea64pGkMcTnJQ"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Y6R7kOGGEea64pGkMcTnJQ" value="*"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="_Y6R7keGGEea64pGkMcTnJQ" name="dBCheckers" type="_WJWFAOGGEea64pGkMcTnJQ" association="_Y6PfUOGGEea64pGkMcTnJQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Y6SioOGGEea64pGkMcTnJQ"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Y6SioeGGEea64pGkMcTnJQ" value="*"/>
         </ownedEnd>
       </packagedElement>
     </packagedElement>

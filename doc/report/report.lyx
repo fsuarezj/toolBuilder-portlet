@@ -4514,6 +4514,13 @@ An interface to add steps to the tool definition should be created so after
 
 \begin_layout Subsubsection
 Test Design
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Test-Design"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4839,9 +4846,80 @@ Test Design
 \end_layout
 
 \begin_layout Standard
-Tests for this sprint are just unit tests which verify the insertion of
- the steps relationships in the database.
- TODO
+Tests for this sprint are the same tests that had already been passed but
+ checking if the database was also storing and deleting the new added step
+ order.
+ To do that, the 
+\family typewriter
+java.sql
+\family default
+ library was used and, instead of creating new integration tests which would
+ entail a lot of work to deal with mocks, an 
+\family typewriter
+assert
+\family default
+ check was included in the step definition in the already existing and passed
+ tests of the eighth sprints.
+ All the database communication was managed by the new class 
+\family typewriter
+DBChecker
+\family default
+, so the testing framework was updated as in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:testing_framework2"
+
+\end_inset
+
+.
+ Therefore, it was checked if the new database registers regarding the step
+ order were created.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/uml/exported/Testing framework Class Diagram-2.png
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Testing framework with 
+\family typewriter
+DBChecker
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:testing_framework2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -4953,7 +5031,7 @@ Eleventh Sprint
 \end_layout
 
 \begin_layout Standard
-Once the back-end supports steps order it is time to modify the interface
+Once the back-end supports steps order it was time to modify the interface
  so admin users can change the order of the steps in a tool definition.
  It involved looking the possibilities of doing it in a user-friendly drag-and-d
 rop way with the current tabs view.
@@ -4961,7 +5039,7 @@ rop way with the current tabs view.
 \family typewriter
 <p:tab />
 \family default
- tag the whole steps interface was redesigned.
+ tag, the whole steps interface was redesigned.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4972,22 +5050,69 @@ Test Design
 Tests for this sprint are those to move the steps but with regression tests
  from eighth sprint in order to assure the proper functioning of the redesigned
  interface.
- Difficult to drag and drop thorough Selenium so Java Robot should be used.
-\end_layout
-
-\begin_layout Standard
-Some tests were developed for this feature, since simple steps sorting until
- more complex sorting involving several steps.
- During tests implementation there were issues regarding the 
-\emph on
-Selenium
-\emph default
- drag-and-drop support, it was not possible to use it with the chosen interface
- so finally it was decided to use the 
+ Some tests were developed for this feature, from simple steps sorting one
+ step to more complex sort actions involving several steps.
+ There were found difficulties to drag and drop thorough the Selenium API
+ as it does not do it in a graphic way, so it did not trigger the events
+ properly.
+ Then a different solution was adopted with the Java Robot object (
 \family typewriter
 java.awt.Robot
 \family default
- class to move the mouse and simulate the drag-and-drop movement.
+), which worked perfectly to drag and drop the objects simulating the user
+ actions.
+ As shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sprint11_tests"
+
+\end_inset
+
+, eight different cases were tested.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/sprint11_tests.png
+	width 11cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint11_tests"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -4995,9 +5120,63 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-which means launch a dialog and drag-and-drop the Create interface to modify
- steps order in tool definitions.
- Due to the main
+As explained, the implementation of this feature involved changing the step
+ definitions interface.
+ From a tabs system it was changed to a panels system where panels (which
+ are indeed steps containers) could be moved so their order was changed.
+ Creating and deleting steps features remained the same since the Primefaces
+ panels have also a 
+\family typewriter
+closable
+\family default
+ property.
+ To save the new order a save-order-steps button was added, so if not pressed
+ the new order is not stored in the database.
+ In the new interface is shown.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/sprint11_dashboard_steps.png
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Panels interface to reorder step definitions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint11_interface"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -5005,10 +5184,12 @@ Twelfth Sprint
 \end_layout
 
 \begin_layout Standard
-After interview with the client she realized that it was not possible to
- delete Tool Definitions, so this feature should be added.
+At this moment, client and developer realized that it was not possible to
+ delete Tool Definitions and it could be needed, so this feature should
+ be added.
  Also it was necessary to avoid the user to delete or edit tool definitions
- which are selected or which have already created tool instances.
+ which are selected or which have already created tool instances so there
+ were some restrictions which should be added.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5016,25 +5197,21 @@ Test Design
 \end_layout
 
 \begin_layout Standard
-Behavior were designed for both features:
+Following the BDD methodology, the behaviors were designed for both features
+ ir order to create their corresponding tests:
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Deleting A delete button exists for each tool definition so when the user
- clicks on it a dialog to confirm will appear and if it is confirmed the
- tool definition will disappear from the view.
+ clicks on it a dialog to confirm will appear, if it is confirmed the tool
+ definition will disappear from the view.
+ To check if it was been also deleted in the database the previously created
  
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-How I test the toolDef is deleted in the database?
-\end_layout
-
-\end_inset
-
-
+\family typewriter
+DBChecker
+\family default
+ object was used.
 \end_layout
 
 \begin_layout Labeling
@@ -5043,8 +5220,64 @@ Restricting When a tool definition is selected or it has created tool instance
  it will be impossible to delete or edit it.
  So buttons should be disabled and a tool-tip will showed when moving the
  mouse over them.
- Four scenarios has been created for this feature: three for the cases of
- not allowing edit or deletion and one where the system must allows it.
+ Four scenarios were created for this feature: three for the cases of not
+ allowing edit or deletion and one where the system must allows it.
+\end_layout
+
+\begin_layout Standard
+As shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sprint12_tests"
+
+\end_inset
+
+, at this moment regression tests were passed to ensure the compatibility
+ of these new features with the rest of the system.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/sprint12_tests.png
+	width 11cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sprint12_tests"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -5075,12 +5308,22 @@ FactoryBean
 \end_layout
 
 \begin_layout Standard
-Regarding the restrictions...
- Tool-tip from Primefaces not working related to 
+Regarding the restrictions, they were implemented disabling the corresponding
+ button whether the tool definition is selected or it has existing tool
+ instances, it done through the Primefaces 
+\family typewriter
+disabled
+\family default
+ property.
+ Also a tool-tip was added when the mouse is over a disabled button to show
+ why it has been disabled.
+ One found issue was that the Primefaces tool-tip implementation did not
+ work properly if was linked to 
 \family typewriter
 commandButton
 \family default
-, so it was linked to a new div which contains all the buttons.
+, so finally it was attached to a new div which contains all the buttons
+ so the result is the same.
 \end_layout
 
 \begin_layout Subsection
@@ -5165,7 +5408,16 @@ reference "subsec:Documentation"
 \end_layout
 
 \begin_layout Standard
-Step EXAMPLES?
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+Include Step EXAMPLES?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
