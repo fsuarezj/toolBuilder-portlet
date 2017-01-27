@@ -18,5 +18,9 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/home/ferda/informatica/development/lib/java/deltaspike-full-1.7.2/core/deltaspike-core-api-1.7.2.jar"/>
+	<classpathentry kind="lib" path="/home/ferda/informatica/development/lib/java/deltaspike-full-1.7.2/core/deltaspike-core-impl-1.7.2.jar"/>
+	<classpathentry kind="lib" path="/home/ferda/informatica/development/lib/java/deltaspike-full-1.7.2/modules/deltaspike-jsf-module-api-1.7.2.jar"/>
+	<classpathentry kind="lib" path="/home/ferda/informatica/development/lib/java/deltaspike-full-1.7.2/modules/deltaspike-jsf-module-impl-1.7.2.jar"/>
 	<classpathentry kind="output" path="docroot/WEB-INF/classes"/>
 </classpath>

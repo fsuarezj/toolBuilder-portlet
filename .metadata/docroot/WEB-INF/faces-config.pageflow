@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14728310810330" configfile="/toolBuilder-portlet/docroot/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" id="pf14748971955800" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14748971955811 pf14748971955812" path="*"/>
-  <nodes xsi:type="pageflow:PFPage" name="WEB-INF/views/tool-definition/steps/selectStepDefDialog.xhtml" id="pf14748971955813" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14748971955811" path="/WEB-INF/views/tool-definition/steps/selectStepDefDialog.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf14748971955800" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf14748971955811 pf14748971955812 pf14853886114300" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="WEB-INF/views/tool-definition/steps/selectStepDefDialog.xhtml" id="pf14748971955813" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf14748971955811" path="/WEB-INF/views/tool-definition/steps/selectStepDefDialog.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="WEB-INF/views/tool-definition/steps/orderStepDefsDialog.xhtml" id="pf14748971955814" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14748971955812" path="/WEB-INF/views/tool-definition/steps/orderStepDefsDialog.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="WEB-INF/views/tool-definition/steps/configStepDefDialog.xhtml" id="pf14853886114301" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf14853886114300" path="/WEB-INF/views/tool-definition/steps/configStepDefDialog.xhtml"/>
   <links id="pf14748971955811" target="pf14748971955813" source="pf14748971955800" outcome="selectStepDefDialog"/>
   <links id="pf14748971955812" target="pf14748971955814" source="pf14748971955800" outcome="orderStepDefsDialog"/>
+  <links id="pf14853886114300" target="pf14853886114301" source="pf14748971955800" outcome="configStepDefDialog"/>
 </pageflow:Pageflow>

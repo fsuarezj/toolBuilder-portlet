@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:head>
+		<title>Select Step</title>
+	</h:head>
+	<h:body>
+		<p:panel>
+		<p />
+		<h:outputText value="#{i18n['configuring-step-def']}" />
+		<p />
+		<h:form id="configStepDefDlg">
+			<p:fieldset id="commonStepDefFields">
+				<h:outputLabel for="inputStepName" value="#{i18n['step-name']} a#{editToolDefBacking.getCurrentStepDef().getStepDefDBEId()}: " />
+				<p:inputText id="stepDefName" name="stepDefName" value="#{toolDefListBacking.newToolDefName}" required="true" />
+				<p />
+			</p:fieldset>
+			<p:commandButton id="saveButton" actionListener="#{editToolDefBacking.saveStepDefConfig()}" value="#{i18n['save']}">
+			</p:commandButton>
+			<p:commandButton id="cancelButton" actionListener="#{editToolDefBacking.cancelStepDefConfig()}" value="#{i18n['cancel']}">
+			</p:commandButton>
+		</h:form>
+		</p:panel>
+	</h:body>
+</f:view>

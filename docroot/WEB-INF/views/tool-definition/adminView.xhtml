@@ -22,7 +22,7 @@
 				<p:column>
 					<f:facet name="header"></f:facet>
 					<p:outputPanel id="buttonsPanel">
-					<p:commandButton id="selectToolDefButton" value="#{i18n['select']}" rendered="#{!toolSession.isSelectedToolDef(toolDefName)}">
+					<p:commandButton id="selectToolDefButton" value="#{i18n['select']}" rendered="#{toolSession.notIsSelectedToolDef(toolDefName)}">
 						<f:ajax listener="#{factoryBean.setSelectedToolDef(toolDefName)}" render="@form" />
 					</p:commandButton>
 					<p:button id="editToolDefButton" outcome="editToolDef" value="#{i18n['configure']}" disabled="#{toolSession.isSelectedToolDef(toolDefName) || factoryBean.hasInstances(toolDefName)}">

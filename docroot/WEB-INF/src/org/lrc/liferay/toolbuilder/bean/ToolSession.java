@@ -16,6 +16,7 @@ import org.lrc.liferay.toolbuilder.StepDBEException;
 import org.lrc.liferay.toolbuilder.StepDefDBEException;
 import org.lrc.liferay.toolbuilder.ToolDef;
 import org.lrc.liferay.toolbuilder.ToolInstance;
+import org.lrc.liferay.toolbuilder.steps.StepDef;
 
 import com.liferay.portal.NoSuchUserException;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -41,6 +42,7 @@ public class ToolSession extends AbstractBaseBean implements Serializable{
 //	private List<ToolInstance> toolInstances = null;
 	private boolean workingOnToolInstance;
 	private boolean configuringInstance;
+	private StepDef currentStepDef;
 //	private ToolDef selectedToolDef;
 	
 	// Permissions
@@ -262,6 +264,19 @@ public class ToolSession extends AbstractBaseBean implements Serializable{
 	public boolean isSelectedToolDef(String toolDefName) {
 		return (toolDefName.equals(FactoryBean.getSelectedToolDef().getToolDefName()));
 //		return (toolDefName.equals(this.selectedToolDef.getToolDefName()));
+	}
+	
+	public boolean notIsSelectedToolDef(String toolDefName) {
+		return !(toolDefName.equals(FactoryBean.getSelectedToolDef().getToolDefName()));
+//		return (toolDefName.equals(this.selectedToolDef.getToolDefName()));
+	}
+
+	public StepDef getCurrentStepDef() {
+		return currentStepDef;
+	}
+
+	public void setCurrentStepDef(StepDef currentStepDef) {
+		this.currentStepDef = currentStepDef;
 	}
 	
 //	public boolean hasDeleteInstancePermission() {

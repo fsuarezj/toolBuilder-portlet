@@ -7,7 +7,6 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<h:form id="compositeStepsForm">
 		<p:fieldset id="compositeDefFieldSet">
 			<h:message for="@form"></h:message>
 			<p:fieldset id="dashboardFieldSet">
@@ -22,8 +21,12 @@
 										<h:outputText styleClass="ui-icon ui-icon-close" />
 									</h:commandLink>
 								</f:facet>
+								<h:outputText value="${i18n['Step']}: " />
 								<h:outputText id="Panel_#{index}_stepName" value="#{compositeStepDefBacking.getStepName(index)}#{compositeStepDefBacking.getStepDefDBEId(index)}" />
 								<br />
+								<p:commandButton id="configStep#{index}Button" value="#{i18n['configureStep']}" action="#{editToolDefBacking.configStepDialog(index)}">
+									<p:ajax event="dialogReturn" update="compositeStepsForm" listener="#{editToolDefBacking.returnFromConfigStep}" />
+								</p:commandButton>
 							</p:panel>
 						</c:forEach>
 					</p:dashboard>
@@ -53,5 +56,4 @@
 				</p:dialog>
 			</c:forEach>
 		</c:if>
-	</h:form>
 </f:view>

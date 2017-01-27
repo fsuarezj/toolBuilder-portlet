@@ -15,7 +15,10 @@
 	<h:head />
 	<h:body>
 		<h3 id="toolDefName"><h:outputText value="#{i18n['configuring-tooldef']} #{editToolDefBacking.toolDefName}" /></h3>
+		<h:outputLabel value="Step ID is #{editToolDefBacking.getCurrentStepDef().getStepDefDBEId()}" />
 		<p />
-		<ui:include src="steps/compositeStepAdmin.xhtml" />
+		<h:form id="compositeStepsForm">
+			<ui:include src="steps/compositeStepAdmin.xhtml" />
+		</h:form>
 	</h:body>
 </f:view>
