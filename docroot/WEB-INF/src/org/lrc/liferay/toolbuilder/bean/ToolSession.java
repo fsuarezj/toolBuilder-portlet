@@ -3,6 +3,7 @@ package org.lrc.liferay.toolbuilder.bean;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import java.util.Stack;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -42,7 +43,7 @@ public class ToolSession extends AbstractBaseBean implements Serializable{
 //	private List<ToolInstance> toolInstances = null;
 	private boolean workingOnToolInstance;
 	private boolean configuringInstance;
-	private StepDef currentStepDef;
+	private Stack<StepDef> currentStepDef = new Stack<StepDef>();
 //	private ToolDef selectedToolDef;
 	
 	// Permissions
@@ -272,11 +273,20 @@ public class ToolSession extends AbstractBaseBean implements Serializable{
 	}
 
 	public StepDef getCurrentStepDef() {
-		return currentStepDef;
+		if (!currentStepDef.isEmpty()) {
+			return currentStepDef.peek();
+		} else {
+			return null;
+		}
 	}
 
 	public void setCurrentStepDef(StepDef currentStepDef) {
-		this.currentStepDef = currentStepDef;
+		this.currentStepDef.push(currentStepDef);
+	}
+	
+	public StepDef popCurrentStepDef() {
+		sysOutput("POPING the current Step Def");
+		return currentStepDef.pop();
 	}
 	
 //	public boolean hasDeleteInstancePermission() {

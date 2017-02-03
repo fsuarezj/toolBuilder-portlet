@@ -39,5 +39,9 @@ public abstract class AbstractBaseBean {
 		LiferayFacesContext liferayFacesContext = LiferayFacesContext.getInstance();
 		liferayFacesContext.addGlobalErrorMessage(errorMessage);
 	}
+	
+	protected void sysOutput(String msg) {
+		System.out.println(this.getClass().getSimpleName() + ": " + msg);
+	}
 
 }

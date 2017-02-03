@@ -579,11 +579,11 @@ The git repositories where the sources are located are:
 \end_layout
 
 \begin_layout Itemize
-For the toolBuilder-portlet:
+For the toolBuilder-portlet: https://github.com/fsuarezj/toolBuilder-portlet
 \end_layout
 
 \begin_layout Itemize
-For the testing framework and tests:
+For the testing framework and tests: https://github.com/fsuarezj/toolBuilderTests
 \end_layout
 
 \begin_layout Subsection
@@ -5482,19 +5482,6 @@ reference "subsec:Documentation"
 .
  In this way, it is intended to facilitate the extension of the web tool
  creating new step types.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-Include Step EXAMPLES?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

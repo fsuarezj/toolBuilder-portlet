@@ -101,7 +101,14 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Abstract
-Blablabla
+This project provides a Liferay portlet with the basic structure to create
+ step based web applications.
+ It will be the base for a Rapid Assessment for Markets web application
+ which will help humanitarian workers to conduct market assessments in order
+ to better assist desaster affected populations.
+ The development has been carried out following modern software methodologies
+ which provide a development and testing framework to ease further development
+ and to ensure software quality objectives achievement.
 \end_layout
 
 \begin_layout Section
@@ -162,7 +169,7 @@ http://www.emma-toolkit.org/
 \end_inset
 
 .
- Rapid Assessment for Markets
+ Rapid Assessment for Markets (RAM)
 \begin_inset CommandInset citation
 LatexCommand cite
 key "RAM2014"
@@ -182,20 +189,32 @@ The Red Cross and Red Crescent Movement is comprised by the International
 \end_inset
 
  tool to analyze markets in the emergency phase, and it is essentially derived
- from EMMA but aimed to carry out market assessment faster and reducing
- the resources costs (not only economic, but also human and time).
- To better spread RAM and make it available for a large number of volunteers
- and RC/RC members, the Livelihoods Resources Centre (an IFRC centre whose
- mission is to increase awareness and use of effective livelihoods programming
- strategies within the RC/RC Movement) has considered the creation of a
- web application to guide practitioners through RAM which eventually could
- make easier its implementation.
+ from EMMA but aimed to carry out market assessments faster and reducing
+ the resources costs (not only economic, but also regarding human and time).
+ Despite that, difficulties have been found to spread RAM and make it available
+ for a large number of volunteers and RC/RC members, so the Livelihoods
+ Resources Centre (an IFRC centre whose mission is to increase awareness
+ and use of effective livelihoods programming strategies within the RC/RC
+ Movement) has considered necessary the creation of a web application to
+ 
+\emph on
+guide
+\emph default
+ through RAM and make it 
+\emph on
+available
+\emph default
+ for potential practitioners.
 \end_layout
 
 \begin_layout Standard
-This project is a first phase of that web application development and it
- has been conducted paying close attention to the development process and
- methodology in order to ensure both extensibility and requirements fulfillment.
+This project is a 
+\emph on
+first phase
+\emph default
+ of that web application development and it has been conducted paying close
+ attention to the development process and methodology in order to ensure
+ both extensibility and requirements fulfillment.
 \end_layout
 
 \begin_layout Section
@@ -211,14 +230,14 @@ name "sec:Objectives"
 
 \begin_layout Standard
 The main objective of this project is to carry out the first phase of the
- development of a a web tool to help practitioners to carry out Rapid Assessment
+ development of a web tool to help practitioners to carry out Rapid Assessment
  for Markets.
  At the end of the project a working software should have been created with
  the basic structure to create on it a Rapid Assessment for Markets web
  tool which could be expanded with new features in the future.
  The real power of the web tool will lie on the possibility of following
- the methodology interactively and improve the web tool in the future to
- allow users input the data and analyze it within the tool.
+ the RAM interactively and improve the web tool in the future to allow users
+ input the data and analyze it within the tool.
 \end_layout
 
 \begin_layout Standard
@@ -2009,7 +2028,7 @@ Object Model
 \end_layout
 
 \begin_layout Standard
-Due to the methodology of development, the object model has evolved during
+Due to the development methodology, the object model has evolved during
  the project.
  Despite of the basic structure is given by the JSF framework as explained
  in last section, the beans and auxiliary objects which define the model
@@ -2098,6 +2117,45 @@ Hereafter and for the purpose of explaining the process followed in the
  been written.
 \end_layout
 
+\begin_layout Subsection*
+Preliminary work
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:PreliminaryWork"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{subsection}{
+\backslash
+nameref{subsec:PreliminaryWork}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Before beginning the development, a mockup design process was carried out
+ with the customers in order to have a first approach of how the final web
+ app should look.
+ Even if the objective of this project is not to develop the final app but
+ its first phase, this mockups have been kept in mind during the development
+ process in order to ensure the final objective is achieved in the future.
+ These mockups can be found in the TODO
+\end_layout
+
 \begin_layout Subsection
 First Sprint
 \end_layout
@@ -2158,6 +2216,13 @@ Liferay Service Builder (LSB)
  As discussed in 
 \begin_inset CommandInset ref
 LatexCommand formatted
+reference "subsec:Liferay"
+
+\end_inset
+
+: 
+\begin_inset CommandInset ref
+LatexCommand nameref
 reference "subsec:Liferay"
 
 \end_inset
@@ -5331,7 +5396,19 @@ Thirteenth Sprint
 \end_layout
 
 \begin_layout Standard
-Create interface to modify Composite Step Type
+Create interface to nest Composite Steps
+\end_layout
+
+\begin_layout Subsubsection
+Test Design
+\end_layout
+
+\begin_layout Subsubsection
+Implementation
+\end_layout
+
+\begin_layout Standard
+Refactoring to separate EditToolDefBacking from CompositeToolDefBacking
 \end_layout
 
 \begin_layout Subsection
@@ -5366,9 +5443,9 @@ Results and Discussion
 At the end of this project, a working and tested first phase of a Liferay
  portlet to guide through the RAM has been developed.
  This portlet provides a recurrent structure which will allow to develop
- the necessary steps and substeps to create not only a RAM web tool, but
- also any other tool or methodology structured in -sequential or not- steps
- and substeps.
+ the necessary steps and substeps to create not only a web application to
+ guide through RAM, but also through any other tool structured in -sequential
+ or not- steps and substeps.
  Thus, the scalability of the software has been increased following the
  customer's modifications during the project.
 \end_layout
@@ -5405,19 +5482,6 @@ reference "subsec:Documentation"
 .
  In this way, it is intended to facilitate the extension of the web tool
  creating new step types.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-Include Step EXAMPLES?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5508,7 +5572,7 @@ Conclusion
 At the end of the project it is possible to state that it has provided a
  functional quality software which fits the requirements of the customer.
  The created software will allow to develop any kind of steps to create
- web tools to guide through any methodology or process structured in steps
+ web applications to guide through any tool or process structured in steps
  and substeps.
  So it can not only be RAM, but also many others humanitarian methodologies
  as EMMA or HES
@@ -5540,7 +5604,7 @@ So finally, a learning process has been carried out during the project which
 \end_layout
 
 \begin_layout Section
-Appendices
+Bibliography
 \end_layout
 
 \begin_layout Standard
@@ -5552,6 +5616,19 @@ options "plain"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+Guide to develop steps
+\end_layout
+
+\begin_layout Section
+Mockups of the RAM web app
+\end_layout
+
+\begin_layout Section
+Screenshots of the first phase of the RAM web app
 \end_layout
 
 \end_body

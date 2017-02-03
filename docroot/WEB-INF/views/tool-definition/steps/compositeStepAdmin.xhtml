@@ -10,39 +10,41 @@
 		<p:fieldset id="compositeDefFieldSet">
 			<h:message for="@form"></h:message>
 			<p:fieldset id="dashboardFieldSet">
-				<c:if test="#{(editToolDefBacking.getCompositeStepDef().hasSteps())}">
-					<p:dashboard id="DB#{compositeStepDefBacking.getStepDefDBEId()}" model="#{editToolDefBacking.dashboard}" widgetVar="naniero">
-						<p:ajax event="reorder" listener="#{compositeStepDefBacking.reorderStepDef}" />
-						<c:forEach var="index" begin="0" end="#{compositeStepDefBacking.getStepsNumber() - 1}">
-							<p:panel id="Panel_#{index}" widgetVar="Panel_#{index}" header="Step #{index + 1}. Type: #{compositeStepDefBacking.getStepType(index)}">
-								<f:facet name="actions">
-									<h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default">
-										<p:ajax oncomplete="PF('confDialogPanel_#{index}').show();"/>
-										<h:outputText styleClass="ui-icon ui-icon-close" />
-									</h:commandLink>
-								</f:facet>
-								<h:outputText value="${i18n['Step']}: " />
-								<h:outputText id="Panel_#{index}_stepName" value="#{compositeStepDefBacking.getStepName(index)}#{compositeStepDefBacking.getStepDefDBEId(index)}" />
-								<br />
-								<p:commandButton id="configStep#{index}Button" value="#{i18n['configureStep']}" action="#{editToolDefBacking.configStepDialog(index)}">
-									<p:ajax event="dialogReturn" update="compositeStepsForm" listener="#{editToolDefBacking.returnFromConfigStep}" />
-								</p:commandButton>
-							</p:panel>
-						</c:forEach>
-					</p:dashboard>
-				</c:if>
-				<c:if test="#{!(editToolDefBacking.getCompositeStepDef().hasSteps())}">
-					<h:outputText value="#{i18n['no-steps-yet']}"/>
-				</c:if>
+				<c:choose>
+					<c:when test="#{compositeStepDefBacking.hasSteps()}">
+						<p:dashboard id="DB#{compositeStepDefBacking.getStepDefDBEId()}" model="#{compositeStepDefBacking.dashboard}" widgetVar="naniero">
+							<p:ajax event="reorder" listener="#{compositeStepDefBacking.reorderStepDef}" />
+							<c:forEach var="index" begin="0" end="#{compositeStepDefBacking.getStepsNumber() - 1}">
+								<p:panel id="Panel_#{index}" widgetVar="Panel_#{index}" header="Step #{index + 1}. Type: #{compositeStepDefBacking.getStepType(index)}">
+									<f:facet name="actions">
+										<h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default">
+											<p:ajax oncomplete="PF('confDialogPanel_#{index}').show();"/>
+											<h:outputText styleClass="ui-icon ui-icon-close" />
+										</h:commandLink>
+									</f:facet>
+									<h:outputText value="${i18n['Step']}: " />
+									<h:outputText id="Panel_#{index}_stepName" value="#{compositeStepDefBacking.getStepName(index)}#{compositeStepDefBacking.getStepDefDBEId(index)}" />
+									<br />
+									<p:commandButton id="configStep#{index}Button" value="#{i18n['configureStep']}" action="#{compositeStepDefBacking.configStepDialog(index)}">
+										<p:ajax event="dialogReturn" update="configStepForm" listener="#{compositeStepDefBacking.returnFromConfigStep}" />
+									</p:commandButton>
+								</p:panel>
+							</c:forEach>
+						</p:dashboard>
+					</c:when>
+					<c:otherwise>
+						<h:outputText value="#{i18n['no-steps-yet']}"/>
+					</c:otherwise>
+				</c:choose>
 			</p:fieldset>
 			<p:commandButton id="newStepButton" value="#{i18n['new-step']}" action="#{stepTypeListBacking.chooseStepDef}">
-				<p:ajax event="dialogReturn" update="compositeStepsForm" listener="#{editToolDefBacking.createNewStepDef}" />
+				<p:ajax event="dialogReturn" update="configStepForm" listener="#{compositeStepDefBacking.createNewStepDef}" />
 			</p:commandButton>
-			<p:commandButton id="orderSteps" value="#{i18n['save-order-steps']}" rendered="#{(editToolDefBacking.getCompositeStepDef().hasSteps())}">
+			<p:commandButton id="orderSteps" value="#{i18n['save-order-steps']}" rendered="#{compositeStepDefBacking.hasSteps()}">
 				<p:ajax update="dashboardFieldSet" listener="#{compositeStepDefBacking.saveNewStepsOrder}" />
 			</p:commandButton>
 		</p:fieldset>
-		<c:if test="#{(editToolDefBacking.getCompositeStepDef().hasSteps())}">
+		<c:if test="#{compositeStepDefBacking.hasSteps()}">
 			<c:forEach var="index" begin="0" end="#{compositeStepDefBacking.getStepsNumber() - 1}">
 				<p:dialog widgetVar="confDialogPanel_#{index}" header="Naniero" modal="true" draggable="false" resizable="false">
 					<h:outputText value="#{i18n['ask-delete-step']}" />

@@ -33,11 +33,11 @@
   Title                    = {The Pomodoro Technique},
   Author                   = {Francesco Cirillo},
   Year                     = {2009},
+  Note                     = {http://www.pomodorotechnique.com/},
 
   ISBN                     = {1445219948,9781445219943},
   Owner                    = {ferda},
-  Timestamp                = {2016.12.05},
-  Url                      = {http://www.pomodorotechnique.com/}
+  Timestamp                = {2016.12.05}
 }
 
 @Book{LisaCrispin2009,
@@ -224,96 +224,96 @@
 
 @Other{Allure,
   Title                    = {Allure},
+  Note                     = {http://allure.qatools.ru/},
   Owner                    = {ferda},
-  Timestamp                = {2017.01.03},
-  Url                      = {http://allure.qatools.ru/}
+  Timestamp                = {2017.01.03}
 }
 
 @Other{BDDWiki,
   Title                    = {Behavior Driven Development Wiki},
+  Note                     = {http://behaviourdriven.org/},
   Owner                    = {ferda},
-  Timestamp                = {2016.12.20},
-  Url                      = {http://behaviourdriven.org/}
+  Timestamp                = {2016.12.20}
 }
 
 @Other{Gherkin,
   Title                    = {Gherkin on Cucumber Github},
+  Note                     = {https://github.com/cucumber/cucumber/wiki/Gherkin},
   Owner                    = {ferda},
-  Timestamp                = {2016.12.30},
-  Url                      = {https://github.com/cucumber/cucumber/wiki/Gherkin}
+  Timestamp                = {2016.12.30}
 }
 
 @Other{IntroBDD,
   Title                    = {Introducing BDD},
+  Note                     = {https://dannorth.net/introducing-bdd/},
   Owner                    = {ferda},
-  Timestamp                = {2016.12.28},
-  Url                      = {https://dannorth.net/introducing-bdd/}
+  Timestamp                = {2016.12.28}
 }
 
 @Manual{JavaEE5Tutorial,
   Title                    = {The Java EE 5 Tutorial},
+  Note                     = {http://java.sun.com/javaee/5/docs/tutorial/doc/},
 
   Owner                    = {ferda},
-  Timestamp                = {2017.01.07},
-  Url                      = {http://java.sun.com/javaee/5/docs/tutorial/doc/}
+  Timestamp                = {2017.01.07}
 }
 
 @Other{JUnit,
   Title                    = {JUnit},
+  Note                     = {http://junit.org/junit4/},
   Owner                    = {ferda},
-  Timestamp                = {2017.01.03},
-  Url                      = {http://junit.org/junit4/}
+  Timestamp                = {2017.01.03}
 }
 
 @Other{ATDDWikipedia,
   Title                    = {Acceptance Test Driven Development - Wikipedia},
+  Note                     = {https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development},
   Owner                    = {ferda},
   Timestamp                = {2016.12.29},
-  Url                      = {https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development},
   Year                     = {2016}
 }
 
 @Other{BranchingWikipedia,
   Title                    = {Branching (version control) - Wikipedia},
+  Note                     = {https://en.wikipedia.org/wiki/Branching\_ (version\_control)},
   Owner                    = {ferda},
   Timestamp                = {2016.12.20},
-  Url                      = {https://en.wikipedia.org/wiki/Branching_(version_control)},
   Year                     = {2016}
 }
 
 @Other{ScrumGuide,
   Title                    = {The Scrum Guide},
+  Note                     = {http://www.scrumguides.org/},
   Owner                    = {ferda},
   Timestamp                = {2016.12.28},
-  Url                      = {http://www.scrumguides.org/},
   Year                     = {2016}
 }
 
 @Other{TDDWikipedia,
   Title                    = {Test Driven Development - Wikipedia},
+  Note                     = {https://en.wikipedia.org/wiki/Test-driven\_development},
   Owner                    = {ferda},
   Timestamp                = {2016.12.29},
-  Url                      = {https://en.wikipedia.org/wiki/Test-driven_development},
   Year                     = {2016}
 }
 
 @Other{AgileAlliance,
   Title                    = {Agile Alliance},
+  Note                     = {https://www.agilealliance.org/},
   Owner                    = {ferda},
   Timestamp                = {2016.12.20},
-  Url                      = {https://www.agilealliance.org/},
   Year                     = {2015}
 }
 
 @Other{Javadoc,
   Title                    = {Javadoc},
+  Note                     = {http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html},
   Owner                    = {ferda},
   Timestamp                = {2017.01.02},
-  Url                      = {http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html},
   Year                     = {2015}
 }
 
-@Manual{,
+@Manual{RAM2014,
   Title                    = {Rapid Assessment for Markets},
   Year                     = {2014},
 
@@ -325,9 +325,9 @@
 
 @Other{AgileManifesto,
   Title                    = {Manifesto for Agile Software Development},
+  Note                     = {http://agilemanifesto.org/},
   Owner                    = {ferda},
   Timestamp                = {2016.12.20},
-  Url                      = {http://agilemanifesto.org/},
   Year                     = {2001}
 }
 

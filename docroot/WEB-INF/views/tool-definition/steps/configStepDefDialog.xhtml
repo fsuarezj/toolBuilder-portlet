@@ -7,23 +7,23 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<h:head>
-		<title>Select Step</title>
-	</h:head>
+	<h:head />
 	<h:body>
 		<p:panel>
 		<p />
 		<h:outputText value="#{i18n['configuring-step-def']}" />
 		<p />
-		<h:form id="configStepDefDlg">
+		<h:form id="configStepForm">
 			<p:fieldset id="commonStepDefFields">
-				<h:outputLabel for="inputStepName" value="#{i18n['step-name']} a#{editToolDefBacking.getCurrentStepDef().getStepDefDBEId()}: " />
-				<p:inputText id="stepDefName" name="stepDefName" value="#{toolDefListBacking.newToolDefName}" required="true" />
+				<h:outputLabel for="inputStepName" value="#{i18n['step-name']} #{stepDefBacking.getStepDefDBEId()}: " />
+				<p:inputText id="stepDefName" name="stepDefName" value="#{stepDefBacking.stepDefName}" required="true" />
 				<p />
 			</p:fieldset>
-			<p:commandButton id="saveButton" actionListener="#{editToolDefBacking.saveStepDefConfig()}" value="#{i18n['save']}">
+			<ui:include src="#{stepDefBacking.currentStepDef.getAdminView()}" />
+			<p />
+			<p:commandButton id="saveButton" actionListener="#{stepDefBacking.saveStepDefConfig()}" value="#{i18n['save']}">
 			</p:commandButton>
-			<p:commandButton id="cancelButton" actionListener="#{editToolDefBacking.cancelStepDefConfig()}" value="#{i18n['cancel']}">
+			<p:commandButton id="cancelButton" actionListener="#{stepDefBacking.cancelStepDefConfig()}" value="#{i18n['cancel']}" immediate="true">
 			</p:commandButton>
 		</h:form>
 		</p:panel>
