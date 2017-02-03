@@ -1,4 +1,4 @@
-package org.lrc.liferay.toolbuilder.bean;
+package org.lrc.liferay.toolbuilder.bean.steps.composite;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import org.lrc.liferay.toolbuilder.bean.AbstractBaseBean;
 import org.lrc.liferay.toolbuilder.model.InstalledStep;
 import org.primefaces.context.RequestContext;
 

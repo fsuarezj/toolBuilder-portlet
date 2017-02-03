@@ -1,4 +1,4 @@
-package org.lrc.liferay.toolbuilder.bean.steps;
+package org.lrc.liferay.toolbuilder.bean.steps.composite;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -89,7 +89,10 @@ public class CompositeStepDefBacking extends AbstractBaseBean implements Seriali
 	public void createNewStepDef(SelectEvent event) throws SystemException, ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, PortalException {
 		sysOutput("Ejecutando listener lanzado con el evento dialogReturn");
 		String stepType = ((InstalledStep) event.getObject()).getStepType();
-		this.compositeStepDef.addStepDef(StepFactory.getStepDef(stepType));
+		StepDef newStepDef = StepFactory.getStepDef(stepType);
+		if (stepType.equals("COMPOSITE"))
+			((CompositeStepDef) newStepDef).setDepth(this.compositeStepDef.getDepth() + 1);
+		this.compositeStepDef.addStepDef(newStepDef);
 		this.compositeStepDef.save();
 		this.createDashBoard();
 	}

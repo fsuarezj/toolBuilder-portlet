@@ -1,4 +1,4 @@
-package org.lrc.liferay.toolbuilder.bean.toolDefinition;
+package org.lrc.liferay.toolbuilder.bean.steps.composite;
 
 import java.util.ArrayList;
 import java.util.HashMap;

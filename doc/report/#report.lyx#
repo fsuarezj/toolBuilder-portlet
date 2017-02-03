@@ -5623,6 +5623,14 @@ options "plain"
 Guide to develop steps
 \end_layout
 
+\begin_layout Subsection
+Step structure
+\end_layout
+
+\begin_layout Subsection
+Installing new step type
+\end_layout
+
 \begin_layout Section
 Mockups of the RAM web app
 \end_layout

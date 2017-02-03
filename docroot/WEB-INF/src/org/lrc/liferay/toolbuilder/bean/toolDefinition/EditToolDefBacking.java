@@ -16,7 +16,7 @@ import javax.faces.context.FacesContext;
 import org.lrc.liferay.toolbuilder.ToolDef;
 import org.lrc.liferay.toolbuilder.bean.AbstractBaseBean;
 import org.lrc.liferay.toolbuilder.bean.FactoryBean;
-import org.lrc.liferay.toolbuilder.bean.steps.CompositeStepDefBacking;
+import org.lrc.liferay.toolbuilder.bean.steps.composite.CompositeStepDefBacking;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;

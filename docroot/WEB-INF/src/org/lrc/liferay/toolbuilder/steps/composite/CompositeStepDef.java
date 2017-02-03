@@ -13,6 +13,7 @@ import org.lrc.liferay.toolbuilder.StepDBEException;
 import org.lrc.liferay.toolbuilder.StepDefDBEException;
 import org.lrc.liferay.toolbuilder.StepFactory;
 import org.lrc.liferay.toolbuilder.model.CompositeStepDefDBE;
+import org.lrc.liferay.toolbuilder.model.InstalledStep;
 import org.lrc.liferay.toolbuilder.model.StepDefDBE;
 import org.lrc.liferay.toolbuilder.model.StepDefsCompositeStepDefDBE;
 import org.lrc.liferay.toolbuilder.service.CompositeStepDefDBELocalServiceUtil;
@@ -27,9 +28,8 @@ import com.liferay.portal.kernel.exception.SystemException;
 
 public class CompositeStepDef extends StepDef {
 	
-	/**
-	 * 
-	 */
+	private final static int MAX_DEPTH = 2;
+	
 	private static final long serialVersionUID = 7733476918496135630L;
 	private CompositeStepDefDBE compositeStepDefDBE;
 	private List<StepDef> stepDefs;
@@ -317,5 +317,9 @@ public class CompositeStepDef extends StepDef {
 	@Override
 	public String getAdminView() {
 		return "compositeStepAdmin.xhtml";
+	}
+	
+	public boolean isMaxDepth(InstalledStep stepType) {
+		return stepType.getStepType().equals("COMPOSITE") && (this.getDepth() >= (MAX_DEPTH - 1));
 	}
 }
