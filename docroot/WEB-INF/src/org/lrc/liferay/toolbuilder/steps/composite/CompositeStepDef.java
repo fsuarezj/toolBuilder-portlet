@@ -316,7 +316,7 @@ public class CompositeStepDef extends StepDef {
 
 	@Override
 	public String getAdminView() {
-		return "compositeStepAdmin.xhtml";
+		return "composite/compositeStepAdmin.xhtml";
 	}
 	
 	public boolean isMaxDepth(InstalledStep stepType) {

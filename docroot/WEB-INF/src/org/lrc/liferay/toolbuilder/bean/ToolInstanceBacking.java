@@ -52,6 +52,28 @@ public class ToolInstanceBacking extends AbstractBaseBean {
 	}
 	
 	/**
+	 * Gets the current Step name
+	 * @return A String with the current step name
+	 */
+	public String getStepName() {
+		return toolSession.getSelectedToolInstance().getCurrentStepName();
+	}
+	
+	/**
+	 * Gets the current Step view
+	 * @return the path to the current step view
+	 * @throws SystemException 
+	 * @throws CompositeStepDBEException 
+	 * @throws StepDefDBEException 
+	 * @throws StepDBEException 
+	 * @throws NoSuchInstalledStepException 
+	 * @throws NoSuchUserException 
+	 */
+	public String getStepView() throws NoSuchUserException, NoSuchInstalledStepException, StepDBEException, StepDefDBEException, CompositeStepDBEException, SystemException {
+		return toolSession.getSelectedToolInstance().getCurrentStepView();
+	}
+	
+	/**
 	 * Sets the tool instance one step forward if it is not in its last step
 	 * @throws SystemException
 	 * @throws PortalException 

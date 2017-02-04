@@ -45,6 +45,6 @@ public class MockStepDef extends StepDef {
 
 	@Override
 	public String getAdminView() {
-		return "mockStepAdmin.xhtml";
+		return "mock/mockStepAdmin.xhtml";
 	}
 }

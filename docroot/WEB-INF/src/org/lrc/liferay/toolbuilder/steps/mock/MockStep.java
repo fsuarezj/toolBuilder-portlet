@@ -15,7 +15,7 @@ import com.liferay.portal.kernel.exception.SystemException;
  *
  */
 public class MockStep extends Step {
-
+	
 	public MockStep() throws NoSuchUserException, NoSuchInstalledStepException, StepDBEException, StepDefDBEException, SystemException {
 		super("MOCK");
 	}
@@ -26,8 +26,7 @@ public class MockStep extends Step {
 
 	@Override
 	public String draw() {
-		// TODO Auto-generated method stub
-		return null;
+		return "mock/mockStep.xhtml";
 	}
 
 	public void save() throws SystemException {

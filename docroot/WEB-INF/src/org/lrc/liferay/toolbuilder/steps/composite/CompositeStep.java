@@ -16,6 +16,7 @@ import org.lrc.liferay.toolbuilder.service.CompositeStepDBELocalServiceUtil;
 import org.lrc.liferay.toolbuilder.service.StepDBELocalServiceUtil;
 import org.lrc.liferay.toolbuilder.service.StepDefDBELocalServiceUtil;
 import org.lrc.liferay.toolbuilder.steps.Step;
+import org.lrc.liferay.toolbuilder.steps.StepDef;
 
 import com.liferay.portal.NoSuchUserException;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -80,8 +81,10 @@ public class CompositeStep extends Step {
 			StepDBELocalServiceUtil.addCompositeStepDBEStepDBEs
 				(this.compositeStepDBE.getCompositeStepDBEId(), this.compositeStepDBE.getStepDBEs());
 		}
-		for (Step step: this.steps) {
-			step.save();
+		if (this.steps != null) {
+			for (Step step: this.steps) {
+				step.save();
+			}
 		}
 	}
 
@@ -126,8 +129,7 @@ public class CompositeStep extends Step {
 	
 	@Override
 	public String draw() {
-		// TODO Auto-generated method stub
-		return null;
+		return "composite/compositeStep.xhtml";
 	}
 
 	public void rebuildSteps() throws SystemException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ClassNotFoundException, NoSuchMethodException, SecurityException {
@@ -141,6 +143,19 @@ public class CompositeStep extends Step {
 				this.steps.add(StepFactory.getStep(stepDBE.getStepType(), stepDBE));
 			}
 		}
+	}
+
+	// TODO: Corregir para asegurar que coge de db el step correcto
+	public Step getCurrentStep() throws NoSuchUserException, NoSuchInstalledStepException, StepDBEException, StepDefDBEException, CompositeStepDBEException, SystemException {
+		int currentStepIndex = this.compositeStepDBE.getCurrentStep();
+		StepDef stepDef = this.compositeStepDef.getStepDef(currentStepIndex);
+		return stepDef.buildStep();
+	}
+
+	public String getCurrentStepName() {
+		int currentStepIndex = this.compositeStepDBE.getCurrentStep();
+		StepDef stepDef = this.compositeStepDef.getStepDef(currentStepIndex);
+		return stepDef.getStepDefName();
 	}
 
 }

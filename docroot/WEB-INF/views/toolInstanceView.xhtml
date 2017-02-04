@@ -18,27 +18,14 @@
 	    	</c:when>
 	    	<c:otherwise>
     			<h:outputLabel class="instance-name">
-    				<h:outputText value="#{i18n['ram-name']}: " />
-    				<h:outputText id="toolInstanceName" value="#{toolSession.selectedToolInstance.toolTitle}" />
+    				<h3>
+						<h:outputText id="toolDefName" value="#{toolSession.selectedToolDef.toolDefName}: "/>
+    					<h:outputText id="toolInstanceName" value="#{toolSession.selectedToolInstance.toolTitle}" />
+    				</h3>
     			</h:outputLabel>
 	    		<h:outputLabel id="toolInstanceContent">
-	    			<c:choose>
-	    				<c:when test="#{toolInstanceBacking.getStep() == 1}">
-	    					<ui:include src="ramSteps/ramStep1.xhtml" />
-	    				</c:when>
-	    				<c:when test="#{toolInstanceBacking.getStep() == 2}">
-	    					<ui:include src="ramSteps/ramStep2.xhtml" />
-	    				</c:when>
-	    				<c:when test="#{toolInstanceBacking.getStep() == 3}">
-	    					<ui:include src="ramSteps/ramStep3.xhtml" />
-	    				</c:when>
-	    				<c:when test="#{toolInstanceBacking.getStep() == 4}">
-	    					<ui:include src="ramSteps/ramStep4.xhtml" />
-	    				</c:when>
-	    				<c:when test="#{toolInstanceBacking.getStep() == 5}">
-	    					<ui:include src="ramSteps/ramStep5.xhtml" />
-	    				</c:when>
-	    			</c:choose>
+		    		<ui:include src="steps/commonStep.xhtml" />
+		    		<ui:include src="steps/#{toolInstanceBacking.getStepView()}" />
 				</h:outputLabel>
 	    		<h:commandButton id="stepForwardButton" action="#{toolInstanceBacking.stepForward}" value="#{i18n['step-forward']}" rendered="#{toolInstanceBacking.hasEditPermission}">
 	    			<f:ajax render="toolInstanceContent" />

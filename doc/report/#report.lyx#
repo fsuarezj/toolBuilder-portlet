@@ -4207,6 +4207,13 @@ Permissions configuration file
 
 \begin_layout Subsection
 Sixth Sprint
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Sixth-Sprint"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5623,12 +5630,293 @@ options "plain"
 Guide to develop steps
 \end_layout
 
+\begin_layout Standard
+One of the main features of the portlet is to allow developers to create
+ new steps in order to extend features and create new tools, this guide
+ shows how new steps should be created.
+\end_layout
+
+\begin_layout Subsection
+Technologies
+\end_layout
+
+\begin_layout Standard
+As the portlet has been developed using JSF 2.1, the standard JSF version
+ for Liferay 6.2, the steps should also be developed with JSF 2.1.
+ It is recommended the previous reading of the Liferay tutorial 
+\begin_inset Quotes eld
+\end_inset
+
+Writing a JSF application using Liferay Faces
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://dev.liferay.com/develop/tutorials/-/knowledge_base/6-2/writing-a-jsf-appli
+cation-using-liferay-faces
+\end_layout
+
+\end_inset
+
+ in order to understand how JSF portlets are developed in Liferay.
+\end_layout
+
 \begin_layout Subsection
 Step structure
 \end_layout
 
+\begin_layout Standard
+The 
+\family typewriter
+MOCK
+\family default
+ step can be used as a template to create new steps since it is well documented
+ and commented to make easier the development of new steps.
+ It can be downloaded from TODO.
+\end_layout
+
+\begin_layout Standard
+The core of new step structure must follow the general structure designed
+ for all the portlet, that is to say a symmetryc structure comprised of
+ the step definition part and the step instance part:
+\end_layout
+
+\begin_layout Itemize
+The
+\series bold
+ step definition 
+\series default
+regards all those options and configurations defined when creating the tool
+ and including the step, namely in the 
+\family typewriter
+tool-definition
+\family default
+ portlet created in the 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "subsec:Sixth-Sprint"
+
+\end_inset
+
+.
+ For example, if we create a generic step to attach files the step definition
+ may allow to define a text to show in the step like 
+\begin_inset Quotes eld
+\end_inset
+
+Add files for...
+\begin_inset Quotes erd
+\end_inset
+
+ and the max number of files which can be added in the step.
+ It should be a class inheriting from 
+\family typewriter
+StepDef
+\family default
+ class.
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+step instance
+\series default
+ regards all those options or actions that can be taken when the user access
+ the step in the 
+\family typewriter
+tool-implementation
+\family default
+ portlet.
+ For example in the previous case of a step to attach files, the step instance
+ will manage the specific files added for a step in a particular tool instance.
+ It should be a class inheriting from 
+\family typewriter
+Step
+\family default
+ class.
+\end_layout
+
+\begin_layout Standard
+These two classes should be packaged as 
+\family typewriter
+org.lrc.liferay.toolbuilder.steps.XXX
+\family default
+, where XXX is the name of the step, and should connect with the persistent
+ layer, to be consistent with the rest of the portlet it is recommended
+ to build the persistent layer with 
+\emph on
+Liferay Service Builder
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://dev.liferay.com/develop/tutorials/-/knowledge_base/6-2/generating-a-persis
+tence-framework-using-service-builder
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Besides the two core classes, some backing beans may be needed for the views.
+ It is recommended to use 
+\emph on
+View Scoped
+\emph default
+ or 
+\emph on
+Request Scoped 
+\emph default
+beans and if some variable is needed to persist during the session save
+ it in the 
+\family typewriter
+ToolSession
+\family default
+ bean, which is the 
+\emph on
+Session Scoped
+\emph default
+ bean and can be accessed from any other bean as a JSF 
+\family typewriter
+ManagedProperty
+\family default
+.
+ It is important to note that all beans inherit from 
+\family typewriter
+AbstractBaseBean
+\family default
+.
+ To mantain consistency with the rest of the portlet these beans should
+ be packaged as org.lrc.liferay.toolbuilder.bean.steps.XXX, where XXX is the name
+ of the step.
+\end_layout
+
+\begin_layout Standard
+On the other hand, and related to the views, at least two views should be
+ created: one regarding the step definition and other one regarding step
+ instance.
+ By convention they should be located in the directory 
+\family typewriter
+WEB-INF/views/steps/XXX/
+\family default
+ under the docroot, where XXX is - again - the name of the step.
+ In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:New Steps Diagram"
+
+\end_inset
+
+ is shown a diagram of the classes and views which may be developed for
+ new steps.
+\end_layout
+
 \begin_layout Subsection
 Installing new step type
+\end_layout
+
+\begin_layout Standard
+To install a new step type it is necessary to call it from the 
+\family typewriter
+StepFactory
+\family default
+ class static function 
+\family typewriter
+installStep
+\family default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+StepFactory.installStep(String stepType, String stepDescription, String namespace
+, String className)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+For the example of a step to add files the call could be like this:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+StepFactory installStep("FILES_ATTACH", "A step to attach files", "org.lrc.liferay.
+toolbuilder.steps.filesAttach", "FilesAttachStep")
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/uml/exported/MockStepClassDiagram.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diagram for new Steps, in red those classes and views which may be developed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:New Steps Diagram"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

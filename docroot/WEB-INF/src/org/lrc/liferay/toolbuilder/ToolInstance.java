@@ -7,6 +7,7 @@ import org.lrc.liferay.toolbuilder.model.StepDBE;
 import org.lrc.liferay.toolbuilder.model.ToolInstanceDBE;
 import org.lrc.liferay.toolbuilder.service.StepDBELocalServiceUtil;
 import org.lrc.liferay.toolbuilder.service.ToolInstanceDBELocalServiceUtil;
+import org.lrc.liferay.toolbuilder.steps.Step;
 import org.lrc.liferay.toolbuilder.steps.composite.CompositeStep;
 
 import com.liferay.faces.portal.context.LiferayFacesContext;
@@ -95,5 +96,18 @@ public class ToolInstance implements Serializable {
 	
 	public long getToolInstanceDBEId() {
 		return this.toolInstanceDBE.getToolInstanceDBEId();
+	}
+
+	public String getCurrentStepView() throws NoSuchUserException, NoSuchInstalledStepException, StepDBEException, StepDefDBEException, CompositeStepDBEException, SystemException {
+		 Step aux = this.compositeStep.getCurrentStep();
+		 return aux.draw();
+	}
+
+	public String getCurrentStepName() {
+		return this.compositeStep.getCurrentStepName();
+	}
+	
+	public Step getCurrentStep() throws NoSuchUserException, NoSuchInstalledStepException, StepDBEException, StepDefDBEException, CompositeStepDBEException, SystemException {
+		return this.compositeStep.getCurrentStep();
 	}
 }

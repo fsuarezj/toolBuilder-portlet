@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_EdigcBnqEeaHdNAhBjaKYg" name="Testing framework">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_EdigcBnqEeaHdNAhBjaKYg" name="Mock Step">
   <packageImport xmi:id="_VU3GEBnuEeaHdNAhBjaKYg">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
   </packageImport>
@@ -188,6 +188,42 @@
       <ownedEnd xmi:id="_MtVpEyi0EeaLScfHGLgimA" name="installedSteps" type="_hfJS0CiuEeaLScfHGLgimA" association="_MtVCACi0EeaLScfHGLgimA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MtWQICi0EeaLScfHGLgimA"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MtWQISi0EeaLScfHGLgimA" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ejbi0OpBEeamwIs7fe8GEg" name="XxxStepDef">
+      <generalization xmi:id="_av6YcOpCEeamwIs7fe8GEg" general="_1wEOUCiuEeaLScfHGLgimA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_hGvNEOpBEeamwIs7fe8GEg" name="XxxStep">
+      <generalization xmi:id="_Y1Ts8OpCEeamwIs7fe8GEg" general="_z805oCivEeaLScfHGLgimA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_QMQzgOpCEeamwIs7fe8GEg" memberEnd="_QMQzgepCEeamwIs7fe8GEg _QMUd4OpCEeamwIs7fe8GEg" navigableOwnedEnd="_QMUd4OpCEeamwIs7fe8GEg">
+      <ownedEnd xmi:id="_QMQzgepCEeamwIs7fe8GEg" name="xxxSteps" type="_hGvNEOpBEeamwIs7fe8GEg" association="_QMQzgOpCEeamwIs7fe8GEg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QMTPwOpCEeamwIs7fe8GEg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QMT20OpCEeamwIs7fe8GEg" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_QMUd4OpCEeamwIs7fe8GEg" name="xxxStepDefs" type="_ejbi0OpBEeamwIs7fe8GEg" association="_QMQzgOpCEeamwIs7fe8GEg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QMVE8OpCEeamwIs7fe8GEg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QMVsAOpCEeamwIs7fe8GEg" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_MN6-wOp7Eea-ur-Fay1MGQ" memberEnd="_MN6-wep7Eea-ur-Fay1MGQ _MN7l0up7Eea-ur-Fay1MGQ" navigableOwnedEnd="_MN7l0up7Eea-ur-Fay1MGQ">
+      <ownedEnd xmi:id="_MN6-wep7Eea-ur-Fay1MGQ" name="xxxStepDefs" type="_ejbi0OpBEeamwIs7fe8GEg" association="_MN6-wOp7Eea-ur-Fay1MGQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MN7l0Op7Eea-ur-Fay1MGQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MN7l0ep7Eea-ur-Fay1MGQ" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_MN7l0up7Eea-ur-Fay1MGQ" name="xxxStepDefPersistents" type="_7pcf0Op6Eea-ur-Fay1MGQ" association="_MN6-wOp7Eea-ur-Fay1MGQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MN7l0-p7Eea-ur-Fay1MGQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MN7l1Op7Eea-ur-Fay1MGQ" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_NSsOcOp7Eea-ur-Fay1MGQ" memberEnd="_NSs1gOp7Eea-ur-Fay1MGQ _NStckOp7Eea-ur-Fay1MGQ" navigableOwnedEnd="_NStckOp7Eea-ur-Fay1MGQ">
+      <ownedEnd xmi:id="_NSs1gOp7Eea-ur-Fay1MGQ" name="xxxSteps" type="_hGvNEOpBEeamwIs7fe8GEg" association="_NSsOcOp7Eea-ur-Fay1MGQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NSs1gep7Eea-ur-Fay1MGQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NSs1gup7Eea-ur-Fay1MGQ" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_NStckOp7Eea-ur-Fay1MGQ" name="xxxStepPersistents" type="_CUD9sOp7Eea-ur-Fay1MGQ" association="_NSsOcOp7Eea-ur-Fay1MGQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NSuDoOp7Eea-ur-Fay1MGQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NSuDoep7Eea-ur-Fay1MGQ" value="*"/>
       </ownedEnd>
     </packagedElement>
   </packagedElement>
@@ -420,6 +456,52 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5i_9IL2KEeaBPsOpdgFOtw" value="*"/>
       </ownedEnd>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_6i8rcOpyEea-ur-Fay1MGQ" name="XxxStepDefBacking">
+      <generalization xmi:id="_PIE8YOpzEea-ur-Fay1MGQ" general="_D5V5wHs7Eeaip9ANPcqu9A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_CYAjMOpzEea-ur-Fay1MGQ" name="XxxStepBacking">
+      <generalization xmi:id="_MxHFAOpzEea-ur-Fay1MGQ" general="_D5V5wHs7Eeaip9ANPcqu9A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_UDV8gOpzEea-ur-Fay1MGQ" memberEnd="_UDV8gepzEea-ur-Fay1MGQ _UDYYwOpzEea-ur-Fay1MGQ" navigableOwnedEnd="_UDYYwOpzEea-ur-Fay1MGQ">
+      <ownedEnd xmi:id="_UDV8gepzEea-ur-Fay1MGQ" name="xxxStepBackings" type="_CYAjMOpzEea-ur-Fay1MGQ" association="_UDV8gOpzEea-ur-Fay1MGQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UDXxsOpzEea-ur-Fay1MGQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UDXxsepzEea-ur-Fay1MGQ" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_UDYYwOpzEea-ur-Fay1MGQ" name="xxxSteps" type="_hGvNEOpBEeamwIs7fe8GEg" association="_UDV8gOpzEea-ur-Fay1MGQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UDYYwepzEea-ur-Fay1MGQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UDY_0OpzEea-ur-Fay1MGQ" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_aFMKMOpzEea-ur-Fay1MGQ" memberEnd="_aFMKMepzEea-ur-Fay1MGQ _aFMxQupzEea-ur-Fay1MGQ" navigableOwnedEnd="_aFMxQupzEea-ur-Fay1MGQ">
+      <ownedEnd xmi:id="_aFMKMepzEea-ur-Fay1MGQ" name="xxxStepDefBackings" type="_6i8rcOpyEea-ur-Fay1MGQ" association="_aFMKMOpzEea-ur-Fay1MGQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aFMxQOpzEea-ur-Fay1MGQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aFMxQepzEea-ur-Fay1MGQ" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_aFMxQupzEea-ur-Fay1MGQ" name="xxxStepDefs" type="_ejbi0OpBEeamwIs7fe8GEg" association="_aFMKMOpzEea-ur-Fay1MGQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aFMxQ-pzEea-ur-Fay1MGQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aFMxROpzEea-ur-Fay1MGQ" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_NB0lEOp0Eea-ur-Fay1MGQ" memberEnd="_NB0lEep0Eea-ur-Fay1MGQ _NB1MIup0Eea-ur-Fay1MGQ" navigableOwnedEnd="_NB1MIup0Eea-ur-Fay1MGQ">
+      <ownedEnd xmi:id="_NB0lEep0Eea-ur-Fay1MGQ" name="xxxStepBackings" type="_CYAjMOpzEea-ur-Fay1MGQ" association="_NB0lEOp0Eea-ur-Fay1MGQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NB1MIOp0Eea-ur-Fay1MGQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NB1MIep0Eea-ur-Fay1MGQ" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_NB1MIup0Eea-ur-Fay1MGQ" name="toolSession &lt;SessionScoped>s" type="_ZEkhYHs7Eeaip9ANPcqu9A" association="_NB0lEOp0Eea-ur-Fay1MGQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NB1MI-p0Eea-ur-Fay1MGQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NB1MJOp0Eea-ur-Fay1MGQ" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_RS9DEOp0Eea-ur-Fay1MGQ" memberEnd="_RS9DEep0Eea-ur-Fay1MGQ _RS9qIup0Eea-ur-Fay1MGQ" navigableOwnedEnd="_RS9qIup0Eea-ur-Fay1MGQ">
+      <ownedEnd xmi:id="_RS9DEep0Eea-ur-Fay1MGQ" name="xxxStepDefBackings" type="_6i8rcOpyEea-ur-Fay1MGQ" association="_RS9DEOp0Eea-ur-Fay1MGQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RS9qIOp0Eea-ur-Fay1MGQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RS9qIep0Eea-ur-Fay1MGQ" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_RS9qIup0Eea-ur-Fay1MGQ" name="toolSession &lt;SessionScoped>s" type="_ZEkhYHs7Eeaip9ANPcqu9A" association="_RS9DEOp0Eea-ur-Fay1MGQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RS9qI-p0Eea-ur-Fay1MGQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RS9qJOp0Eea-ur-Fay1MGQ" value="*"/>
+      </ownedEnd>
+    </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Interaction" xmi:id="_dh7g0IrOEeaEA-t_ybAC5Q" name="User"/>
   <packagedElement xmi:type="uml:Interaction" xmi:id="_vlEWIIrOEeaEA-t_ybAC5Q" name="Scenario_0"/>
@@ -515,5 +597,33 @@
         </ownedEnd>
       </packagedElement>
     </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_ioRhYOp6Eea-ur-Fay1MGQ" name="Persistence Layer">
+    <packagedElement xmi:type="uml:Class" xmi:id="_7pcf0Op6Eea-ur-Fay1MGQ" name="XxxStepDefPersistent"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_CUD9sOp7Eea-ur-Fay1MGQ" name="XxxStepPersistent"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_hBX_kOp7Eea-ur-Fay1MGQ" memberEnd="_hBX_kep7Eea-ur-Fay1MGQ _hBX_lOp7Eea-ur-Fay1MGQ" navigableOwnedEnd="_hBX_lOp7Eea-ur-Fay1MGQ">
+    <ownedEnd xmi:id="_hBX_kep7Eea-ur-Fay1MGQ" name="xxxStep.xhtmls" type="_6Iy3UOp4Eea-ur-Fay1MGQ" association="_hBX_kOp7Eea-ur-Fay1MGQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hBX_kup7Eea-ur-Fay1MGQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hBX_k-p7Eea-ur-Fay1MGQ" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_hBX_lOp7Eea-ur-Fay1MGQ" name="xxxStepBackings" type="_CYAjMOpzEea-ur-Fay1MGQ" association="_hBX_kOp7Eea-ur-Fay1MGQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hBYmoOp7Eea-ur-Fay1MGQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hBYmoep7Eea-ur-Fay1MGQ" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_jIKF4Op7Eea-ur-Fay1MGQ" memberEnd="_jIKs8Op7Eea-ur-Fay1MGQ _jILUAep7Eea-ur-Fay1MGQ" navigableOwnedEnd="_jILUAep7Eea-ur-Fay1MGQ">
+    <ownedEnd xmi:id="_jIKs8Op7Eea-ur-Fay1MGQ" name="xxxStepDef.xhtmls" type="_Z_lX0Op7Eea-ur-Fay1MGQ" association="_jIKF4Op7Eea-ur-Fay1MGQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_jIKs8ep7Eea-ur-Fay1MGQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jILUAOp7Eea-ur-Fay1MGQ" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_jILUAep7Eea-ur-Fay1MGQ" name="xxxStepDefBackings" type="_6i8rcOpyEea-ur-Fay1MGQ" association="_jIKF4Op7Eea-ur-Fay1MGQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_jILUAup7Eea-ur-Fay1MGQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jILUA-p7Eea-ur-Fay1MGQ" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_qfuwYOp7Eea-ur-Fay1MGQ" name="Views">
+    <packagedElement xmi:type="uml:Class" xmi:id="_Z_lX0Op7Eea-ur-Fay1MGQ" name="XxxStepDef.xhtml"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_6Iy3UOp4Eea-ur-Fay1MGQ" name="XxxStep.xhtml"/>
   </packagedElement>
 </uml:Model>
