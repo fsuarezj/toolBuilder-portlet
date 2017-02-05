@@ -775,8 +775,8 @@ key "Javadoc"
  has been used.
  Javadoc is a tool for generating code documentation by adding Java annotation
  to the code.
- All objects and methods in the code has been annotated so code will be
- more understandable.
+ The most important objects and methods in the code have been annotated
+ so code will be more understandable.
 \begin_inset Marginal
 status open
 
@@ -2153,7 +2153,14 @@ Before beginning the development, a mockup design process was carried out
  Even if the objective of this project is not to develop the final app but
  its first phase, this mockups have been kept in mind during the development
  process in order to ensure the final objective is achieved in the future.
- These mockups can be found in the TODO
+ These mockups can be found in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Mockups-of-the"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -3058,6 +3065,13 @@ name "fig:sprint3_tests_pass"
 
 \begin_layout Subsection
 Fourth Sprint
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Fourth-Sprint"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5460,52 +5474,42 @@ At the end of this project, a working and tested first phase of a Liferay
 \begin_layout Standard
 As it can be noted in the development process (
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "sec:Development"
 
 \end_inset
 
 ), a large proportion of the developing efforts have been aimed to create
- an administration portlet to configure the web tool, it will be this portlet,
- when customized steps are developed, which will allow users to create their
- own web tools to guide through different processes or methodologies.
- This has become particularly relevant during the project, when the tool
- has been redesigned to be useful not only for a RAM web tool.
+ an administration portlet to configure the web tool.
+ It will be this portlet, when customized steps are developed, which allows
+ users to create their own web applications to guide through different processes
+ or tools.
+ This has become particularly relevant during the project because the applicatio
+n has been redesigned to be useful not only for a RAM web tool.
 \end_layout
 
 \begin_layout Standard
 Initially for testing purposes but also to make easier the development of
  the steps, a mock step has been included which can be used as a template
  for new steps development.
- This mock step has the required structure to the new step being included
- in the system along with the different methods needed, which have been
- well documented -using Javadoc as explained in 
+ This mock step has been well documented and it has the required structure
+ for the new steps to be included in the system along with the different
+ methods needed.
+ Also a guide for developers has been included in Appedix A: 
 \begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Documentation"
+LatexCommand nameref
+reference "sec:Guide-to-develop"
 
 \end_inset
 
 .
  In this way, it is intended to facilitate the extension of the web tool
- creating new step types.
+ through the creation of new step types.
 \end_layout
 
 \begin_layout Standard
-Regarding to the development process, the biggest issue has been the estimation
- of the time needed to develop each of the sprints, that has usually been
- too optimistic.
- In addition to the code refining in order to solve bugs found in the testing
- process, which finally took longer than expected, it has also been necessary
- in many cases to improve the knowledge about the technology, either Primefaces,
- JSF or even Liferay itself.
- Moreover the tests development, particularly the Selenium support code
- and the web elements management, demanded also more time than expected.
-\end_layout
-
-\begin_layout Standard
-On the other hand, adopting new techniques and methodologies has required
- an extra effort and time in setting-up frameworks and procedures.
+Concerning the methodology, adopting new techniques has required an extra
+ effort and time in setting-up frameworks and procedures.
  Undoubtedly it has been worth in order to improve the development methodology
  and hence the quality, scalability and future development opportunities,
  but it has also implied changes and adaptations during the development
@@ -5514,21 +5518,55 @@ On the other hand, adopting new techniques and methodologies has required
  and processes at the beginning of the project in order to well set-up the
  development framework and avoid on the fly changes which contribute to
  slow down the development.
+ 
+\end_layout
+
+\begin_layout Standard
+On the other hand, the biggest issue in the development process has been
+ the estimation of the time needed to develop each of the sprints, that
+ has usually been too optimistic.
+ In addition to the code refining in order to solve bugs found in the testing
+ process, which finally took longer than expected, it has also been necessary
+ in many cases to improve the knowledge about the technology, either Primefaces,
+ JSF or even Liferay itself.
+ Moreover the tests development, particularly the Selenium support code
+ and the web elements management, demanded also more time than expected.
+ To sum up, roughly the 50% of the time has been used in development the
+ web application and the other half of the time has been invested in setting
+ up the testing framework and testing itself.
+ It is difficult to estimate the time spent on the project as it has been
+ discontinued and shared with other works, so another lesson learned is
+ the usefulness of maintaining a time log which could be easily implemented
+ if using time management techniques such as 
+\emph on
+Pomodoro
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cirillo2009"
+
+\end_inset
+
+.
+ Since it has been introduced lately in the project, the estimation of the
+ time spent has been done using those late sprints, which could have been
+ about 40 hours each sprint.
 \end_layout
 
 \begin_layout Standard
 Regarding to the quality assurance, the testing framework which has been
  created and the fact of using a test-first methodology were aimed to offer
- a significant degree of quality, ensuring the customer requirements have
- been accomplished without errors.This test-first methodology (partucularly
- BDD as explained in 
+ a significant degree of quality, ensuring the customer requirements are
+ accomplished without errors.
+ This test-first methodology (partucularly BDD as explained in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Behavior-Driven-Development"
 
 \end_inset
 
-) as entailed a mind change in the way the development process is conceived.
+) has entailed a mind change in the way the development process is conceived.
  Since the test are developed before coding, the accomplishment of functional
  requirements is the core, and code is developed without such a deep previous
  thinking as it is done using cascade classic methodologies.
@@ -5545,7 +5583,24 @@ Initially, that way of developing can cast doubts if we are used to classical
  way.
  The second one is that, when some code is not as readable or structured
  as necessary, a refactoring process can be done in order to improve it
- and reduce complexity.
+ and reduce complexity, so code remains structured and intelligible.
+ Particularly in this project, creating symetric structures when refactoring
+ has simplified the design and made it more comprehensible, as shown in
+ 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:Fourth-Sprint"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:Step-structure"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -5564,7 +5619,7 @@ reference "subsec:Quadrant-4-tests"
  more specific ones (creating interfaces with Primefaces).
  Also reliability has been always considered by improving tests, both automated
  and human guided ones.
- And of course scalability, which, as it has been explained, has been one
+ And of course scalability which, as it has been explained , has been one
  of the main goals of the project.
  Lastly and for the future, performance tests should been carried out in
  order to find improvements, but it has not been an objective in this first
@@ -5628,6 +5683,13 @@ options "plain"
 \begin_layout Section
 \start_of_appendix
 Guide to develop steps
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Guide-to-develop"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5667,6 +5729,13 @@ cation-using-liferay-faces
 
 \begin_layout Subsection
 Step structure
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Step-structure"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5815,8 +5884,9 @@ reference "fig:New Steps Diagram"
 
 \end_inset
 
- is shown a diagram of the classes and views which may be developed for
- new steps.
+ is shown a diagram of the classes and views which may be developed, in
+ blue those classes related to the step definition and in red those ones
+ related to the step instance.
 \end_layout
 
 \begin_layout Subsection
@@ -5963,7 +6033,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Diagram for new Steps, in red those classes and views which may be developed
+Diagram for new Steps, in blue classes for the step definition and in red
+ classes for step instance
 \end_layout
 
 \end_inset
@@ -5988,10 +6059,495 @@ name "fig:New Steps Diagram"
 
 \begin_layout Section
 Mockups of the RAM web app
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Mockups-of-the"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As explained in the subsection 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "subsec:PreliminaryWork"
+
+\end_inset
+
+, mockups for the final web application were designed with the customer
+ before beginning the development process.
+ Althought an interactive version of those mockups can be found on the following
+ URL:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+http://www.livelihoodstoolbox.org/RAM_design/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thereupon are shown the web app navigation map and the main mockups.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways true
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/nav_map_1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Navigation map for the RAM web app (part 1)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:nav_map"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways true
+status open
+
+\begin_layout Plain Layout
+\align right
+\begin_inset Graphics
+	filename images/nav_map_2.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Navigation map for the RAM web app (part 2)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset External
+	template PDFPages
+	filename UI_design.pdf
+	extra LaTeX "pages=-"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
 Screenshots of the first phase of the RAM web app
+\end_layout
+
+\begin_layout Subsection
+Tool Implementation Portlet
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screenshots/1_tool_instance_selector.png
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tool Instance selection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screenshots/2_tool_instance_creation.png
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tool Instance creation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screenshots/3_tool_instance_navigate.png
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tool Instance navigation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Tool Definition Portlet
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screenshots/4_tool_def_selector.png
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tool Definition selection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screenshots/5_tool_def_creation.png
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tool Definition creation with name validation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screenshots/6_tool_def_config.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tool definition edition
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screenshots/7_tool_step_creation.png
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Step creation dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screenshots/8_move_step.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Reordering steps
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screenshots/9_step_config_mock.png
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mock step configuration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screenshots/10_step_config_composite.png
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Nested composite step configuration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
