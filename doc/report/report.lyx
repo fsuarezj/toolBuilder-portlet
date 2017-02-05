@@ -105,7 +105,7 @@ This project provides a Liferay portlet with the basic structure to create
  step based web applications.
  It will be the base for a Rapid Assessment for Markets web application
  which will help humanitarian workers to conduct market assessments in order
- to better assist desaster affected populations.
+ to better assist disaster affected populations.
  The development has been carried out following modern software methodologies
  which provide a development and testing framework to ease further development
  and to ensure software quality objectives achievement.
@@ -308,7 +308,7 @@ Individuals and interactions over processes and tools:
  The fact of using methodologies oriented to individuals and interactions
  means that agile ones are less prescriptive than traditional methods, so
  it will not only facilitate the comprehension of the process by the non-technic
-al stakeholders -in this case the customer-, but also will be more adaptative
+al stakeholders - in this case the customer -, but also will be more adaptative
  allowing to better fit the methodology to the project and team needs.
 \end_layout
 
@@ -367,7 +367,7 @@ key "Poppendieck2003"
 
  methodologies, rather than following just one strictly.
  Therefore, the combination of several techniques allows to take the best
- of each one -as shown in 
+ of each one - as shown in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AndrewThuPham2012"
@@ -381,7 +381,7 @@ key "HenrikKniberg2010"
 
 \end_inset
 
-- and it also allows the development methodology to be adapted to the current
+ - and it also allows the development methodology to be adapted to the current
  project specifications and to evolve according to the project momentum.
 \end_layout
 
@@ -936,7 +936,7 @@ Quadrant 2 comprises the Business-Facing tests which address requirements
 \begin_layout Standard
 For this project, the most of the testing efforts has been made in this
  quadrant as BDD has been the main testing methodology.
- The nature of the webapp, which is embedded in Liferay and uses mature
+ The nature of the web app, which is embedded in Liferay and uses mature
  technologies such as Java Server Faces as explained below, implies that
  the best way to test the software is when it is already embedded and working
  since the surrounding technologies are not supposed to fail.
@@ -2985,11 +2985,11 @@ Tool Instances
 \emph default
 .
  So after refactoring we have separately the objects related to the tool
- structure -hereafter 
+ structure - hereafter 
 \emph on
 Tool Definition
 \emph default
-- and the objects related to the tool occurrences -hereafter 
+ - and the objects related to the tool occurrences - hereafter 
 \emph on
 Tool Instances
 \emph default
@@ -3325,7 +3325,7 @@ step
 composite step
 \emph default
 s.
- Although there is data redundancy in the N to N relationships -which in
+ Although there is data redundancy in the N to N relationships - which in
  fact can be simplified removing the relationship between tables 
 \emph on
 CompositeStepDBE
@@ -3334,7 +3334,7 @@ CompositeStepDBE
 \emph on
 StepDBE
 \emph default
-- at this sprint it was felt useful to make easier the development of the
+ - at this sprint it was felt useful to make easier the development of the
  associated classes.
 \end_layout
 
@@ -3965,8 +3965,8 @@ Test design
 
 \begin_layout Standard
 The functional tests were modified to include permissions restrictions,
- so a step for log in the user was added to each existing scenario -as shown
- in 
+ so a step for log in the user was added to each existing scenario - as
+ shown in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "fig:sprint5_tests"
@@ -4521,8 +4521,8 @@ ToolDefListBacking
 request scoped
 \emph default
  bean and it is called when creating a new tool instance in order to verify
- the name -check if it is not void or if it already exists, so it prevents
- database exceptions- and to create the URL to create the new tool definition.
+ the name - check if it is not void or if it already exists, so it prevents
+ database exceptions - and to create the URL to create the new tool definition.
 \end_layout
 
 \begin_layout Labeling
@@ -4633,12 +4633,12 @@ Selenium WebDriver
 \family typewriter
 iframe
 \family default
- which is working in, so if it changes it should be switched -calling the
+ which is working in, so if it changes it should be switched - calling the
  method 
 \family typewriter
 driver.switchTo.frame()
 \family default
-- in order to allow the driver to find those elements.
+ - in order to allow the driver to find those elements.
 \end_layout
 
 \begin_layout Standard
@@ -4813,7 +4813,10 @@ Test Design
 \end_layout
 
 \begin_layout Standard
-The step definition deletion operation is made from the toolDefConfig.xhtml
+The step definition deletion operation is made from the 
+\family typewriter
+toolDefConfig.xhtml
+\family default
  and should consider some different cases: from one to several steps deletion
  and from an already existing or a new tool definition.
  Therefore, four cases were designed which, as shown in 
@@ -4823,7 +4826,7 @@ reference "fig:sprint9_tests"
 
 \end_inset
 
-, were succesfully passed.
+, were successfully passed.
  There were some code refining when testing, since the processing of deletion
  should depend on the load onto the database of newly created step definitions.
 \end_layout
@@ -5282,7 +5285,7 @@ Test Design
 
 \begin_layout Standard
 Following the BDD methodology, the behaviors were designed for both features
- ir order to create their corresponding tests:
+ in order to create their corresponding tests:
 \end_layout
 
 \begin_layout Labeling
@@ -5341,7 +5344,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
+Regression tests passed in sprint 12
 \end_layout
 
 \end_inset
@@ -5463,8 +5466,8 @@ At the end of this project, a working and tested first phase of a Liferay
  portlet to guide through the RAM has been developed.
  This portlet provides a recurrent structure which will allow to develop
  the necessary steps and substeps to create not only a web application to
- guide through RAM, but also through any other tool structured in -sequential
- or not- steps and substeps.
+ guide through RAM, but also through any other tool structured in - sequential
+ or not - steps and substeps.
  Thus, the scalability of the software has been increased following the
  customer's modifications during the project.
 \end_layout
@@ -5493,7 +5496,7 @@ Initially for testing purposes but also to make easier the development of
  This mock step has been well documented and it has the required structure
  for the new steps to be included in the system along with the different
  methods needed.
- Also a guide for developers has been included in Appedix A: 
+ Also a guide for developers has been included in Appendix A: 
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "sec:Guide-to-develop"
@@ -5557,7 +5560,7 @@ Regarding to the quality assurance, the testing framework which has been
  created and the fact of using a test-first methodology were aimed to offer
  a significant degree of quality, ensuring the customer requirements are
  accomplished without errors.
- This test-first methodology (partucularly BDD as explained in 
+ This test-first methodology (particularly BDD as explained in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "subsec:Behavior-Driven-Development"
@@ -5574,15 +5577,15 @@ reference "subsec:Behavior-Driven-Development"
 Initially, that way of developing can cast doubts if we are used to classical
  approaches, but when you begin coding you realize that is a much more effective
  method.
- Regarding the doubts casted about how good designed can be a software developed
+ Regarding the doubts cast about how good designed can be a software developed
  in this way I have realize two main things: the first is that indeed design
- is thinked before coding even if it is minimal, but you think at the design
+ is thought before coding even if it is minimal, but you think at the design
  also when you create tests, so it is not just coding in an unstructured
  way.
  The second one is that, when some code is not as readable or structured
  as necessary, a refactoring process can be done in order to improve it
  and reduce complexity, so code remains structured and intelligible.
- Particularly in this project, creating symetric structures when refactoring
+ Particularly in this project, creating symmetric structures when refactoring
  has simplified the design and made it more comprehensible, as shown in
  
 \begin_inset CommandInset ref
@@ -5653,7 +5656,7 @@ On the other hand, the objectives of the project have been achieved as a
  result of using adequate developing technologies which involve the customer
  and ensure their requirements are kept as the core of the project, in addition
  to implement quality assurance; particularly important as this point is
- the choice of adecuate technologies which can make the software usable
+ the choice of adequate technologies which can make the software usable
  by the customer.
 \end_layout
 
@@ -5743,12 +5746,12 @@ MOCK
 \family default
  step can be used as a template to create new steps since it is well documented
  and commented to make easier the development of new steps.
- It can be downloaded from TODO.
+ It can be downloaded from the github repository.
 \end_layout
 
 \begin_layout Standard
 The core of new step structure must follow the general structure designed
- for all the portlet, that is to say a symmetryc structure comprised of
+ for all the portlet, that is to say a symmetric structure comprised of
  the step definition part and the step instance part:
 \end_layout
 
@@ -5861,7 +5864,7 @@ ManagedProperty
 AbstractBaseBean
 \family default
 .
- To mantain consistency with the rest of the portlet these beans should
+ To maintain consistency with the rest of the portlet these beans should
  be packaged as org.lrc.liferay.toolbuilder.bean.steps.XXX, where XXX is the name
  of the step.
 \end_layout
@@ -5914,13 +5917,11 @@ status open
 
 \begin_layout Plain Layout
 
-\size small
 public static void installStep(String stepType, String stepDescription,
 \end_layout
 
 \begin_layout Plain Layout
 
-\size small
 	String namespace, String className)
 \end_layout
 
@@ -5989,19 +5990,16 @@ status open
 
 \begin_layout Plain Layout
 
-\size small
 StepFactory installStep("FILES_ATTACH", "A step to attach files",
 \end_layout
 
 \begin_layout Plain Layout
 
-\size small
 	"org.lrc.liferay.toolbuilder.steps.filesAttach",
 \end_layout
 
 \begin_layout Plain Layout
 
-\size small
 	"FilesAttachStep");
 \end_layout
 
@@ -6076,7 +6074,7 @@ reference "subsec:PreliminaryWork"
 
 , mockups for the final web application were designed with the customer
  before beginning the development process.
- Althought an interactive version of those mockups can be found on the following
+ Although an interactive version of those mockups can be found on the following
  URL:
 \end_layout
 

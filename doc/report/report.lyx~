@@ -5165,7 +5165,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/sprint11_tests.png
-	width 11cm
+	width 15cm
 
 \end_inset
 
@@ -5176,7 +5176,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
+Test scenarios for sprint 11
 \end_layout
 
 \end_inset
@@ -5330,7 +5330,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/sprint12_tests.png
-	width 11cm
+	width 15cm
 
 \end_inset
 
@@ -5341,7 +5341,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
+Regression tests passed in sprint 12
 \end_layout
 
 \end_inset
@@ -5914,13 +5914,11 @@ status open
 
 \begin_layout Plain Layout
 
-\size small
 public static void installStep(String stepType, String stepDescription,
 \end_layout
 
 \begin_layout Plain Layout
 
-\size small
 	String namespace, String className)
 \end_layout
 
@@ -5989,19 +5987,16 @@ status open
 
 \begin_layout Plain Layout
 
-\size small
 StepFactory installStep("FILES_ATTACH", "A step to attach files",
 \end_layout
 
 \begin_layout Plain Layout
 
-\size small
 	"org.lrc.liferay.toolbuilder.steps.filesAttach",
 \end_layout
 
 \begin_layout Plain Layout
 
-\size small
 	"FilesAttachStep");
 \end_layout
 
