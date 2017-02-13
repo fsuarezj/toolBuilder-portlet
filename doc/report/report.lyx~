@@ -9,6 +9,7 @@
 \usepackage{pdflscape}
 \usepackage{fmtcount}
 \usepackage[super]{nth}
+\usepackage{indentfirst}
 \definecolor{green}{RGB}{0,120,0}
 \definecolor{grey}{RGB}{240,240,240}
 \end_preamble
@@ -37,7 +38,7 @@
 \paperfontsize 12
 \spacing single
 \use_hyperref false
-\papersize default
+\papersize a4paper
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -62,14 +63,17 @@
 \shortcut idx
 \color #008000
 \end_index
-\rightmargin 2.2cm
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
 \secnumdepth 4
 \tocdepth 3
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip medskip
 \quotes_language english
 \papercolumns 1
-\papersides 1
+\papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
@@ -80,8 +84,19 @@
 
 \begin_body
 
+\begin_layout Title
+\noindent
+Development of a step based structure to create a Rapid Assessment for Markets
+ application
+\end_layout
+
+\begin_layout Author
+Fernando Suárez Jiménez
+\end_layout
+
 \begin_layout Standard
-\begin_inset Newpage newpage
+\noindent
+\begin_inset Newpage cleardoublepage
 \end_inset
 
 
@@ -94,7 +109,7 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
+\begin_inset Newpage cleardoublepage
 \end_inset
 
 
@@ -105,17 +120,27 @@ This project provides a Liferay portlet with the basic structure to create
  step based web applications.
  It will be the base for a Rapid Assessment for Markets web application
  which will help humanitarian workers to conduct market assessments in order
- to better assist desaster affected populations.
+ to better assist disaster affected populations.
  The development has been carried out following modern software methodologies
  which provide a development and testing framework to ease further development
  and to ensure software quality objectives achievement.
 \end_layout
 
+\begin_layout Abstract
+\noindent
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
+\noindent
 Introduction
 \end_layout
 
 \begin_layout Standard
+\noindent
 The humanitarian world is being increasingly specialized, and since the
  beginning of the century a significant number of tools have been being
  created in order to increase effectiveness, efficiency, impact and thereby
@@ -140,13 +165,14 @@ t actions as far as possible guided by the target populations.
 \end_layout
 
 \begin_layout Standard
+\noindent
 Thus, cash transfer interventions have acquired importance
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-According to http://www.cash-atlas.org, since XXXX to XXXX cash projects beneficia
-ries increased in a XX% reaching the XXXX REF
+According to http://www.cash-atlas.org, since 2004 to 2014 cash projects beneficia
+ries increased in a 262% reaching the 12.709.963 in the year 2014
 \end_layout
 
 \end_inset
@@ -208,6 +234,7 @@ available
 \end_layout
 
 \begin_layout Standard
+\noindent
 This project is a 
 \emph on
 first phase
@@ -217,7 +244,15 @@ first phase
  both extensibility and requirements fulfillment.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
+\noindent
 Objectives
 \begin_inset CommandInset label
 LatexCommand label
@@ -229,6 +264,7 @@ name "sec:Objectives"
 \end_layout
 
 \begin_layout Standard
+\noindent
 The main objective of this project is to carry out the first phase of the
  development of a web tool to help practitioners to carry out Rapid Assessment
  for Markets.
@@ -241,6 +277,7 @@ The main objective of this project is to carry out the first phase of the
 \end_layout
 
 \begin_layout Standard
+\noindent
 As the web tool will be hosted by the Livelihoods Resources Centre
 \begin_inset Foot
 status open
@@ -266,16 +303,19 @@ https://web.liferay.com/community/liferay-projects/liferay-portal/overview
 \end_layout
 
 \begin_layout Standard
+\noindent
 A secondary objective of the project is to create a working testing framework
  which will make easier in the future to guide the development and perform
  tests.
 \end_layout
 
 \begin_layout Section
+\noindent
 Development Methodology
 \end_layout
 
 \begin_layout Standard
+\noindent
 The software development has intended to use the software engineering techniques
  and methodologies currently used in software business.
  As it will be shown, some of the techniques has been adopted during the
@@ -284,6 +324,7 @@ The software development has intended to use the software engineering techniques
 \end_layout
 
 \begin_layout Standard
+\noindent
 Agile Software Development has been practiced since it, as stated in the
  
 \emph on
@@ -301,6 +342,7 @@ key "AgileManifesto"
 \end_layout
 
 \begin_layout Itemize
+\noindent
 
 \series bold
 Individuals and interactions over processes and tools:
@@ -308,11 +350,12 @@ Individuals and interactions over processes and tools:
  The fact of using methodologies oriented to individuals and interactions
  means that agile ones are less prescriptive than traditional methods, so
  it will not only facilitate the comprehension of the process by the non-technic
-al stakeholders -in this case the customer-, but also will be more adaptative
+al stakeholders - in this case the customer -, but also will be more adaptative
  allowing to better fit the methodology to the project and team needs.
 \end_layout
 
 \begin_layout Itemize
+\noindent
 
 \series bold
 Working software over comprehensive documentation:
@@ -325,6 +368,7 @@ Working software over comprehensive documentation:
 \end_layout
 
 \begin_layout Itemize
+\noindent
 
 \series bold
 Customer collaboration over contract negotiation:
@@ -336,6 +380,7 @@ Customer collaboration over contract negotiation:
 \end_layout
 
 \begin_layout Itemize
+\noindent
 
 \series bold
 Responding to change over following a plan: 
@@ -346,10 +391,12 @@ In the same vein, as the requirements and the software design were a little
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Implementing agile methodologies
 \end_layout
 
 \begin_layout Standard
+\noindent
 For the purpose of the project it has been founded more useful to combine
  techniques from agile (mainly Scrum
 \begin_inset CommandInset citation
@@ -367,7 +414,7 @@ key "Poppendieck2003"
 
  methodologies, rather than following just one strictly.
  Therefore, the combination of several techniques allows to take the best
- of each one -as shown in 
+ of each one - as shown in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AndrewThuPham2012"
@@ -381,11 +428,12 @@ key "HenrikKniberg2010"
 
 \end_inset
 
-- and it also allows the development methodology to be adapted to the current
+ - and it also allows the development methodology to be adapted to the current
  project specifications and to evolve according to the project momentum.
 \end_layout
 
 \begin_layout Standard
+\noindent
 To begin with, and in order to structure the development process, the developmen
 t has been structured in 
 \emph on
@@ -405,10 +453,12 @@ reference "sec:Development"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Kanban board with Taiga/Trello
 \end_layout
 
 \begin_layout Standard
+\noindent
 In order to organize and visualize the different tasks and the work-flow
  a 
 \emph on
@@ -466,6 +516,7 @@ key "Cirillo2009"
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -510,10 +561,12 @@ name "fig:trello_board"
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Branching and version control
 \end_layout
 
 \begin_layout Standard
+\noindent
 Branching is 
 \emph on
 
@@ -545,10 +598,12 @@ key "BranchingWikipedia"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Git
 \end_layout
 
 \begin_layout Standard
+\noindent
 To deal with branches and version control Git
 \begin_inset Foot
 status open
@@ -575,18 +630,22 @@ https://github.com/
 \end_layout
 
 \begin_layout Standard
+\noindent
 The git repositories where the sources are located are:
 \end_layout
 
 \begin_layout Itemize
+\noindent
 For the toolBuilder-portlet: https://github.com/fsuarezj/toolBuilder-portlet
 \end_layout
 
 \begin_layout Itemize
+\noindent
 For the testing framework and tests: https://github.com/fsuarezj/toolBuilderTests
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Behavior Driven Development
 \begin_inset CommandInset label
 LatexCommand label
@@ -598,6 +657,7 @@ name "subsec:Behavior-Driven-Development"
 \end_layout
 
 \begin_layout Standard
+\noindent
 Behavior Driven Development
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -621,6 +681,7 @@ key "IntroBDD"
 \end_layout
 
 \begin_layout Itemize
+\noindent
 
 \series bold
 TDD
@@ -652,6 +713,7 @@ reference "fig:TDD_cycle"
 \end_layout
 
 \begin_layout Itemize
+\noindent
 
 \series bold
 ATDD
@@ -679,6 +741,7 @@ status open
 \begin_inset Graphics
 	filename images/tdd_cycle.png
 	scale 40
+	rotateOrigin center
 
 \end_inset
 
@@ -720,6 +783,7 @@ name "fig:TDD_cycle"
 \end_layout
 
 \begin_layout Standard
+\noindent
 On the other hand, BDD introduces the concept of 
 \emph on
 behavior
@@ -746,6 +810,7 @@ key "BDDWiki"
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Documentation
 \begin_inset CommandInset label
 LatexCommand label
@@ -757,6 +822,7 @@ name "subsec:Documentation"
 \end_layout
 
 \begin_layout Standard
+\noindent
 One of the advantages of BDD is that tests not only check the software,
  but also document it as they are descriptions of the software behavior.
  This is very useful because all the documentation related to the software
@@ -764,6 +830,7 @@ One of the advantages of BDD is that tests not only check the software,
 \end_layout
 
 \begin_layout Standard
+\noindent
 Regardless of that, the code should be documented in order to make easier
  the involvement of new developers in the future, so Javadoc
 \begin_inset CommandInset citation
@@ -780,10 +847,12 @@ key "Javadoc"
 \end_layout
 
 \begin_layout Section
+\noindent
 Testing Framework
 \end_layout
 
 \begin_layout Standard
+\noindent
 As it will be explained in 
 \begin_inset CommandInset ref
 LatexCommand formatted
@@ -818,7 +887,9 @@ key "LisaCrispin2009"
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -862,10 +933,12 @@ name "fig:agile_testing_quadrants"
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Quadrant 1 tests
 \end_layout
 
 \begin_layout Standard
+\noindent
 Tests in Quadrant 1 are usually taken by the developers and are aimed to
  ensure the quality of small parts of the software as well as their interactions
  with other parts.
@@ -892,6 +965,7 @@ reference "subsec:Liferay"
 \end_layout
 
 \begin_layout Standard
+\noindent
 Regarding the used technologies, JUnit4
 \begin_inset Foot
 status open
@@ -919,10 +993,12 @@ http://allure.qatools.ru/
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Quadrant 2 tests
 \end_layout
 
 \begin_layout Standard
+\noindent
 Quadrant 2 comprises the Business-Facing tests which address requirements
  of the software.
  It includes all the user stories and features desired and should also check
@@ -934,9 +1010,10 @@ Quadrant 2 comprises the Business-Facing tests which address requirements
 \end_layout
 
 \begin_layout Standard
+\noindent
 For this project, the most of the testing efforts has been made in this
  quadrant as BDD has been the main testing methodology.
- The nature of the webapp, which is embedded in Liferay and uses mature
+ The nature of the web app, which is embedded in Liferay and uses mature
  technologies such as Java Server Faces as explained below, implies that
  the best way to test the software is when it is already embedded and working
  since the surrounding technologies are not supposed to fail.
@@ -945,6 +1022,7 @@ For this project, the most of the testing efforts has been made in this
 \end_layout
 
 \begin_layout Standard
+\noindent
 In order to implement BDD and carry out the tests, two main technologies
  have been employed in addition to the reporting 
 \emph on
@@ -962,10 +1040,12 @@ Cucumber-JVM
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Selenium
 \end_layout
 
 \begin_layout Standard
+\noindent
 
 \emph on
 Selenium
@@ -991,6 +1071,7 @@ Selenium WebDriver
 \end_layout
 
 \begin_layout Standard
+\noindent
 Although many browsers are supported by 
 \emph on
 Selenium
@@ -1002,12 +1083,14 @@ Selenium
 \end_layout
 
 \begin_layout Standard
+\noindent
 To improve tests development and scalability a little framework has been
  created to have separately the WebDriver and the pages handling, so two
  type of objects have been created:
 \end_layout
 
 \begin_layout Description
+\noindent
 
 \family typewriter
 DriverFactory
@@ -1018,6 +1101,7 @@ DriverFactory
 \end_layout
 
 \begin_layout Description
+\noindent
 
 \family typewriter
 XyzPage
@@ -1035,10 +1119,12 @@ Xyz
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Cucumber-JVM
 \end_layout
 
 \begin_layout Standard
+\noindent
 Cucumber
 \begin_inset Foot
 status open
@@ -1055,6 +1141,7 @@ https://cucumber.io/
 \end_layout
 
 \begin_layout Standard
+\noindent
 As shown in 
 \begin_inset CommandInset ref
 LatexCommand formatted
@@ -1067,8 +1154,9 @@ reference "fig:cucumber_stack"
 \end_layout
 
 \begin_layout Standard
-\align center
+\noindent
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1119,10 +1207,12 @@ name "fig:cucumber_stack"
 \end_layout
 
 \begin_layout Paragraph
+\noindent
 Business-Facing
 \end_layout
 
 \begin_layout Standard
+\noindent
 These levels are the core of the BDD methodology because it is where the
  software behaviors are defined.
  As stated in 
@@ -1142,7 +1232,15 @@ reference "subsec:Behavior-Driven-Development"
  language, the will be used to ensure that.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
+\noindent
 
 \emph on
 Features:
@@ -1161,6 +1259,7 @@ key "Pugh2011"
 
 \begin_deeper
 \begin_layout Standard
+\noindent
 \begin_inset listings
 lstparams "basicstyle={\small\ttfamily}"
 inline false
@@ -1177,6 +1276,7 @@ As a <role>, I want to <do something> so that <reason>.
 \end_layout
 
 \begin_layout Standard
+\noindent
 But Cucumber does not has a 
 \emph on
 User Story
@@ -1191,6 +1291,7 @@ As a/I want to/so that
 
 \end_deeper
 \begin_layout Itemize
+\noindent
 
 \emph on
 Scenarios:
@@ -1207,6 +1308,7 @@ Given <condition>, when <event/action> then <result>
 \end_layout
 
 \begin_layout Itemize
+\noindent
 
 \emph on
 Steps:
@@ -1223,6 +1325,7 @@ what
 \end_layout
 
 \begin_layout Standard
+\noindent
 As stated above, the main technology to power this business-facing section
  is the 
 \emph on
@@ -1243,6 +1346,7 @@ reference "lis:Gherkin_example"
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset listings
 lstparams "basicstyle={\small\ttfamily},breaklines=true,showstringspaces=false,tabsize=3,keywordstyle={\color{green}},morekeywords={Feature,Scenario,Given,And,When,But,Then},backgroundcolor={\color{grey}}"
 inline false
@@ -1340,10 +1444,12 @@ Gherkin
 \end_layout
 
 \begin_layout Paragraph
+\noindent
 Technology-Facing
 \end_layout
 
 \begin_layout Standard
+\noindent
 These levels are related to the system to be tested.
  In this project, as Cucumber-JVM has been chosen, the most of the code
  is written in Java, but that choice depends on the kind of software to
@@ -1351,6 +1457,7 @@ These levels are related to the system to be tested.
 \end_layout
 
 \begin_layout Itemize
+\noindent
 
 \emph on
 Step Definitions:
@@ -1388,7 +1495,9 @@ reference "fig:testing_framework"
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -1397,7 +1506,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/uml/exported/testing_framework.png
-	width 14cm
+	width 13.5cm
 
 \end_inset
 
@@ -1432,6 +1541,7 @@ name "fig:testing_framework"
 \end_layout
 
 \begin_layout Itemize
+\noindent
 
 \emph on
 Support Code:
@@ -1507,6 +1617,7 @@ Example of step definition and support code
 \end_layout
 
 \begin_layout Itemize
+\noindent
 
 \emph on
 Automation Library: 
@@ -1520,10 +1631,12 @@ Selenium
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Quadrant 3 tests
 \end_layout
 
 \begin_layout Standard
+\noindent
 This tests are oriented to critique the product when it has been already
  developed and find any unwanted behaviors usually not stipulated in the
  requirements (if BDD has been well carried out).
@@ -1535,13 +1648,18 @@ This tests are oriented to critique the product when it has been already
 \end_layout
 
 \begin_layout Standard
-In the project, some tests in this quadrant has been taken, but as the functiona
-lities are not quite numerous, they have been just a few of manual tests
- with some members of the Livelihoods Resources Centre which have critique
- the web app and provided recommendations.
+\noindent
+In the project, some tests in this quadrant has been taken.
+ But the functionalities are not quite numerous and, since it is a early
+ development phase to create the structure, the usability is not a main
+ objective.
+ So the tests on this quadrant have been just a few manual tests with some
+ members of the Livelihoods Resources Centre which have critique the web
+ app and validate it.
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Quadrant 4 tests
 \begin_inset CommandInset label
 LatexCommand label
@@ -1553,6 +1671,7 @@ name "subsec:Quadrant-4-tests"
 \end_layout
 
 \begin_layout Standard
+\noindent
 Finally, the Quadrant 4 comprises all those Technology-Faced tests aimed
  to critique the quality of the final product.
  This includes from security to performance, reliability or compatibility.
@@ -1562,10 +1681,12 @@ Finally, the Quadrant 4 comprises all those Technology-Faced tests aimed
 \end_layout
 
 \begin_layout Section
+\noindent
 Analysis, technology requirements and design
 \end_layout
 
 \begin_layout Standard
+\noindent
 At this point it is worth remembering a statement from 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1615,16 +1736,19 @@ ity and extensibility are improved.
 \end_layout
 
 \begin_layout Standard
+\noindent
 This section discusses about the design process and its final result, but
  before that it is important to know which and why have been the chosen
  technologies, since it has irretrievably affected and guided the design.
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Technologies
 \end_layout
 
 \begin_layout Standard
+\noindent
 As in previous sections the development methodology have been explained
  as well as the tools and technologies related to the methodology, this
  subsection only comprises those technologies and tools directly related
@@ -1632,6 +1756,7 @@ As in previous sections the development methodology have been explained
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Liferay Portal
 \begin_inset CommandInset label
 LatexCommand label
@@ -1643,6 +1768,7 @@ name "subsec:Liferay"
 \end_layout
 
 \begin_layout Standard
+\noindent
 The choice of the web framework has been taken directly by the customer.
  As explained in 
 \begin_inset CommandInset ref
@@ -1658,6 +1784,7 @@ n about that: development in Liferay is a customer requirement.
 \end_layout
 
 \begin_layout Standard
+\noindent
 Liferay Portal is an open-source enterprise portal distributed under the
  GNU LGPL
 \begin_inset Foot
@@ -1677,6 +1804,7 @@ https://www.gnu.org/copyleft/lesser.html
 \end_layout
 
 \begin_layout Standard
+\noindent
 Liferay Portal also provides some tools to facilitate the development.
  One of the most important ones is what is called 
 \emph on
@@ -1715,6 +1843,7 @@ reference "sec:Development"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 JavaServer Faces (JSF) & Components Design
 \begin_inset CommandInset label
 LatexCommand label
@@ -1726,6 +1855,7 @@ name "subsec:JSF"
 \end_layout
 
 \begin_layout Standard
+\noindent
 The two main ways to create a portlet for Liferay are: a Liferay MVC portlet
  (using the Liferay MVC framework) and a Liferay JSF portlet (based on the
  JavaServer Faces specification and implementation
@@ -1748,6 +1878,7 @@ https://javaserverfaces.java.net/
 \end_layout
 
 \begin_layout Standard
+\noindent
 JavaServer Faces is a framework to write MVC web application and its version
  2.1 was defined in the Java Specification Request 314
 \begin_inset Foot
@@ -1767,25 +1898,18 @@ reference "fig:jsf_components"
 
 \end_inset
 
-
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-reproduce image for authoring reasons?
-\end_layout
-
-\end_inset
-
 , are:
 \end_layout
 
 \begin_layout Itemize
+\noindent
 The 
+\series bold
 \emph on
 Faces Servlet
+\series default
 \emph default
- which controls the application flow and is configured through an 
+, which controls the application flow and is configured through an 
 \emph on
 XML configuration file
 \emph default
@@ -1798,9 +1922,12 @@ Controller
 \end_layout
 
 \begin_layout Itemize
+\noindent
 The 
+\series bold
 \emph on
 JSPs created with JSF UI
+\series default
 \emph default
 , which defines the application pages and uses 
 \emph on
@@ -1827,11 +1954,17 @@ View
 \end_layout
 
 \begin_layout Itemize
-The Managed beans, which stands for the Model in the MVC architecture, and
- connects with other business logic components and the persistence layer.
+\noindent
+The 
+\series bold
+Managed beans
+\series default
+, which stands for the Model in the MVC architecture, and connects with
+ other business logic components and the persistence layer.
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -1873,6 +2006,7 @@ name "fig:jsf_components"
 \end_layout
 
 \begin_layout Standard
+\noindent
 On the other hand, it is worth pointing out that JSF pages have a particular
  life cycle which should be considered when using this technology.
  As in a JSP page, when the client makes an HTTP request for the page, the
@@ -1895,6 +2029,7 @@ key "JavaEE5Tutorial"
 \end_layout
 
 \begin_layout Itemize
+\noindent
 
 \series bold
 Restore view:
@@ -1904,6 +2039,7 @@ Restore view:
 \end_layout
 
 \begin_layout Itemize
+\noindent
 
 \series bold
 Apply request values:
@@ -1912,6 +2048,7 @@ Apply request values:
 \end_layout
 
 \begin_layout Itemize
+\noindent
 
 \series bold
 Process validations:
@@ -1924,6 +2061,7 @@ As its name suggests, this is the phase to process the validators.
 \end_layout
 
 \begin_layout Itemize
+\noindent
 
 \series bold
 Update model values: 
@@ -1933,6 +2071,7 @@ After processing validators, the server-side model is updated, beans are
 \end_layout
 
 \begin_layout Itemize
+\noindent
 
 \series bold
 Invoke application: 
@@ -1942,6 +2081,7 @@ At this point, any existing application level events such as submitting
 \end_layout
 
 \begin_layout Itemize
+\noindent
 
 \series bold
 Render response:
@@ -1950,6 +2090,7 @@ Render response:
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -1994,10 +2135,12 @@ name "fig:jsf_lifecycle"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Primefaces
 \end_layout
 
 \begin_layout Standard
+\noindent
 Primefaces
 \begin_inset Foot
 status open
@@ -2014,10 +2157,12 @@ http://www.primefaces.org/
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Object Model
 \end_layout
 
 \begin_layout Standard
+\noindent
 Due to the development methodology, the object model has evolved during
  the project.
  Despite of the basic structure is given by the JSF framework as explained
@@ -2035,10 +2180,12 @@ reference "sec:Development"
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Data Model
 \end_layout
 
 \begin_layout Standard
+\noindent
 As the object model, data model has been developed through the development
  process refactoring it whenever it is necessary as it will be shown in
  next section.
@@ -2054,6 +2201,7 @@ reference "fig:final_er_diagram"
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways true
@@ -2098,6 +2246,7 @@ name "fig:final_er_diagram"
 \end_layout
 
 \begin_layout Section
+\noindent
 Development
 \begin_inset CommandInset label
 LatexCommand label
@@ -2109,12 +2258,14 @@ name "sec:Development"
 \end_layout
 
 \begin_layout Standard
+\noindent
 Hereafter and for the purpose of explaining the process followed in the
  development, an overview of the main issues related to each sprint has
  been written.
 \end_layout
 
 \begin_layout Subsection*
+\noindent
 Preliminary work
 \begin_inset CommandInset label
 LatexCommand label
@@ -2126,6 +2277,7 @@ name "subsec:PreliminaryWork"
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset ERT
 status open
 
@@ -2144,27 +2296,33 @@ nameref{subsec:PreliminaryWork}}
 \end_layout
 
 \begin_layout Standard
+\noindent
 Before beginning the development, a mockup design process was carried out
  with the customers in order to have a first approach of how the final web
  app should look.
  Even if the objective of this project is not to develop the final app but
  its first phase, this mockups have been kept in mind during the development
  process in order to ensure the final objective is achieved in the future.
- These mockups can be found in 
+ These mockups can be found in Appendix 
 \begin_inset CommandInset ref
-LatexCommand formatted
+LatexCommand vref
 reference "sec:Mockups-of-the"
 
 \end_inset
 
-.
+ both in online and printed format.
+ It is worth to notice that they have entailed a hard work of analysis of
+ the Ram Assessment for Markets tool in order to transfer it to a web interface
+ which make it more understable and available to non skilled users.
 \end_layout
 
 \begin_layout Subsection
+\noindent
 First Sprint
 \end_layout
 
 \begin_layout Standard
+\noindent
 A basic web tool (portlet) to navigate through the RAM Steps and capable
  of save the current state of each assessment was created in this step following
  a classic development cycle (
@@ -2180,10 +2338,12 @@ ram-webtool
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Design
 \end_layout
 
 \begin_layout Standard
+\noindent
 A first design was drafted to make implementation easier so the JSF architecture
  was kept in mind when coding.
  As discussed in 
@@ -2202,6 +2362,7 @@ Faces Servlet
 \end_layout
 
 \begin_layout Standard
+\noindent
 The 
 \emph on
 Model 
@@ -2246,11 +2407,13 @@ which stores the current step of each created assessment, considering that
 \end_layout
 
 \begin_layout Standard
+\noindent
 On the one hand, two beans were necessary in this sprint as part of the
  model:
 \end_layout
 
 \begin_layout Itemize
+\noindent
 A 
 \emph on
 session scoped
@@ -2260,6 +2423,7 @@ session scoped
 \end_layout
 
 \begin_layout Itemize
+\noindent
 A
 \emph on
  request scoped
@@ -2269,6 +2433,7 @@ A
 \end_layout
 
 \begin_layout Standard
+\noindent
 Regarding to the view, namely the 
 \emph on
 JSF UI components
@@ -2285,6 +2450,7 @@ reference "subsec:JSF"
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\noindent
 
 \family typewriter
 mainView.xhtml
@@ -2299,6 +2465,7 @@ assessmentsList.xhtml
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\noindent
 
 \family typewriter
 assessmentView.xhtml
@@ -2315,6 +2482,7 @@ ramStepX.xhtml
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -2356,10 +2524,12 @@ name "fig:sprint1_design"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Implementation
 \end_layout
 
 \begin_layout Standard
+\noindent
 As explained above, for the persistence layer the Liferay Service Builder
  was used, which helps developers to code simple persistence objects which
  will work with the system relational database.
@@ -2379,15 +2549,18 @@ AbstractBean
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Testing
 \end_layout
 
 \begin_layout Standard
+\noindent
 Testing in this sprint was merely human guided since the testing framework
  had not yet been developed.
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Second Sprint
 \begin_inset CommandInset label
 LatexCommand label
@@ -2399,6 +2572,7 @@ name "subsec:Second-Sprint"
 \end_layout
 
 \begin_layout Standard
+\noindent
 In order to implement in the future the flow chart tools within the RAM,
  a flow chart system should be developed.
  The flowchart library search didn't give results so a generic library 
@@ -2409,16 +2583,19 @@ util
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Design
 \end_layout
 
 \begin_layout Standard
+\noindent
 For the purpose explained above, four main classes were necessary, but in
  order to extend the library for future uses, a fifth class was created
  for non-strict flows:
 \end_layout
 
 \begin_layout Description
+\noindent
 
 \family typewriter
 BasicNode<T,C>
@@ -2442,6 +2619,7 @@ Comparable
 \end_layout
 
 \begin_layout Description
+\noindent
 
 \family typewriter
 BasicFlowChart<T,C>
@@ -2451,6 +2629,7 @@ BasicFlowChart<T,C>
 \end_layout
 
 \begin_layout Description
+\noindent
 
 \family typewriter
 Edge<T,C>
@@ -2464,6 +2643,7 @@ BasicFlowChart
 \end_layout
 
 \begin_layout Description
+\noindent
 
 \family typewriter
 Flow<T,C>
@@ -2473,6 +2653,7 @@ Flow<T,C>
 \end_layout
 
 \begin_layout Description
+\noindent
 
 \family typewriter
 PermissiveFlow<T,C>
@@ -2485,6 +2666,7 @@ ive flows.
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -2530,10 +2712,12 @@ name "fig:sprint2_design"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Implementation
 \end_layout
 
 \begin_layout Standard
+\noindent
 The classes were implemented in ascending order of complexity, this means
  beginning with 
 \family typewriter
@@ -2560,10 +2744,12 @@ PermissiveFlow
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Testing
 \end_layout
 
 \begin_layout Standard
+\noindent
 Unit tests were developed using JUnit, as showed in 
 \begin_inset CommandInset ref
 LatexCommand formatted
@@ -2575,6 +2761,7 @@ reference "fig:sprint2_tests"
 \end_layout
 
 \begin_layout Description
+\noindent
 BasicNodeTests Related to the 
 \family typewriter
 BasicNode<T,C>
@@ -2583,6 +2770,7 @@ BasicNode<T,C>
 \end_layout
 
 \begin_layout Description
+\noindent
 BasicFlowChartTests Related to the 
 \family typewriter
 BasicFlowChart<T,C>
@@ -2595,6 +2783,7 @@ Edge<T,C>
 \end_layout
 
 \begin_layout Description
+\noindent
 FlowTests Related to 
 \family typewriter
 Flow<T,C>
@@ -2607,6 +2796,7 @@ PermissiveFlow<T,C>
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -2651,6 +2841,7 @@ name "fig:sprint2_tests"
 \end_layout
 
 \begin_layout Standard
+\noindent
 Being unit tests, a little time is required to pass each test as it can
  be checked in 
 \begin_inset CommandInset ref
@@ -2663,6 +2854,7 @@ reference "fig:sprint2_tests_duration"
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -2707,10 +2899,12 @@ name "fig:sprint2_tests_duration"
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Third Sprint
 \end_layout
 
 \begin_layout Standard
+\noindent
 After some interviews with the client it was concluded that the development
  is quite limited and poorly flexible since it will just fit the current
  RAM tool requisites and it would be pretty complex to extend it.
@@ -2725,10 +2919,12 @@ tool-implementation
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Design
 \end_layout
 
 \begin_layout Standard
+\noindent
 Although the 
 \emph on
 beans
@@ -2747,6 +2943,7 @@ Assessment
 \end_layout
 
 \begin_layout Itemize
+\noindent
 Firstly, as there must be several kind of steps depending on the specifications
  of the tool to be created, two type of steps (classes) were created in
  this sprint which inherit from the class 
@@ -2758,6 +2955,7 @@ Step
 
 \begin_deeper
 \begin_layout Description
+\noindent
 
 \family typewriter
 VoidStep
@@ -2767,6 +2965,7 @@ n.
 \end_layout
 
 \begin_layout Description
+\noindent
 
 \family typewriter
 CompositeStep
@@ -2794,6 +2993,7 @@ Liferay Service Builder
 
 \end_deeper
 \begin_layout Itemize
+\noindent
 Moreover, an object called 
 \family typewriter
 \series bold
@@ -2815,6 +3015,7 @@ key "ErichGamma1994"
 \end_layout
 
 \begin_layout Itemize
+\noindent
 Lastly, a new object called 
 \family typewriter
 \series bold
@@ -2834,6 +3035,7 @@ tool instance
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -2878,10 +3080,12 @@ name "fig:sprint3_design"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Implementation
 \end_layout
 
 \begin_layout Standard
+\noindent
 After replacing 
 \family typewriter
 Assessment
@@ -2916,28 +3120,34 @@ StepFactory
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Testing
 \end_layout
 
 \begin_layout Standard
+\noindent
 In this sprint the testing framework was implemented and the Behavior Driven
  Development (BDD) was set up for next Sprints.
  Tests scenarios were developed for the three existing features:
 \end_layout
 
 \begin_layout Enumerate
+\noindent
 Tool Instance Creation
 \end_layout
 
 \begin_layout Enumerate
+\noindent
 Navigate through steps
 \end_layout
 
 \begin_layout Enumerate
+\noindent
 Tool Instance Deletion
 \end_layout
 
 \begin_layout Standard
+\noindent
 For each feature, the different scenarios or user stories (in compliance
  with the BDD methodology) were created.
  The development of the tests also required some debugging, as it is shown
@@ -2962,6 +3172,7 @@ XPath
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Fourth Sprint
 \begin_inset CommandInset label
 LatexCommand label
@@ -2973,6 +3184,7 @@ name "subsec:Fourth-Sprint"
 \end_layout
 
 \begin_layout Standard
+\noindent
 As tools should be able to be customized and many occurrences of each tool
  may be created, it becomes necessary to make code refactoring in order
  to divide the two parts: 
@@ -2985,11 +3197,11 @@ Tool Instances
 \emph default
 .
  So after refactoring we have separately the objects related to the tool
- structure -hereafter 
+ structure - hereafter 
 \emph on
 Tool Definition
 \emph default
-- and the objects related to the tool occurrences -hereafter 
+ - and the objects related to the tool occurrences - hereafter 
 \emph on
 Tool Instances
 \emph default
@@ -2997,6 +3209,7 @@ Tool Instances
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 placement h
 wide false
@@ -3042,6 +3255,7 @@ name "fig:sprint3_tests_fail"
 \end_layout
 
 \begin_layout Standard
+\noindent
 Finally in 
 \begin_inset CommandInset ref
 LatexCommand formatted
@@ -3053,6 +3267,7 @@ reference "fig:sprint3_tests_pass"
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -3097,10 +3312,12 @@ name "fig:sprint3_tests_pass"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Redesign / Refactoring
 \end_layout
 
 \begin_layout Standard
+\noindent
 Tool definitions are separated from tool instances creating two different
  classes (
 \family typewriter
@@ -3128,6 +3345,7 @@ tool instance
 \end_layout
 
 \begin_layout Standard
+\noindent
 As shown in 
 \begin_inset CommandInset ref
 LatexCommand formatted
@@ -3140,6 +3358,7 @@ reference "fig:sprint4_design"
 \end_layout
 
 \begin_layout Itemize
+\noindent
 In blue the definition part, with 
 \family typewriter
 StepDef
@@ -3162,6 +3381,7 @@ tool definitions
 \end_layout
 
 \begin_layout Itemize
+\noindent
 In red the instances part, with 
 \family typewriter
 Step
@@ -3181,6 +3401,7 @@ ToolInstance
 \end_layout
 
 \begin_layout Standard
+\noindent
 As we can see in 
 \begin_inset CommandInset ref
 LatexCommand formatted
@@ -3200,6 +3421,7 @@ Composite Patterns
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset ERT
 status open
 
@@ -3216,6 +3438,7 @@ begin{landscape}
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -3261,6 +3484,7 @@ name "fig:sprint4_design"
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset ERT
 status open
 
@@ -3277,6 +3501,7 @@ end{landscape}
 \end_layout
 
 \begin_layout Standard
+\noindent
 In the same way, database needed to be redesigned in order to match with
  the new classes design.
  As shown in 
@@ -3325,7 +3550,7 @@ step
 composite step
 \emph default
 s.
- Although there is data redundancy in the N to N relationships -which in
+ Although there is data redundancy in the N to N relationships - which in
  fact can be simplified removing the relationship between tables 
 \emph on
 CompositeStepDBE
@@ -3334,11 +3559,12 @@ CompositeStepDBE
 \emph on
 StepDBE
 \emph default
-- at this sprint it was felt useful to make easier the development of the
+ - at this sprint it was felt useful to make easier the development of the
  associated classes.
 \end_layout
 
 \begin_layout Standard
+\noindent
 Finally, a new 
 \emph on
 managed bean application scoped
@@ -3353,6 +3579,7 @@ FactoryBean
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways true
@@ -3397,20 +3624,24 @@ name "fig:sprint4_db"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Test design
 \end_layout
 
 \begin_layout Standard
+\noindent
 Tests remained the same since no new user features were implemented.
  Anyhow, the test were passed to guarantee refactoring has been successful
  and accomplishes all the required features.
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Implementation
 \end_layout
 
 \begin_layout Standard
+\noindent
 The only aspect to note during implementation was the difficulty of working
  with 
 \emph on
@@ -3437,10 +3668,12 @@ reference "subsec:Tenth-Sprint"
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Fifth Sprint
 \end_layout
 
 \begin_layout Standard
+\noindent
 Due to the breakup between 
 \emph on
 tool definition
@@ -3475,6 +3708,7 @@ tool-definition
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float table
 wide false
 sideways false
@@ -3960,13 +4194,15 @@ name "table:sprint5_permissions"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Test design
 \end_layout
 
 \begin_layout Standard
+\noindent
 The functional tests were modified to include permissions restrictions,
- so a step for log in the user was added to each existing scenario -as shown
- in 
+ so a step for log in the user was added to each existing scenario - as
+ shown in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "fig:sprint5_tests"
@@ -3984,6 +4220,7 @@ tool-definition
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -4028,10 +4265,12 @@ name "fig:sprint5_tests"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Implementation
 \end_layout
 
 \begin_layout Standard
+\noindent
 To code the permission restrictions, the Liferay permissions scheme has
  been used.
  It allows to define permissions for the portlets and the model based on
@@ -4058,6 +4297,7 @@ tool-definition
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset listings
 lstparams "language=XML,float,basicstyle={\small\ttfamily},tabsize=3,keywordstyle={\color{green}},backgroundcolor={\color{grey}},morekeywords={resource-action-mapping,portlet-resource,portlet-name,permissions,supports,action-key,site-member-defaults,guest-defaults,guest-unsupported,model-resource,model-name,portlet-ref},alsoletter={-}"
 inline false
@@ -4218,6 +4458,7 @@ Permissions configuration file
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Sixth Sprint
 \begin_inset CommandInset label
 LatexCommand label
@@ -4229,6 +4470,7 @@ name "subsec:Sixth-Sprint"
 \end_layout
 
 \begin_layout Standard
+\noindent
 Once the back-end for tool definition was developed it was necessary to
  create the interface so admin users can choose between the existing tool
  definitions, therefore in this sprint the portlet 
@@ -4239,10 +4481,12 @@ tool-definition
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Test design
 \end_layout
 
 \begin_layout Standard
+\noindent
 Following BDD methodology, behavior of the system for this new feature was
  defined by developing some four scenarios.
  In 
@@ -4256,25 +4500,30 @@ reference "fig:sprint6_tests"
 \end_layout
 
 \begin_layout Itemize
+\noindent
 The admin user chooses an existing Tool Definition different to the chosen
  one.
 \end_layout
 
 \begin_layout Itemize
+\noindent
 The admin user chooses another existing Tool Definition, which in fact means
  choosing back the last Tool Definition.
 \end_layout
 
 \begin_layout Itemize
+\noindent
 Access to tool-definition portlet forbidden for a logged user who is not
  admin.
 \end_layout
 
 \begin_layout Itemize
+\noindent
 Access to tool-definition portlet forbidden for an anonymous user.
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -4319,10 +4568,12 @@ name "fig:sprint6_tests"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Implementation
 \end_layout
 
 \begin_layout Standard
+\noindent
 The new portlet called 
 \family typewriter
 tool-definition
@@ -4351,6 +4602,7 @@ reference "lis:sprint5_perm"
 \end_layout
 
 \begin_layout Standard
+\noindent
 As the current tool definition is stored in the 
 \emph on
 application scoped bean
@@ -4383,10 +4635,12 @@ Ajax
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Seventh Sprint
 \end_layout
 
 \begin_layout Standard
+\noindent
 A use case to create a new tool definition is defined as the first step
  to configure that new tool definition which will be able to be selected
  in the 
@@ -4397,10 +4651,12 @@ adminView.xhtml
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Test Design
 \end_layout
 
 \begin_layout Standard
+\noindent
 As shown in 
 \begin_inset CommandInset ref
 LatexCommand formatted
@@ -4420,6 +4676,7 @@ has been defined with three scenarios, two of them show an error when trying
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -4464,10 +4721,12 @@ name "fig:sprint7_tests"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Implementation
 \end_layout
 
 \begin_layout Standard
+\noindent
 In order to have different views for tool definition choosing and tool definitio
 n edition, a new 
 \family typewriter
@@ -4488,6 +4747,7 @@ POST
 \end_layout
 
 \begin_layout Standard
+\noindent
 In addition, a way to show different step definitions should be defined,
  so a tabs view was used due to the familiarity of users with this kind
  of interface and the easiness of development provided by the Primefaces
@@ -4499,6 +4759,7 @@ tabView
 \end_layout
 
 \begin_layout Standard
+\noindent
 Finally, it was necessary to develop two new managed beans, colored in blue
  in 
 \begin_inset CommandInset ref
@@ -4512,6 +4773,7 @@ reference "fig:sprint7_beans"
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\noindent
 
 \family typewriter
 ToolDefListBacking
@@ -4521,12 +4783,13 @@ ToolDefListBacking
 request scoped
 \emph default
  bean and it is called when creating a new tool instance in order to verify
- the name -check if it is not void or if it already exists, so it prevents
- database exceptions- and to create the URL to create the new tool definition.
+ the name - check if it is not void or if it already exists, so it prevents
+ database exceptions - and to create the URL to create the new tool definition.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\noindent
 
 \family typewriter
 EditToolDefBacking
@@ -4543,6 +4806,7 @@ toolDefConfig.xhtml
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -4587,16 +4851,19 @@ name "fig:sprint7_beans"
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Eighth Sprint
 \end_layout
 
 \begin_layout Standard
+\noindent
 An interface to add steps to the tool definition should be created so after
  creating a new tool definition, admin users were able to add different
  steps and give content to the tool.
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Test Design
 \begin_inset CommandInset label
 LatexCommand label
@@ -4608,6 +4875,7 @@ name "subsec:Test-Design"
 \end_layout
 
 \begin_layout Standard
+\noindent
 The fact of adding steps to a new tool definition was considered as part
  of the behavior 
 \emph on
@@ -4633,15 +4901,16 @@ Selenium WebDriver
 \family typewriter
 iframe
 \family default
- which is working in, so if it changes it should be switched -calling the
+ which is working in, so if it changes it should be switched - calling the
  method 
 \family typewriter
 driver.switchTo.frame()
 \family default
-- in order to allow the driver to find those elements.
+ - in order to allow the driver to find those elements.
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -4686,10 +4955,12 @@ name "fig:sprint8_tests"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Implementation
 \end_layout
 
 \begin_layout Standard
+\noindent
 The new view should be embedded in the 
 \family typewriter
 toolDefConfig.xhtml
@@ -4700,6 +4971,7 @@ toolDefConfig.xhtml
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -4744,6 +5016,7 @@ name "fig:sprint8_dialog"
 \end_layout
 
 \begin_layout Standard
+\noindent
 In order to have an independent view which could be embedded, the 
 \emph on
 Primefaces Dialog Framework
@@ -4783,6 +5056,7 @@ Primefaces Dialog Framework
 \end_layout
 
 \begin_layout Standard
+\noindent
 On the other side, the view 
 \family typewriter
 toolDefConfig.xhtml
@@ -4800,20 +5074,27 @@ Primefaces
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Ninth Sprint
 \end_layout
 
 \begin_layout Standard
+\noindent
 After creating tool steps, next needed feature was to delete tool step definitio
 ns, which is addressed in this sprint.
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Test Design
 \end_layout
 
 \begin_layout Standard
-The step definition deletion operation is made from the toolDefConfig.xhtml
+\noindent
+The step definition deletion operation is made from the 
+\family typewriter
+toolDefConfig.xhtml
+\family default
  and should consider some different cases: from one to several steps deletion
  and from an already existing or a new tool definition.
  Therefore, four cases were designed which, as shown in 
@@ -4823,12 +5104,13 @@ reference "fig:sprint9_tests"
 
 \end_inset
 
-, were succesfully passed.
+, were successfully passed.
  There were some code refining when testing, since the processing of deletion
  should depend on the load onto the database of newly created step definitions.
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -4873,10 +5155,12 @@ name "fig:sprint9_tests"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Implementation
 \end_layout
 
 \begin_layout Standard
+\noindent
 The implementation of this sprint has been done through the attribute 
 \family typewriter
 closable
@@ -4903,6 +5187,7 @@ Ajax
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Tenth Sprint
 \begin_inset CommandInset label
 LatexCommand label
@@ -4914,6 +5199,7 @@ name "subsec:Tenth-Sprint"
 \end_layout
 
 \begin_layout Standard
+\noindent
 At this point, and due to an interview with the client, it was realized
  that steps order should be able to be modified within the tool definition
  configuration.
@@ -4926,10 +5212,12 @@ At this point, and due to an interview with the client, it was realized
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Test Design
 \end_layout
 
 \begin_layout Standard
+\noindent
 Tests for this sprint are the same tests that had already been passed but
  checking if the database was also storing and deleting the new added step
  order.
@@ -4961,6 +5249,7 @@ reference "fig:testing_framework2"
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -5007,10 +5296,12 @@ name "fig:testing_framework2"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Implementation
 \end_layout
 
 \begin_layout Standard
+\noindent
 The database update implied, as showed in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5053,6 +5344,7 @@ stepIndex
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -5097,6 +5389,7 @@ name "fig:sprint10_db"
 \end_layout
 
 \begin_layout Standard
+\noindent
 As the database was modified, the related methods for adding and removing
  were also modified to include the new field.
  Also two new methods to update the relationship called 
@@ -5111,10 +5404,12 @@ saveNewStepsOrder
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Eleventh Sprint
 \end_layout
 
 \begin_layout Standard
+\noindent
 Once the back-end supports steps order it was time to modify the interface
  so admin users can change the order of the steps in a tool definition.
  It involved looking the possibilities of doing it in a user-friendly drag-and-d
@@ -5127,10 +5422,12 @@ rop way with the current tabs view.
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Test Design
 \end_layout
 
 \begin_layout Standard
+\noindent
 Tests for this sprint are those to move the steps but with regression tests
  from eighth sprint in order to assure the proper functioning of the redesigned
  interface.
@@ -5156,6 +5453,7 @@ reference "fig:sprint11_tests"
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -5200,10 +5498,12 @@ name "fig:sprint11_tests"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Implementation
 \end_layout
 
 \begin_layout Standard
+\noindent
 As explained, the implementation of this feature involved changing the step
  definitions interface.
  From a tabs system it was changed to a panels system where panels (which
@@ -5220,6 +5520,7 @@ closable
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -5264,10 +5565,12 @@ name "fig:sprint11_interface"
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Twelfth Sprint
 \end_layout
 
 \begin_layout Standard
+\noindent
 At this moment, client and developer realized that it was not possible to
  delete Tool Definitions and it could be needed, so this feature should
  be added.
@@ -5277,16 +5580,19 @@ At this moment, client and developer realized that it was not possible to
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Test Design
 \end_layout
 
 \begin_layout Standard
+\noindent
 Following the BDD methodology, the behaviors were designed for both features
- ir order to create their corresponding tests:
+ in order to create their corresponding tests:
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\noindent
 Deleting A delete button exists for each tool definition so when the user
  clicks on it a dialog to confirm will appear, if it is confirmed the tool
  definition will disappear from the view.
@@ -5300,6 +5606,7 @@ DBChecker
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\noindent
 Restricting When a tool definition is selected or it has created tool instance
  it will be impossible to delete or edit it.
  So buttons should be disabled and a tool-tip will showed when moving the
@@ -5309,6 +5616,7 @@ Restricting When a tool definition is selected or it has created tool instance
 \end_layout
 
 \begin_layout Standard
+\noindent
 As shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5321,6 +5629,7 @@ reference "fig:sprint12_tests"
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -5365,10 +5674,12 @@ name "fig:sprint12_tests"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Implementation
 \end_layout
 
 \begin_layout Standard
+\noindent
 Coding the delete button only required adding a new button to each row of
  the 
 \family typewriter
@@ -5392,6 +5703,7 @@ FactoryBean
 \end_layout
 
 \begin_layout Standard
+\noindent
 Regarding the restrictions, they were implemented disabling the corresponding
  button whether the tool definition is selected or it has existing tool
  instances, it done through the Primefaces 
@@ -5411,65 +5723,49 @@ commandButton
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Thirteenth Sprint
 \end_layout
 
 \begin_layout Standard
+\noindent
 Create interface to nest Composite Steps
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Test Design
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Implementation
 \end_layout
 
 \begin_layout Standard
+\noindent
 Refactoring to separate EditToolDefBacking from CompositeToolDefBacking
 \end_layout
 
-\begin_layout Subsection
-Fourteenth Sprint
-\end_layout
-
-\begin_layout Standard
-Create Web Content Step Type and show the step
-\end_layout
-
-\begin_layout Subsection
-Fifteenth Sprint
-\end_layout
-
-\begin_layout Standard
-Create Web Content Step Type configuration interface
-\end_layout
-
-\begin_layout Subsection
-Sixteenth Sprint
-\end_layout
-
-\begin_layout Standard
-Create Basic RAM Tool
-\end_layout
-
 \begin_layout Section
+\noindent
 Results and Discussion
 \end_layout
 
 \begin_layout Standard
+\noindent
 At the end of this project, a working and tested first phase of a Liferay
  portlet to guide through the RAM has been developed.
  This portlet provides a recurrent structure which will allow to develop
  the necessary steps and substeps to create not only a web application to
- guide through RAM, but also through any other tool structured in -sequential
- or not- steps and substeps.
+ guide through RAM, but also through any other tool structured in - sequential
+ or not - steps and substeps.
  Thus, the scalability of the software has been increased following the
  customer's modifications during the project.
 \end_layout
 
 \begin_layout Standard
+\noindent
 As it can be noted in the development process (
 \begin_inset CommandInset ref
 LatexCommand formatted
@@ -5487,13 +5783,14 @@ n has been redesigned to be useful not only for a RAM web tool.
 \end_layout
 
 \begin_layout Standard
-Initially for testing purposes but also to make easier the development of
- the steps, a mock step has been included which can be used as a template
+\noindent
+Initially for testing purposes, but also to make easier the development
+ of the steps, a mock step has been included which can be used as a template
  for new steps development.
  This mock step has been well documented and it has the required structure
  for the new steps to be included in the system along with the different
  methods needed.
- Also a guide for developers has been included in Appedix A: 
+ Also a guide for developers has been included in Appendix A: 
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "sec:Guide-to-develop"
@@ -5506,11 +5803,12 @@ reference "sec:Guide-to-develop"
 \end_layout
 
 \begin_layout Standard
+\noindent
 Concerning the methodology, adopting new techniques has required an extra
  effort and time in setting-up frameworks and procedures.
  Undoubtedly it has been worth in order to improve the development methodology
- and hence the quality, scalability and future development opportunities,
- but it has also implied changes and adaptations during the development
+ and hence the quality, scalability and future development opportunities.
+ Nonetheless, it has also implied changes and adaptations during the development
  which led to a learning process and an effort to change procedures.
  With a view to future projects, it would be desirable to establish methodology
  and processes at the beginning of the project in order to well set-up the
@@ -5520,6 +5818,7 @@ Concerning the methodology, adopting new techniques has required an extra
 \end_layout
 
 \begin_layout Standard
+\noindent
 On the other hand, the biggest issue in the development process has been
  the estimation of the time needed to develop each of the sprints, that
  has usually been too optimistic.
@@ -5553,11 +5852,12 @@ key "Cirillo2009"
 \end_layout
 
 \begin_layout Standard
+\noindent
 Regarding to the quality assurance, the testing framework which has been
  created and the fact of using a test-first methodology were aimed to offer
  a significant degree of quality, ensuring the customer requirements are
  accomplished without errors.
- This test-first methodology (partucularly BDD as explained in 
+ This test-first methodology (particularly BDD as explained in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "subsec:Behavior-Driven-Development"
@@ -5571,18 +5871,19 @@ reference "subsec:Behavior-Driven-Development"
 \end_layout
 
 \begin_layout Standard
+\noindent
 Initially, that way of developing can cast doubts if we are used to classical
  approaches, but when you begin coding you realize that is a much more effective
  method.
- Regarding the doubts casted about how good designed can be a software developed
+ Regarding the doubts cast about how good designed can be a software developed
  in this way I have realize two main things: the first is that indeed design
- is thinked before coding even if it is minimal, but you think at the design
+ is thought before coding even if it is minimal, but you think at the design
  also when you create tests, so it is not just coding in an unstructured
  way.
  The second one is that, when some code is not as readable or structured
  as necessary, a refactoring process can be done in order to improve it
  and reduce complexity, so code remains structured and intelligible.
- Particularly in this project, creating symetric structures when refactoring
+ Particularly in this project, creating symmetric structures when refactoring
  has simplified the design and made it more comprehensible, as shown in
  
 \begin_inset CommandInset ref
@@ -5602,6 +5903,35 @@ reference "subsec:Step-structure"
 \end_layout
 
 \begin_layout Standard
+As stated during previously in this document, the final product of this
+ project is a structure to develop a Ram Assessment for Markets application,
+ that is why the screenshots showed in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Screenshots-of-the"
+
+\end_inset
+
+ do not look as the mockups of Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Mockups-of-the"
+
+\end_inset
+
+.
+ Either way, the correspondence between both designs can be guessed in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:tool_instance_portlet"
+
+\end_inset
+
+, which slightly matches with Home mockup at page 62.
+\end_layout
+
+\begin_layout Standard
+\noindent
 It is also worth pointing out that tests related to Quadrant 4 (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5625,10 +5955,12 @@ reference "subsec:Quadrant-4-tests"
 \end_layout
 
 \begin_layout Section
+\noindent
 Conclusion
 \end_layout
 
 \begin_layout Standard
+\noindent
 At the end of the project it is possible to state that it has provided a
  functional quality software which fits the requirements of the customer.
  The created software will allow to develop any kind of steps to create
@@ -5649,25 +5981,36 @@ Households Economic Security
 \end_layout
 
 \begin_layout Standard
+\noindent
 On the other hand, the objectives of the project have been achieved as a
  result of using adequate developing technologies which involve the customer
  and ensure their requirements are kept as the core of the project, in addition
  to implement quality assurance; particularly important as this point is
- the choice of adecuate technologies which can make the software usable
+ the choice of adequate technologies which can make the software usable
  by the customer.
 \end_layout
 
 \begin_layout Standard
+\noindent
 So finally, a learning process has been carried out during the project which
  have resulted in a useful software and a working framework to scale it
  in the future and to carry on with the development.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
+\noindent
 Bibliography
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "pfc_bibliography"
@@ -5678,8 +6021,47 @@ options "plain"
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
 \start_of_appendix
+\noindent
+APPENDICES
+\begin_inset CommandInset label
+LatexCommand label
+name "part:APPENDICES"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{part}{
+\backslash
+nameref{part:APPENDICES}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\noindent
 Guide to develop steps
 \begin_inset CommandInset label
 LatexCommand label
@@ -5691,16 +6073,19 @@ name "sec:Guide-to-develop"
 \end_layout
 
 \begin_layout Standard
+\noindent
 One of the main features of the portlet is to allow developers to create
  new steps in order to extend features and create new tools, this guide
  shows how new steps should be created.
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Technologies
 \end_layout
 
 \begin_layout Standard
+\noindent
 As the portlet has been developed using JSF 2.1, the standard JSF version
  for Liferay 6.2, the steps should also be developed with JSF 2.1.
  It is recommended the previous reading of the Liferay tutorial 
@@ -5726,6 +6111,7 @@ cation-using-liferay-faces
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Step structure
 \begin_inset CommandInset label
 LatexCommand label
@@ -5737,22 +6123,25 @@ name "subsec:Step-structure"
 \end_layout
 
 \begin_layout Standard
+\noindent
 The 
 \family typewriter
 MOCK
 \family default
  step can be used as a template to create new steps since it is well documented
  and commented to make easier the development of new steps.
- It can be downloaded from TODO.
+ It can be downloaded from the github repository.
 \end_layout
 
 \begin_layout Standard
+\noindent
 The core of new step structure must follow the general structure designed
- for all the portlet, that is to say a symmetryc structure comprised of
+ for all the portlet, that is to say a symmetric structure comprised of
  the step definition part and the step instance part:
 \end_layout
 
 \begin_layout Itemize
+\noindent
 The
 \series bold
  step definition 
@@ -5788,6 +6177,7 @@ StepDef
 \end_layout
 
 \begin_layout Itemize
+\noindent
 The 
 \series bold
 step instance
@@ -5808,6 +6198,7 @@ Step
 \end_layout
 
 \begin_layout Standard
+\noindent
 These two classes should be packaged as 
 \family typewriter
 org.lrc.liferay.toolbuilder.steps.XXX
@@ -5833,6 +6224,7 @@ tence-framework-using-service-builder
 \end_layout
 
 \begin_layout Standard
+\noindent
 Besides the two core classes, some backing beans may be needed for the views.
  It is recommended to use 
 \emph on
@@ -5861,12 +6253,13 @@ ManagedProperty
 AbstractBaseBean
 \family default
 .
- To mantain consistency with the rest of the portlet these beans should
+ To maintain consistency with the rest of the portlet these beans should
  be packaged as org.lrc.liferay.toolbuilder.bean.steps.XXX, where XXX is the name
  of the step.
 \end_layout
 
 \begin_layout Standard
+\noindent
 On the other hand, and related to the views, at least two views should be
  created: one regarding the step definition and other one regarding step
  instance.
@@ -5888,10 +6281,12 @@ reference "fig:New Steps Diagram"
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Installing new step type
 \end_layout
 
 \begin_layout Standard
+\noindent
 To install a new step type it is necessary to call it from the 
 \family typewriter
 StepFactory
@@ -5904,6 +6299,7 @@ installStep
 \end_layout
 
 \begin_layout Standard
+\noindent
 
 \family typewriter
 \size small
@@ -5929,6 +6325,7 @@ public static void installStep(String stepType, String stepDescription,
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\noindent
 
 \family typewriter
 stepType
@@ -5938,6 +6335,7 @@ stepType
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\noindent
 
 \family typewriter
 stepDescription
@@ -5947,6 +6345,7 @@ stepDescription
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\noindent
 
 \family typewriter
 namespace
@@ -5956,6 +6355,7 @@ namespace
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\noindent
 
 \family typewriter
 className
@@ -5973,10 +6373,12 @@ Def
 \end_layout
 
 \begin_layout Standard
+\noindent
 For the example of a step to add files the call could be like this:
 \end_layout
 
 \begin_layout Standard
+\noindent
 
 \family typewriter
 \size small
@@ -6006,6 +6408,7 @@ StepFactory installStep("FILES_ATTACH", "A step to attach files",
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -6015,7 +6418,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename /home/ferda/informatica/development/liferay/portlets/toolBuilder-portlet/doc/uml/exported/MockStepClassDiagram.png
-	scale 80
+	scale 77
 
 \end_inset
 
@@ -6050,7 +6453,15 @@ name "fig:New Steps Diagram"
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
+\noindent
 Mockups of the RAM web app
 \begin_inset CommandInset label
 LatexCommand label
@@ -6062,6 +6473,7 @@ name "sec:Mockups-of-the"
 \end_layout
 
 \begin_layout Standard
+\noindent
 As explained in the subsection 
 \begin_inset CommandInset ref
 LatexCommand nameref
@@ -6071,11 +6483,12 @@ reference "subsec:PreliminaryWork"
 
 , mockups for the final web application were designed with the customer
  before beginning the development process.
- Althought an interactive version of those mockups can be found on the following
+ Although an interactive version of those mockups can be found on the following
  URL:
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset listings
 lstparams "basicstyle={\small\ttfamily}"
 inline false
@@ -6092,10 +6505,15 @@ http://www.livelihoodstoolbox.org/RAM_design/
 \end_layout
 
 \begin_layout Standard
-Thereupon are shown the web app navigation map and the main mockups.
+\noindent
+In the next pages are shown the main mockups which were designed as before
+ beginning the application development.
+ Those mockups are preceded by the application navigation map which was
+ designed in order to well understand the structure.
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways true
@@ -6139,6 +6557,7 @@ name "fig:nav_map"
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways true
@@ -6177,6 +6596,7 @@ Navigation map for the RAM web app (part 2)
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset External
 	template PDFPages
 	filename UI_design.pdf
@@ -6187,15 +6607,32 @@ Navigation map for the RAM web app (part 2)
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
+\noindent
 Screenshots of the first phase of the RAM web app
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Screenshots-of-the"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Tool Implementation Portlet
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -6224,12 +6661,23 @@ Tool Instance selection
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:tool_instance_portlet"
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -6264,6 +6712,7 @@ Tool Instance creation
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -6298,10 +6747,12 @@ Tool Instance navigation
 \end_layout
 
 \begin_layout Subsection
+\noindent
 Tool Definition Portlet
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -6336,6 +6787,7 @@ Tool Definition selection
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -6370,6 +6822,7 @@ Tool Definition creation with name validation
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -6404,6 +6857,7 @@ Tool definition edition
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -6438,6 +6892,7 @@ Step creation dialog
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -6472,6 +6927,7 @@ Reordering steps
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -6506,6 +6962,7 @@ Mock step configuration
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
