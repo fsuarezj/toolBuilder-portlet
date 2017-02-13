@@ -12,6 +12,7 @@
 \usepackage{indentfirst}
 \definecolor{green}{RGB}{0,120,0}
 \definecolor{grey}{RGB}{240,240,240}
+\date{}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -84,14 +85,15 @@
 
 \begin_body
 
-\begin_layout Title
+\begin_layout Standard
 \noindent
-Development of a step based structure to create a Rapid Assessment for Markets
- application
-\end_layout
+\begin_inset External
+	template PDFPages
+	filename titlepage/title_page.pdf
 
-\begin_layout Author
-Fernando Suárez Jiménez
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1966,6 +1968,7 @@ Managed beans
 \begin_layout Standard
 \noindent
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2668,6 +2671,7 @@ ive flows.
 \begin_layout Standard
 \noindent
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -3171,43 +3175,6 @@ XPath
  did not match with the web elements outputted by the portlet.
 \end_layout
 
-\begin_layout Subsection
-\noindent
-Fourth Sprint
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Fourth-Sprint"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-As tools should be able to be customized and many occurrences of each tool
- may be created, it becomes necessary to make code refactoring in order
- to divide the two parts: 
-\emph on
-Tool Definitions
-\emph default
- and 
-\emph on
-Tool Instances
-\emph default
-.
- So after refactoring we have separately the objects related to the tool
- structure - hereafter 
-\emph on
-Tool Definition
-\emph default
- - and the objects related to the tool occurrences - hereafter 
-\emph on
-Tool Instances
-\emph default
-.
-\end_layout
-
 \begin_layout Standard
 \noindent
 \begin_inset Float figure
@@ -3311,6 +3278,43 @@ name "fig:sprint3_tests_pass"
 
 \end_layout
 
+\begin_layout Subsection
+\noindent
+Fourth Sprint
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Fourth-Sprint"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+As tools should be able to be customized and many occurrences of each tool
+ may be created, it becomes necessary to make code refactoring in order
+ to divide the two parts: 
+\emph on
+Tool Definitions
+\emph default
+ and 
+\emph on
+Tool Instances
+\emph default
+.
+ So after refactoring we have separately the objects related to the tool
+ structure - hereafter 
+\emph on
+Tool Definition
+\emph default
+ - and the objects related to the tool occurrences - hereafter 
+\emph on
+Tool Instances
+\emph default
+.
+\end_layout
+
 \begin_layout Subsubsection
 \noindent
 Redesign / Refactoring
@@ -3402,26 +3406,6 @@ ToolInstance
 
 \begin_layout Standard
 \noindent
-As we can see in 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "fig:sprint4_design"
-
-\end_inset
-
-, 
-\emph on
-Factory
-\emph default
- and 
-\emph on
-Composite Patterns
-\emph default
- are still being used after refactoring.
-\end_layout
-
-\begin_layout Standard
-\noindent
 \begin_inset ERT
 status open
 
@@ -3498,6 +3482,26 @@ end{landscape}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\noindent
+As we can see in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:sprint4_design"
+
+\end_inset
+
+, 
+\emph on
+Factory
+\emph default
+ and 
+\emph on
+Composite Patterns
+\emph default
+ are still being used after refactoring.
 \end_layout
 
 \begin_layout Standard
@@ -4808,6 +4812,7 @@ toolDefConfig.xhtml
 \begin_layout Standard
 \noindent
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4912,6 +4917,7 @@ driver.switchTo.frame()
 \begin_layout Standard
 \noindent
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -4973,6 +4979,7 @@ toolDefConfig.xhtml
 \begin_layout Standard
 \noindent
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -5112,6 +5119,7 @@ reference "fig:sprint9_tests"
 \begin_layout Standard
 \noindent
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -5211,6 +5219,13 @@ At this point, and due to an interview with the client, it was realized
  this sprint.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 \noindent
 Test Design
@@ -5238,7 +5253,7 @@ DBChecker
 \family default
 , so the testing framework was updated as in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "fig:testing_framework2"
 
 \end_inset
@@ -5251,6 +5266,7 @@ reference "fig:testing_framework2"
 \begin_layout Standard
 \noindent
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -5304,7 +5320,7 @@ Implementation
 \noindent
 The database update implied, as showed in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "fig:sprint10_db"
 
 \end_inset
@@ -5341,6 +5357,21 @@ LSB
 stepIndex
 \family default
  field.
+\end_layout
+
+\begin_layout Standard
+\noindent
+As the database was modified, the related methods for adding and removing
+ were also modified to include the new field.
+ Also two new methods to update the relationship called 
+\family typewriter
+reorderStepDef
+\family default
+ and 
+\family typewriter
+saveNewStepsOrder
+\family default
+ were created to implement the new feature in the back-end.
 \end_layout
 
 \begin_layout Standard
@@ -5386,21 +5417,6 @@ name "fig:sprint10_db"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\noindent
-As the database was modified, the related methods for adding and removing
- were also modified to include the new field.
- Also two new methods to update the relationship called 
-\family typewriter
-reorderStepDef
-\family default
- and 
-\family typewriter
-saveNewStepsOrder
-\family default
- were created to implement the new feature in the back-end.
 \end_layout
 
 \begin_layout Subsection
@@ -5952,6 +5968,13 @@ reference "subsec:Quadrant-4-tests"
  Lastly and for the future, performance tests should been carried out in
  order to find improvements, but it has not been an objective in this first
  phase.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

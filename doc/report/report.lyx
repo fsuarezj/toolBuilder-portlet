@@ -5738,31 +5738,6 @@ commandButton
  so the result is the same.
 \end_layout
 
-\begin_layout Subsection
-\noindent
-Thirteenth Sprint
-\end_layout
-
-\begin_layout Standard
-\noindent
-Create interface to nest Composite Steps
-\end_layout
-
-\begin_layout Subsubsection
-\noindent
-Test Design
-\end_layout
-
-\begin_layout Subsubsection
-\noindent
-Implementation
-\end_layout
-
-\begin_layout Standard
-\noindent
-Refactoring to separate EditToolDefBacking from CompositeToolDefBacking
-\end_layout
-
 \begin_layout Section
 \noindent
 Results and Discussion
