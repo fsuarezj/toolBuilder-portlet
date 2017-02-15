@@ -1219,7 +1219,7 @@ These levels are the core of the BDD methodology because it is where the
  software behaviors are defined.
  As stated in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Behavior-Driven-Development"
 
 \end_inset
@@ -1337,7 +1337,7 @@ Gherkin
  and steps.
  It is a natural language with a specific structure and a set of keywords
  to define features, scenarios and steps.
- In 
+ In listing 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "lis:Gherkin_example"
@@ -1473,7 +1473,7 @@ how
  In this case, as we are using Cucumber-JVM, steps definition are implemented
  using Java annotations and allows to include regular expressions in order
  to better define the steps.
- An example can be shown in the first line of 
+ An example can be shown in the first line of listing 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "lis:cucumber_step_def"
@@ -1551,7 +1551,7 @@ Support Code:
  As steps should be concrete and accurate, the support code should not be
  so large, just a few lines to link with the automation library, which will
  be the level which will really do the most of the automation work.
- In 
+ In listing 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "lis:cucumber_step_def"
@@ -1714,7 +1714,7 @@ The term test-driven development misleads practitioners who don’t understand
  design.
  In fact, as it will be shown in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "sec:Development"
 
 \end_inset
@@ -1774,7 +1774,7 @@ name "subsec:Liferay"
 The choice of the web framework has been taken directly by the customer.
  As explained in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "sec:Objectives"
 
 \end_inset
@@ -1834,7 +1834,7 @@ service layer [...] that provides a clean separation between the object model
 .
  Although it has some constraints as it will be shown in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "sec:Development"
 
 \end_inset
@@ -3702,7 +3702,7 @@ tool instance
  should be available to logged users, but non logged users will be able
  to see tools instances not having permissions to use them.
  Therefore, the permission scheme should be defined to provide limited access
- based on user role following the scheme in 
+ based on user role following the scheme in table 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "table:sprint5_permissions"
@@ -4225,7 +4225,7 @@ reference "fig:sprint5_tests"
 \end_inset
 
  which in the step 2 logs the users.
- Also 3 more scenarios were added to test the restrictions for non logged
+ Also three more scenarios were added to test the restrictions for non logged
  users, one for each feature.
  No tests have been added for the 
 \family typewriter
@@ -4290,7 +4290,7 @@ To code the permission restrictions, the Liferay permissions scheme has
  been used.
  It allows to define permissions for the portlets and the model based on
  the user's role through a xml file.
- As shown in 
+ As shown in listing 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lis:sprint5_perm"
@@ -4606,7 +4606,7 @@ control-panel-entry-category
 site_administration.content
 \family default
 .
- Thus, the permission scheme from 
+ Thus, the permission scheme from listing 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lis:sprint5_perm"
@@ -5117,7 +5117,7 @@ toolDefConfig.xhtml
  and from an already existing or a new tool definition.
  Therefore, four cases were designed which, as shown in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "fig:sprint9_tests"
 
 \end_inset
@@ -5471,7 +5471,7 @@ java.awt.Robot
  actions.
  As shown in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "fig:sprint11_tests"
 
 \end_inset
@@ -5646,7 +5646,7 @@ Restricting When a tool definition is selected or it has created tool instance
 \noindent
 As shown in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "fig:sprint12_tests"
 
 \end_inset
@@ -5792,7 +5792,14 @@ Initially for testing purposes, but also to make easier the development
  This mock step has been well documented and it has the required structure
  for the new steps to be included in the system along with the different
  methods needed.
- Also a guide for developers has been included in Appendix A: 
+ Also a guide for developers has been included in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Guide-to-develop"
+
+\end_inset
+
+: 
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "sec:Guide-to-develop"
@@ -5929,7 +5936,7 @@ reference "fig:tool_instance_portlet"
 
 \end_inset
 
-, which slightly matches with Home mockup at page 62.
+, which slightly matches with Home mockup at page 59.
 \end_layout
 
 \begin_layout Standard
