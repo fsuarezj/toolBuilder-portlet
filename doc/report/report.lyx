@@ -174,7 +174,7 @@ status open
 
 \begin_layout Plain Layout
 According to http://www.cash-atlas.org, since 2004 to 2014 cash projects beneficia
-ries increased in a 262% reaching the 12.709.963 in the year 2014
+ries increased in a 262% reaching 12.709.963 in the year 2014
 \end_layout
 
 \end_inset
@@ -2913,7 +2913,18 @@ After some interviews with the client it was concluded that the development
  is quite limited and poorly flexible since it will just fit the current
  RAM tool requisites and it would be pretty complex to extend it.
  Finally it was decided to change the requisites and develop a web tool
- flexible enough to implement different kind of methodologies or tools.
+ flexible enough to implement different kind of methodologies or tools as
+ EMMA or HES
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Households Economic Security
+\end_layout
+
+\end_inset
+
+.
  That is how the project has become a tool builder, and so is called Toolbuilder
 , and the new portlet which implements the tools is called 
 \family typewriter
@@ -5965,17 +5976,7 @@ At the end of the project it is possible to state that it has provided a
  web applications to guide through any tool or process structured in steps
  and substeps.
  So it can not only be RAM, but also many others humanitarian methodologies
- as EMMA or HES
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Households Economic Security
-\end_layout
-
-\end_inset
-
-.
+ as EMMA or HES.
 \end_layout
 
 \begin_layout Standard
